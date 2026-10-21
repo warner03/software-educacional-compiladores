@@ -1,16 +1,29 @@
-version: '3.8'
-
 services:
   backend:
     build: ./backend
+    container_name: compilador_backend
     ports:
       - "8000:8000"
-    container_name: compilador_backend
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request as u; u.urlopen('http://localhost:8000/saude', timeout=3)"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
 
   frontend:
     build: ./frontend
+    container_name: compilador_frontend
     ports:
       - "8501:8501"
-    container_name: compilador_frontend
+    environment:
+      # O Streamlit roda no contêiner e chama o backend pela rede interna do Compose.
+      # O navegador só acessa o frontend (localhost:8501).
+      BACKEND_URL: http://backend:8000
     depends_on:
-      - backend
+      backend:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request as u; u.urlopen('http://localhost:8501/_stcore/health', timeout=3)"]
+      interval: 5s
+      timeout: 5s
+      retries: 12

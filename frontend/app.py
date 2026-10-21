@@ -8,6 +8,11 @@ LINGUAGEM = "Mini-C (subconjunto da linguagem C)"
 
 st.set_page_config(page_title="Visualizador Educacional de Compiladores", page_icon="🛠️", layout="wide")
 
+st.markdown(
+    "<style>.stTextArea textarea { font-family: 'Courier New', monospace !important; }</style>",
+    unsafe_allow_html=True,
+)
+
 if "codigo" not in st.session_state:
     st.session_state["codigo"] = CODIGO_INICIAL
 if "resultado" not in st.session_state:

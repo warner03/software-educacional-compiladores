@@ -20,10 +20,13 @@ Já implementado: interface web, entrada/edição de código, exemplos, comunica
 
 ## 3. Tecnologias e estrutura
 
-- `backend/` — API em Python (FastAPI): `app/main.py` (rotas), `app/validation.py` (validações), `tests/`.
-- `frontend/` — interface em Python (Streamlit): `app.py` (tela), `api_client.py` (comunicação), `examples.py` (exemplos), `tests/`.
+- `backend/` — API em Python (FastAPI): `app/main.py` (rotas), `app/validation.py` (validações), `tests/` (pytest).
+- `frontend/` — página HTML + CSS + JavaScript puro, servida pelo nginx:
+  - `index.html` (tela e exemplos), `style.css`, `app.js` (validação, comunicação e comportamento da tela);
+  - `nginx.conf` (serve a página e repassa `/api/` ao backend);
+  - `tests/` (Node.js + jsdom).
 - `docker-compose.yml` — orquestração, com healthchecks.
-- `scripts/smoke_test.sh` — teste de implantação.
+- `scripts/` — `smoke_test.sh` (teste de implantação) e `registrar_testes.py` (gera o registro de testes).
 - `docs/` — contrato da API e registro de testes.
 
 ## 4. Como executar
@@ -35,11 +38,11 @@ docker compose down             # encerrar
 
 Acesse a interface em **http://localhost:8501**. A documentação interativa da API fica em http://localhost:8000/docs.
 
-O navegador acessa apenas o frontend. O Streamlit (dentro do contêiner) chama o backend por `http://backend:8000`, definido na variável `BACKEND_URL` do Compose.
+O navegador carrega a página do nginx e envia o código para `/api/analisar` (mesma origem). O nginx repassa a chamada ao backend por `http://backend:8000` na rede interna do Compose.
 
 ## 5. Como usar
 
-1. Escolha um exemplo e clique em **Carregar exemplo** (ou escreva/cole seu próprio código).
+1. Escolha um exemplo na lista (o código aparece na área de entrada) ou escreva/cole seu próprio programa.
 2. Edite à vontade — o sistema não presume que o código seja válido.
 3. Clique em **Analisar código** e veja a resposta em **Resultados**.
 
@@ -54,14 +57,25 @@ O navegador acessa apenas o frontend. O Streamlit (dentro do contêiner) chama o
 
 ## 6. Comunicação frontend ↔ backend
 
-`POST /analisar` com `{"codigo": "..."}`. Respostas, códigos HTTP e erros estão em [`docs/contrato-api.md`](docs/contrato-api.md).
+`POST /api/analisar` (proxy) → `POST /analisar` (backend) com `{"codigo": "..."}`. Respostas, códigos HTTP e erros estão em [`docs/contrato-api.md`](docs/contrato-api.md).
+
+### Validações e mensagens
+
+| Situação | Onde é tratada |
+|---|---|
+| Entrada vazia | frontend e backend |
+| Entrada só com espaços | frontend e backend |
+| Requisição inválida (JSON ruim, campo ausente, tipo errado) | backend (HTTP 400) |
+| Falha de comunicação (servidor fora do ar, timeout, 502/503/504) | frontend |
+| Erro inesperado | backend (HTTP 500, mensagem genérica) e frontend |
 
 ## 7. Testes
 
 ```bash
-docker compose run --rm backend pytest -v     # validações e endpoints
-docker compose run --rm frontend pytest -v    # cliente HTTP, exemplos e interface (Streamlit AppTest)
-./scripts/smoke_test.sh                       # implantação + comunicação entre contêineres
+docker compose run --rm backend pytest -v        # validações e endpoints (pytest)
+docker compose run --rm testes-frontend          # lógica, exemplos e interface (Node + jsdom)
+./scripts/smoke_test.sh                          # implantação, HTML da interface e comunicação via proxy
+python3 scripts/registrar_testes.py              # roda os testes e atualiza docs/registro-de-testes.md
 ```
 
 Os resultados executados ficam em [`docs/registro-de-testes.md`](docs/registro-de-testes.md).

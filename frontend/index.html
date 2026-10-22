@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Visualizador Educacional de Compiladores</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1 id="titulo">🛠️ Visualizador Educacional de Compiladores</h1>
+    <p id="linguagem">Linguagem analisada: <strong>Mini-C (subconjunto da linguagem C)</strong></p>
+  </header>
+
+  <main>
+    <section id="entrada" aria-labelledby="titulo-entrada">
+      <h2 id="titulo-entrada">Código-fonte</h2>
+
+      <label for="exemplos">Exemplos de programas</label>
+      <select id="exemplos" name="exemplos">
+          <option value="">— Selecione um exemplo —</option>
+          <option value="ex1" data-codigo="int numero = 10;">1 - Declaração e inicialização de variável</option>
+          <option value="ex2" data-codigo="int resultado = 10 + 5;">2 - Operação aritmética</option>
+          <option value="ex3" data-codigo="int numero = 10;&#10;if (numero &gt; 0) {&#10;    numero = numero + 1;&#10;}">3 - Estrutura condicional (if)</option>
+          <option value="ex4" data-codigo="float media = 7.5;&#10;if (media &gt;= 6.0) {&#10;    media = media + 1.0;&#10;} else {&#10;    media = media - 1.0;&#10;}">4 - Condicional com else e float</option>
+      </select>
+
+      <label for="codigo">Escreva, cole ou edite o programa Mini-C:</label>
+      <textarea id="codigo" name="codigo" rows="14" spellcheck="false" placeholder="Digite seu código Mini-C aqui...">int numero = 10;</textarea>
+
+      <button id="btn-analisar" type="button">Analisar código</button>
+    </section>
+
+    <section id="saida" aria-labelledby="titulo-resultados">
+      <h2 id="titulo-resultados">Resultados</h2>
+      <div id="resultado" role="status" aria-live="polite">
+        <p class="dica">Os resultados da análise aparecerão aqui.</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

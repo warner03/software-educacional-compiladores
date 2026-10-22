@@ -1,0 +1,19 @@
+* { box-sizing: border-box; }
+body { font-family: system-ui, "Segoe UI", Arial, sans-serif; margin: 0; padding: 1.5rem 2rem; color: #262730; background: #fff; }
+header h1 { margin: 0 0 .25rem; }
+header p { margin: 0 0 1.5rem; color: #555; }
+main { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; }
+@media (max-width: 800px) { main { grid-template-columns: 1fr; } }
+label { display: block; margin: 1rem 0 .35rem; font-size: .9rem; }
+select, textarea { width: 100%; padding: .6rem; border: 1px solid #ccd; border-radius: 6px; background: #f0f2f6; font-size: 1rem; }
+textarea { font-family: ui-monospace, "Courier New", monospace; resize: vertical; min-height: 280px; }
+button { margin-top: 1rem; padding: .6rem 1.2rem; border: 0; border-radius: 6px; background: #ff4b4b; color: #fff; font-size: 1rem; cursor: pointer; }
+button:disabled { opacity: .6; cursor: wait; }
+#resultado { min-height: 4rem; }
+.dica { color: #666; background: #eef4fb; padding: .9rem 1rem; border-radius: 6px; }
+.msg { padding: .9rem 1rem; border-radius: 6px; }
+.msg.sucesso { background: #e6f6ea; color: #14612c; }
+.msg.entrada { background: #fff4d6; color: #7a5200; }
+.msg.comunicacao, .msg.servidor { background: #fde7e7; color: #8a1c1c; }
+.detalhes { margin-top: .8rem; }
+.nota { color: #666; font-size: .85rem; }

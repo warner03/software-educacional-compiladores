@@ -19,7 +19,7 @@ test("envio com sucesso usa POST /api/analisar com o JSON esperado", async () =>
   let chamada;
   const fakeFetch = async (url, opcoes) => {
     chamada = { url, opcoes };
-    return resposta(200, { recebido: true, mensagem: "Código recebido com sucesso.", total_caracteres: 6, total_linhas: 1 });
+    return resposta(200, { recebido: true, sucesso: true, tokens: [], erros: [], mensagem: "Análise léxica concluída sem erros.", total_caracteres: 6, total_linhas: 1 });
   };
   const r = await enviarCodigo("int x;", fakeFetch);
   assert.equal(r.tipo, "sucesso");
@@ -57,4 +57,29 @@ test("resposta que não é JSON vira erro genérico", async () => {
   const r = await enviarCodigo("int x;", async () => resposta(200, null, true));
   assert.equal(r.tipo, "servidor");
   assert.equal(r.mensagem, MSG.inesperado);
+});
+
+
+test("erro léxico com HTTP 200 é separado de erro de entrada ou rede", async () => {
+  const dados = { recebido: true, sucesso: false, tokens: [], erros: [
+    { tipo: "ERRO_LEXICO", lexema: "@", linha: 1, coluna: 1, mensagem: "Caractere inválido." }
+  ], mensagem: "Análise concluída com erros." };
+  const r = await enviarCodigo("@", async () => resposta(200, dados));
+  assert.equal(r.tipo, "lexico");
+  assert.deepEqual(r.dados, dados);
+});
+
+test("respostas inconsistentes ou sem listas são tratadas como falha do servidor", async () => {
+  for (const dados of [null, { recebido: true },
+    { recebido: true, sucesso: false, tokens: [], erros: [] },
+    { recebido: true, sucesso: true, tokens: [{ tipo: "IDENTIFICADOR", lexema: "x", linha: 0, coluna: 1 }], erros: [] }
+  ]) {
+    const r = await enviarCodigo("x", async () => resposta(200, dados));
+    assert.equal(r.tipo, "servidor");
+  }
+});
+
+test("interrupção por timeout é apresentada como falha de comunicação", async () => {
+  const r = await enviarCodigo("x", async () => { throw new DOMException("Tempo esgotado", "AbortError"); });
+  assert.equal(r.tipo, "comunicacao");
 });

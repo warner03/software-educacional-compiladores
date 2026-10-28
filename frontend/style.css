@@ -2,18 +2,50 @@
 body { font-family: system-ui, "Segoe UI", Arial, sans-serif; margin: 0; padding: 1.5rem 2rem; color: #262730; background: #fff; }
 header h1 { margin: 0 0 .25rem; }
 header p { margin: 0 0 1.5rem; color: #555; }
-main { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; }
+main { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 2rem; align-items: start; }
 @media (max-width: 800px) { main { grid-template-columns: 1fr; } }
 label { display: block; margin: 1rem 0 .35rem; font-size: .9rem; }
 select, textarea { width: 100%; padding: .6rem; border: 1px solid #ccd; border-radius: 6px; background: #f0f2f6; font-size: 1rem; }
 textarea { font-family: ui-monospace, "Courier New", monospace; resize: vertical; min-height: 280px; }
-button { margin-top: 1rem; padding: .6rem 1.2rem; border: 0; border-radius: 6px; background: #ff4b4b; color: #fff; font-size: 1rem; cursor: pointer; }
+button { margin-top: 1rem; padding: .6rem 1.2rem; min-height: 44px; border: 0; border-radius: 6px; background: #ae2838; color: #fff; font-size: 1rem; cursor: pointer; }
 button:disabled { opacity: .6; cursor: wait; }
 #resultado { min-height: 4rem; }
 .dica { color: #666; background: #eef4fb; padding: .9rem 1rem; border-radius: 6px; }
 .msg { padding: .9rem 1rem; border-radius: 6px; }
 .msg.sucesso { background: #e6f6ea; color: #14612c; }
-.msg.entrada { background: #fff4d6; color: #7a5200; }
+.msg.entrada, .msg.lexico { background: #fff4d6; color: #7a5200; }
 .msg.comunicacao, .msg.servidor { background: #fde7e7; color: #8a1c1c; }
 .detalhes { margin-top: .8rem; }
 .nota { color: #666; font-size: .85rem; }
+section { min-width: 0; }
+:focus-visible { outline: 3px solid #1559a3; outline-offset: 3px; }
+.guia { margin-top: 1.5rem; padding: 1rem; border: 1px solid #ccd; border-radius: 6px; }
+.guia summary { cursor: pointer; font-weight: 600; min-height: 32px; }
+.guia li { margin-bottom: .6rem; }
+.guia code { overflow-wrap: anywhere; }
+.tabela-responsiva { overflow-x: auto; margin-top: 1.2rem; }
+table { border-collapse: collapse; width: 100%; font-size: .9rem; }
+caption { text-align: left; font-weight: 600; margin-bottom: .6rem; }
+th, td { text-align: left; padding: .6rem; border-bottom: 1px solid #ccd; vertical-align: top; }
+th { background: #eef4fb; }
+td code { white-space: pre-wrap; overflow-wrap: anywhere; }
+.token-atual { background: #fff4bd; }
+.codigo-analisado { white-space: pre; overflow: auto; max-height: 28rem; padding: 1rem; background: #f5f7fa; border: 1px solid #ccd; border-radius: 6px; tab-size: 1; font-size: .95rem; }
+.token-palavra_reservada { color: #6937a0; font-weight: bold; }
+.token-identificador { color: #144b79; }
+.token-literal_inteiro, .token-literal_real { color: #7d3500; }
+.token-operador { color: #922c3b; }
+.token-delimitador { color: #244c39; }
+mark.token { background: #ffe08a; outline: 2px solid #805500; border-radius: 2px; }
+.controles-passo { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; }
+.controles-passo p { flex-basis: 100%; margin: .4rem 0; overflow-wrap: anywhere; }
+.contagem { display: flex; flex-wrap: wrap; gap: .5rem; padding: 0; list-style: none; }
+.contagem li { background: #eef4fb; border-radius: 4px; padding: .4rem .6rem; }
+.erros-lexicos li { padding: .5rem 0; overflow-wrap: anywhere; }
+.trecho-erro { display: block; white-space: pre-wrap; overflow-wrap: anywhere; padding: .4rem; background: #fde7e7; color: #8a1c1c; max-height: 10rem; overflow: auto; }
+@media (max-width: 600px) {
+  body { padding: 1rem; }
+  header h1 { font-size: 1.5rem; }
+  main { gap: 1.5rem; }
+  .controles-passo button { flex: 1; }
+}

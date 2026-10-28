@@ -1,0 +1,12 @@
+# Opcional: apenas para builds atrás de proxy TLS com CA própria.
+# CLOUD_CA_BUNDLE deve apontar para o bundle confiável da máquina, sem desativar TLS.
+services:
+  backend:
+    build:
+      secrets: [proxy_ca]
+  testes-frontend:
+    build:
+      secrets: [proxy_ca]
+secrets:
+  proxy_ca:
+    file: ${CLOUD_CA_BUNDLE:?Informe o caminho do bundle de CAs confiáveis}

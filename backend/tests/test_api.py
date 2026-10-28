@@ -17,9 +17,18 @@ def test_requisicao_valida():
     assert r.status_code == 200
     dados = r.json()
     assert dados["recebido"] is True
-    assert dados["mensagem"] == "Código recebido com sucesso."
+    assert dados["mensagem"] == "Análise léxica concluída sem erros."
     assert dados["total_caracteres"] == len("int numero = 10;")
     assert dados["total_linhas"] == 1
+    assert dados["sucesso"] is True
+    assert dados["erros"] == []
+    assert dados["tokens"] == [
+        {"tipo": "PALAVRA_RESERVADA", "lexema": "int", "linha": 1, "coluna": 1},
+        {"tipo": "IDENTIFICADOR", "lexema": "numero", "linha": 1, "coluna": 5},
+        {"tipo": "OPERADOR", "lexema": "=", "linha": 1, "coluna": 12},
+        {"tipo": "LITERAL_INTEIRO", "lexema": "10", "linha": 1, "coluna": 14},
+        {"tipo": "DELIMITADOR", "lexema": ";", "linha": 1, "coluna": 16},
+    ]
 
 
 def test_contagem_de_linhas():
@@ -30,6 +39,28 @@ def test_contagem_de_linhas():
 def test_codigo_com_caracteres_especiais():
     r = client.post("/analisar", json={"codigo": 'printf("olá, %d\\n", x); // 😀'})
     assert r.status_code == 200
+    assert r.json()["sucesso"] is False  # aspas não fazem parte da Mini-C
+
+
+def test_erro_lexico_retorna_tokens_validos_e_mantem_http_200():
+    r = client.post("/analisar", json={"codigo": "@ int x; $"})
+    assert r.status_code == 200
+    dados = r.json()
+    assert dados["recebido"] is True
+    assert dados["sucesso"] is False
+    assert [e["lexema"] for e in dados["erros"]] == ["@", "$"]
+    assert [t["lexema"] for t in dados["tokens"]] == ["int", "x", ";"]
+
+
+def test_apenas_comentarios_retorna_sucesso_sem_tokens():
+    dados = client.post("/analisar", json={"codigo": "/* comentário */"}).json()
+    assert dados["sucesso"] is True
+    assert dados["tokens"] == dados["erros"] == []
+
+
+def test_estrutura_invalida_ainda_e_tokenizada():
+    dados = client.post("/analisar", json={"codigo": "int = ;"}).json()
+    assert dados["sucesso"] is True
 
 
 def test_codigo_vazio():

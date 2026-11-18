@@ -1,0 +1,22 @@
+(* Proposta v1.0 — 18/11/2026. Contrato planejado para o Trabalho 4; ainda não implementado. *)
+programa     = item, { item }, EOF ;
+item         = declaracao | atribuicao | condicional | bloco ;
+declaracao   = tipo, IDENTIFICADOR, [ "=", expressao ], ";" ;
+tipo         = "int" | "float" ;
+atribuicao   = IDENTIFICADOR, "=", expressao, ";" ;
+condicional  = "if", "(", expressao, ")", bloco, [ "else", bloco ] ;
+bloco        = "{", { item }, "}" ;
+expressao    = igualdade ;
+igualdade    = relacional, { ( "==" | "!=" ), relacional } ;
+relacional   = aditiva, { ( "<" | ">" | "<=" | ">=" ), aditiva } ;
+aditiva      = multiplicativa, { ( "+" | "-" ), multiplicativa } ;
+multiplicativa = unaria, { ( "*" | "/" ), unaria } ;
+unaria       = ( "+" | "-" ), unaria | primaria ;
+primaria     = IDENTIFICADOR | LITERAL_INTEIRO | LITERAL_REAL
+             | "(", expressao, ")" ;
+(* Operações binárias associam à esquerda em cada nível; unários, à direita.
+   Blocos são obrigatórios em if/else. Não há atribuição dentro de expressão.
+   EOF é marcador interno, não token adicional no contrato léxico existente.
+   Espaços/comentários já são removidos pelo scanner, preservando posições.
+   Não há semântica: nome não declarado e tipos não são decididos por estas regras.
+   Programa só com comentários é vazio para o parser; bloco {} é um item válido. *)

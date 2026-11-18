@@ -2,6 +2,10 @@
 
 Software web educacional para estudar as fases de um compilador. **Etapa 3: análise léxica funcional**, integrada à interface e à API. A base da Etapa 2 foi ampliada, mantendo exemplos, edição, validações e comunicação via nginx.
 
+## Planejamento acadêmico — Tarefa 4
+
+A proposta de Materiais e Métodos, a matriz revisada, a gramática, os diagramas e o plano de avaliação estão em [docs/etapa4/](docs/etapa4/README.md). O parser e a AST permanecem planejados para o Trabalho 4; esta documentação não declara sua implementação.
+
 ## O que já funciona
 
 - Edição de código e seis exemplos selecionáveis, incluindo comentários e erros propositais.

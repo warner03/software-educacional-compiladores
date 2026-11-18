@@ -1,0 +1,344 @@
+{
+  "criterios": [
+    [
+      "web",
+      "Web"
+    ],
+    [
+      "entrada",
+      "Entrada"
+    ],
+    [
+      "exemplos",
+      "Exemplos"
+    ],
+    [
+      "lexica",
+      "Léxica"
+    ],
+    [
+      "sintatica",
+      "Sintática"
+    ],
+    [
+      "ast",
+      "AST"
+    ],
+    [
+      "derivacao",
+      "Derivação"
+    ],
+    [
+      "semantica",
+      "Semânt."
+    ],
+    [
+      "simbolos",
+      "Símb."
+    ],
+    [
+      "geracao",
+      "Geração"
+    ],
+    [
+      "passos",
+      "Passos"
+    ],
+    [
+      "diagnosticos",
+      "Diag."
+    ],
+    [
+      "explicacoes",
+      "Explic."
+    ],
+    [
+      "estudantes",
+      "Estudantes"
+    ],
+    [
+      "aprendizagem",
+      "Aprendizagem"
+    ]
+  ],
+  "trabalhos": [
+    {
+      "id": "R1",
+      "referencia": "Graciano Junior et al. (2022)",
+      "classes": {
+        "web": "S",
+        "entrada": "S",
+        "exemplos": "NI",
+        "lexica": "S",
+        "sintatica": "S",
+        "ast": "NI",
+        "derivacao": "S",
+        "semantica": "X",
+        "simbolos": "NI",
+        "geracao": "X",
+        "passos": "S",
+        "diagnosticos": "S",
+        "explicacoes": "S",
+        "estudantes": "S",
+        "aprendizagem": "NI"
+      },
+      "evidencias": {
+        "web": "Resumo, p. 224: aplicação web responsiva.",
+        "entrada": "Seção 5.1, p. 228, figura 3: campo editável de código próprio.",
+        "lexica": "Seção 5.1, p. 228–229: lista de tokens e animação do autômato.",
+        "sintatica": "Seção 5.2, p. 229–232: parser preditivo e regras de derivação.",
+        "derivacao": "Seção 5.2, p. 231–232, figuras 9–11: árvore de derivação.",
+        "semantica": "Seção 7.1, p. 233: módulo semântico indicado como futuro.",
+        "geracao": "Seção 7.1, p. 233: geração de código intermediário indicada como futura.",
+        "passos": "Seções 5.1–5.2, p. 228–232: próximo/anterior e animações.",
+        "diagnosticos": "Seção 5.1, p. 229: mensagem com estado e caractere causador; seção 5.2, p. 232: erro destacado.",
+        "explicacoes": "Seções 5.1–5.2, p. 228–229: abas teóricas e explicações do processamento.",
+        "estudantes": "Seções 4 e 7.1, p. 227 e 233: cinco alunos testaram e preencheram formulário."
+      },
+      "observacoes": "Pseudolinguagem baseada em Portugol. Resultados do formulário não publicados pelo pequeno número de respondentes; não se infere aprendizagem. Manual com exemplos é descrito como melhoria futura, não como recurso confirmado da versão."
+    },
+    {
+      "id": "R2",
+      "referencia": "Borela et al. (2025)",
+      "classes": {
+        "web": "S",
+        "entrada": "S",
+        "exemplos": "S",
+        "lexica": "S",
+        "sintatica": "S",
+        "ast": "NI",
+        "derivacao": "S",
+        "semantica": "S",
+        "simbolos": "S",
+        "geracao": "S",
+        "passos": "X",
+        "diagnosticos": "NI",
+        "explicacoes": "S",
+        "estudantes": "S",
+        "aprendizagem": "NI"
+      },
+      "evidencias": {
+        "web": "Seção 3.1, p. 4 do PDF: arquitetura cliente-servidor web.",
+        "entrada": "Seção 3.2.3, p. 7 do PDF: editor de código.",
+        "exemplos": "Seção 3.2.3, p. 7: botão com exemplos básicos, recursão, ordenação e jogos.",
+        "lexica": "Seção 3.2.2, p. 6, e seção 3.2.3, p. 7: ANTLR e lista de tokens.",
+        "sintatica": "Seção 3.2.2, p. 6: analisador sintático gerado por ANTLR.",
+        "derivacao": "Seção 3.2.2, p. 6: a estrutura gerada é denominada árvore de derivação.",
+        "semantica": "Quadro 1, p. 3, e seção 3.2.1, p. 5: todas as etapas e regras de tipos/conversões implícitas; não se infere catálogo completo de verificações.",
+        "simbolos": "Seções 3.2.2–3.2.3, p. 6–7: tabela em JSON e tela com funções, escopos e strings.",
+        "geracao": "Seções 3.2.2–3.2.3, p. 6–8: LLVM IR, Assembly e código-alvo.",
+        "passos": "Seção 2, p. 3: autores explicitam que não incluem passo a passo da árvore.",
+        "explicacoes": "Seção 3.2.3, p. 7: menu com informações da linguagem, funcionando como guia rápido.",
+        "estudantes": "Seção 4, p. 8–9: 27 respostas, com estudantes, professores e outros participantes."
+      },
+      "observacoes": "Linguagem inspirada em C. AST não é confirmada por simples equivalência com a árvore de derivação do ANTLR. Aceitação 4,81/5 não é medida de conhecimento. Paginação usada: 1–11 do PDF; anais: 171–181."
+    },
+    {
+      "id": "R3",
+      "referencia": "Santini et al. (2022)",
+      "classes": {
+        "web": "NA",
+        "entrada": "NA",
+        "exemplos": "NA",
+        "lexica": "NA",
+        "sintatica": "NA",
+        "ast": "NA",
+        "derivacao": "NA",
+        "semantica": "NA",
+        "simbolos": "NA",
+        "geracao": "NA",
+        "passos": "NA",
+        "diagnosticos": "NA",
+        "explicacoes": "NA",
+        "estudantes": "NA",
+        "aprendizagem": "NA"
+      },
+      "evidencias": {},
+      "observacoes": "Mapeamento de nove jogos, não um software único. N/A refere-se às funcionalidades e à avaliação própria de uma ferramenta. Os estudos primários são discutidos no texto, sem união artificial de suas características."
+    },
+    {
+      "id": "R4",
+      "referencia": "Mernik e Žumer (2003)",
+      "classes": {
+        "web": "NI",
+        "entrada": "S",
+        "exemplos": "S",
+        "lexica": "S",
+        "sintatica": "S",
+        "ast": "NI",
+        "derivacao": "S",
+        "semantica": "S",
+        "simbolos": "NI",
+        "geracao": "S",
+        "passos": "S",
+        "diagnosticos": "S",
+        "explicacoes": "NI",
+        "estudantes": "S",
+        "aprendizagem": "S"
+      },
+      "evidencias": {
+        "entrada": "Seção 1, p. 5 do manuscrito: IDE permite especificar e executar programas; figura 1, p. 6.",
+        "exemplos": "Seção 3, p. 12–17: linguagens e programas fornecidos aos estudantes; p. 19: biblioteca de linguagens.",
+        "lexica": "Seção 2.1, p. 8–9: expressões regulares, DFA e scanner.",
+        "sintatica": "Seção 2.2, p. 9–10; seção 3, p. 12: analisadores LL(k)/LR(k).",
+        "derivacao": "Seção 2.2, p. 10, figura 4: construção da árvore a partir da gramática.",
+        "semantica": "Seção 2.3, p. 10–11: gramáticas de atributos e avaliação semântica.",
+        "geracao": "Seção 3, p. 17, figura 10: código PUSH/MUL/ADD emitido para expressões.",
+        "passos": "Seção 2.3, p. 11: execução em passos e breakpoints; seções 2.1–2.2: animações.",
+        "diagnosticos": "Figura 3, p. 9: mensagem de erro léxico quando não há transição.",
+        "estudantes": "Seção 3, p. 18: questionários preenchidos após a disciplina, tabela I.",
+        "aprendizagem": "Seção 3, p. 19–20: média de notas 8,05 sem LISA e 8,6 com LISA, em turmas de anos distintos."
+      },
+      "observacoes": "Foi consultado o manuscrito fornecido de 22 páginas, correspondente ao artigo IEEE p. 61–68. Notas são evidência observacional, sem demonstração causal; número de participantes não informado. Uso interno de inEnv/outEnv não confirma uma tela de tabela de símbolos."
+    },
+    {
+      "id": "R5",
+      "referencia": "Resler e Deaver (1998)",
+      "classes": {
+        "web": "NI",
+        "entrada": "S",
+        "exemplos": "NI",
+        "lexica": "S",
+        "sintatica": "S",
+        "ast": "NI",
+        "derivacao": "NI",
+        "semantica": "NI",
+        "simbolos": "NI",
+        "geracao": "NI",
+        "passos": "S",
+        "diagnosticos": "NI",
+        "explicacoes": "NI",
+        "estudantes": "NI",
+        "aprendizagem": "NI"
+      },
+      "evidencias": {
+        "entrada": "Seção 3, p. 199–200: programa-fonte compilado é mostrado na janela Source, com lexemas reconhecidos.",
+        "lexica": "Seção 3, p. 200: scanner, isolamento de lexemas e reconhecimento de tokens.",
+        "sintatica": "Resumo e seção 2, p. 199: compiladores LL(1); seção 3, p. 200: acompanhamento do parser.",
+        "passos": "Seção 3, p. 200: single-step, breakpoints e observação de variáveis."
+      },
+      "observacoes": "VCOCO significa Visible Compiler Compiler. O artigo enfatiza portabilidade e admite browser como possibilidade de frontend, sem documentar uma versão web pronta. Não relata avaliação com estudantes nem a anuncia como futura. Animações de árvore mencionadas para gyacc são trabalho relacionado, não recurso transferível ao VCOCO."
+    },
+    {
+      "id": "R6",
+      "referencia": "Rodger et al. (2009)",
+      "classes": {
+        "web": "NI",
+        "entrada": "NA",
+        "exemplos": "S",
+        "lexica": "NI",
+        "sintatica": "S",
+        "ast": "NI",
+        "derivacao": "S",
+        "semantica": "NI",
+        "simbolos": "NI",
+        "geracao": "NI",
+        "passos": "S",
+        "diagnosticos": "NI",
+        "explicacoes": "S",
+        "estudantes": "S",
+        "aprendizagem": "S"
+      },
+      "evidencias": {
+        "exemplos": "Seções 3.4–3.5, p. 406: exemplos e arquivos do tutorial disponíveis para download.",
+        "sintatica": "Seções 3.1–3.2, p. 405–406: LL(1), SLR(1), CYK e parser controlado pelo usuário.",
+        "derivacao": "Seção 3.1, p. 406, figura 1: árvore de derivação.",
+        "passos": "Seção 3.1, p. 406: escolha de regras, avanço e retrocesso.",
+        "explicacoes": "Seções 3.5 e 4, p. 406: tutorial didático associado.",
+        "estudantes": "Seções 2.1–2.3, p. 404–405: estudo com estudantes e docentes de diferentes instituições.",
+        "aprendizagem": "Seção 2.3, p. 405: pré/pós-testes; diferença entre grupo de controle e grupo JFLAP não significativa."
+      },
+      "observacoes": "A entrada examinada é de gramáticas/autômatos e cadeias formais, não um editor de programas de uma linguagem-alvo; por isso Entrada é N/A. Simulação de autômato não confirma tokenização de programas. Medidas de aprendizagem presentes não significam ganho causal comprovado."
+    },
+    {
+      "id": "R7",
+      "referencia": "Moreno et al. (2004)",
+      "classes": {
+        "web": "NI",
+        "entrada": "S",
+        "exemplos": "NI",
+        "lexica": "NI",
+        "sintatica": "NI",
+        "ast": "NI",
+        "derivacao": "NI",
+        "semantica": "NI",
+        "simbolos": "NI",
+        "geracao": "NI",
+        "passos": "S",
+        "diagnosticos": "S",
+        "explicacoes": "S",
+        "estudantes": "X",
+        "aprendizagem": "X"
+      },
+      "evidencias": {
+        "entrada": "Seção 4.2, p. 375: editor e visualização de código.",
+        "passos": "Seção 4.4, p. 376: executar, pausar, retornar e passo a passo da execução.",
+        "diagnosticos": "Seção 4.2, p. 375: erro e região do código associada.",
+        "explicacoes": "Seção 4.3, p. 375: explicações junto às expressões.",
+        "estudantes": "Seção 5, p. 376: primeira avaliação de Jeliot 3 descrita como futura; não atribuir estudos de versões anteriores à versão 3.",
+        "aprendizagem": "Seção 5, p. 376: resultados da primeira avaliação de Jeliot 3 ainda não apresentados."
+      },
+      "observacoes": "O objeto é visualização de execução Java para iniciantes. Representação intermediária de eventos da animação não é código intermediário de compilação apresentado didaticamente. Uso de navegador na história da família refere-se a Jeliot I, não confirma Web para Jeliot 3."
+    },
+    {
+      "id": "R8",
+      "referencia": "Schneider et al. (2005)",
+      "classes": {
+        "web": "NI",
+        "entrada": "S",
+        "exemplos": "NI",
+        "lexica": "S",
+        "sintatica": "S",
+        "ast": "NI",
+        "derivacao": "NI",
+        "semantica": "S",
+        "simbolos": "S",
+        "geracao": "S",
+        "passos": "NI",
+        "diagnosticos": "NI",
+        "explicacoes": "S",
+        "estudantes": "NI",
+        "aprendizagem": "NI"
+      },
+      "evidencias": {
+        "entrada": "p. 4, figura 2: janela de edição de texto-fonte.",
+        "lexica": "p. 6: apresentação dos tokens e lexemas.",
+        "sintatica": "p. 3 e 6: análise descendente recursiva e registro de regras reconhecidas.",
+        "semantica": "p. 7: ações e pilha semântica; p. 9: tratamento de tipos.",
+        "simbolos": "p. 6: aba com identificadores, tipos, endereços e escopo.",
+        "geracao": "p. 3–4: macro-assembler e código para máquina César.",
+        "explicacoes": "p. 4: linhas de código intermediário comentadas; p. 5: ajuda sobre sintaxe e rotinas."
+      },
+      "observacoes": "Foco nas fases de síntese. Registros sequenciais de regras não confirmam controles interativos de passo a passo. Uso em disciplinas é relatado na p. 9, sem protocolo de avaliação/medidas de aprendizagem. O PDF assina Schneider; o portal e Crossref registram Scheider."
+    },
+    {
+      "id": "R9",
+      "referencia": "Jabri (2013)",
+      "classes": {
+        "web": "NI",
+        "entrada": "NA",
+        "exemplos": "NI",
+        "lexica": "S",
+        "sintatica": "S",
+        "ast": "NI",
+        "derivacao": "NI",
+        "semantica": "NI",
+        "simbolos": "NI",
+        "geracao": "NI",
+        "passos": "NI",
+        "diagnosticos": "S",
+        "explicacoes": "NI",
+        "estudantes": "S",
+        "aprendizagem": "S"
+      },
+      "evidencias": {
+        "lexica": "Seção 3.2, p. 142, exemplo 6 e tabela 2, p. 144: simulação que produz tokens.",
+        "sintatica": "Seção 4, p. 146–147: implementação e experimento de construção de parser.",
+        "diagnosticos": "Algoritmo 3, p. 144: sinalização Error quando não há transição; não confirma diagnóstico localizado ou didático.",
+        "estudantes": "Seção 4, p. 146: uso por estudantes de três turmas ao longo de três semestres.",
+        "aprendizagem": "Seção 4, p. 146: aumento reportado de 30% na conclusão de trabalhos; indicador acadêmico indireto, sem medida de conhecimento ou denominadores detalhados."
+      },
+      "observacoes": "Ferramenta genérica de gramáticas e autômatos; Entrada de programa-alvo é N/A nesse recorte. O autor reporta +30% na conclusão de trabalhos, sem denominadores detalhados; trata-se de indicador acadêmico indireto, não de teste de conhecimento. Descreve esquemas de tradução, mas a validação enfatiza parsing e deixa novos experimentos de geração de código para o futuro; não se marca geração completa como confirmada."
+    }
+  ]
+}

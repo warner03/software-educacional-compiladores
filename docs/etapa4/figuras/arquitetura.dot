@@ -1,0 +1,18 @@
+digraph arquitetura {
+ graph [rankdir=TB,bgcolor="white",nodesep=".4",ranksep=".35",fontname="DejaVu Sans",pad=".15"];
+ node [shape=box,style="rounded,filled",fontname="DejaVu Sans",fontsize=12,fillcolor="#e9f4ec",color="#316044",margin=".16,.12"];
+ edge [fontname="DejaVu Sans",fontsize=10,color="#4c5968",arrowsize=.65];
+ navegador [label="Navegador\nHTML + CSS + JavaScript\nEntrada, exemplos, tokens e erros: atuais\nAST hierárquica: proposta T4"];
+ subgraph cluster_frontend {label="Contêiner frontend — atual";fontname="DejaVu Sans";fontsize=12;color="#aaaaaa"; nginx [label="nginx — porta externa 8501\nArquivos estáticos e proxy /api/"];}
+ subgraph cluster_backend {label="Contêiner backend — atual";fontname="DejaVu Sans";fontsize=12;color="#aaaaaa";
+  api [label="FastAPI — porta 8000\n/analisar: validação e resposta JSON"];
+  scanner [label="Scanner Python\nATUAL — tokens e erros"];
+  parser [label="Parser Python\nPROPOSTO — AST e erros sintáticos",fillcolor="#eaf0fb",color="#335f91"];
+  sem [label="Semântica / tabela de símbolos\nFUTURO — Etapa 5",style="rounded,dashed,filled",color="#777777",fillcolor="#f2f2f2"];
+  api->scanner;scanner->parser[label="somente sem erros léxicos",style=dashed];parser->sem[label="somente AST válida; futuro",style=dashed];
+ }
+ navegador->nginx[label="HTTP: código / resultados"];
+ nginx->api[label="POST /api/analisar → /analisar"];
+ fontes [shape=note,label="Materiais de apoio e verificação\nExemplos, gramática, casos e formulários\ndocs/etapa4/ e suítes de testes",fillcolor="#ffffff",color="#777777"];
+ fontes->parser[style=dotted,label="orientam desenvolvimento e avaliação",constraint=false];
+}

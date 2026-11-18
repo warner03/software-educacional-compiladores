@@ -1,0 +1,368 @@
+{
+  "protocolo": "1.0",
+  "data_definicao": "2026-11-18",
+  "base_codigo": "040b296",
+  "parser_implementado": false,
+  "casos": [
+    {
+      "id": "V01",
+      "categoria": "válido",
+      "codigo": "int x;",
+      "geracao_da_entrada": null,
+      "resultado_esperado": "Aceitar; Programa com Declaracao sem inicializador.",
+      "origem": "Elaboração própria a partir da gramática proposta",
+      "status": "pendente",
+      "resultado_observado": null
+    },
+    {
+      "id": "V02",
+      "categoria": "válido",
+      "codigo": "float x = 7.5;",
+      "geracao_da_entrada": null,
+      "resultado_esperado": "Aceitar; inicializador Literal real com lexema 7.5.",
+      "origem": "Elaboração própria a partir da gramática proposta",
+      "status": "pendente",
+      "resultado_observado": null
+    },
+    {
+      "id": "V03",
+      "categoria": "válido",
+      "codigo": "int x; x = 10;",
+      "geracao_da_entrada": null,
+      "resultado_esperado": "Aceitar; Declaracao e Atribuicao em ordem.",
+      "origem": "Elaboração própria a partir da gramática proposta",
+      "status": "pendente",
+      "resultado_observado": null
+    },
+    {
+      "id": "V04",
+      "categoria": "válido",
+      "codigo": "int x = 1 + 2 * 3;",
+      "geracao_da_entrada": null,
+      "resultado_esperado": "Aceitar; Binario + na raiz da expressão, * no ramo direito.",
+      "origem": "Elaboração própria a partir da gramática proposta",
+      "status": "pendente",
+      "resultado_observado": null
+    },
+    {
+      "id": "V05",
+      "categoria": "válido",
+      "codigo": "int x = (1 + 2) * 3;",
+      "geracao_da_entrada": null,
+      "resultado_esperado": "Aceitar; Binario * na raiz da expressão, + no ramo esquerdo.",
+      "origem": "Elaboração própria a partir da gramática proposta",
+      "status": "pendente",
+      "resultado_observado": null
+    },
+    {
+      "id": "V06",
+      "categoria": "válido",
+      "codigo": "int x = 8 - 3 - 1;",
+      "geracao_da_entrada": null,
+      "resultado_esperado": "Aceitar; associatividade à esquerda: (8 - 3) - 1.",
+      "origem": "Elaboração própria a partir da gramática proposta",
+      "status": "pendente",
+      "resultado_observado": null
+    },
+    {
+      "id": "V07",
+      "categoria": "válido",
+      "codigo": "int x = -2 * +3;",
+      "geracao_da_entrada": null,
+      "resultado_esperado": "Aceitar; sinais unários separados dos literais.",
+      "origem": "Elaboração própria a partir da gramática proposta",
+      "status": "pendente",
+      "resultado_observado": null
+    },
+    {
+      "id": "V08",
+      "categoria": "válido",
+      "codigo": "int x; if (x >= 0) { x = 1; }",
+      "geracao_da_entrada": null,
+      "resultado_esperado": "Aceitar; Se com bloco e sem alternativa.",
+      "origem": "Elaboração própria a partir da gramática proposta",
+      "status": "pendente",
+      "resultado_observado": null
+    },
+    {
+      "id": "V09",
+      "categoria": "válido",
+      "codigo": "int x; if (x != 0) { x = 1; } else { x = 2; }",
+      "geracao_da_entrada": null,
+      "resultado_esperado": "Aceitar; Se com dois blocos.",
+      "origem": "Elaboração própria a partir da gramática proposta",
+      "status": "pendente",
+      "resultado_observado": null
+    },
+    {
+      "id": "V10",
+      "categoria": "válido",
+      "codigo": "{ int x; { float y; } }",
+      "geracao_da_entrada": null,
+      "resultado_esperado": "Aceitar; dois níveis de Bloco.",
+      "origem": "Elaboração própria a partir da gramática proposta",
+      "status": "pendente",
+      "resultado_observado": null
+    },
+    {
+      "id": "V11",
+      "categoria": "válido",
+      "codigo": "/* início */ int x; // fim",
+      "geracao_da_entrada": null,
+      "resultado_esperado": "Aceitar; comentário não aparece como nó.",
+      "origem": "Elaboração própria a partir da gramática proposta",
+      "status": "pendente",
+      "resultado_observado": null
+    },
+    {
+      "id": "V12",
+      "categoria": "válido",
+      "codigo": "{}",
+      "geracao_da_entrada": null,
+      "resultado_esperado": "Aceitar um bloco vazio como item do programa.",
+      "origem": "Elaboração própria a partir da gramática proposta",
+      "status": "pendente",
+      "resultado_observado": null
+    },
+    {
+      "id": "L01",
+      "categoria": "erro léxico",
+      "codigo": "@ int x;",
+      "geracao_da_entrada": null,
+      "resultado_esperado": "Erro léxico @ em 1:1; recuperar tokens; parser não executado e AST nula.",
+      "origem": "Elaboração própria a partir da gramática proposta",
+      "status": "pendente",
+      "resultado_observado": null
+    },
+    {
+      "id": "L02",
+      "categoria": "erro léxico",
+      "codigo": "int x=1.2.3;",
+      "geracao_da_entrada": null,
+      "resultado_esperado": "Um erro pelo literal 1.2.3 em 1:7; parser não executado.",
+      "origem": "Elaboração própria a partir da gramática proposta",
+      "status": "pendente",
+      "resultado_observado": null
+    },
+    {
+      "id": "L03",
+      "categoria": "erro léxico",
+      "codigo": "int x; /* aberto",
+      "geracao_da_entrada": null,
+      "resultado_esperado": "Erro de comentário não fechado em 1:8; parser não executado.",
+      "origem": "Elaboração própria a partir da gramática proposta",
+      "status": "pendente",
+      "resultado_observado": null
+    },
+    {
+      "id": "S01",
+      "categoria": "erro sintático",
+      "codigo": "int x",
+      "geracao_da_entrada": null,
+      "resultado_esperado": "Erro em EOF (1:6): esperado ;, ou complemento compatível da declaração; AST nula.",
+      "origem": "Elaboração própria a partir da gramática proposta",
+      "status": "pendente",
+      "resultado_observado": null
+    },
+    {
+      "id": "S02",
+      "categoria": "erro sintático",
+      "codigo": "if (x > 0 { x = 1; }",
+      "geracao_da_entrada": null,
+      "resultado_esperado": "Erro em { (1:11): esperado ); AST nula.",
+      "origem": "Elaboração própria a partir da gramática proposta",
+      "status": "pendente",
+      "resultado_observado": null
+    },
+    {
+      "id": "S03",
+      "categoria": "erro sintático",
+      "codigo": "{ int x;",
+      "geracao_da_entrada": null,
+      "resultado_esperado": "Erro em EOF: esperado }; AST nula.",
+      "origem": "Elaboração própria a partir da gramática proposta",
+      "status": "pendente",
+      "resultado_observado": null
+    },
+    {
+      "id": "S04",
+      "categoria": "erro sintático",
+      "codigo": "int x = ;",
+      "geracao_da_entrada": null,
+      "resultado_esperado": "Erro em ;: esperado operando; AST nula.",
+      "origem": "Elaboração própria a partir da gramática proposta",
+      "status": "pendente",
+      "resultado_observado": null
+    },
+    {
+      "id": "S05",
+      "categoria": "erro sintático",
+      "codigo": "else { int x; }",
+      "geracao_da_entrada": null,
+      "resultado_esperado": "Erro em else: não inicia item da gramática; AST nula.",
+      "origem": "Elaboração própria a partir da gramática proposta",
+      "status": "pendente",
+      "resultado_observado": null
+    },
+    {
+      "id": "S06",
+      "categoria": "erro sintático",
+      "codigo": "int x = 1 + * 2;",
+      "geracao_da_entrada": null,
+      "resultado_esperado": "Erro em *: esperado operando; AST nula.",
+      "origem": "Elaboração própria a partir da gramática proposta",
+      "status": "pendente",
+      "resultado_observado": null
+    },
+    {
+      "id": "S07",
+      "categoria": "erro sintático",
+      "codigo": "int if;",
+      "geracao_da_entrada": null,
+      "resultado_esperado": "Erro em if (1:5): esperado identificador; AST nula.",
+      "origem": "Elaboração própria a partir da gramática proposta",
+      "status": "pendente",
+      "resultado_observado": null
+    },
+    {
+      "id": "S08",
+      "categoria": "erro sintático",
+      "codigo": "int x =",
+      "geracao_da_entrada": null,
+      "resultado_esperado": "Erro em EOF: esperado operando; AST nula.",
+      "origem": "Elaboração própria a partir da gramática proposta",
+      "status": "pendente",
+      "resultado_observado": null
+    },
+    {
+      "id": "S09",
+      "categoria": "erro sintático",
+      "codigo": "int x, y;",
+      "geracao_da_entrada": null,
+      "resultado_esperado": "Declaração múltipla fora da gramática: erro na vírgula; AST nula.",
+      "origem": "Elaboração própria a partir da gramática proposta",
+      "status": "pendente",
+      "resultado_observado": null
+    },
+    {
+      "id": "S10",
+      "categoria": "erro sintático",
+      "codigo": "while (x) { x = 1; }",
+      "geracao_da_entrada": null,
+      "resultado_esperado": "while é identificador no scanner; construção é rejeitada pelo parser.",
+      "origem": "Elaboração própria a partir da gramática proposta",
+      "status": "pendente",
+      "resultado_observado": null
+    },
+    {
+      "id": "B01",
+      "categoria": "borda",
+      "codigo": "",
+      "geracao_da_entrada": null,
+      "resultado_esperado": "HTTP 400, validação; scanner/parser não executados.",
+      "origem": "Elaboração própria a partir da gramática proposta",
+      "status": "pendente",
+      "resultado_observado": null
+    },
+    {
+      "id": "B02",
+      "categoria": "borda",
+      "codigo": " \t\n ",
+      "geracao_da_entrada": null,
+      "resultado_esperado": "HTTP 400, validação; scanner/parser não executados.",
+      "origem": "Elaboração própria a partir da gramática proposta",
+      "status": "pendente",
+      "resultado_observado": null
+    },
+    {
+      "id": "B03",
+      "categoria": "borda",
+      "codigo": "/* apenas comentário */",
+      "geracao_da_entrada": null,
+      "resultado_esperado": "Sucesso léxico com zero tokens; parser informa programa vazio; AST nula.",
+      "origem": "Elaboração própria a partir da gramática proposta",
+      "status": "pendente",
+      "resultado_observado": null
+    },
+    {
+      "id": "B04",
+      "categoria": "borda",
+      "codigo": "                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          int x;",
+      "geracao_da_entrada": "GERAR: 9994 espaços + int x;",
+      "resultado_esperado": "10.000 caracteres: aceitar; declaração válida.",
+      "origem": "Elaboração própria a partir da gramática proposta",
+      "status": "pendente",
+      "resultado_observado": null
+    },
+    {
+      "id": "B05",
+      "categoria": "borda",
+      "codigo": "                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           int x;",
+      "geracao_da_entrada": "GERAR: 9995 espaços + int x;",
+      "resultado_esperado": "10.001 caracteres: HTTP 400 por limite de entrada.",
+      "origem": "Elaboração própria a partir da gramática proposta",
+      "status": "pendente",
+      "resultado_observado": null
+    },
+    {
+      "id": "B06",
+      "categoria": "borda",
+      "codigo": "{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{int x;}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}",
+      "geracao_da_entrada": "GERAR: 64 chaves de abertura + int x; + 64 chaves de fechamento",
+      "resultado_esperado": "Aceitar no limite proposto de profundidade estrutural 64.",
+      "origem": "Elaboração própria a partir da gramática proposta",
+      "status": "pendente",
+      "resultado_observado": null
+    },
+    {
+      "id": "B07",
+      "categoria": "borda",
+      "codigo": "{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{int x;}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}",
+      "geracao_da_entrada": "GERAR: 65 chaves de abertura + int x; + 65 chaves de fechamento",
+      "resultado_esperado": "Diagnóstico controlado por profundidade; sem stack trace e sem AST válida.",
+      "origem": "Elaboração própria a partir da gramática proposta",
+      "status": "pendente",
+      "resultado_observado": null
+    },
+    {
+      "id": "B08",
+      "categoria": "borda",
+      "codigo": "@ int x; x = 1;",
+      "geracao_da_entrada": null,
+      "resultado_esperado": "Erro léxico; tokens válidos preservados; parser não executado apesar do sufixo válido.",
+      "origem": "Elaboração própria a partir da gramática proposta",
+      "status": "pendente",
+      "resultado_observado": null
+    },
+    {
+      "id": "M01",
+      "categoria": "futuro semântico",
+      "codigo": "x = 1;",
+      "geracao_da_entrada": null,
+      "resultado_esperado": "Na Etapa 4: estrutura válida; sem checagem de declaração. Na Etapa 5: avaliar identificador não declarado.",
+      "origem": "Elaboração própria a partir da gramática proposta",
+      "status": "previsto_etapa5",
+      "resultado_observado": null
+    },
+    {
+      "id": "M02",
+      "categoria": "futuro semântico",
+      "codigo": "int x; int x;",
+      "geracao_da_entrada": null,
+      "resultado_esperado": "Na Etapa 4: estrutura válida. Redeclaração só será verificada se prevista na Etapa 5.",
+      "origem": "Elaboração própria a partir da gramática proposta",
+      "status": "previsto_etapa5",
+      "resultado_observado": null
+    },
+    {
+      "id": "M03",
+      "categoria": "futuro semântico",
+      "codigo": "int x; x = 2.5;",
+      "geracao_da_entrada": null,
+      "resultado_esperado": "Na Etapa 4: estrutura válida. Política de compatibilidade/conversão deverá ser definida na Etapa 5.",
+      "origem": "Elaboração própria a partir da gramática proposta",
+      "status": "previsto_etapa5",
+      "resultado_observado": null
+    }
+  ]
+}

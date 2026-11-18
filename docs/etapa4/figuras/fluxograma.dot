@@ -1,0 +1,24 @@
+digraph fluxo {
+ graph [rankdir=TB,bgcolor="white",nodesep=".35",ranksep=".30",pad=".15",splines=ortho];
+ node [fontname="DejaVu Sans",fontsize=12,shape=box,style="rounded,filled",color="#316044",fillcolor="#e9f4ec",margin=".12,.09",group="principal"];
+ edge [fontname="DejaVu Sans",fontsize=10,color="#4c5968",arrowsize=.65,weight=20];
+ inicio [label="Entrada: editar / selecionar código\nATUAL — T3"];
+ valid [shape=diamond,label="Entrada válida?\nATUAL"];
+ bad [group="retornos",label="Retornar erro de entrada\nHTTP 400 — ATUAL",color="#9a4242",fillcolor="#fff0eb"];
+ scan [label="Scanner: tokens e erros\nATUAL — T3"];
+ inicio->valid;valid->scan[xlabel="sim"];valid->bad[xlabel="não",weight=0];
+ node [color="#335f91",fillcolor="#eaf0fb"];
+ gate [shape=diamond,label="Erros léxicos?\nBarreira: T4"];
+ lex [group="retornos",label="Exibir tokens e erros\nATUAL; parser não executado",color="#316044",fillcolor="#e9f4ec"];
+ scan->gate;gate->lex[xlabel="sim",weight=0];
+ parser [label="Parser descendente recursivo\nPROPOSTO — T4"];
+ gate->parser[xlabel="não"];
+ sint [shape=diamond,label="Erros sintáticos?\nPROPOSTO — T4"];
+ parser->sint;
+ erro [group="retornos",label="Exibir erros sintáticos\nAST nula — PROPOSTO T4"];
+ ast [label="Produzir e apresentar AST\nPROPOSTO — T4"];
+ sint->erro[xlabel="sim",weight=0];sint->ast[xlabel="não"];
+ sem [label="Semântica / tabela de símbolos\nFUTURO — T5",color="#777777",fillcolor="#f2f2f2",style="rounded,dashed,filled"];
+ ast->sem[xlabel="extensão futura",style=dashed,color="#888888"];
+ bad->lex->erro[style=invis,weight=1];
+}

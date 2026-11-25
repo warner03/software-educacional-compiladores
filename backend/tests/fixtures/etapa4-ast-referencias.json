@@ -1,0 +1,87 @@
+{
+  "protocolo": "1.0",
+  "observacao": "Subárvores de referência para o inicializador. Não executadas. Posições devem ser verificadas separadamente; não usar o parser avaliado para gerar o esperado.",
+  "referencias": [
+    {
+      "caso": "V04",
+      "expressao": "1 + 2 * 3",
+      "subarvore_esperada": {
+        "tipo": "Binario",
+        "operador": "+",
+        "esquerda": {
+          "tipo": "Literal",
+          "categoria": "inteiro",
+          "lexema": "1"
+        },
+        "direita": {
+          "tipo": "Binario",
+          "operador": "*",
+          "esquerda": {
+            "tipo": "Literal",
+            "categoria": "inteiro",
+            "lexema": "2"
+          },
+          "direita": {
+            "tipo": "Literal",
+            "categoria": "inteiro",
+            "lexema": "3"
+          }
+        }
+      }
+    },
+    {
+      "caso": "V05",
+      "expressao": "(1 + 2) * 3",
+      "subarvore_esperada": {
+        "tipo": "Binario",
+        "operador": "*",
+        "esquerda": {
+          "tipo": "Binario",
+          "operador": "+",
+          "esquerda": {
+            "tipo": "Literal",
+            "categoria": "inteiro",
+            "lexema": "1"
+          },
+          "direita": {
+            "tipo": "Literal",
+            "categoria": "inteiro",
+            "lexema": "2"
+          }
+        },
+        "direita": {
+          "tipo": "Literal",
+          "categoria": "inteiro",
+          "lexema": "3"
+        }
+      }
+    },
+    {
+      "caso": "V06",
+      "expressao": "8 - 3 - 1",
+      "subarvore_esperada": {
+        "tipo": "Binario",
+        "operador": "-",
+        "esquerda": {
+          "tipo": "Binario",
+          "operador": "-",
+          "esquerda": {
+            "tipo": "Literal",
+            "categoria": "inteiro",
+            "lexema": "8"
+          },
+          "direita": {
+            "tipo": "Literal",
+            "categoria": "inteiro",
+            "lexema": "3"
+          }
+        },
+        "direita": {
+          "tipo": "Literal",
+          "categoria": "inteiro",
+          "lexema": "1"
+        }
+      }
+    }
+  ]
+}

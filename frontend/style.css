@@ -13,7 +13,7 @@ button:disabled { opacity: .6; cursor: wait; }
 .dica { color: #666; background: #eef4fb; padding: .9rem 1rem; border-radius: 6px; }
 .msg { padding: .9rem 1rem; border-radius: 6px; }
 .msg.sucesso { background: #e6f6ea; color: #14612c; }
-.msg.entrada, .msg.lexico { background: #fff4d6; color: #7a5200; }
+.msg.entrada, .msg.lexico, .msg.sintatico { background: #fff4d6; color: #7a5200; }
 .msg.comunicacao, .msg.servidor { background: #fde7e7; color: #8a1c1c; }
 .detalhes { margin-top: .8rem; }
 .nota { color: #666; font-size: .85rem; }
@@ -41,7 +41,23 @@ mark.token { background: #ffe08a; outline: 2px solid #805500; border-radius: 2px
 .controles-passo p { flex-basis: 100%; margin: .4rem 0; overflow-wrap: anywhere; }
 .contagem { display: flex; flex-wrap: wrap; gap: .5rem; padding: 0; list-style: none; }
 .contagem li { background: #eef4fb; border-radius: 4px; padding: .4rem .6rem; }
-.erros-lexicos li { padding: .5rem 0; overflow-wrap: anywhere; }
+.erros-lexicos li, .erros-sintaticos li { padding: .5rem 0; overflow-wrap: anywhere; }
+.estado-analise { padding-left: .7rem; border-left: 4px solid #1559a3; font-weight: 600; }
+.painel-sintatica { margin: 1.5rem 0; }
+.controles-ast { display: flex; flex-wrap: wrap; gap: .6rem; }
+.controles-ast button { margin-top: .3rem; background: #155281; }
+.arvore-ast { overflow: auto; max-height: 34rem; padding: .7rem; border: 1px solid #bcc9d7; border-radius: 6px; background: #f7f9fc; }
+.ast-no { min-width: 13rem; border-left: 3px solid #7c8da2; margin: .4rem 0; padding: .35rem .6rem; }
+.ast-no summary { cursor: pointer; min-height: 36px; font-weight: 600; overflow-wrap: anywhere; }
+.ast-no summary:focus-visible { outline-offset: 0; }
+.ast-filhos { padding: 0 0 0 1rem; margin: .3rem 0; list-style: none; }
+.ast-informacoes p { margin: .3rem 0; overflow-wrap: anywhere; }
+.ast-localizar { margin: .3rem 0; padding: .4rem .65rem; font-size: .85rem; background: #34546c; overflow-wrap: anywhere; max-width: 100%; }
+.ast-localizar[aria-pressed="true"] { background: #674600; outline: 2px solid #674600; }
+.ast-binario, .ast-unario { border-left-color: #9a4a18; }
+.ast-declaracao, .ast-atribuicao { border-left-color: #155281; }
+.ast-se, .ast-bloco { border-left-color: #6937a0; }
+mark.trecho-ast { background: #ffe08a; color: #262730; outline: 2px solid #805500; }
 .trecho-erro { display: block; white-space: pre-wrap; overflow-wrap: anywhere; padding: .4rem; background: #fde7e7; color: #8a1c1c; max-height: 10rem; overflow: auto; }
 @media (max-width: 600px) {
   body { padding: 1rem; }

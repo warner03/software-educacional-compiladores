@@ -1,4 +1,4 @@
-"""API Mini-C — Etapa 3: validação da entrada e análise léxica."""
+"""API Mini-C — Etapa 4: scanner preservado, parser e AST."""
 import json
 import logging
 
@@ -7,9 +7,10 @@ from fastapi.responses import JSONResponse
 
 from app.validation import MSG_AUSENTE, validar_codigo
 from app.scanner import analisar_lexico
+from app.parser import analisar_sintatico
 
 logger = logging.getLogger("compilador")
-app = FastAPI(title="Visualizador Educacional de Compiladores", version="0.3.0")
+app = FastAPI(title="Visualizador Educacional de Compiladores", version="0.4.0")
 
 MSG_INTERNO = "Ocorreu um erro inesperado no servidor. Tente novamente."
 
@@ -44,12 +45,16 @@ async def analisar(request: Request):
 
     codigo = corpo["codigo"]
     resultado = analisar_lexico(codigo)
+    sintatica = analisar_sintatico(resultado["tokens"], codigo) if resultado["sucesso"] else {
+        "estado": "nao_executada", "sucesso": None, "motivo": "erros_lexicos", "ast": None, "erros": [],
+    }
     return {
         "recebido": True,
         "mensagem": "Análise léxica concluída sem erros." if resultado["sucesso"] else "Análise léxica concluída com erros. Revise os trechos indicados.",
         "total_caracteres": len(codigo),
         "total_linhas": len(codigo.splitlines()),
         **resultado,
+        "sintatica": sintatica,
     }
 
 

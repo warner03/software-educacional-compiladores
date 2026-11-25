@@ -3,7 +3,7 @@ services:
     build: ./backend
     container_name: compilador_backend
     ports:
-      - "8000:8000"
+      - "${COMPILADORES_API_PORT:-8000}:8000"
     healthcheck:
       test: ["CMD", "python", "-c", "import urllib.request as u; u.urlopen('http://localhost:8000/saude', timeout=3)"]
       interval: 5s

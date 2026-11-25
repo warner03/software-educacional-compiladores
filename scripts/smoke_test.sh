@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Integração real: nginx -> FastAPI -> scanner; sem depender de mocks.
+# Integração real: nginx -> FastAPI -> scanner -> parser; sem mocks.
 set -euo pipefail
 cd "$(dirname "$0")/.."
 cleanup() {
@@ -14,6 +14,7 @@ trap cleanup EXIT
 docker compose up --build -d --wait
 python3 - <<'PY'
 import json
+import os
 from html.parser import HTMLParser
 from urllib.error import HTTPError
 from urllib.request import Request, build_opener, ProxyHandler
@@ -22,7 +23,8 @@ from urllib.request import Request, build_opener, ProxyHandler
 http = build_opener(ProxyHandler({}))
 
 def requisitar(caminho, codigo=None):
-    base = 'http://127.0.0.1:8000' if caminho == '/saude' else 'http://127.0.0.1:8501'
+    porta = os.environ.get('COMPILADORES_API_PORT', '8000')
+    base = f'http://127.0.0.1:{porta}' if caminho == '/saude' else 'http://127.0.0.1:8501'
     dados = None if codigo is None else json.dumps({'codigo': codigo}).encode()
     req = Request(base + caminho, data=dados, headers={'Content-Type': 'application/json'})
     try:
@@ -48,6 +50,8 @@ assert {'textarea', 'select', 'button'} <= html.tags and html.exemplos >= 6
 status, corpo = requisitar('/api/analisar', 'int numero = 10;')
 r = json.loads(corpo)
 assert status == 200 and r['sucesso'] is True and r['erros'] == []
+assert r['sintatica']['sucesso'] is True
+assert r['sintatica']['ast']['comandos'][0]['nome'] == 'numero'
 assert r['tokens'] == [
     {'tipo': 'PALAVRA_RESERVADA', 'lexema': 'int', 'linha': 1, 'coluna': 1},
     {'tipo': 'IDENTIFICADOR', 'lexema': 'numero', 'linha': 1, 'coluna': 5},
@@ -60,10 +64,21 @@ r = json.loads(corpo)
 assert status == 200 and r['sucesso'] is False
 assert [(e['lexema'], e['linha'], e['coluna']) for e in r['erros']] == [('12abc', 1, 7), ('@', 2, 1)]
 assert any(t['lexema'] == '7.5' for t in r['tokens']), 'Recuperação após erro'
+assert r['sintatica'] == {'estado': 'nao_executada', 'sucesso': None, 'motivo': 'erros_lexicos', 'ast': None, 'erros': []}
 assert requisitar('/api/analisar', '   ')[0] == 400
 status, corpo = requisitar('/api/analisar', 'int = ;')
-assert status == 200 and json.loads(corpo)['sucesso'] is True, 'Scanner não substitui parser'
+r = json.loads(corpo)
+assert status == 200 and r['sucesso'] is True, 'Scanner preservado'
+assert r['sintatica']['estado'] == 'erro' and r['sintatica']['ast'] is None
+assert r['sintatica']['erros'][0]['esperado'] == ['IDENTIFICADOR']
 status, corpo = requisitar('/api/analisar', '/* apenas comentário */')
-assert status == 200 and json.loads(corpo)['tokens'] == []
-print('OK: saúde, HTML, exemplos, tokens/posições, erros/recuperação, entrada vazia, escopo léxico e comentários passaram.')
+r = json.loads(corpo)
+assert status == 200 and r['tokens'] == [] and r['sintatica']['estado'] == 'erro'
+status, corpo = requisitar('/api/analisar', 'int x = 10 + 5 * 2;')
+expr = json.loads(corpo)['sintatica']['ast']['comandos'][0]['inicializador']
+assert expr['operador'] == '+' and expr['direita']['operador'] == '*'
+status, corpo = requisitar('/api/analisar', 'int a = ;\nint b;\nb = ;')
+erros = json.loads(corpo)['sintatica']['erros']
+assert [(e['linha'], e['coluna']) for e in erros] == [(1, 9), (3, 5)]
+print('OK: saúde, HTML, exemplos, tokens/posições, scanner preservado, AST/precedência, erros léxicos/sintáticos, recuperação e validação passaram.')
 PY

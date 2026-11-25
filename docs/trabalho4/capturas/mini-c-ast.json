@@ -1,0 +1,89 @@
+{
+  "tipo": "Programa",
+  "inicio": {
+    "linha": 1,
+    "coluna": 1
+  },
+  "fim": {
+    "linha": 1,
+    "coluna": 28
+  },
+  "comandos": [
+    {
+      "tipo": "Declaracao",
+      "inicio": {
+        "linha": 1,
+        "coluna": 1
+      },
+      "fim": {
+        "linha": 1,
+        "coluna": 28
+      },
+      "tipoDado": "int",
+      "nome": "resultado",
+      "inicializador": {
+        "tipo": "Binario",
+        "inicio": {
+          "linha": 1,
+          "coluna": 17
+        },
+        "fim": {
+          "linha": 1,
+          "coluna": 27
+        },
+        "operador": "+",
+        "esquerda": {
+          "tipo": "Literal",
+          "inicio": {
+            "linha": 1,
+            "coluna": 17
+          },
+          "fim": {
+            "linha": 1,
+            "coluna": 19
+          },
+          "categoria": "inteiro",
+          "lexema": "10"
+        },
+        "direita": {
+          "tipo": "Binario",
+          "inicio": {
+            "linha": 1,
+            "coluna": 22
+          },
+          "fim": {
+            "linha": 1,
+            "coluna": 27
+          },
+          "operador": "*",
+          "esquerda": {
+            "tipo": "Literal",
+            "inicio": {
+              "linha": 1,
+              "coluna": 22
+            },
+            "fim": {
+              "linha": 1,
+              "coluna": 23
+            },
+            "categoria": "inteiro",
+            "lexema": "5"
+          },
+          "direita": {
+            "tipo": "Literal",
+            "inicio": {
+              "linha": 1,
+              "coluna": 26
+            },
+            "fim": {
+              "linha": 1,
+              "coluna": 27
+            },
+            "categoria": "inteiro",
+            "lexema": "2"
+          }
+        }
+      }
+    }
+  ]
+}

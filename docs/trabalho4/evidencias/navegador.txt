@@ -1,0 +1,5 @@
+INFO: desktop, 2.000 nós e 3.998 tokens: resposta + renderização em 2.01s nesta máquina.
+OK: desktop, 1366px, exemplos, tokens, AST/precedência, seleção, download, erros/recuperação, limites, validação, teclado e largura.
+INFO: celular, 2.000 nós e 3.998 tokens: resposta + renderização em 1.67s nesta máquina.
+OK: celular, 390px, exemplos, tokens, AST/precedência, seleção, download, erros/recuperação, limites, validação, teclado e largura.
+OK: 60 cenários E2E, sem mocks ou erros JavaScript. Isso não constitui auditoria completa de acessibilidade ou teste em aparelho físico.

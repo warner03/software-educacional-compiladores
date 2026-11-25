@@ -30,7 +30,7 @@ Reservadas exigem palavra inteira: `ifelse` e `INT` são identificadores. Nomes 
 6. Reconhecer operadores de dois caracteres antes dos simples.
 7. Reconhecer delimitadores; reportar outros caracteres como erro.
 
-Comentários têm prioridade sobre `/`; divisão não é confundida com comentário. Operadores compostos reconhecidos usam o maior comprimento disponível: `>=` é um token, não dois. `-10` resulta em `-` e `10`, pois o sinal será interpretado pelo parser.
+Comentários têm prioridade sobre `/`; divisão não é confundida com comentário. Operadores compostos reconhecidos usam o maior comprimento disponível: `>=` é um token, não dois. `-10` resulta em `-` e `10`; o parser da Etapa 4 representa o sinal como nó unário.
 
 ## Números malformados e limites
 
@@ -84,4 +84,4 @@ Erros: `12abc` na linha 1, coluna 7, e `@` na linha 2, coluna 1. A saída també
 
 ## Fronteira com a Etapa 4
 
-`int = ;` não tem erro léxico: suas unidades são reconhecidas. Declarações, uso de vírgula, balanceamento de delimitadores, precedência, tipo de expressão em condicionais e ordem de comandos serão definidos e verificados pela gramática e pelo parser. Nesta etapa não há tabela de símbolos, checagem de tipos, AST ou execução. Os tokens já preservam posições para futuros diagnósticos sintáticos.
+`int = ;` não tem erro léxico: suas unidades são reconhecidas. O parser da Etapa 4 agora o rejeita sintaticamente. A [gramática](gramatica.md) define declarações, uso de delimitadores, precedência e ordem dos comandos; o scanner permanece inalterado. A [AST](ast.md) preserva posições compatíveis com estes tokens. Não há tabela de símbolos, checagem de tipos ou execução: a semântica ficará para a Etapa 5.

@@ -1,0 +1,9 @@
+Base comparada: 0424376
+backend/app/scanner.py: inalterado; SHA-256 24886524d0d653ad03249dec564a061908c0e9f095ccad6f24147ad0bac3b23f
+backend/tests/test_scanner.py: inalterado; SHA-256 7236083878658d84ab6a863d3afc0d49c9bae03f5fe6289fb563fdbcc18cdeb8
+backend/tests/test_api.py: inalterado; SHA-256 11adf396f301f001e30275b49ccac9182dd62d84b363a65c4f710e23615789ed
+backend/tests/test_validation.py: inalterado; SHA-256 ad9e0685203cad09a176c114127744172203b24835b3011b83c62c851a6d8d90
+frontend/tests/interface.test.js: inalterado; SHA-256 5a00e33a685de71b80f4ca80a05c4b507d7c90d501ef211632b5e71ef8f0b9b6
+frontend/tests/logica.test.js: inalterado; SHA-256 39bd258ad75937c07c3852b29d6734bfd137b408d25b902a8a9cb097fca1d0f1
+etapa4-casos.json: cópia idêntica ao plano; SHA-256 618e90e55d57a029342489aaebc40f088d278a9951cfe41efbce1b71a59f51e5
+etapa4-ast-referencias.json: cópia idêntica ao plano; SHA-256 8d0afbe82636487d921df5c95f525560852e848bf534c63d77297ab0902472a1

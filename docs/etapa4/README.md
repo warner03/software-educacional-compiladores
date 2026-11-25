@@ -1,5 +1,7 @@
 # Tarefa 4 — Materiais e Métodos
 
+**Registro histórico do planejamento entregue em 18/11/2026.** O Trabalho 4 foi implementado posteriormente; consulte a [documentação atual](../trabalho4/README.md), a [gramática implementada](../gramatica.md) e o [registro de testes](../registro-de-testes.md). As declarações de estado abaixo se referem à versão original da tarefa teórica.
+
 Plano de avaliação **versão 1.0**, definido em 18/11/2026. Base técnica examinada: commit `040b296` (Etapa 3).
 
 O scanner e a interface léxica estão implementados. Parser, AST e diagnósticos sintáticos são **propostas para o Trabalho 4**, ainda não implementadas nesta alteração. Semântica e tabela de símbolos são futuras, para a Etapa 5.

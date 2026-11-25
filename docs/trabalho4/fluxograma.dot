@@ -1,0 +1,30 @@
+digraph fluxo {
+ graph [rankdir=TB,bgcolor="white",nodesep=".35",ranksep=".35",pad=".2",splines=ortho,label="Fluxo implementado — Trabalho 4",labelloc=t,fontname="DejaVu Sans",fontsize=18];
+ node [fontname="DejaVu Sans",fontsize=12,shape=box,style="rounded,filled",color="#315d83",fillcolor="#edf4fa",margin=".15,.10"];
+ edge [fontname="DejaVu Sans",fontsize=10,color="#4c5968",arrowsize=.65];
+ entrada [label="Editar código / selecionar exemplo\nFrontend HTML, CSS e JavaScript"];
+ validacao [shape=diamond,label="Entrada válida?\nAté 10.000 caracteres"];
+ erroentrada [label="HTTP 400\nExplicar problema de entrada",color="#9a4242",fillcolor="#fff0eb"];
+ scanner [label="Scanner da Etapa 3\nTokens, posições e erros léxicos"];
+ lexico [shape=diamond,label="Há erros léxicos?"];
+ errolexico [label="Exibir tokens recuperados + erros\nParser não executado; AST nula",color="#9a4242",fillcolor="#fff0eb"];
+ parser [label="Parser por descida recursiva\nPrecedência e recuperação em ; ou }"];
+ sintaxe [shape=diamond,label="Há erro sintático\nou limite excedido?"];
+ errosintatico [label="Exibir tokens + diagnósticos\nEsperado, encontrado, linha/coluna\nAST nula",color="#9a4242",fillcolor="#fff0eb"];
+ ast [label="AST completa com intervalos\nDeclarações, expressões, if/else e blocos",color="#316044",fillcolor="#e9f4ec"];
+ semantica [label="Análise semântica / tabela de símbolos\nFUTURO — Etapa 5",color="#777777",fillcolor="#f2f2f2",style="rounded,dashed,filled"];
+ apresentacao [label="Apresentar tokens e AST navegável\nSelecionar nó → destacar código\nExpandir/recolher e baixar JSON",color="#316044",fillcolor="#e9f4ec"];
+ entrada->validacao;
+ validacao->erroentrada[xlabel="não"];
+ validacao->scanner[xlabel="sim"];
+ scanner->lexico;
+ lexico->errolexico[xlabel="sim"];
+ lexico->parser[xlabel="não"];
+ parser->sintaxe;
+ sintaxe->errosintatico[xlabel="sim"];
+ sintaxe->ast[xlabel="não"];
+ ast->apresentacao;
+ ast->semantica[style=dashed,color="#888888",xlabel="extensão futura"];
+ semantica->apresentacao[style=dashed,color="#888888"];
+ {rank=same; apresentacao; semantica;}
+}

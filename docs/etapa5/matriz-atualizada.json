@@ -1,0 +1,1058 @@
+{
+  "data_auditoria": "2026-11-26",
+  "base_codigo": "7fcb5ca26e314e4374f2a48a04e7f28dbaffa946",
+  "escopo": "Versão implementada até Trabalho 4; Trabalho 5 prático ainda não implementado; respostas de pares não fornecidas",
+  "origem_historica": "docs/etapa4/matriz-evidencias.csv — 135 células preservadas sem alteração",
+  "evidencias": [
+    {
+      "referencia": "Graciano Junior et al. (2022)",
+      "criterio": "Web",
+      "classificacao": "✓",
+      "evidencia": "Resumo, p. 224: aplicação web responsiva.",
+      "observacoes": "Pseudolinguagem baseada em Portugol. Resultados do formulário não publicados pelo pequeno número de respondentes; não se infere aprendizagem. Manual com exemplos é descrito como melhoria futura, não como recurso confirmado da versão."
+    },
+    {
+      "referencia": "Graciano Junior et al. (2022)",
+      "criterio": "Entrada",
+      "classificacao": "✓",
+      "evidencia": "Seção 5.1, p. 228, figura 3: campo editável de código próprio.",
+      "observacoes": "Pseudolinguagem baseada em Portugol. Resultados do formulário não publicados pelo pequeno número de respondentes; não se infere aprendizagem. Manual com exemplos é descrito como melhoria futura, não como recurso confirmado da versão."
+    },
+    {
+      "referencia": "Graciano Junior et al. (2022)",
+      "criterio": "Exemplos",
+      "classificacao": "NI",
+      "evidencia": "Informação não confirmada no texto consultado; não implica ausência.",
+      "observacoes": "Pseudolinguagem baseada em Portugol. Resultados do formulário não publicados pelo pequeno número de respondentes; não se infere aprendizagem. Manual com exemplos é descrito como melhoria futura, não como recurso confirmado da versão."
+    },
+    {
+      "referencia": "Graciano Junior et al. (2022)",
+      "criterio": "Léxica",
+      "classificacao": "✓",
+      "evidencia": "Seção 5.1, p. 228–229: lista de tokens e animação do autômato.",
+      "observacoes": "Pseudolinguagem baseada em Portugol. Resultados do formulário não publicados pelo pequeno número de respondentes; não se infere aprendizagem. Manual com exemplos é descrito como melhoria futura, não como recurso confirmado da versão."
+    },
+    {
+      "referencia": "Graciano Junior et al. (2022)",
+      "criterio": "Sintática",
+      "classificacao": "✓",
+      "evidencia": "Seção 5.2, p. 229–232: parser preditivo e regras de derivação.",
+      "observacoes": "Pseudolinguagem baseada em Portugol. Resultados do formulário não publicados pelo pequeno número de respondentes; não se infere aprendizagem. Manual com exemplos é descrito como melhoria futura, não como recurso confirmado da versão."
+    },
+    {
+      "referencia": "Graciano Junior et al. (2022)",
+      "criterio": "AST",
+      "classificacao": "NI",
+      "evidencia": "Informação não confirmada no texto consultado; não implica ausência.",
+      "observacoes": "Pseudolinguagem baseada em Portugol. Resultados do formulário não publicados pelo pequeno número de respondentes; não se infere aprendizagem. Manual com exemplos é descrito como melhoria futura, não como recurso confirmado da versão."
+    },
+    {
+      "referencia": "Graciano Junior et al. (2022)",
+      "criterio": "Derivação",
+      "classificacao": "✓",
+      "evidencia": "Seção 5.2, p. 231–232, figuras 9–11: árvore de derivação.",
+      "observacoes": "Pseudolinguagem baseada em Portugol. Resultados do formulário não publicados pelo pequeno número de respondentes; não se infere aprendizagem. Manual com exemplos é descrito como melhoria futura, não como recurso confirmado da versão."
+    },
+    {
+      "referencia": "Graciano Junior et al. (2022)",
+      "criterio": "Semânt.",
+      "classificacao": "✗",
+      "evidencia": "Seção 7.1, p. 233: módulo semântico indicado como futuro.",
+      "observacoes": "Pseudolinguagem baseada em Portugol. Resultados do formulário não publicados pelo pequeno número de respondentes; não se infere aprendizagem. Manual com exemplos é descrito como melhoria futura, não como recurso confirmado da versão."
+    },
+    {
+      "referencia": "Graciano Junior et al. (2022)",
+      "criterio": "Símb.",
+      "classificacao": "NI",
+      "evidencia": "Informação não confirmada no texto consultado; não implica ausência.",
+      "observacoes": "Pseudolinguagem baseada em Portugol. Resultados do formulário não publicados pelo pequeno número de respondentes; não se infere aprendizagem. Manual com exemplos é descrito como melhoria futura, não como recurso confirmado da versão."
+    },
+    {
+      "referencia": "Graciano Junior et al. (2022)",
+      "criterio": "Geração",
+      "classificacao": "✗",
+      "evidencia": "Seção 7.1, p. 233: geração de código intermediário indicada como futura.",
+      "observacoes": "Pseudolinguagem baseada em Portugol. Resultados do formulário não publicados pelo pequeno número de respondentes; não se infere aprendizagem. Manual com exemplos é descrito como melhoria futura, não como recurso confirmado da versão."
+    },
+    {
+      "referencia": "Graciano Junior et al. (2022)",
+      "criterio": "Passos",
+      "classificacao": "✓",
+      "evidencia": "Seções 5.1–5.2, p. 228–232: próximo/anterior e animações.",
+      "observacoes": "Pseudolinguagem baseada em Portugol. Resultados do formulário não publicados pelo pequeno número de respondentes; não se infere aprendizagem. Manual com exemplos é descrito como melhoria futura, não como recurso confirmado da versão."
+    },
+    {
+      "referencia": "Graciano Junior et al. (2022)",
+      "criterio": "Diag.",
+      "classificacao": "✓",
+      "evidencia": "Seção 5.1, p. 229: mensagem com estado e caractere causador; seção 5.2, p. 232: erro destacado.",
+      "observacoes": "Pseudolinguagem baseada em Portugol. Resultados do formulário não publicados pelo pequeno número de respondentes; não se infere aprendizagem. Manual com exemplos é descrito como melhoria futura, não como recurso confirmado da versão."
+    },
+    {
+      "referencia": "Graciano Junior et al. (2022)",
+      "criterio": "Explic.",
+      "classificacao": "✓",
+      "evidencia": "Seções 5.1–5.2, p. 228–229: abas teóricas e explicações do processamento.",
+      "observacoes": "Pseudolinguagem baseada em Portugol. Resultados do formulário não publicados pelo pequeno número de respondentes; não se infere aprendizagem. Manual com exemplos é descrito como melhoria futura, não como recurso confirmado da versão."
+    },
+    {
+      "referencia": "Graciano Junior et al. (2022)",
+      "criterio": "Estudantes",
+      "classificacao": "✓",
+      "evidencia": "Seções 4 e 7.1, p. 227 e 233: cinco alunos testaram e preencheram formulário.",
+      "observacoes": "Pseudolinguagem baseada em Portugol. Resultados do formulário não publicados pelo pequeno número de respondentes; não se infere aprendizagem. Manual com exemplos é descrito como melhoria futura, não como recurso confirmado da versão."
+    },
+    {
+      "referencia": "Graciano Junior et al. (2022)",
+      "criterio": "Aprendizagem",
+      "classificacao": "NI",
+      "evidencia": "Informação não confirmada no texto consultado; não implica ausência.",
+      "observacoes": "Pseudolinguagem baseada em Portugol. Resultados do formulário não publicados pelo pequeno número de respondentes; não se infere aprendizagem. Manual com exemplos é descrito como melhoria futura, não como recurso confirmado da versão."
+    },
+    {
+      "referencia": "Borela et al. (2025)",
+      "criterio": "Web",
+      "classificacao": "✓",
+      "evidencia": "Seção 3.1, p. 4 do PDF: arquitetura cliente-servidor web.",
+      "observacoes": "Linguagem inspirada em C. AST não é confirmada por simples equivalência com a árvore de derivação do ANTLR. Aceitação 4,81/5 não é medida de conhecimento. Paginação usada: 1–11 do PDF; anais: 171–181."
+    },
+    {
+      "referencia": "Borela et al. (2025)",
+      "criterio": "Entrada",
+      "classificacao": "✓",
+      "evidencia": "Seção 3.2.3, p. 7 do PDF: editor de código.",
+      "observacoes": "Linguagem inspirada em C. AST não é confirmada por simples equivalência com a árvore de derivação do ANTLR. Aceitação 4,81/5 não é medida de conhecimento. Paginação usada: 1–11 do PDF; anais: 171–181."
+    },
+    {
+      "referencia": "Borela et al. (2025)",
+      "criterio": "Exemplos",
+      "classificacao": "✓",
+      "evidencia": "Seção 3.2.3, p. 7: botão com exemplos básicos, recursão, ordenação e jogos.",
+      "observacoes": "Linguagem inspirada em C. AST não é confirmada por simples equivalência com a árvore de derivação do ANTLR. Aceitação 4,81/5 não é medida de conhecimento. Paginação usada: 1–11 do PDF; anais: 171–181."
+    },
+    {
+      "referencia": "Borela et al. (2025)",
+      "criterio": "Léxica",
+      "classificacao": "✓",
+      "evidencia": "Seção 3.2.2, p. 6, e seção 3.2.3, p. 7: ANTLR e lista de tokens.",
+      "observacoes": "Linguagem inspirada em C. AST não é confirmada por simples equivalência com a árvore de derivação do ANTLR. Aceitação 4,81/5 não é medida de conhecimento. Paginação usada: 1–11 do PDF; anais: 171–181."
+    },
+    {
+      "referencia": "Borela et al. (2025)",
+      "criterio": "Sintática",
+      "classificacao": "✓",
+      "evidencia": "Seção 3.2.2, p. 6: analisador sintático gerado por ANTLR.",
+      "observacoes": "Linguagem inspirada em C. AST não é confirmada por simples equivalência com a árvore de derivação do ANTLR. Aceitação 4,81/5 não é medida de conhecimento. Paginação usada: 1–11 do PDF; anais: 171–181."
+    },
+    {
+      "referencia": "Borela et al. (2025)",
+      "criterio": "AST",
+      "classificacao": "NI",
+      "evidencia": "Informação não confirmada no texto consultado; não implica ausência.",
+      "observacoes": "Linguagem inspirada em C. AST não é confirmada por simples equivalência com a árvore de derivação do ANTLR. Aceitação 4,81/5 não é medida de conhecimento. Paginação usada: 1–11 do PDF; anais: 171–181."
+    },
+    {
+      "referencia": "Borela et al. (2025)",
+      "criterio": "Derivação",
+      "classificacao": "✓",
+      "evidencia": "Seção 3.2.2, p. 6: a estrutura gerada é denominada árvore de derivação.",
+      "observacoes": "Linguagem inspirada em C. AST não é confirmada por simples equivalência com a árvore de derivação do ANTLR. Aceitação 4,81/5 não é medida de conhecimento. Paginação usada: 1–11 do PDF; anais: 171–181."
+    },
+    {
+      "referencia": "Borela et al. (2025)",
+      "criterio": "Semânt.",
+      "classificacao": "✓",
+      "evidencia": "Quadro 1, p. 3, e seção 3.2.1, p. 5: todas as etapas e regras de tipos/conversões implícitas; não se infere catálogo completo de verificações.",
+      "observacoes": "Linguagem inspirada em C. AST não é confirmada por simples equivalência com a árvore de derivação do ANTLR. Aceitação 4,81/5 não é medida de conhecimento. Paginação usada: 1–11 do PDF; anais: 171–181."
+    },
+    {
+      "referencia": "Borela et al. (2025)",
+      "criterio": "Símb.",
+      "classificacao": "✓",
+      "evidencia": "Seções 3.2.2–3.2.3, p. 6–7: tabela em JSON e tela com funções, escopos e strings.",
+      "observacoes": "Linguagem inspirada em C. AST não é confirmada por simples equivalência com a árvore de derivação do ANTLR. Aceitação 4,81/5 não é medida de conhecimento. Paginação usada: 1–11 do PDF; anais: 171–181."
+    },
+    {
+      "referencia": "Borela et al. (2025)",
+      "criterio": "Geração",
+      "classificacao": "✓",
+      "evidencia": "Seções 3.2.2–3.2.3, p. 6–8: LLVM IR, Assembly e código-alvo.",
+      "observacoes": "Linguagem inspirada em C. AST não é confirmada por simples equivalência com a árvore de derivação do ANTLR. Aceitação 4,81/5 não é medida de conhecimento. Paginação usada: 1–11 do PDF; anais: 171–181."
+    },
+    {
+      "referencia": "Borela et al. (2025)",
+      "criterio": "Passos",
+      "classificacao": "✗",
+      "evidencia": "Seção 2, p. 3: autores explicitam que não incluem passo a passo da árvore.",
+      "observacoes": "Linguagem inspirada em C. AST não é confirmada por simples equivalência com a árvore de derivação do ANTLR. Aceitação 4,81/5 não é medida de conhecimento. Paginação usada: 1–11 do PDF; anais: 171–181."
+    },
+    {
+      "referencia": "Borela et al. (2025)",
+      "criterio": "Diag.",
+      "classificacao": "NI",
+      "evidencia": "Informação não confirmada no texto consultado; não implica ausência.",
+      "observacoes": "Linguagem inspirada em C. AST não é confirmada por simples equivalência com a árvore de derivação do ANTLR. Aceitação 4,81/5 não é medida de conhecimento. Paginação usada: 1–11 do PDF; anais: 171–181."
+    },
+    {
+      "referencia": "Borela et al. (2025)",
+      "criterio": "Explic.",
+      "classificacao": "✓",
+      "evidencia": "Seção 3.2.3, p. 7: menu com informações da linguagem, funcionando como guia rápido.",
+      "observacoes": "Linguagem inspirada em C. AST não é confirmada por simples equivalência com a árvore de derivação do ANTLR. Aceitação 4,81/5 não é medida de conhecimento. Paginação usada: 1–11 do PDF; anais: 171–181."
+    },
+    {
+      "referencia": "Borela et al. (2025)",
+      "criterio": "Estudantes",
+      "classificacao": "✓",
+      "evidencia": "Seção 4, p. 8–9: 27 respostas, com estudantes, professores e outros participantes.",
+      "observacoes": "Linguagem inspirada em C. AST não é confirmada por simples equivalência com a árvore de derivação do ANTLR. Aceitação 4,81/5 não é medida de conhecimento. Paginação usada: 1–11 do PDF; anais: 171–181."
+    },
+    {
+      "referencia": "Borela et al. (2025)",
+      "criterio": "Aprendizagem",
+      "classificacao": "NI",
+      "evidencia": "Informação não confirmada no texto consultado; não implica ausência.",
+      "observacoes": "Linguagem inspirada em C. AST não é confirmada por simples equivalência com a árvore de derivação do ANTLR. Aceitação 4,81/5 não é medida de conhecimento. Paginação usada: 1–11 do PDF; anais: 171–181."
+    },
+    {
+      "referencia": "Santini et al. (2022)",
+      "criterio": "Web",
+      "classificacao": "N/A",
+      "evidencia": "Critério não aplicável ao objeto do estudo.",
+      "observacoes": "Mapeamento de nove jogos, não um software único. N/A refere-se às funcionalidades e à avaliação própria de uma ferramenta. Os estudos primários são discutidos no texto, sem união artificial de suas características."
+    },
+    {
+      "referencia": "Santini et al. (2022)",
+      "criterio": "Entrada",
+      "classificacao": "N/A",
+      "evidencia": "Critério não aplicável ao objeto do estudo.",
+      "observacoes": "Mapeamento de nove jogos, não um software único. N/A refere-se às funcionalidades e à avaliação própria de uma ferramenta. Os estudos primários são discutidos no texto, sem união artificial de suas características."
+    },
+    {
+      "referencia": "Santini et al. (2022)",
+      "criterio": "Exemplos",
+      "classificacao": "N/A",
+      "evidencia": "Critério não aplicável ao objeto do estudo.",
+      "observacoes": "Mapeamento de nove jogos, não um software único. N/A refere-se às funcionalidades e à avaliação própria de uma ferramenta. Os estudos primários são discutidos no texto, sem união artificial de suas características."
+    },
+    {
+      "referencia": "Santini et al. (2022)",
+      "criterio": "Léxica",
+      "classificacao": "N/A",
+      "evidencia": "Critério não aplicável ao objeto do estudo.",
+      "observacoes": "Mapeamento de nove jogos, não um software único. N/A refere-se às funcionalidades e à avaliação própria de uma ferramenta. Os estudos primários são discutidos no texto, sem união artificial de suas características."
+    },
+    {
+      "referencia": "Santini et al. (2022)",
+      "criterio": "Sintática",
+      "classificacao": "N/A",
+      "evidencia": "Critério não aplicável ao objeto do estudo.",
+      "observacoes": "Mapeamento de nove jogos, não um software único. N/A refere-se às funcionalidades e à avaliação própria de uma ferramenta. Os estudos primários são discutidos no texto, sem união artificial de suas características."
+    },
+    {
+      "referencia": "Santini et al. (2022)",
+      "criterio": "AST",
+      "classificacao": "N/A",
+      "evidencia": "Critério não aplicável ao objeto do estudo.",
+      "observacoes": "Mapeamento de nove jogos, não um software único. N/A refere-se às funcionalidades e à avaliação própria de uma ferramenta. Os estudos primários são discutidos no texto, sem união artificial de suas características."
+    },
+    {
+      "referencia": "Santini et al. (2022)",
+      "criterio": "Derivação",
+      "classificacao": "N/A",
+      "evidencia": "Critério não aplicável ao objeto do estudo.",
+      "observacoes": "Mapeamento de nove jogos, não um software único. N/A refere-se às funcionalidades e à avaliação própria de uma ferramenta. Os estudos primários são discutidos no texto, sem união artificial de suas características."
+    },
+    {
+      "referencia": "Santini et al. (2022)",
+      "criterio": "Semânt.",
+      "classificacao": "N/A",
+      "evidencia": "Critério não aplicável ao objeto do estudo.",
+      "observacoes": "Mapeamento de nove jogos, não um software único. N/A refere-se às funcionalidades e à avaliação própria de uma ferramenta. Os estudos primários são discutidos no texto, sem união artificial de suas características."
+    },
+    {
+      "referencia": "Santini et al. (2022)",
+      "criterio": "Símb.",
+      "classificacao": "N/A",
+      "evidencia": "Critério não aplicável ao objeto do estudo.",
+      "observacoes": "Mapeamento de nove jogos, não um software único. N/A refere-se às funcionalidades e à avaliação própria de uma ferramenta. Os estudos primários são discutidos no texto, sem união artificial de suas características."
+    },
+    {
+      "referencia": "Santini et al. (2022)",
+      "criterio": "Geração",
+      "classificacao": "N/A",
+      "evidencia": "Critério não aplicável ao objeto do estudo.",
+      "observacoes": "Mapeamento de nove jogos, não um software único. N/A refere-se às funcionalidades e à avaliação própria de uma ferramenta. Os estudos primários são discutidos no texto, sem união artificial de suas características."
+    },
+    {
+      "referencia": "Santini et al. (2022)",
+      "criterio": "Passos",
+      "classificacao": "N/A",
+      "evidencia": "Critério não aplicável ao objeto do estudo.",
+      "observacoes": "Mapeamento de nove jogos, não um software único. N/A refere-se às funcionalidades e à avaliação própria de uma ferramenta. Os estudos primários são discutidos no texto, sem união artificial de suas características."
+    },
+    {
+      "referencia": "Santini et al. (2022)",
+      "criterio": "Diag.",
+      "classificacao": "N/A",
+      "evidencia": "Critério não aplicável ao objeto do estudo.",
+      "observacoes": "Mapeamento de nove jogos, não um software único. N/A refere-se às funcionalidades e à avaliação própria de uma ferramenta. Os estudos primários são discutidos no texto, sem união artificial de suas características."
+    },
+    {
+      "referencia": "Santini et al. (2022)",
+      "criterio": "Explic.",
+      "classificacao": "N/A",
+      "evidencia": "Critério não aplicável ao objeto do estudo.",
+      "observacoes": "Mapeamento de nove jogos, não um software único. N/A refere-se às funcionalidades e à avaliação própria de uma ferramenta. Os estudos primários são discutidos no texto, sem união artificial de suas características."
+    },
+    {
+      "referencia": "Santini et al. (2022)",
+      "criterio": "Estudantes",
+      "classificacao": "N/A",
+      "evidencia": "Critério não aplicável ao objeto do estudo.",
+      "observacoes": "Mapeamento de nove jogos, não um software único. N/A refere-se às funcionalidades e à avaliação própria de uma ferramenta. Os estudos primários são discutidos no texto, sem união artificial de suas características."
+    },
+    {
+      "referencia": "Santini et al. (2022)",
+      "criterio": "Aprendizagem",
+      "classificacao": "N/A",
+      "evidencia": "Critério não aplicável ao objeto do estudo.",
+      "observacoes": "Mapeamento de nove jogos, não um software único. N/A refere-se às funcionalidades e à avaliação própria de uma ferramenta. Os estudos primários são discutidos no texto, sem união artificial de suas características."
+    },
+    {
+      "referencia": "Mernik e Žumer (2003)",
+      "criterio": "Web",
+      "classificacao": "NI",
+      "evidencia": "Informação não confirmada no texto consultado; não implica ausência.",
+      "observacoes": "Foi consultado o manuscrito fornecido de 22 páginas, correspondente ao artigo IEEE p. 61–68. Notas são evidência observacional, sem demonstração causal; número de participantes não informado. Uso interno de inEnv/outEnv não confirma uma tela de tabela de símbolos."
+    },
+    {
+      "referencia": "Mernik e Žumer (2003)",
+      "criterio": "Entrada",
+      "classificacao": "✓",
+      "evidencia": "Seção 1, p. 5 do manuscrito: IDE permite especificar e executar programas; figura 1, p. 6.",
+      "observacoes": "Foi consultado o manuscrito fornecido de 22 páginas, correspondente ao artigo IEEE p. 61–68. Notas são evidência observacional, sem demonstração causal; número de participantes não informado. Uso interno de inEnv/outEnv não confirma uma tela de tabela de símbolos."
+    },
+    {
+      "referencia": "Mernik e Žumer (2003)",
+      "criterio": "Exemplos",
+      "classificacao": "✓",
+      "evidencia": "Seção 3, p. 12–17: linguagens e programas fornecidos aos estudantes; p. 19: biblioteca de linguagens.",
+      "observacoes": "Foi consultado o manuscrito fornecido de 22 páginas, correspondente ao artigo IEEE p. 61–68. Notas são evidência observacional, sem demonstração causal; número de participantes não informado. Uso interno de inEnv/outEnv não confirma uma tela de tabela de símbolos."
+    },
+    {
+      "referencia": "Mernik e Žumer (2003)",
+      "criterio": "Léxica",
+      "classificacao": "✓",
+      "evidencia": "Seção 2.1, p. 8–9: expressões regulares, DFA e scanner.",
+      "observacoes": "Foi consultado o manuscrito fornecido de 22 páginas, correspondente ao artigo IEEE p. 61–68. Notas são evidência observacional, sem demonstração causal; número de participantes não informado. Uso interno de inEnv/outEnv não confirma uma tela de tabela de símbolos."
+    },
+    {
+      "referencia": "Mernik e Žumer (2003)",
+      "criterio": "Sintática",
+      "classificacao": "✓",
+      "evidencia": "Seção 2.2, p. 9–10; seção 3, p. 12: analisadores LL(k)/LR(k).",
+      "observacoes": "Foi consultado o manuscrito fornecido de 22 páginas, correspondente ao artigo IEEE p. 61–68. Notas são evidência observacional, sem demonstração causal; número de participantes não informado. Uso interno de inEnv/outEnv não confirma uma tela de tabela de símbolos."
+    },
+    {
+      "referencia": "Mernik e Žumer (2003)",
+      "criterio": "AST",
+      "classificacao": "NI",
+      "evidencia": "Informação não confirmada no texto consultado; não implica ausência.",
+      "observacoes": "Foi consultado o manuscrito fornecido de 22 páginas, correspondente ao artigo IEEE p. 61–68. Notas são evidência observacional, sem demonstração causal; número de participantes não informado. Uso interno de inEnv/outEnv não confirma uma tela de tabela de símbolos."
+    },
+    {
+      "referencia": "Mernik e Žumer (2003)",
+      "criterio": "Derivação",
+      "classificacao": "✓",
+      "evidencia": "Seção 2.2, p. 10, figura 4: construção da árvore a partir da gramática.",
+      "observacoes": "Foi consultado o manuscrito fornecido de 22 páginas, correspondente ao artigo IEEE p. 61–68. Notas são evidência observacional, sem demonstração causal; número de participantes não informado. Uso interno de inEnv/outEnv não confirma uma tela de tabela de símbolos."
+    },
+    {
+      "referencia": "Mernik e Žumer (2003)",
+      "criterio": "Semânt.",
+      "classificacao": "✓",
+      "evidencia": "Seção 2.3, p. 10–11: gramáticas de atributos e avaliação semântica.",
+      "observacoes": "Foi consultado o manuscrito fornecido de 22 páginas, correspondente ao artigo IEEE p. 61–68. Notas são evidência observacional, sem demonstração causal; número de participantes não informado. Uso interno de inEnv/outEnv não confirma uma tela de tabela de símbolos."
+    },
+    {
+      "referencia": "Mernik e Žumer (2003)",
+      "criterio": "Símb.",
+      "classificacao": "NI",
+      "evidencia": "Informação não confirmada no texto consultado; não implica ausência.",
+      "observacoes": "Foi consultado o manuscrito fornecido de 22 páginas, correspondente ao artigo IEEE p. 61–68. Notas são evidência observacional, sem demonstração causal; número de participantes não informado. Uso interno de inEnv/outEnv não confirma uma tela de tabela de símbolos."
+    },
+    {
+      "referencia": "Mernik e Žumer (2003)",
+      "criterio": "Geração",
+      "classificacao": "✓",
+      "evidencia": "Seção 3, p. 17, figura 10: código PUSH/MUL/ADD emitido para expressões.",
+      "observacoes": "Foi consultado o manuscrito fornecido de 22 páginas, correspondente ao artigo IEEE p. 61–68. Notas são evidência observacional, sem demonstração causal; número de participantes não informado. Uso interno de inEnv/outEnv não confirma uma tela de tabela de símbolos."
+    },
+    {
+      "referencia": "Mernik e Žumer (2003)",
+      "criterio": "Passos",
+      "classificacao": "✓",
+      "evidencia": "Seção 2.3, p. 11: execução em passos e breakpoints; seções 2.1–2.2: animações.",
+      "observacoes": "Foi consultado o manuscrito fornecido de 22 páginas, correspondente ao artigo IEEE p. 61–68. Notas são evidência observacional, sem demonstração causal; número de participantes não informado. Uso interno de inEnv/outEnv não confirma uma tela de tabela de símbolos."
+    },
+    {
+      "referencia": "Mernik e Žumer (2003)",
+      "criterio": "Diag.",
+      "classificacao": "✓",
+      "evidencia": "Figura 3, p. 9: mensagem de erro léxico quando não há transição.",
+      "observacoes": "Foi consultado o manuscrito fornecido de 22 páginas, correspondente ao artigo IEEE p. 61–68. Notas são evidência observacional, sem demonstração causal; número de participantes não informado. Uso interno de inEnv/outEnv não confirma uma tela de tabela de símbolos."
+    },
+    {
+      "referencia": "Mernik e Žumer (2003)",
+      "criterio": "Explic.",
+      "classificacao": "NI",
+      "evidencia": "Informação não confirmada no texto consultado; não implica ausência.",
+      "observacoes": "Foi consultado o manuscrito fornecido de 22 páginas, correspondente ao artigo IEEE p. 61–68. Notas são evidência observacional, sem demonstração causal; número de participantes não informado. Uso interno de inEnv/outEnv não confirma uma tela de tabela de símbolos."
+    },
+    {
+      "referencia": "Mernik e Žumer (2003)",
+      "criterio": "Estudantes",
+      "classificacao": "✓",
+      "evidencia": "Seção 3, p. 18: questionários preenchidos após a disciplina, tabela I.",
+      "observacoes": "Foi consultado o manuscrito fornecido de 22 páginas, correspondente ao artigo IEEE p. 61–68. Notas são evidência observacional, sem demonstração causal; número de participantes não informado. Uso interno de inEnv/outEnv não confirma uma tela de tabela de símbolos."
+    },
+    {
+      "referencia": "Mernik e Žumer (2003)",
+      "criterio": "Aprendizagem",
+      "classificacao": "✓",
+      "evidencia": "Seção 3, p. 19–20: média de notas 8,05 sem LISA e 8,6 com LISA, em turmas de anos distintos.",
+      "observacoes": "Foi consultado o manuscrito fornecido de 22 páginas, correspondente ao artigo IEEE p. 61–68. Notas são evidência observacional, sem demonstração causal; número de participantes não informado. Uso interno de inEnv/outEnv não confirma uma tela de tabela de símbolos."
+    },
+    {
+      "referencia": "Resler e Deaver (1998)",
+      "criterio": "Web",
+      "classificacao": "NI",
+      "evidencia": "Informação não confirmada no texto consultado; não implica ausência.",
+      "observacoes": "VCOCO significa Visible Compiler Compiler. O artigo enfatiza portabilidade e admite browser como possibilidade de frontend, sem documentar uma versão web pronta. Não relata avaliação com estudantes nem a anuncia como futura. Animações de árvore mencionadas para gyacc são trabalho relacionado, não recurso transferível ao VCOCO."
+    },
+    {
+      "referencia": "Resler e Deaver (1998)",
+      "criterio": "Entrada",
+      "classificacao": "✓",
+      "evidencia": "Seção 3, p. 199–200: programa-fonte compilado é mostrado na janela Source, com lexemas reconhecidos.",
+      "observacoes": "VCOCO significa Visible Compiler Compiler. O artigo enfatiza portabilidade e admite browser como possibilidade de frontend, sem documentar uma versão web pronta. Não relata avaliação com estudantes nem a anuncia como futura. Animações de árvore mencionadas para gyacc são trabalho relacionado, não recurso transferível ao VCOCO."
+    },
+    {
+      "referencia": "Resler e Deaver (1998)",
+      "criterio": "Exemplos",
+      "classificacao": "NI",
+      "evidencia": "Informação não confirmada no texto consultado; não implica ausência.",
+      "observacoes": "VCOCO significa Visible Compiler Compiler. O artigo enfatiza portabilidade e admite browser como possibilidade de frontend, sem documentar uma versão web pronta. Não relata avaliação com estudantes nem a anuncia como futura. Animações de árvore mencionadas para gyacc são trabalho relacionado, não recurso transferível ao VCOCO."
+    },
+    {
+      "referencia": "Resler e Deaver (1998)",
+      "criterio": "Léxica",
+      "classificacao": "✓",
+      "evidencia": "Seção 3, p. 200: scanner, isolamento de lexemas e reconhecimento de tokens.",
+      "observacoes": "VCOCO significa Visible Compiler Compiler. O artigo enfatiza portabilidade e admite browser como possibilidade de frontend, sem documentar uma versão web pronta. Não relata avaliação com estudantes nem a anuncia como futura. Animações de árvore mencionadas para gyacc são trabalho relacionado, não recurso transferível ao VCOCO."
+    },
+    {
+      "referencia": "Resler e Deaver (1998)",
+      "criterio": "Sintática",
+      "classificacao": "✓",
+      "evidencia": "Resumo e seção 2, p. 199: compiladores LL(1); seção 3, p. 200: acompanhamento do parser.",
+      "observacoes": "VCOCO significa Visible Compiler Compiler. O artigo enfatiza portabilidade e admite browser como possibilidade de frontend, sem documentar uma versão web pronta. Não relata avaliação com estudantes nem a anuncia como futura. Animações de árvore mencionadas para gyacc são trabalho relacionado, não recurso transferível ao VCOCO."
+    },
+    {
+      "referencia": "Resler e Deaver (1998)",
+      "criterio": "AST",
+      "classificacao": "NI",
+      "evidencia": "Informação não confirmada no texto consultado; não implica ausência.",
+      "observacoes": "VCOCO significa Visible Compiler Compiler. O artigo enfatiza portabilidade e admite browser como possibilidade de frontend, sem documentar uma versão web pronta. Não relata avaliação com estudantes nem a anuncia como futura. Animações de árvore mencionadas para gyacc são trabalho relacionado, não recurso transferível ao VCOCO."
+    },
+    {
+      "referencia": "Resler e Deaver (1998)",
+      "criterio": "Derivação",
+      "classificacao": "NI",
+      "evidencia": "Informação não confirmada no texto consultado; não implica ausência.",
+      "observacoes": "VCOCO significa Visible Compiler Compiler. O artigo enfatiza portabilidade e admite browser como possibilidade de frontend, sem documentar uma versão web pronta. Não relata avaliação com estudantes nem a anuncia como futura. Animações de árvore mencionadas para gyacc são trabalho relacionado, não recurso transferível ao VCOCO."
+    },
+    {
+      "referencia": "Resler e Deaver (1998)",
+      "criterio": "Semânt.",
+      "classificacao": "NI",
+      "evidencia": "Informação não confirmada no texto consultado; não implica ausência.",
+      "observacoes": "VCOCO significa Visible Compiler Compiler. O artigo enfatiza portabilidade e admite browser como possibilidade de frontend, sem documentar uma versão web pronta. Não relata avaliação com estudantes nem a anuncia como futura. Animações de árvore mencionadas para gyacc são trabalho relacionado, não recurso transferível ao VCOCO."
+    },
+    {
+      "referencia": "Resler e Deaver (1998)",
+      "criterio": "Símb.",
+      "classificacao": "NI",
+      "evidencia": "Informação não confirmada no texto consultado; não implica ausência.",
+      "observacoes": "VCOCO significa Visible Compiler Compiler. O artigo enfatiza portabilidade e admite browser como possibilidade de frontend, sem documentar uma versão web pronta. Não relata avaliação com estudantes nem a anuncia como futura. Animações de árvore mencionadas para gyacc são trabalho relacionado, não recurso transferível ao VCOCO."
+    },
+    {
+      "referencia": "Resler e Deaver (1998)",
+      "criterio": "Geração",
+      "classificacao": "NI",
+      "evidencia": "Informação não confirmada no texto consultado; não implica ausência.",
+      "observacoes": "VCOCO significa Visible Compiler Compiler. O artigo enfatiza portabilidade e admite browser como possibilidade de frontend, sem documentar uma versão web pronta. Não relata avaliação com estudantes nem a anuncia como futura. Animações de árvore mencionadas para gyacc são trabalho relacionado, não recurso transferível ao VCOCO."
+    },
+    {
+      "referencia": "Resler e Deaver (1998)",
+      "criterio": "Passos",
+      "classificacao": "✓",
+      "evidencia": "Seção 3, p. 200: single-step, breakpoints e observação de variáveis.",
+      "observacoes": "VCOCO significa Visible Compiler Compiler. O artigo enfatiza portabilidade e admite browser como possibilidade de frontend, sem documentar uma versão web pronta. Não relata avaliação com estudantes nem a anuncia como futura. Animações de árvore mencionadas para gyacc são trabalho relacionado, não recurso transferível ao VCOCO."
+    },
+    {
+      "referencia": "Resler e Deaver (1998)",
+      "criterio": "Diag.",
+      "classificacao": "NI",
+      "evidencia": "Informação não confirmada no texto consultado; não implica ausência.",
+      "observacoes": "VCOCO significa Visible Compiler Compiler. O artigo enfatiza portabilidade e admite browser como possibilidade de frontend, sem documentar uma versão web pronta. Não relata avaliação com estudantes nem a anuncia como futura. Animações de árvore mencionadas para gyacc são trabalho relacionado, não recurso transferível ao VCOCO."
+    },
+    {
+      "referencia": "Resler e Deaver (1998)",
+      "criterio": "Explic.",
+      "classificacao": "NI",
+      "evidencia": "Informação não confirmada no texto consultado; não implica ausência.",
+      "observacoes": "VCOCO significa Visible Compiler Compiler. O artigo enfatiza portabilidade e admite browser como possibilidade de frontend, sem documentar uma versão web pronta. Não relata avaliação com estudantes nem a anuncia como futura. Animações de árvore mencionadas para gyacc são trabalho relacionado, não recurso transferível ao VCOCO."
+    },
+    {
+      "referencia": "Resler e Deaver (1998)",
+      "criterio": "Estudantes",
+      "classificacao": "NI",
+      "evidencia": "Informação não confirmada no texto consultado; não implica ausência.",
+      "observacoes": "VCOCO significa Visible Compiler Compiler. O artigo enfatiza portabilidade e admite browser como possibilidade de frontend, sem documentar uma versão web pronta. Não relata avaliação com estudantes nem a anuncia como futura. Animações de árvore mencionadas para gyacc são trabalho relacionado, não recurso transferível ao VCOCO."
+    },
+    {
+      "referencia": "Resler e Deaver (1998)",
+      "criterio": "Aprendizagem",
+      "classificacao": "NI",
+      "evidencia": "Informação não confirmada no texto consultado; não implica ausência.",
+      "observacoes": "VCOCO significa Visible Compiler Compiler. O artigo enfatiza portabilidade e admite browser como possibilidade de frontend, sem documentar uma versão web pronta. Não relata avaliação com estudantes nem a anuncia como futura. Animações de árvore mencionadas para gyacc são trabalho relacionado, não recurso transferível ao VCOCO."
+    },
+    {
+      "referencia": "Rodger et al. (2009)",
+      "criterio": "Web",
+      "classificacao": "NI",
+      "evidencia": "Informação não confirmada no texto consultado; não implica ausência.",
+      "observacoes": "A entrada examinada é de gramáticas/autômatos e cadeias formais, não um editor de programas de uma linguagem-alvo; por isso Entrada é N/A. Simulação de autômato não confirma tokenização de programas. Medidas de aprendizagem presentes não significam ganho causal comprovado."
+    },
+    {
+      "referencia": "Rodger et al. (2009)",
+      "criterio": "Entrada",
+      "classificacao": "N/A",
+      "evidencia": "Critério não aplicável ao objeto do estudo.",
+      "observacoes": "A entrada examinada é de gramáticas/autômatos e cadeias formais, não um editor de programas de uma linguagem-alvo; por isso Entrada é N/A. Simulação de autômato não confirma tokenização de programas. Medidas de aprendizagem presentes não significam ganho causal comprovado."
+    },
+    {
+      "referencia": "Rodger et al. (2009)",
+      "criterio": "Exemplos",
+      "classificacao": "✓",
+      "evidencia": "Seções 3.4–3.5, p. 406: exemplos e arquivos do tutorial disponíveis para download.",
+      "observacoes": "A entrada examinada é de gramáticas/autômatos e cadeias formais, não um editor de programas de uma linguagem-alvo; por isso Entrada é N/A. Simulação de autômato não confirma tokenização de programas. Medidas de aprendizagem presentes não significam ganho causal comprovado."
+    },
+    {
+      "referencia": "Rodger et al. (2009)",
+      "criterio": "Léxica",
+      "classificacao": "NI",
+      "evidencia": "Informação não confirmada no texto consultado; não implica ausência.",
+      "observacoes": "A entrada examinada é de gramáticas/autômatos e cadeias formais, não um editor de programas de uma linguagem-alvo; por isso Entrada é N/A. Simulação de autômato não confirma tokenização de programas. Medidas de aprendizagem presentes não significam ganho causal comprovado."
+    },
+    {
+      "referencia": "Rodger et al. (2009)",
+      "criterio": "Sintática",
+      "classificacao": "✓",
+      "evidencia": "Seções 3.1–3.2, p. 405–406: LL(1), SLR(1), CYK e parser controlado pelo usuário.",
+      "observacoes": "A entrada examinada é de gramáticas/autômatos e cadeias formais, não um editor de programas de uma linguagem-alvo; por isso Entrada é N/A. Simulação de autômato não confirma tokenização de programas. Medidas de aprendizagem presentes não significam ganho causal comprovado."
+    },
+    {
+      "referencia": "Rodger et al. (2009)",
+      "criterio": "AST",
+      "classificacao": "NI",
+      "evidencia": "Informação não confirmada no texto consultado; não implica ausência.",
+      "observacoes": "A entrada examinada é de gramáticas/autômatos e cadeias formais, não um editor de programas de uma linguagem-alvo; por isso Entrada é N/A. Simulação de autômato não confirma tokenização de programas. Medidas de aprendizagem presentes não significam ganho causal comprovado."
+    },
+    {
+      "referencia": "Rodger et al. (2009)",
+      "criterio": "Derivação",
+      "classificacao": "✓",
+      "evidencia": "Seção 3.1, p. 406, figura 1: árvore de derivação.",
+      "observacoes": "A entrada examinada é de gramáticas/autômatos e cadeias formais, não um editor de programas de uma linguagem-alvo; por isso Entrada é N/A. Simulação de autômato não confirma tokenização de programas. Medidas de aprendizagem presentes não significam ganho causal comprovado."
+    },
+    {
+      "referencia": "Rodger et al. (2009)",
+      "criterio": "Semânt.",
+      "classificacao": "NI",
+      "evidencia": "Informação não confirmada no texto consultado; não implica ausência.",
+      "observacoes": "A entrada examinada é de gramáticas/autômatos e cadeias formais, não um editor de programas de uma linguagem-alvo; por isso Entrada é N/A. Simulação de autômato não confirma tokenização de programas. Medidas de aprendizagem presentes não significam ganho causal comprovado."
+    },
+    {
+      "referencia": "Rodger et al. (2009)",
+      "criterio": "Símb.",
+      "classificacao": "NI",
+      "evidencia": "Informação não confirmada no texto consultado; não implica ausência.",
+      "observacoes": "A entrada examinada é de gramáticas/autômatos e cadeias formais, não um editor de programas de uma linguagem-alvo; por isso Entrada é N/A. Simulação de autômato não confirma tokenização de programas. Medidas de aprendizagem presentes não significam ganho causal comprovado."
+    },
+    {
+      "referencia": "Rodger et al. (2009)",
+      "criterio": "Geração",
+      "classificacao": "NI",
+      "evidencia": "Informação não confirmada no texto consultado; não implica ausência.",
+      "observacoes": "A entrada examinada é de gramáticas/autômatos e cadeias formais, não um editor de programas de uma linguagem-alvo; por isso Entrada é N/A. Simulação de autômato não confirma tokenização de programas. Medidas de aprendizagem presentes não significam ganho causal comprovado."
+    },
+    {
+      "referencia": "Rodger et al. (2009)",
+      "criterio": "Passos",
+      "classificacao": "✓",
+      "evidencia": "Seção 3.1, p. 406: escolha de regras, avanço e retrocesso.",
+      "observacoes": "A entrada examinada é de gramáticas/autômatos e cadeias formais, não um editor de programas de uma linguagem-alvo; por isso Entrada é N/A. Simulação de autômato não confirma tokenização de programas. Medidas de aprendizagem presentes não significam ganho causal comprovado."
+    },
+    {
+      "referencia": "Rodger et al. (2009)",
+      "criterio": "Diag.",
+      "classificacao": "NI",
+      "evidencia": "Informação não confirmada no texto consultado; não implica ausência.",
+      "observacoes": "A entrada examinada é de gramáticas/autômatos e cadeias formais, não um editor de programas de uma linguagem-alvo; por isso Entrada é N/A. Simulação de autômato não confirma tokenização de programas. Medidas de aprendizagem presentes não significam ganho causal comprovado."
+    },
+    {
+      "referencia": "Rodger et al. (2009)",
+      "criterio": "Explic.",
+      "classificacao": "✓",
+      "evidencia": "Seções 3.5 e 4, p. 406: tutorial didático associado.",
+      "observacoes": "A entrada examinada é de gramáticas/autômatos e cadeias formais, não um editor de programas de uma linguagem-alvo; por isso Entrada é N/A. Simulação de autômato não confirma tokenização de programas. Medidas de aprendizagem presentes não significam ganho causal comprovado."
+    },
+    {
+      "referencia": "Rodger et al. (2009)",
+      "criterio": "Estudantes",
+      "classificacao": "✓",
+      "evidencia": "Seções 2.1–2.3, p. 404–405: estudo com estudantes e docentes de diferentes instituições.",
+      "observacoes": "A entrada examinada é de gramáticas/autômatos e cadeias formais, não um editor de programas de uma linguagem-alvo; por isso Entrada é N/A. Simulação de autômato não confirma tokenização de programas. Medidas de aprendizagem presentes não significam ganho causal comprovado."
+    },
+    {
+      "referencia": "Rodger et al. (2009)",
+      "criterio": "Aprendizagem",
+      "classificacao": "✓",
+      "evidencia": "Seção 2.3, p. 405: pré/pós-testes; diferença entre grupo de controle e grupo JFLAP não significativa.",
+      "observacoes": "A entrada examinada é de gramáticas/autômatos e cadeias formais, não um editor de programas de uma linguagem-alvo; por isso Entrada é N/A. Simulação de autômato não confirma tokenização de programas. Medidas de aprendizagem presentes não significam ganho causal comprovado."
+    },
+    {
+      "referencia": "Moreno et al. (2004)",
+      "criterio": "Web",
+      "classificacao": "NI",
+      "evidencia": "Informação não confirmada no texto consultado; não implica ausência.",
+      "observacoes": "O objeto é visualização de execução Java para iniciantes. Representação intermediária de eventos da animação não é código intermediário de compilação apresentado didaticamente. Uso de navegador na história da família refere-se a Jeliot I, não confirma Web para Jeliot 3."
+    },
+    {
+      "referencia": "Moreno et al. (2004)",
+      "criterio": "Entrada",
+      "classificacao": "✓",
+      "evidencia": "Seção 4.2, p. 375: editor e visualização de código.",
+      "observacoes": "O objeto é visualização de execução Java para iniciantes. Representação intermediária de eventos da animação não é código intermediário de compilação apresentado didaticamente. Uso de navegador na história da família refere-se a Jeliot I, não confirma Web para Jeliot 3."
+    },
+    {
+      "referencia": "Moreno et al. (2004)",
+      "criterio": "Exemplos",
+      "classificacao": "NI",
+      "evidencia": "Informação não confirmada no texto consultado; não implica ausência.",
+      "observacoes": "O objeto é visualização de execução Java para iniciantes. Representação intermediária de eventos da animação não é código intermediário de compilação apresentado didaticamente. Uso de navegador na história da família refere-se a Jeliot I, não confirma Web para Jeliot 3."
+    },
+    {
+      "referencia": "Moreno et al. (2004)",
+      "criterio": "Léxica",
+      "classificacao": "NI",
+      "evidencia": "Informação não confirmada no texto consultado; não implica ausência.",
+      "observacoes": "O objeto é visualização de execução Java para iniciantes. Representação intermediária de eventos da animação não é código intermediário de compilação apresentado didaticamente. Uso de navegador na história da família refere-se a Jeliot I, não confirma Web para Jeliot 3."
+    },
+    {
+      "referencia": "Moreno et al. (2004)",
+      "criterio": "Sintática",
+      "classificacao": "NI",
+      "evidencia": "Informação não confirmada no texto consultado; não implica ausência.",
+      "observacoes": "O objeto é visualização de execução Java para iniciantes. Representação intermediária de eventos da animação não é código intermediário de compilação apresentado didaticamente. Uso de navegador na história da família refere-se a Jeliot I, não confirma Web para Jeliot 3."
+    },
+    {
+      "referencia": "Moreno et al. (2004)",
+      "criterio": "AST",
+      "classificacao": "NI",
+      "evidencia": "Informação não confirmada no texto consultado; não implica ausência.",
+      "observacoes": "O objeto é visualização de execução Java para iniciantes. Representação intermediária de eventos da animação não é código intermediário de compilação apresentado didaticamente. Uso de navegador na história da família refere-se a Jeliot I, não confirma Web para Jeliot 3."
+    },
+    {
+      "referencia": "Moreno et al. (2004)",
+      "criterio": "Derivação",
+      "classificacao": "NI",
+      "evidencia": "Informação não confirmada no texto consultado; não implica ausência.",
+      "observacoes": "O objeto é visualização de execução Java para iniciantes. Representação intermediária de eventos da animação não é código intermediário de compilação apresentado didaticamente. Uso de navegador na história da família refere-se a Jeliot I, não confirma Web para Jeliot 3."
+    },
+    {
+      "referencia": "Moreno et al. (2004)",
+      "criterio": "Semânt.",
+      "classificacao": "NI",
+      "evidencia": "Informação não confirmada no texto consultado; não implica ausência.",
+      "observacoes": "O objeto é visualização de execução Java para iniciantes. Representação intermediária de eventos da animação não é código intermediário de compilação apresentado didaticamente. Uso de navegador na história da família refere-se a Jeliot I, não confirma Web para Jeliot 3."
+    },
+    {
+      "referencia": "Moreno et al. (2004)",
+      "criterio": "Símb.",
+      "classificacao": "NI",
+      "evidencia": "Informação não confirmada no texto consultado; não implica ausência.",
+      "observacoes": "O objeto é visualização de execução Java para iniciantes. Representação intermediária de eventos da animação não é código intermediário de compilação apresentado didaticamente. Uso de navegador na história da família refere-se a Jeliot I, não confirma Web para Jeliot 3."
+    },
+    {
+      "referencia": "Moreno et al. (2004)",
+      "criterio": "Geração",
+      "classificacao": "NI",
+      "evidencia": "Informação não confirmada no texto consultado; não implica ausência.",
+      "observacoes": "O objeto é visualização de execução Java para iniciantes. Representação intermediária de eventos da animação não é código intermediário de compilação apresentado didaticamente. Uso de navegador na história da família refere-se a Jeliot I, não confirma Web para Jeliot 3."
+    },
+    {
+      "referencia": "Moreno et al. (2004)",
+      "criterio": "Passos",
+      "classificacao": "✓",
+      "evidencia": "Seção 4.4, p. 376: executar, pausar, retornar e passo a passo da execução.",
+      "observacoes": "O objeto é visualização de execução Java para iniciantes. Representação intermediária de eventos da animação não é código intermediário de compilação apresentado didaticamente. Uso de navegador na história da família refere-se a Jeliot I, não confirma Web para Jeliot 3."
+    },
+    {
+      "referencia": "Moreno et al. (2004)",
+      "criterio": "Diag.",
+      "classificacao": "✓",
+      "evidencia": "Seção 4.2, p. 375: erro e região do código associada.",
+      "observacoes": "O objeto é visualização de execução Java para iniciantes. Representação intermediária de eventos da animação não é código intermediário de compilação apresentado didaticamente. Uso de navegador na história da família refere-se a Jeliot I, não confirma Web para Jeliot 3."
+    },
+    {
+      "referencia": "Moreno et al. (2004)",
+      "criterio": "Explic.",
+      "classificacao": "✓",
+      "evidencia": "Seção 4.3, p. 375: explicações junto às expressões.",
+      "observacoes": "O objeto é visualização de execução Java para iniciantes. Representação intermediária de eventos da animação não é código intermediário de compilação apresentado didaticamente. Uso de navegador na história da família refere-se a Jeliot I, não confirma Web para Jeliot 3."
+    },
+    {
+      "referencia": "Moreno et al. (2004)",
+      "criterio": "Estudantes",
+      "classificacao": "✗",
+      "evidencia": "Seção 5, p. 376: primeira avaliação de Jeliot 3 descrita como futura; não atribuir estudos de versões anteriores à versão 3.",
+      "observacoes": "O objeto é visualização de execução Java para iniciantes. Representação intermediária de eventos da animação não é código intermediário de compilação apresentado didaticamente. Uso de navegador na história da família refere-se a Jeliot I, não confirma Web para Jeliot 3."
+    },
+    {
+      "referencia": "Moreno et al. (2004)",
+      "criterio": "Aprendizagem",
+      "classificacao": "✗",
+      "evidencia": "Seção 5, p. 376: resultados da primeira avaliação de Jeliot 3 ainda não apresentados.",
+      "observacoes": "O objeto é visualização de execução Java para iniciantes. Representação intermediária de eventos da animação não é código intermediário de compilação apresentado didaticamente. Uso de navegador na história da família refere-se a Jeliot I, não confirma Web para Jeliot 3."
+    },
+    {
+      "referencia": "Schneider et al. (2005)",
+      "criterio": "Web",
+      "classificacao": "NI",
+      "evidencia": "Informação não confirmada no texto consultado; não implica ausência.",
+      "observacoes": "Foco nas fases de síntese. Registros sequenciais de regras não confirmam controles interativos de passo a passo. Uso em disciplinas é relatado na p. 9, sem protocolo de avaliação/medidas de aprendizagem. O PDF assina Schneider; o portal e Crossref registram Scheider."
+    },
+    {
+      "referencia": "Schneider et al. (2005)",
+      "criterio": "Entrada",
+      "classificacao": "✓",
+      "evidencia": "p. 4, figura 2: janela de edição de texto-fonte.",
+      "observacoes": "Foco nas fases de síntese. Registros sequenciais de regras não confirmam controles interativos de passo a passo. Uso em disciplinas é relatado na p. 9, sem protocolo de avaliação/medidas de aprendizagem. O PDF assina Schneider; o portal e Crossref registram Scheider."
+    },
+    {
+      "referencia": "Schneider et al. (2005)",
+      "criterio": "Exemplos",
+      "classificacao": "NI",
+      "evidencia": "Informação não confirmada no texto consultado; não implica ausência.",
+      "observacoes": "Foco nas fases de síntese. Registros sequenciais de regras não confirmam controles interativos de passo a passo. Uso em disciplinas é relatado na p. 9, sem protocolo de avaliação/medidas de aprendizagem. O PDF assina Schneider; o portal e Crossref registram Scheider."
+    },
+    {
+      "referencia": "Schneider et al. (2005)",
+      "criterio": "Léxica",
+      "classificacao": "✓",
+      "evidencia": "p. 6: apresentação dos tokens e lexemas.",
+      "observacoes": "Foco nas fases de síntese. Registros sequenciais de regras não confirmam controles interativos de passo a passo. Uso em disciplinas é relatado na p. 9, sem protocolo de avaliação/medidas de aprendizagem. O PDF assina Schneider; o portal e Crossref registram Scheider."
+    },
+    {
+      "referencia": "Schneider et al. (2005)",
+      "criterio": "Sintática",
+      "classificacao": "✓",
+      "evidencia": "p. 3 e 6: análise descendente recursiva e registro de regras reconhecidas.",
+      "observacoes": "Foco nas fases de síntese. Registros sequenciais de regras não confirmam controles interativos de passo a passo. Uso em disciplinas é relatado na p. 9, sem protocolo de avaliação/medidas de aprendizagem. O PDF assina Schneider; o portal e Crossref registram Scheider."
+    },
+    {
+      "referencia": "Schneider et al. (2005)",
+      "criterio": "AST",
+      "classificacao": "NI",
+      "evidencia": "Informação não confirmada no texto consultado; não implica ausência.",
+      "observacoes": "Foco nas fases de síntese. Registros sequenciais de regras não confirmam controles interativos de passo a passo. Uso em disciplinas é relatado na p. 9, sem protocolo de avaliação/medidas de aprendizagem. O PDF assina Schneider; o portal e Crossref registram Scheider."
+    },
+    {
+      "referencia": "Schneider et al. (2005)",
+      "criterio": "Derivação",
+      "classificacao": "NI",
+      "evidencia": "Informação não confirmada no texto consultado; não implica ausência.",
+      "observacoes": "Foco nas fases de síntese. Registros sequenciais de regras não confirmam controles interativos de passo a passo. Uso em disciplinas é relatado na p. 9, sem protocolo de avaliação/medidas de aprendizagem. O PDF assina Schneider; o portal e Crossref registram Scheider."
+    },
+    {
+      "referencia": "Schneider et al. (2005)",
+      "criterio": "Semânt.",
+      "classificacao": "✓",
+      "evidencia": "p. 7: ações e pilha semântica; p. 9: tratamento de tipos.",
+      "observacoes": "Foco nas fases de síntese. Registros sequenciais de regras não confirmam controles interativos de passo a passo. Uso em disciplinas é relatado na p. 9, sem protocolo de avaliação/medidas de aprendizagem. O PDF assina Schneider; o portal e Crossref registram Scheider."
+    },
+    {
+      "referencia": "Schneider et al. (2005)",
+      "criterio": "Símb.",
+      "classificacao": "✓",
+      "evidencia": "p. 6: aba com identificadores, tipos, endereços e escopo.",
+      "observacoes": "Foco nas fases de síntese. Registros sequenciais de regras não confirmam controles interativos de passo a passo. Uso em disciplinas é relatado na p. 9, sem protocolo de avaliação/medidas de aprendizagem. O PDF assina Schneider; o portal e Crossref registram Scheider."
+    },
+    {
+      "referencia": "Schneider et al. (2005)",
+      "criterio": "Geração",
+      "classificacao": "✓",
+      "evidencia": "p. 3–4: macro-assembler e código para máquina César.",
+      "observacoes": "Foco nas fases de síntese. Registros sequenciais de regras não confirmam controles interativos de passo a passo. Uso em disciplinas é relatado na p. 9, sem protocolo de avaliação/medidas de aprendizagem. O PDF assina Schneider; o portal e Crossref registram Scheider."
+    },
+    {
+      "referencia": "Schneider et al. (2005)",
+      "criterio": "Passos",
+      "classificacao": "NI",
+      "evidencia": "Informação não confirmada no texto consultado; não implica ausência.",
+      "observacoes": "Foco nas fases de síntese. Registros sequenciais de regras não confirmam controles interativos de passo a passo. Uso em disciplinas é relatado na p. 9, sem protocolo de avaliação/medidas de aprendizagem. O PDF assina Schneider; o portal e Crossref registram Scheider."
+    },
+    {
+      "referencia": "Schneider et al. (2005)",
+      "criterio": "Diag.",
+      "classificacao": "NI",
+      "evidencia": "Informação não confirmada no texto consultado; não implica ausência.",
+      "observacoes": "Foco nas fases de síntese. Registros sequenciais de regras não confirmam controles interativos de passo a passo. Uso em disciplinas é relatado na p. 9, sem protocolo de avaliação/medidas de aprendizagem. O PDF assina Schneider; o portal e Crossref registram Scheider."
+    },
+    {
+      "referencia": "Schneider et al. (2005)",
+      "criterio": "Explic.",
+      "classificacao": "✓",
+      "evidencia": "p. 4: linhas de código intermediário comentadas; p. 5: ajuda sobre sintaxe e rotinas.",
+      "observacoes": "Foco nas fases de síntese. Registros sequenciais de regras não confirmam controles interativos de passo a passo. Uso em disciplinas é relatado na p. 9, sem protocolo de avaliação/medidas de aprendizagem. O PDF assina Schneider; o portal e Crossref registram Scheider."
+    },
+    {
+      "referencia": "Schneider et al. (2005)",
+      "criterio": "Estudantes",
+      "classificacao": "NI",
+      "evidencia": "Informação não confirmada no texto consultado; não implica ausência.",
+      "observacoes": "Foco nas fases de síntese. Registros sequenciais de regras não confirmam controles interativos de passo a passo. Uso em disciplinas é relatado na p. 9, sem protocolo de avaliação/medidas de aprendizagem. O PDF assina Schneider; o portal e Crossref registram Scheider."
+    },
+    {
+      "referencia": "Schneider et al. (2005)",
+      "criterio": "Aprendizagem",
+      "classificacao": "NI",
+      "evidencia": "Informação não confirmada no texto consultado; não implica ausência.",
+      "observacoes": "Foco nas fases de síntese. Registros sequenciais de regras não confirmam controles interativos de passo a passo. Uso em disciplinas é relatado na p. 9, sem protocolo de avaliação/medidas de aprendizagem. O PDF assina Schneider; o portal e Crossref registram Scheider."
+    },
+    {
+      "referencia": "Jabri (2013)",
+      "criterio": "Web",
+      "classificacao": "NI",
+      "evidencia": "Informação não confirmada no texto consultado; não implica ausência.",
+      "observacoes": "Ferramenta genérica de gramáticas e autômatos; Entrada de programa-alvo é N/A nesse recorte. O autor reporta +30% na conclusão de trabalhos, sem denominadores detalhados; trata-se de indicador acadêmico indireto, não de teste de conhecimento. Descreve esquemas de tradução, mas a validação enfatiza parsing e deixa novos experimentos de geração de código para o futuro; não se marca geração completa como confirmada."
+    },
+    {
+      "referencia": "Jabri (2013)",
+      "criterio": "Entrada",
+      "classificacao": "N/A",
+      "evidencia": "Critério não aplicável ao objeto do estudo.",
+      "observacoes": "Ferramenta genérica de gramáticas e autômatos; Entrada de programa-alvo é N/A nesse recorte. O autor reporta +30% na conclusão de trabalhos, sem denominadores detalhados; trata-se de indicador acadêmico indireto, não de teste de conhecimento. Descreve esquemas de tradução, mas a validação enfatiza parsing e deixa novos experimentos de geração de código para o futuro; não se marca geração completa como confirmada."
+    },
+    {
+      "referencia": "Jabri (2013)",
+      "criterio": "Exemplos",
+      "classificacao": "NI",
+      "evidencia": "Informação não confirmada no texto consultado; não implica ausência.",
+      "observacoes": "Ferramenta genérica de gramáticas e autômatos; Entrada de programa-alvo é N/A nesse recorte. O autor reporta +30% na conclusão de trabalhos, sem denominadores detalhados; trata-se de indicador acadêmico indireto, não de teste de conhecimento. Descreve esquemas de tradução, mas a validação enfatiza parsing e deixa novos experimentos de geração de código para o futuro; não se marca geração completa como confirmada."
+    },
+    {
+      "referencia": "Jabri (2013)",
+      "criterio": "Léxica",
+      "classificacao": "✓",
+      "evidencia": "Seção 3.2, p. 142, exemplo 6 e tabela 2, p. 144: simulação que produz tokens.",
+      "observacoes": "Ferramenta genérica de gramáticas e autômatos; Entrada de programa-alvo é N/A nesse recorte. O autor reporta +30% na conclusão de trabalhos, sem denominadores detalhados; trata-se de indicador acadêmico indireto, não de teste de conhecimento. Descreve esquemas de tradução, mas a validação enfatiza parsing e deixa novos experimentos de geração de código para o futuro; não se marca geração completa como confirmada."
+    },
+    {
+      "referencia": "Jabri (2013)",
+      "criterio": "Sintática",
+      "classificacao": "✓",
+      "evidencia": "Seção 4, p. 146–147: implementação e experimento de construção de parser.",
+      "observacoes": "Ferramenta genérica de gramáticas e autômatos; Entrada de programa-alvo é N/A nesse recorte. O autor reporta +30% na conclusão de trabalhos, sem denominadores detalhados; trata-se de indicador acadêmico indireto, não de teste de conhecimento. Descreve esquemas de tradução, mas a validação enfatiza parsing e deixa novos experimentos de geração de código para o futuro; não se marca geração completa como confirmada."
+    },
+    {
+      "referencia": "Jabri (2013)",
+      "criterio": "AST",
+      "classificacao": "NI",
+      "evidencia": "Informação não confirmada no texto consultado; não implica ausência.",
+      "observacoes": "Ferramenta genérica de gramáticas e autômatos; Entrada de programa-alvo é N/A nesse recorte. O autor reporta +30% na conclusão de trabalhos, sem denominadores detalhados; trata-se de indicador acadêmico indireto, não de teste de conhecimento. Descreve esquemas de tradução, mas a validação enfatiza parsing e deixa novos experimentos de geração de código para o futuro; não se marca geração completa como confirmada."
+    },
+    {
+      "referencia": "Jabri (2013)",
+      "criterio": "Derivação",
+      "classificacao": "NI",
+      "evidencia": "Informação não confirmada no texto consultado; não implica ausência.",
+      "observacoes": "Ferramenta genérica de gramáticas e autômatos; Entrada de programa-alvo é N/A nesse recorte. O autor reporta +30% na conclusão de trabalhos, sem denominadores detalhados; trata-se de indicador acadêmico indireto, não de teste de conhecimento. Descreve esquemas de tradução, mas a validação enfatiza parsing e deixa novos experimentos de geração de código para o futuro; não se marca geração completa como confirmada."
+    },
+    {
+      "referencia": "Jabri (2013)",
+      "criterio": "Semânt.",
+      "classificacao": "NI",
+      "evidencia": "Informação não confirmada no texto consultado; não implica ausência.",
+      "observacoes": "Ferramenta genérica de gramáticas e autômatos; Entrada de programa-alvo é N/A nesse recorte. O autor reporta +30% na conclusão de trabalhos, sem denominadores detalhados; trata-se de indicador acadêmico indireto, não de teste de conhecimento. Descreve esquemas de tradução, mas a validação enfatiza parsing e deixa novos experimentos de geração de código para o futuro; não se marca geração completa como confirmada."
+    },
+    {
+      "referencia": "Jabri (2013)",
+      "criterio": "Símb.",
+      "classificacao": "NI",
+      "evidencia": "Informação não confirmada no texto consultado; não implica ausência.",
+      "observacoes": "Ferramenta genérica de gramáticas e autômatos; Entrada de programa-alvo é N/A nesse recorte. O autor reporta +30% na conclusão de trabalhos, sem denominadores detalhados; trata-se de indicador acadêmico indireto, não de teste de conhecimento. Descreve esquemas de tradução, mas a validação enfatiza parsing e deixa novos experimentos de geração de código para o futuro; não se marca geração completa como confirmada."
+    },
+    {
+      "referencia": "Jabri (2013)",
+      "criterio": "Geração",
+      "classificacao": "NI",
+      "evidencia": "Informação não confirmada no texto consultado; não implica ausência.",
+      "observacoes": "Ferramenta genérica de gramáticas e autômatos; Entrada de programa-alvo é N/A nesse recorte. O autor reporta +30% na conclusão de trabalhos, sem denominadores detalhados; trata-se de indicador acadêmico indireto, não de teste de conhecimento. Descreve esquemas de tradução, mas a validação enfatiza parsing e deixa novos experimentos de geração de código para o futuro; não se marca geração completa como confirmada."
+    },
+    {
+      "referencia": "Jabri (2013)",
+      "criterio": "Passos",
+      "classificacao": "NI",
+      "evidencia": "Informação não confirmada no texto consultado; não implica ausência.",
+      "observacoes": "Ferramenta genérica de gramáticas e autômatos; Entrada de programa-alvo é N/A nesse recorte. O autor reporta +30% na conclusão de trabalhos, sem denominadores detalhados; trata-se de indicador acadêmico indireto, não de teste de conhecimento. Descreve esquemas de tradução, mas a validação enfatiza parsing e deixa novos experimentos de geração de código para o futuro; não se marca geração completa como confirmada."
+    },
+    {
+      "referencia": "Jabri (2013)",
+      "criterio": "Diag.",
+      "classificacao": "✓",
+      "evidencia": "Algoritmo 3, p. 144: sinalização Error quando não há transição; não confirma diagnóstico localizado ou didático.",
+      "observacoes": "Ferramenta genérica de gramáticas e autômatos; Entrada de programa-alvo é N/A nesse recorte. O autor reporta +30% na conclusão de trabalhos, sem denominadores detalhados; trata-se de indicador acadêmico indireto, não de teste de conhecimento. Descreve esquemas de tradução, mas a validação enfatiza parsing e deixa novos experimentos de geração de código para o futuro; não se marca geração completa como confirmada."
+    },
+    {
+      "referencia": "Jabri (2013)",
+      "criterio": "Explic.",
+      "classificacao": "NI",
+      "evidencia": "Informação não confirmada no texto consultado; não implica ausência.",
+      "observacoes": "Ferramenta genérica de gramáticas e autômatos; Entrada de programa-alvo é N/A nesse recorte. O autor reporta +30% na conclusão de trabalhos, sem denominadores detalhados; trata-se de indicador acadêmico indireto, não de teste de conhecimento. Descreve esquemas de tradução, mas a validação enfatiza parsing e deixa novos experimentos de geração de código para o futuro; não se marca geração completa como confirmada."
+    },
+    {
+      "referencia": "Jabri (2013)",
+      "criterio": "Estudantes",
+      "classificacao": "✓",
+      "evidencia": "Seção 4, p. 146: uso por estudantes de três turmas ao longo de três semestres.",
+      "observacoes": "Ferramenta genérica de gramáticas e autômatos; Entrada de programa-alvo é N/A nesse recorte. O autor reporta +30% na conclusão de trabalhos, sem denominadores detalhados; trata-se de indicador acadêmico indireto, não de teste de conhecimento. Descreve esquemas de tradução, mas a validação enfatiza parsing e deixa novos experimentos de geração de código para o futuro; não se marca geração completa como confirmada."
+    },
+    {
+      "referencia": "Jabri (2013)",
+      "criterio": "Aprendizagem",
+      "classificacao": "✓",
+      "evidencia": "Seção 4, p. 146: aumento reportado de 30% na conclusão de trabalhos; indicador acadêmico indireto, sem medida de conhecimento ou denominadores detalhados.",
+      "observacoes": "Ferramenta genérica de gramáticas e autômatos; Entrada de programa-alvo é N/A nesse recorte. O autor reporta +30% na conclusão de trabalhos, sem denominadores detalhados; trata-se de indicador acadêmico indireto, não de teste de conhecimento. Descreve esquemas de tradução, mas a validação enfatiza parsing e deixa novos experimentos de geração de código para o futuro; não se marca geração completa como confirmada."
+    },
+    {
+      "referencia": "Este trabalho — Mini-C (estado implementado)",
+      "criterio": "Web",
+      "classificacao": "✓",
+      "evidencia": "frontend/index.html:1–16; frontend/nginx.conf; docker-compose.yml: frontend/backend. Interface HTML/CSS/JavaScript executada em navegador.",
+      "observacoes": "Confirma uso web; não implica implantação pública ou serviço colaborativo multiusuário."
+    },
+    {
+      "referencia": "Este trabalho — Mini-C (estado implementado)",
+      "criterio": "Entrada",
+      "classificacao": "✓",
+      "evidencia": "frontend/index.html:31–35; frontend/app.js: envio do conteúdo do editor a /api/analisar.",
+      "observacoes": "Editor de programa-fonte Mini-C."
+    },
+    {
+      "referencia": "Este trabalho — Mini-C (estado implementado)",
+      "criterio": "Exemplos",
+      "classificacao": "✓",
+      "evidencia": "frontend/index.html:23–30: oito opções com data-codigo, incluindo programas válidos e erros intencionais.",
+      "observacoes": "Exemplos integram a interface e podem ser editados; não são apenas listagens impressas no artigo."
+    },
+    {
+      "referencia": "Este trabalho — Mini-C (estado implementado)",
+      "criterio": "Léxica",
+      "classificacao": "✓",
+      "evidencia": "backend/app/scanner.py; backend/app/main.py:47; backend/tests/test_scanner.py.",
+      "observacoes": "Scanner original da Etapa 3, tokens e diagnósticos com posições."
+    },
+    {
+      "referencia": "Este trabalho — Mini-C (estado implementado)",
+      "criterio": "Sintática",
+      "classificacao": "✓",
+      "evidencia": "backend/app/parser.py; backend/app/main.py:48; backend/tests/test_parser.py e test_api_sintatica.py.",
+      "observacoes": "Descida recursiva manual, EBNF explícita, precedência e recuperação em ; ou }."
+    },
+    {
+      "referencia": "Este trabalho — Mini-C (estado implementado)",
+      "criterio": "AST",
+      "classificacao": "✓",
+      "evidencia": "backend/app/parser.py:23–28 e construção dos nós; docs/ast.md:5–61; frontend/app.js:154–232.",
+      "observacoes": "AST simplificada com nove tipos de nó, posições, seleção, destaque no fonte e exportação JSON."
+    },
+    {
+      "referencia": "Este trabalho — Mini-C (estado implementado)",
+      "criterio": "Derivação",
+      "classificacao": "✗",
+      "evidencia": "docs/ast.md:3,71; docs/gramatica.md:81; frontend/app.js:179.",
+      "observacoes": "A interface não exibe árvore de derivação. A AST não é reclassificada como derivação para preencher a coluna."
+    },
+    {
+      "referencia": "Este trabalho — Mini-C (estado implementado)",
+      "criterio": "Semânt.",
+      "classificacao": "✗",
+      "evidencia": "backend/app/parser.py:4; docs/gramatica.md:99–101; frontend/index.html:53.",
+      "observacoes": "Análise semântica permanece futura para Trabalho 5; protocolo teórico não comprova implementação."
+    },
+    {
+      "referencia": "Este trabalho — Mini-C (estado implementado)",
+      "criterio": "Símb.",
+      "classificacao": "✗",
+      "evidencia": "README.md: última seção; docs/registro-de-testes.md: limitações; contrato docs/contrato-api.md e resposta backend/app/main.py:51–58.",
+      "observacoes": "Sem tabela de símbolos ou verificações de declaração/tipos na versão examinada."
+    },
+    {
+      "referencia": "Este trabalho — Mini-C (estado implementado)",
+      "criterio": "Geração",
+      "classificacao": "✗",
+      "evidencia": "README.md: limitações; backend/app/parser.py:4; docs/registro-de-testes.md: limitações.",
+      "observacoes": "Nenhuma execução do programa, código intermediário didático ou código-alvo é produzido."
+    },
+    {
+      "referencia": "Este trabalho — Mini-C (estado implementado)",
+      "criterio": "Passos",
+      "classificacao": "✗",
+      "evidencia": "docs/ast.md:71; frontend/index.html:44; frontend/app.js:179.",
+      "observacoes": "Há navegação sobre tokens e AST prontos. O critério herdado exige acompanhamento controlado/animado das transformações do algoritmo; não foi implementado."
+    },
+    {
+      "referencia": "Este trabalho — Mini-C (estado implementado)",
+      "criterio": "Diag.",
+      "classificacao": "✓",
+      "evidencia": "backend/app/parser.py:61–69; backend/app/scanner.py; backend/app/main.py:47–50; frontend/app.js:161–176.",
+      "observacoes": "Diagnósticos separados por fase; linha/coluna, esperado/encontrado; não executar parser após erro léxico; AST nula em erro."
+    },
+    {
+      "referencia": "Este trabalho — Mini-C (estado implementado)",
+      "criterio": "Explic.",
+      "classificacao": "✓",
+      "evidencia": "frontend/index.html:38–55: guia inicial; frontend/app.js:17–26 e visualização de regras; docs/gramatica.md e docs/ast.md.",
+      "observacoes": "Guia e explicações por tipo de construção já presentes; não se trata de rastro completo de derivação."
+    },
+    {
+      "referencia": "Este trabalho — Mini-C (estado implementado)",
+      "criterio": "Estudantes",
+      "classificacao": "✗",
+      "evidencia": "docs/trabalho4/README.md: seção Relação com Materiais e Métodos; docs/registro-de-testes.md: limitações.",
+      "observacoes": "Nenhuma aplicação formal com colegas e respostas reais foi localizada na base auditada. Testes automatizados e apresentação ao professor não constituem estudo com participantes."
+    },
+    {
+      "referencia": "Este trabalho — Mini-C (estado implementado)",
+      "criterio": "Aprendizagem",
+      "classificacao": "✗",
+      "evidencia": "docs/registro-de-testes.md: limitações; docs/trabalho4/README.md: Relação com Materiais e Métodos.",
+      "observacoes": "Sem pré/pós-teste, medida de conhecimento ou avaliação humana concluída. Não converter aprovação de testes em ganho de aprendizagem."
+    }
+  ]
+}

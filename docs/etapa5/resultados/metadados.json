@@ -1,0 +1,32 @@
+{
+  "inicio": "2026-11-26T20:13:54.268602-03:00",
+  "commit": "7fcb5ca26e314e4374f2a48a04e7f28dbaffa946",
+  "arquivos_sha256": {
+    "backend/app/main.py": "47a89e538e184ce7ed1933a7aa2fbdfd2ae17ea964da220464b7b5d0df4f811f",
+    "backend/app/parser.py": "062df488a1f94ec59dbcb3ecb6efb38b5cec171c899cf1a9f7c2571986f7a91a",
+    "backend/app/scanner.py": "24886524d0d653ad03249dec564a061908c0e9f095ccad6f24147ad0bac3b23f",
+    "frontend/app.js": "a3f71e8772fae7c7e209c66c7f0f7357fec6f97793ebdac4245f74809ff1a8d5"
+  },
+  "escopo": "Revalidação técnica da Etapa 4 para Tarefa 5. Nenhuma avaliação humana foi executada.",
+  "fim": "2026-11-26T20:18:08.417994-03:00",
+  "docker_versao_observada": "28.4.0",
+  "imagens_verificadas_por_sha256": true,
+  "imagens_reconstruidas_nesta_rodada": false,
+  "observacao_build": "Imagens locais existentes usadas após confronto de SHA-256 de main.py, parser.py, scanner.py e frontend/app.js com o checkout. Smoke executou docker compose up --build, reutilizando camadas; nenhuma alteração de código.",
+  "resultados": {
+    "backend_aprovados": 229,
+    "backend_reprovados": 0,
+    "interface_aprovados": 41,
+    "interface_reprovados": 0,
+    "e2e_cenarios_aprovados": 60,
+    "e2e_cenarios_reprovados": 0,
+    "integracao": "aprovado",
+    "casos_planejados_aplicaveis": 33,
+    "casos_planejados_executados": 33,
+    "casos_planejados_aprovados": 33,
+    "casos_semanticos_executados": 0,
+    "casos_semanticos_pendentes": 3,
+    "participantes_humanos": 0,
+    "avaliacao_por_pares": "ainda não aplicada"
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "consulted": "2026-11-26",
+  "references": [
+    {
+      "id": "R10",
+      "short": "Pontes et al. (2019)",
+      "title": "Avaliação de Ferramentas para Ensino de Programação para Crianças e Adolescentes",
+      "authors": [
+        "Renata F. Pontes",
+        "Jaindson V. Santana",
+        "Mirko B. Perkusich",
+        "Anderson F. Barbosa",
+        "Vitor H. Gomes",
+        "Moisés Simões",
+        "Carlos A. S. Camelo"
+      ],
+      "year": 2019,
+      "event": "XXV Workshop de Informática na Escola (WIE)",
+      "pages": "744–752",
+      "publisher": "Sociedade Brasileira de Computação",
+      "doi": "10.5753/cbie.wie.2019.744",
+      "landing": "https://sol.sbc.org.br/index.php/wie/article/view/13223",
+      "pdf_url": "https://sol.sbc.org.br/index.php/wie/article/download/13223/13076",
+      "pdf": "avaliacao_ferramentas_wie2019.pdf",
+      "pdf_pages": 9,
+      "sample_reported": "50 alunos do 8º e 9º anos, duas turmas de 25",
+      "method_reported": "Estudo de caso comparativo Scratch/Stencyl; quatro medições com questões selecionadas do Bebras; instruções padronizadas e discussão de validade",
+      "transfer_to_minic": "Planejamento objetivo–tarefas–gabarito–análise; questões objetivas específicas de AST/erros; preservar distinção entre acerto, percepção e aprendizagem",
+      "license_verified": false,
+      "license_note": "Download oficial público; landing/políticas/Crossref consultados não explicitam licença deste item. Não presumir CC BY."
+    },
+    {
+      "id": "R11",
+      "short": "Veras et al. (2020)",
+      "title": "Desenvolvimento e Avaliação da Usabilidade em Aplicativo Desktop para o Ensino da Programação Orientada a Objetos",
+      "authors": [
+        "Williany Thalita A. Veras",
+        "José Elvis S. S. Nogueira",
+        "João Emerson N. Silva",
+        "Richarlyson A. D’Emery"
+      ],
+      "year": 2020,
+      "event": "V Congresso sobre Tecnologias na Educação (Ctrl+e)",
+      "pages": "178–187",
+      "publisher": "Sociedade Brasileira de Computação",
+      "doi": "10.5753/ctrle.2020.11395",
+      "landing": "https://sol.sbc.org.br/index.php/ctrle/article/view/11395",
+      "pdf_url": "https://sol.sbc.org.br/index.php/ctrle/article/download/11395/11323",
+      "pdf": "avaliacao_desktop_ctrl2020.pdf",
+      "pdf_pages": 10,
+      "sample_reported": "20 alunos de Bacharelado em Sistemas de Informação, UAST/UFRPE",
+      "method_reported": "Questionário de perfil, itens Likert de design/pedagogia, SUS e comentários; revisões da interface; SUS médio reportado 78,25",
+      "transfer_to_minic": "Separar interação de utilidade didática percebida; acrescentar itens específicos e abertos; não transferir itens de jogo, SUS incompleto ou inferência causal de aprendizagem",
+      "license_verified": false,
+      "license_note": "Download oficial público; landing/políticas/Crossref consultados não explicitam licença deste item. Não presumir CC BY."
+    }
+  ]
+}

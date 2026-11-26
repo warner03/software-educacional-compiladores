@@ -1,0 +1,4 @@
+﻿id,codigo,resultado_esperado,controle_sintatico_observado,avaliacao_semantica
+M01,x = 1;,Na Etapa 4: estrutura válida; sem checagem de declaração. Na Etapa 5: avaliar identificador não declarado.,sucesso,pendente; não implementada
+M02,int x; int x;,Na Etapa 4: estrutura válida. Redeclaração só será verificada se prevista na Etapa 5.,sucesso,pendente; não implementada
+M03,int x; x = 2.5;,Na Etapa 4: estrutura válida. Política de compatibilidade/conversão deverá ser definida na Etapa 5.,sucesso,pendente; não implementada

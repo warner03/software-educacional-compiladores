@@ -2,6 +2,8 @@
 
 Software web educacional para estudar as fases de um compilador. **Trabalho 4: análise sintática e AST implementadas**, integradas ao scanner, à API e à interface das etapas anteriores.
 
+**Tarefa 5 teórica:** [estratégia de implementação e avaliação](docs/etapa5/README.md), com o próprio projeto na matriz, duas novas fontes metodológicas, testes funcionais reexecutados e instrumento por pares. A coleta com colegas ainda será aplicada; resultados humanos permanecem pendentes. O Trabalho 5 prático ainda aguarda suas instruções, e a aplicação continua no escopo da Etapa 4.
+
 ## O que funciona
 
 - Editor e oito exemplos, incluindo precedência e erros propositais.

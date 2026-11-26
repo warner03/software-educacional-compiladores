@@ -1,0 +1,18 @@
+{
+  "origem": "Respostas fornecidas; origem humana não verificada pelo programa",
+  "estado": "sem_respostas",
+  "n_linhas_lidas": 0,
+  "n_respostas_elegiveis": 0,
+  "n_excluidas_consentimento_ou_elegibilidade": 0,
+  "estatisticas_por_modo": null,
+  "avisos": [
+    "Análise descritiva: não estima ganho de aprendizagem ou efeito causal.",
+    "Não há escore global, SUS ou soma dos itens Likert.",
+    "Modalidade individual é separada da atividade em duplas.",
+    "L05 somente é aplicável a Em dupla; modo ausente/inválido fica em estrato separado, sem estatística desse item.",
+    "A unidade do formulário é a resposta individual; não é número de duplas nem de observações independentes.",
+    "N/A, ausências e valores inválidos ficam fora dos denominadores indicados.",
+    "Texto livre, identificadores e data/hora não são expostos nesta saída.",
+    "Revisar risco de identificação antes de publicar estratos pequenos."
+  ]
+}

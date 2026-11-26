@@ -1,0 +1,219 @@
+
+> test
+> node --test tests/*.test.js
+
+TAP version 13
+# Subtest: tela tem os elementos obrigatórios
+ok 1 - tela tem os elementos obrigatórios
+  ---
+  duration_ms: 115.119968
+  ...
+# Subtest: há ao menos três exemplos e todos têm código
+ok 2 - há ao menos três exemplos e todos têm código
+  ---
+  duration_ms: 45.314292
+  ...
+# Subtest: cada exemplo é carregado no campo de código
+ok 3 - cada exemplo é carregado no campo de código
+  ---
+  duration_ms: 56.661768
+  ...
+# Subtest: novo exemplo substitui o anterior e o código continua editável
+ok 4 - novo exemplo substitui o anterior e o código continua editável
+  ---
+  duration_ms: 18.318886
+  ...
+# Subtest: entrada vazia mostra mensagem e não chama o backend
+ok 5 - entrada vazia mostra mensagem e não chama o backend
+  ---
+  duration_ms: 35.223834
+  ...
+# Subtest: entrada só com espaços mostra mensagem e não chama o backend
+ok 6 - entrada só com espaços mostra mensagem e não chama o backend
+  ---
+  duration_ms: 42.734901
+  ...
+# Subtest: envio válido exibe a resposta do backend e preserva o código
+ok 7 - envio válido exibe a resposta do backend e preserva o código
+  ---
+  duration_ms: 32.880427
+  ...
+# Subtest: erro de validação do backend é mostrado ao usuário
+ok 8 - erro de validação do backend é mostrado ao usuário
+  ---
+  duration_ms: 22.978758
+  ...
+# Subtest: falha de comunicação mostra mensagem e mantém a interface consistente
+ok 9 - falha de comunicação mostra mensagem e mantém a interface consistente
+  ---
+  duration_ms: 27.197383
+  ...
+# Subtest: o texto da resposta nunca é interpretado como HTML
+ok 10 - o texto da resposta nunca é interpretado como HTML
+  ---
+  duration_ms: 32.87291
+  ...
+# Subtest: exibe tipos, lexemas, posições e contagem por categoria
+ok 11 - exibe tipos, lexemas, posições e contagem por categoria
+  ---
+  duration_ms: 48.725447
+  ...
+# Subtest: navegação destaca o lexema e respeita os limites da sequência
+ok 12 - navegação destaca o lexema e respeita os limites da sequência
+  ---
+  duration_ms: 40.057838
+  ...
+# Subtest: mostra erros localizados e também os tokens recuperados
+ok 13 - mostra erros localizados e também os tokens recuperados
+  ---
+  duration_ms: 56.219885
+  ...
+# Subtest: lexemas e mensagens maliciosos são exibidos como texto
+ok 14 - lexemas e mensagens maliciosos são exibidos como texto
+  ---
+  duration_ms: 30.47926
+  ...
+# Subtest: apenas comentários e apenas erros não quebram a apresentação vazia
+ok 15 - apenas comentários e apenas erros não quebram a apresentação vazia
+  ---
+  duration_ms: 59.998991
+  ...
+# Subtest: destaque usa caracteres Unicode e linhas, não bytes ou unidades UTF-16
+ok 16 - destaque usa caracteres Unicode e linhas, não bytes ou unidades UTF-16
+  ---
+  duration_ms: 38.279131
+  ...
+# Subtest: alteração de código invalida resultados e respostas de solicitações anteriores
+ok 17 - alteração de código invalida resultados e respostas de solicitações anteriores
+  ---
+  duration_ms: 23.089001
+  ...
+# Subtest: trocar exemplo durante envio descarta a resposta antiga
+ok 18 - trocar exemplo durante envio descarta a resposta antiga
+  ---
+  duration_ms: 26.605582
+  ...
+# Subtest: resposta malformada não cria uma tabela incorreta
+ok 19 - resposta malformada não cria uma tabela incorreta
+  ---
+  duration_ms: 20.62982
+  ...
+# Subtest: validação local: vazio, só espaços e código válido
+ok 20 - validação local: vazio, só espaços e código válido
+  ---
+  duration_ms: 12.370661
+  ...
+# Subtest: envio com sucesso usa POST /api/analisar com o JSON esperado
+ok 21 - envio com sucesso usa POST /api/analisar com o JSON esperado
+  ---
+  duration_ms: 10.992004
+  ...
+# Subtest: erro 400 do backend vira mensagem de entrada
+ok 22 - erro 400 do backend vira mensagem de entrada
+  ---
+  duration_ms: 0.37503
+  ...
+# Subtest: falha de rede vira mensagem de comunicação
+ok 23 - falha de rede vira mensagem de comunicação
+  ---
+  duration_ms: 0.447863
+  ...
+# Subtest: 502/503/504 (backend fora do ar) vira falha de comunicação
+ok 24 - 502/503/504 (backend fora do ar) vira falha de comunicação
+  ---
+  duration_ms: 6.81776
+  ...
+# Subtest: erro 500 não expõe detalhes internos
+ok 25 - erro 500 não expõe detalhes internos
+  ---
+  duration_ms: 2.057805
+  ...
+# Subtest: resposta que não é JSON vira erro genérico
+ok 26 - resposta que não é JSON vira erro genérico
+  ---
+  duration_ms: 0.377677
+  ...
+# Subtest: erro léxico com HTTP 200 é separado de erro de entrada ou rede
+ok 27 - erro léxico com HTTP 200 é separado de erro de entrada ou rede
+  ---
+  duration_ms: 1.85724
+  ...
+# Subtest: respostas inconsistentes ou sem listas são tratadas como falha do servidor
+ok 28 - respostas inconsistentes ou sem listas são tratadas como falha do servidor
+  ---
+  duration_ms: 1.295493
+  ...
+# Subtest: interrupção por timeout é apresentada como falha de comunicação
+ok 29 - interrupção por timeout é apresentada como falha de comunicação
+  ---
+  duration_ms: 1.402649
+  ...
+# Subtest: sucesso sintático tem estados separados, AST legível e tokens preservados
+ok 30 - sucesso sintático tem estados separados, AST legível e tokens preservados
+  ---
+  duration_ms: 187.007309
+  ...
+# Subtest: expandir e recolher alteram todos os nós, incluindo folhas
+ok 31 - expandir e recolher alteram todos os nós, incluindo folhas
+  ---
+  duration_ms: 78.331523
+  ...
+# Subtest: seleção de operação destaca expressão inteira, com fim exclusivo
+ok 32 - seleção de operação destaca expressão inteira, com fim exclusivo
+  ---
+  duration_ms: 62.564818
+  ...
+# Subtest: navegação de tokens retoma destaque individual depois de selecionar AST
+ok 33 - navegação de tokens retoma destaque individual depois de selecionar AST
+  ---
+  duration_ms: 47.030208
+  ...
+# Subtest: erro sintático preserva sucesso léxico, localiza erro e não mostra AST
+ok 34 - erro sintático preserva sucesso léxico, localiza erro e não mostra AST
+  ---
+  duration_ms: 47.40111
+  ...
+# Subtest: erro léxico explica por que parser não foi executado
+ok 35 - erro léxico explica por que parser não foi executado
+  ---
+  duration_ms: 44.370141
+  ...
+# Subtest: erro em EOF é descrito como fim do código, sem lexema vazio confuso
+ok 36 - erro em EOF é descrito como fim do código, sem lexema vazio confuso
+  ---
+  duration_ms: 32.662563
+  ...
+# Subtest: texto vindo de nós e diagnósticos é inerte, sem criar HTML
+ok 37 - texto vindo de nós e diagnósticos é inerte, sem criar HTML
+  ---
+  duration_ms: 70.778844
+  ...
+# Subtest: exportação baixa JSON da AST completa, sem incluir código ou tokens
+ok 38 - exportação baixa JSON da AST completa, sem incluir código ou tokens
+  ---
+  duration_ms: 74.783256
+  ...
+# Subtest: seleção por Unicode e CRLF usa as mesmas colunas do scanner
+ok 39 - seleção por Unicode e CRLF usa as mesmas colunas do scanner
+  ---
+  duration_ms: 56.893175
+  ...
+# Subtest: editar código elimina a árvore, evitando destaque baseado em fonte antigo
+ok 40 - editar código elimina a árvore, evitando destaque baseado em fonte antigo
+  ---
+  duration_ms: 40.559921
+  ...
+# Subtest: contratos sintáticos incoerentes ou posições impossíveis são rejeitados
+ok 41 - contratos sintáticos incoerentes ou posições impossíveis são rejeitados
+  ---
+  duration_ms: 2.693781
+  ...
+1..41
+# tests 41
+# suites 0
+# pass 41
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1384.637225

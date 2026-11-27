@@ -1,5 +1,7 @@
 # Demonstração do Trabalho 4
 
+Este é o roteiro histórico da Etapa 4. Para a aplicação atual, use a [demonstração da Etapa 5](demonstracao-etapa5.md), com símbolos, diagnósticos semânticos e modos visuais.
+
 Execute `docker compose up --build -d --wait` e abra `http://localhost:8501`. Para a demonstração automática: veja os comandos Playwright do README. As capturas geradas pelo registrador ficam em `docs/trabalho4/capturas/`.
 
 ## 1. Programa válido e precedência

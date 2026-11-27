@@ -1,49 +1,78 @@
-# Contrato da API — Etapa 4
+# Contrato da API — Etapa 5
 
 ## Rotas e entrada
 
-- `GET /saude`: HTTP 200, `{"status":"ok"}`.
-- `POST /analisar`: FastAPI direto; `POST /api/analisar`: mesma operação pelo nginx.
-- Requisição: objeto JSON com `codigo` string não vazia, não composta somente por espaços, com no máximo 10.000 caracteres Unicode. Sem autenticação/banco/credenciais exigidas.
+`GET /saude` retorna HTTP 200 e `{"status":"ok"}`. `POST /analisar` é a rota FastAPI; `POST /api/analisar` é a mesma operação via nginx, usada pela interface. Entrada: objeto JSON com `codigo` string não vazia, não só espaços e com até 10.000 caracteres Unicode.
 
 ```json
 {"codigo":"int x;"}
 ```
 
-## Resposta processada — HTTP 200
-
-Campos das etapas anteriores preservados, com o mesmo significado:
+## Campos preservados e extensão aditiva
 
 | Campo | Significado |
 |---|---|
-| `recebido` | Solicitação processada; não indica correção do programa |
-| `sucesso` | **Somente léxico:** `true` se e somente se `erros` está vazio |
-| `mensagem` | Resumo da análise léxica, preservado por compatibilidade; não usar como discriminador lógico |
-| `total_caracteres` | Tamanho original da string em pontos de código Unicode |
-| `total_linhas` | `len(codigo.splitlines())`, métrica informativa herdada da Etapa 2 |
-| `tokens` | Tokens válidos em ordem de leitura, sem alteração pelo parser |
-| `erros` | Erros **léxicos**, sem mistura com diagnósticos sintáticos |
-| `sintatica` | Novo objeto com estado, sucesso, AST e erros sintáticos |
+| `recebido` | Solicitação processada; não significa programa sem erros |
+| `sucesso` | **Somente resultado léxico**, preservado por compatibilidade |
+| `mensagem` | Resumo léxico; não usar como discriminador das outras fases |
+| `total_caracteres` | Comprimento original em pontos de código Unicode |
+| `total_linhas` | `len(codigo.splitlines())`, métrica herdada da Etapa 2 |
+| `tokens` | Mesmos tokens válidos do scanner, em ordem de leitura |
+| `erros` | Somente erros léxicos |
+| `sintatica` | Objeto da Etapa 4, com `estado`, `sucesso`, `ast` e `erros` |
+| `semantica` | Novo objeto da Etapa 5, com `estado`, `sucesso`, `tabelaSimbolos`, `escopos` e `erros` |
 
-Token: `{"tipo":"IDENTIFICADOR","lexema":"x","linha":1,"coluna":5}`. Tipos: `PALAVRA_RESERVADA`, `IDENTIFICADOR`, `LITERAL_INTEIRO`, `LITERAL_REAL`, `OPERADOR`, `DELIMITADOR`. EOF é interno ao parser e nunca aparece nessa lista. Comentários/espaços também não aparecem.
+A API não renomeia `sintatica` para o `sintatico` ilustrativo do enunciado. Usa `semantica` de forma consistente. Clientes antigos continuam recebendo os campos originais; a interface também aceita respostas de etapas anteriores, indicando as fases indisponíveis.
 
-Linha/coluna começam em 1; tab conta uma coluna; CRLF/CR são normalizados para LF pelos analisadores. A métrica `total_linhas` preserva `splitlines()` e pode diferir da posição EOF de um texto terminado em quebra; use as posições dos tokens/nós para localizar trechos.
+## Estados e bloqueio de fases
 
-### Sucesso léxico e sintático
+| Situação | Léxico superior | Sintática | Semântica |
+|---|---|---|---|
+| Programa válido nas regras atuais | `sucesso: true` | Sucesso, AST completa | Sucesso e tabela/escopos |
+| Erro semântico | `sucesso: true` | Sucesso, AST preservada | Erro, tabela das declarações reconhecidas e diagnósticos |
+| Erro sintático | `sucesso: true` | Erro, AST nula | Não executada, motivo `erros_sintaticos` |
+| Erro léxico | `sucesso: false` | Não executada, motivo `erros_lexicos` | Não executada, motivo `erros_lexicos` |
 
-Resposta completa para `int x;`:
+Em qualquer fase, `estado` é `sucesso`, `erro` ou `nao_executada`. O booleano `sucesso` é respectivamente `true`, `false` ou `null`. A AST permanece no objeto sintático; a semântica não a altera nem acrescenta campos aos nós.
+
+Objeto semântico bloqueado por erro sintático:
+
+```json
+{"estado":"nao_executada","sucesso":null,"motivo":"erros_sintaticos","tabelaSimbolos":[],"escopos":[],"erros":[]}
+```
+
+Por erro léxico, muda somente `motivo` para `erros_lexicos`. Não chamar a semântica após erro sintático/léxico é uma decisão testada com substituição da função por uma que falharia se fosse chamada.
+
+## Resposta completa: declaração sem leitura
+
+`int x;` é válido semanticamente; o símbolo termina o escopo com `inicializado: false`, pois não foi atribuído nem lido. Isso não é, por si só, uma violação. Exemplo produzido pelas funções reais da aplicação:
 
 ```json
 {
   "recebido": true,
-  "sucesso": true,
   "mensagem": "Análise léxica concluída sem erros.",
   "total_caracteres": 6,
   "total_linhas": 1,
+  "sucesso": true,
   "tokens": [
-    {"tipo":"PALAVRA_RESERVADA","lexema":"int","linha":1,"coluna":1},
-    {"tipo":"IDENTIFICADOR","lexema":"x","linha":1,"coluna":5},
-    {"tipo":"DELIMITADOR","lexema":";","linha":1,"coluna":6}
+    {
+      "tipo": "PALAVRA_RESERVADA",
+      "lexema": "int",
+      "linha": 1,
+      "coluna": 1
+    },
+    {
+      "tipo": "IDENTIFICADOR",
+      "lexema": "x",
+      "linha": 1,
+      "coluna": 5
+    },
+    {
+      "tipo": "DELIMITADOR",
+      "lexema": ";",
+      "linha": 1,
+      "coluna": 6
+    }
   ],
   "erros": [],
   "sintatica": {
@@ -51,75 +80,133 @@ Resposta completa para `int x;`:
     "sucesso": true,
     "ast": {
       "tipo": "Programa",
-      "inicio": {"linha":1,"coluna":1},
-      "fim": {"linha":1,"coluna":7},
-      "comandos": [{
-        "tipo": "Declaracao",
-        "inicio": {"linha":1,"coluna":1},
-        "fim": {"linha":1,"coluna":7},
-        "tipoDado": "int", "nome": "x", "inicializador": null
-      }]
+      "inicio": {
+        "linha": 1,
+        "coluna": 1
+      },
+      "fim": {
+        "linha": 1,
+        "coluna": 7
+      },
+      "comandos": [
+        {
+          "tipo": "Declaracao",
+          "inicio": {
+            "linha": 1,
+            "coluna": 1
+          },
+          "fim": {
+            "linha": 1,
+            "coluna": 7
+          },
+          "tipoDado": "int",
+          "nome": "x",
+          "inicializador": null
+        }
+      ]
     },
+    "erros": []
+  },
+  "semantica": {
+    "estado": "sucesso",
+    "sucesso": true,
+    "tabelaSimbolos": [
+      {
+        "id": "S1",
+        "nome": "x",
+        "tipo": "int",
+        "escopo": "E0",
+        "linha": 1,
+        "coluna": 5,
+        "fim": {
+          "linha": 1,
+          "coluna": 6
+        },
+        "noAst": "/comandos/0",
+        "inicializado": false,
+        "sombreia": null,
+        "referencias": []
+      }
+    ],
+    "escopos": [
+      {
+        "id": "E0",
+        "nome": "Global",
+        "pai": null,
+        "inicio": {
+          "linha": 1,
+          "coluna": 1
+        },
+        "fim": {
+          "linha": 1,
+          "coluna": 7
+        },
+        "noAst": ""
+      }
+    ],
     "erros": []
   }
 }
 ```
 
-### Falha sintática
+## Exemplo de erro semântico
 
-Para `int x`, os campos léxicos continuam com `sucesso: true`, dois tokens e `erros: []`. O novo campo é:
+Para `x=1;`, léxico e sintático têm sucesso, e `semantica` é:
 
 ```json
 {
   "estado": "erro",
   "sucesso": false,
-  "ast": null,
-  "erros": [{
-    "tipo": "ERRO_SINTATICO",
-    "codigo": "gramatica",
-    "lexema": "",
-    "linha": 1, "coluna": 6,
-    "esperado": [";"],
-    "encontrado": "EOF",
-    "mensagem": "Era esperado ';' ao final da declaração. Declare uma variável por instrução. Encontrado: o fim do código."
-  }]
+  "tabelaSimbolos": [],
+  "escopos": [
+    {
+      "id": "E0",
+      "nome": "Global",
+      "pai": null,
+      "inicio": {
+        "linha": 1,
+        "coluna": 1
+      },
+      "fim": {
+        "linha": 1,
+        "coluna": 5
+      },
+      "noAst": ""
+    }
+  ],
+  "erros": [
+    {
+      "tipo": "ERRO_SEMANTICO",
+      "regra": "IDENTIFICADOR_NAO_DECLARADO",
+      "lexema": "x",
+      "linha": 1,
+      "coluna": 1,
+      "fim": {
+        "linha": 1,
+        "coluna": 2
+      },
+      "noAst": "/comandos/0/alvo",
+      "simboloId": null,
+      "mensagem": "O identificador 'x' não foi declarado antes deste uso no escopo atual nem nos escopos externos.",
+      "sugestao": "Declare a variável antes de usá-la e confira se ela está visível neste bloco."
+    }
+  ]
 }
 ```
 
-`encontrado` guarda o **tipo** do token; `lexema` guarda seu texto, vazio no EOF; `esperado` é uma lista de lexemas ou nomes de categorias. `codigo` pode ser `gramatica`, `limite_profundidade`, `limite_nos` ou `limite_altura`. Mensagens são texto didático e podem melhorar sem mudar os discriminadores. AST parcial nunca é devolvida como válida.
+`regra` identifica uma das sete regras documentadas em [semantica.md](semantica.md). Mensagens/sugestões são textos didáticos; clientes devem usar discriminadores, não comparar toda a redação. `noAst` é um caminho para a construção na AST original; raiz vazia, por exemplo `/comandos/0/alvo`. `simboloId` é o ID conhecido ou `null`. `lexema` é o nome/operador associado, não necessariamente todo o intervalo de uma expressão composta.
 
-### Falha léxica: parser não executado
+A tabela usa IDs estáveis na análise, nome, tipo, escopo, posição do identificador declarado, garantia de inicialização ao fim do escopo, vínculo de sombreamento e referências. Escopos informam pai e intervalo. Posições são baseadas em 1, fim exclusivo, CRLF/CR normalizados para LF e Unicode por ponto de código; tab conta uma coluna. O fonte é mantido para seleção coerente.
 
-Para `@ int x;`, os tokens válidos permanecem e o nível superior tem `sucesso: false` e erro léxico `@` em 1:1. `sintatica` é exatamente:
-
-```json
-{
-  "estado": "nao_executada",
-  "sucesso": null,
-  "motivo": "erros_lexicos",
-  "ast": null,
-  "erros": []
-}
-```
-
-O parser não é chamado: tokens recuperados podem estar incompletos e não devem produzir diagnósticos ou uma AST enganosa. Comentários sozinhos são lexicalmente válidos, mas geram erro **sintático** de programa vazio. Um bloco vazio `{}` é sintaticamente válido.
-
-## Falhas de entrada e servidor
+## HTTP e falhas
 
 | Situação | HTTP | Campo `erro` |
 |---|---|---|
-| JSON inválido, corpo não objeto, `codigo` ausente | 400 | `requisicao_invalida` |
-| Tipo errado, vazio, só espaços ou acima de 10.000 caracteres | 400 | `entrada_invalida` |
-| Falha interna inesperada | 500 | `erro_interno` |
+| Corpo não JSON/objeto ou `codigo` ausente | 400 | `requisicao_invalida` |
+| Tipo errado, vazio, só espaços ou acima do limite | 400 | `entrada_invalida` |
+| Programa analisado, com ou sem erro léxico/sintático/semântico | 200 | Resultados por fase |
+| Exceção interna inesperada | 500 | `erro_interno`, mensagem genérica |
 
-```json
-{"recebido":false,"erro":"entrada_invalida","mensagem":"Informe um código-fonte antes de solicitar a análise."}
-```
+Falhas de entrada/servidor preservam `{"recebido":false,"erro":"...","mensagem":"..."}` sem resultados de análises. Stack traces ficam fora da resposta. Comentários sozinhos geram erro sintático de programa vazio; `{}` é válido e não declara símbolos. EOF permanece interno ao parser, ausente da lista pública de tokens.
 
-Nesses casos não há resultado de scanner/parser. HTTP 500 retorna mensagem genérica, sem stack trace ou caminhos internos. Erros no programa e limites sintáticos são resultados processados com HTTP 200, não falhas do servidor. A interface distingue comunicação, entrada, léxico e sintático.
-
-## Compatibilidade e limites
-
-Usa-se o nome `sintatica`, conforme a proposta da Tarefa 4; o `sintatico` do enunciado era ilustrativo. A extensão é aditiva: clientes da Etapa 3 podem ignorá-la e continuam recebendo seus campos originais. O frontend aceita respostas antigas sem esse objeto e informa que a sintaxe está indisponível; a API atual sempre o envia após análise válida da entrada.
-
-A API e a AST não comprovam significado correto. Limites de 64 níveis estruturais, 2.000 nós e altura 128, recuperação e construções aceitas estão em [gramatica.md](gramatica.md). Nós e convenções de intervalo estão em [ast.md](ast.md). A semântica será implementada na Etapa 5.
+Os limites do parser (64 níveis, 2.000 nós, altura 128) geram diagnóstico sintático controlado e bloqueiam a semântica. As regras atuais não equivalem a C completo, execução ou geração de código. A representação semântica ampliada fica para a Etapa 6.

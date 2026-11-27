@@ -1,0 +1,18 @@
+{
+  "inicio": "2026-11-26T21:22:27.559464-03:00",
+  "commit_base_checkout": "0637b7d99a9d5c373c37b3e74d1ca41b01469140",
+  "alteracoes_locais_presentes": true,
+  "arquivos_sha256": {
+    "backend/app/main.py": "3f5ae8f0e907bc5c0b4af4a8cce45c3e084bcbd55bd8daf31dddb9eb352990d1",
+    "backend/app/scanner.py": "24886524d0d653ad03249dec564a061908c0e9f095ccad6f24147ad0bac3b23f",
+    "backend/app/parser.py": "062df488a1f94ec59dbcb3ecb6efb38b5cec171c899cf1a9f7c2571986f7a91a",
+    "backend/app/semantica.py": "2f619d5904fd019220b503cec662c9bbe266c66435e0ad3bf8807ebdaf71942c",
+    "frontend/app.js": "82cb1a7217dadb782f0ec6a2daa87606e921b5d81693e1bfcbeffb385652eb12",
+    "frontend/index.html": "bf0a7c661d22eed1dc2ba71ea6cf337c2fbf9147ca22508505d9550585d65acd",
+    "frontend/style.css": "1b106865b11aaa57821e4633200faa157ee1907ba3b5907fe0b26c5c722ad591"
+  },
+  "observacao": "A versão efetivamente testada é identificada pelos hashes. Commit-base pode preceder mudanças ainda não commitadas.",
+  "avaliacao_humana_executada": false,
+  "fim": "2026-11-26T21:23:44.573522-03:00",
+  "rodada_sem_falhas": true
+}

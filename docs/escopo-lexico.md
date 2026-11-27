@@ -84,4 +84,4 @@ Erros: `12abc` na linha 1, coluna 7, e `@` na linha 2, coluna 1. A saída també
 
 ## Fronteira com a Etapa 4
 
-`int = ;` não tem erro léxico: suas unidades são reconhecidas. O parser da Etapa 4 agora o rejeita sintaticamente. A [gramática](gramatica.md) define declarações, uso de delimitadores, precedência e ordem dos comandos; o scanner permanece inalterado. A [AST](ast.md) preserva posições compatíveis com estes tokens. Não há tabela de símbolos, checagem de tipos ou execução: a semântica ficará para a Etapa 5.
+`int = ;` não tem erro léxico: suas unidades são reconhecidas. O parser o rejeita sintaticamente. A [gramática](gramatica.md) define declarações, delimitadores, precedência e ordem dos comandos; o scanner permanece inalterado. A [AST](ast.md) preserva posições compatíveis com estes tokens. A [semântica da Etapa 5](semantica.md) constrói a tabela de símbolos e verifica regras após sucesso sintático; nenhuma dessas análises executa o programa.

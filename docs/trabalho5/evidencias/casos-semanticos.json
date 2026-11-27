@@ -1,0 +1,1809 @@
+{
+  "data": "2026-11-26T21:23:15.886457-03:00",
+  "commit_checkout": "0637b7d99a9d5c373c37b3e74d1ca41b01469140",
+  "alteracoes_locais_presentes": true,
+  "arquivos_sha256": {
+    "backend/app/main.py": "3f5ae8f0e907bc5c0b4af4a8cce45c3e084bcbd55bd8daf31dddb9eb352990d1",
+    "backend/app/scanner.py": "24886524d0d653ad03249dec564a061908c0e9f095ccad6f24147ad0bac3b23f",
+    "backend/app/parser.py": "062df488a1f94ec59dbcb3ecb6efb38b5cec171c899cf1a9f7c2571986f7a91a",
+    "backend/app/semantica.py": "2f619d5904fd019220b503cec662c9bbe266c66435e0ad3bf8807ebdaf71942c"
+  },
+  "url": "http://127.0.0.1:8501/api/analisar",
+  "fixture_sha256": "29192963f0e74084823e146549c09fdbaa5660ebe0f702fc8ee0278fa409b8b8",
+  "planejados": 30,
+  "executados": 30,
+  "aprovados": 30,
+  "cobertura_casos_pct": 100.0,
+  "aprovacao_pct": 100.0,
+  "prontidao_pct": 100.0,
+  "limites": "Mesmo conjunto usado na suíte; não somar como casos independentes. Não mede cobertura de código, aprendizagem ou acessibilidade com pessoas.",
+  "casos": [
+    {
+      "id": "M01",
+      "codigo": "x = 1;",
+      "regras_esperadas": [
+        "IDENTIFICADOR_NAO_DECLARADO"
+      ],
+      "sucesso_esperado": false,
+      "http_observado": 200,
+      "estado_observado": "erro",
+      "regras_observadas": [
+        "IDENTIFICADOR_NAO_DECLARADO"
+      ],
+      "simbolos_observados": [],
+      "diagnosticos_observados": [
+        {
+          "tipo": "ERRO_SEMANTICO",
+          "regra": "IDENTIFICADOR_NAO_DECLARADO",
+          "lexema": "x",
+          "linha": 1,
+          "coluna": 1,
+          "fim": {
+            "linha": 1,
+            "coluna": 2
+          },
+          "noAst": "/comandos/0/alvo",
+          "simboloId": null,
+          "mensagem": "O identificador 'x' não foi declarado antes deste uso no escopo atual nem nos escopos externos.",
+          "sugestao": "Declare a variável antes de usá-la e confira se ela está visível neste bloco."
+        }
+      ],
+      "resultado": "aprovado",
+      "falha": ""
+    },
+    {
+      "id": "M02",
+      "codigo": "int x; int x;",
+      "regras_esperadas": [
+        "REDECLARACAO_NO_ESCOPO"
+      ],
+      "sucesso_esperado": false,
+      "http_observado": 200,
+      "estado_observado": "erro",
+      "regras_observadas": [
+        "REDECLARACAO_NO_ESCOPO"
+      ],
+      "simbolos_observados": [
+        {
+          "id": "S1",
+          "nome": "x",
+          "tipo": "int",
+          "escopo": "E0",
+          "linha": 1,
+          "coluna": 5,
+          "fim": {
+            "linha": 1,
+            "coluna": 6
+          },
+          "noAst": "/comandos/0",
+          "inicializado": false,
+          "sombreia": null,
+          "referencias": []
+        }
+      ],
+      "diagnosticos_observados": [
+        {
+          "tipo": "ERRO_SEMANTICO",
+          "regra": "REDECLARACAO_NO_ESCOPO",
+          "lexema": "x",
+          "linha": 1,
+          "coluna": 12,
+          "fim": {
+            "linha": 1,
+            "coluna": 13
+          },
+          "noAst": "/comandos/1",
+          "simboloId": "S1",
+          "mensagem": "A variável 'x' já foi declarada neste escopo na linha 1, coluna 5.",
+          "sugestao": "Use outro nome ou aproveite a variável já declarada. Um bloco interno pode declarar um nome que sombreia o externo."
+        }
+      ],
+      "resultado": "aprovado",
+      "falha": ""
+    },
+    {
+      "id": "M03",
+      "codigo": "int x; x = 2.5;",
+      "regras_esperadas": [
+        "TIPOS_INCOMPATIVEIS"
+      ],
+      "sucesso_esperado": false,
+      "http_observado": 200,
+      "estado_observado": "erro",
+      "regras_observadas": [
+        "TIPOS_INCOMPATIVEIS"
+      ],
+      "simbolos_observados": [
+        {
+          "id": "S1",
+          "nome": "x",
+          "tipo": "int",
+          "escopo": "E0",
+          "linha": 1,
+          "coluna": 5,
+          "fim": {
+            "linha": 1,
+            "coluna": 6
+          },
+          "noAst": "/comandos/0",
+          "inicializado": false,
+          "sombreia": null,
+          "referencias": [
+            {
+              "linha": 1,
+              "coluna": 8,
+              "fim": {
+                "linha": 1,
+                "coluna": 9
+              },
+              "noAst": "/comandos/1/alvo",
+              "contexto": "atribuicao"
+            }
+          ]
+        }
+      ],
+      "diagnosticos_observados": [
+        {
+          "tipo": "ERRO_SEMANTICO",
+          "regra": "TIPOS_INCOMPATIVEIS",
+          "lexema": "x",
+          "linha": 1,
+          "coluna": 8,
+          "fim": {
+            "linha": 1,
+            "coluna": 9
+          },
+          "noAst": "/comandos/1",
+          "simboloId": "S1",
+          "mensagem": "A variável 'x' tem tipo 'int', mas recebeu uma expressão do tipo 'float'. O Mini-C permite promoção de int para float, sem conversão inversa nem conversão de bool para número.",
+          "sugestao": "Ajuste o tipo da declaração ou a expressão para produzir um tipo compatível. Conversões explícitas não fazem parte deste recorte."
+        }
+      ],
+      "resultado": "aprovado",
+      "falha": ""
+    },
+    {
+      "id": "A01",
+      "codigo": "int x = 1; float y = x + 2.5;",
+      "regras_esperadas": [],
+      "sucesso_esperado": true,
+      "http_observado": 200,
+      "estado_observado": "sucesso",
+      "regras_observadas": [],
+      "simbolos_observados": [
+        {
+          "id": "S1",
+          "nome": "x",
+          "tipo": "int",
+          "escopo": "E0",
+          "linha": 1,
+          "coluna": 5,
+          "fim": {
+            "linha": 1,
+            "coluna": 6
+          },
+          "noAst": "/comandos/0",
+          "inicializado": true,
+          "sombreia": null,
+          "referencias": [
+            {
+              "linha": 1,
+              "coluna": 22,
+              "fim": {
+                "linha": 1,
+                "coluna": 23
+              },
+              "noAst": "/comandos/1/inicializador/esquerda",
+              "contexto": "leitura"
+            }
+          ]
+        },
+        {
+          "id": "S2",
+          "nome": "y",
+          "tipo": "float",
+          "escopo": "E0",
+          "linha": 1,
+          "coluna": 18,
+          "fim": {
+            "linha": 1,
+            "coluna": 19
+          },
+          "noAst": "/comandos/1",
+          "inicializado": true,
+          "sombreia": null,
+          "referencias": []
+        }
+      ],
+      "diagnosticos_observados": [],
+      "resultado": "aprovado",
+      "falha": ""
+    },
+    {
+      "id": "A02",
+      "codigo": "int x;",
+      "regras_esperadas": [],
+      "sucesso_esperado": true,
+      "http_observado": 200,
+      "estado_observado": "sucesso",
+      "regras_observadas": [],
+      "simbolos_observados": [
+        {
+          "id": "S1",
+          "nome": "x",
+          "tipo": "int",
+          "escopo": "E0",
+          "linha": 1,
+          "coluna": 5,
+          "fim": {
+            "linha": 1,
+            "coluna": 6
+          },
+          "noAst": "/comandos/0",
+          "inicializado": false,
+          "sombreia": null,
+          "referencias": []
+        }
+      ],
+      "diagnosticos_observados": [],
+      "resultado": "aprovado",
+      "falha": ""
+    },
+    {
+      "id": "A03",
+      "codigo": "int x; x = 1; int y = x;",
+      "regras_esperadas": [],
+      "sucesso_esperado": true,
+      "http_observado": 200,
+      "estado_observado": "sucesso",
+      "regras_observadas": [],
+      "simbolos_observados": [
+        {
+          "id": "S1",
+          "nome": "x",
+          "tipo": "int",
+          "escopo": "E0",
+          "linha": 1,
+          "coluna": 5,
+          "fim": {
+            "linha": 1,
+            "coluna": 6
+          },
+          "noAst": "/comandos/0",
+          "inicializado": true,
+          "sombreia": null,
+          "referencias": [
+            {
+              "linha": 1,
+              "coluna": 8,
+              "fim": {
+                "linha": 1,
+                "coluna": 9
+              },
+              "noAst": "/comandos/1/alvo",
+              "contexto": "atribuicao"
+            },
+            {
+              "linha": 1,
+              "coluna": 23,
+              "fim": {
+                "linha": 1,
+                "coluna": 24
+              },
+              "noAst": "/comandos/2/inicializador",
+              "contexto": "leitura"
+            }
+          ]
+        },
+        {
+          "id": "S2",
+          "nome": "y",
+          "tipo": "int",
+          "escopo": "E0",
+          "linha": 1,
+          "coluna": 19,
+          "fim": {
+            "linha": 1,
+            "coluna": 20
+          },
+          "noAst": "/comandos/2",
+          "inicializado": true,
+          "sombreia": null,
+          "referencias": []
+        }
+      ],
+      "diagnosticos_observados": [],
+      "resultado": "aprovado",
+      "falha": ""
+    },
+    {
+      "id": "A04",
+      "codigo": "int x; int y = x;",
+      "regras_esperadas": [
+        "VARIAVEL_NAO_INICIALIZADA"
+      ],
+      "sucesso_esperado": false,
+      "http_observado": 200,
+      "estado_observado": "erro",
+      "regras_observadas": [
+        "VARIAVEL_NAO_INICIALIZADA"
+      ],
+      "simbolos_observados": [
+        {
+          "id": "S1",
+          "nome": "x",
+          "tipo": "int",
+          "escopo": "E0",
+          "linha": 1,
+          "coluna": 5,
+          "fim": {
+            "linha": 1,
+            "coluna": 6
+          },
+          "noAst": "/comandos/0",
+          "inicializado": false,
+          "sombreia": null,
+          "referencias": [
+            {
+              "linha": 1,
+              "coluna": 16,
+              "fim": {
+                "linha": 1,
+                "coluna": 17
+              },
+              "noAst": "/comandos/1/inicializador",
+              "contexto": "leitura"
+            }
+          ]
+        },
+        {
+          "id": "S2",
+          "nome": "y",
+          "tipo": "int",
+          "escopo": "E0",
+          "linha": 1,
+          "coluna": 12,
+          "fim": {
+            "linha": 1,
+            "coluna": 13
+          },
+          "noAst": "/comandos/1",
+          "inicializado": false,
+          "sombreia": null,
+          "referencias": []
+        }
+      ],
+      "diagnosticos_observados": [
+        {
+          "tipo": "ERRO_SEMANTICO",
+          "regra": "VARIAVEL_NAO_INICIALIZADA",
+          "lexema": "x",
+          "linha": 1,
+          "coluna": 16,
+          "fim": {
+            "linha": 1,
+            "coluna": 17
+          },
+          "noAst": "/comandos/1/inicializador",
+          "simboloId": "S1",
+          "mensagem": "A leitura de 'x' ocorre sem uma inicialização garantida neste ponto. A declaração, sozinha, não fornece um valor.",
+          "sugestao": "Inicialize a variável antes da leitura. Se a atribuição estiver em um if, garanta-a nos dois caminhos."
+        }
+      ],
+      "resultado": "aprovado",
+      "falha": ""
+    },
+    {
+      "id": "A05",
+      "codigo": "int x = x;",
+      "regras_esperadas": [
+        "VARIAVEL_NAO_INICIALIZADA"
+      ],
+      "sucesso_esperado": false,
+      "http_observado": 200,
+      "estado_observado": "erro",
+      "regras_observadas": [
+        "VARIAVEL_NAO_INICIALIZADA"
+      ],
+      "simbolos_observados": [
+        {
+          "id": "S1",
+          "nome": "x",
+          "tipo": "int",
+          "escopo": "E0",
+          "linha": 1,
+          "coluna": 5,
+          "fim": {
+            "linha": 1,
+            "coluna": 6
+          },
+          "noAst": "/comandos/0",
+          "inicializado": false,
+          "sombreia": null,
+          "referencias": [
+            {
+              "linha": 1,
+              "coluna": 9,
+              "fim": {
+                "linha": 1,
+                "coluna": 10
+              },
+              "noAst": "/comandos/0/inicializador",
+              "contexto": "leitura"
+            }
+          ]
+        }
+      ],
+      "diagnosticos_observados": [
+        {
+          "tipo": "ERRO_SEMANTICO",
+          "regra": "VARIAVEL_NAO_INICIALIZADA",
+          "lexema": "x",
+          "linha": 1,
+          "coluna": 9,
+          "fim": {
+            "linha": 1,
+            "coluna": 10
+          },
+          "noAst": "/comandos/0/inicializador",
+          "simboloId": "S1",
+          "mensagem": "A leitura de 'x' ocorre sem uma inicialização garantida neste ponto. A declaração, sozinha, não fornece um valor.",
+          "sugestao": "Inicialize a variável antes da leitura. Se a atribuição estiver em um if, garanta-a nos dois caminhos."
+        }
+      ],
+      "resultado": "aprovado",
+      "falha": ""
+    },
+    {
+      "id": "A06",
+      "codigo": "int x=1; { float x=2.0; x=x+1.0; } x=x+1;",
+      "regras_esperadas": [],
+      "sucesso_esperado": true,
+      "http_observado": 200,
+      "estado_observado": "sucesso",
+      "regras_observadas": [],
+      "simbolos_observados": [
+        {
+          "id": "S1",
+          "nome": "x",
+          "tipo": "int",
+          "escopo": "E0",
+          "linha": 1,
+          "coluna": 5,
+          "fim": {
+            "linha": 1,
+            "coluna": 6
+          },
+          "noAst": "/comandos/0",
+          "inicializado": true,
+          "sombreia": null,
+          "referencias": [
+            {
+              "linha": 1,
+              "coluna": 36,
+              "fim": {
+                "linha": 1,
+                "coluna": 37
+              },
+              "noAst": "/comandos/2/alvo",
+              "contexto": "atribuicao"
+            },
+            {
+              "linha": 1,
+              "coluna": 38,
+              "fim": {
+                "linha": 1,
+                "coluna": 39
+              },
+              "noAst": "/comandos/2/valor/esquerda",
+              "contexto": "leitura"
+            }
+          ]
+        },
+        {
+          "id": "S2",
+          "nome": "x",
+          "tipo": "float",
+          "escopo": "E1",
+          "linha": 1,
+          "coluna": 18,
+          "fim": {
+            "linha": 1,
+            "coluna": 19
+          },
+          "noAst": "/comandos/1/comandos/0",
+          "inicializado": true,
+          "sombreia": "S1",
+          "referencias": [
+            {
+              "linha": 1,
+              "coluna": 25,
+              "fim": {
+                "linha": 1,
+                "coluna": 26
+              },
+              "noAst": "/comandos/1/comandos/1/alvo",
+              "contexto": "atribuicao"
+            },
+            {
+              "linha": 1,
+              "coluna": 27,
+              "fim": {
+                "linha": 1,
+                "coluna": 28
+              },
+              "noAst": "/comandos/1/comandos/1/valor/esquerda",
+              "contexto": "leitura"
+            }
+          ]
+        }
+      ],
+      "diagnosticos_observados": [],
+      "resultado": "aprovado",
+      "falha": ""
+    },
+    {
+      "id": "A07",
+      "codigo": "{ int x=1; } x=2;",
+      "regras_esperadas": [
+        "IDENTIFICADOR_NAO_DECLARADO"
+      ],
+      "sucesso_esperado": false,
+      "http_observado": 200,
+      "estado_observado": "erro",
+      "regras_observadas": [
+        "IDENTIFICADOR_NAO_DECLARADO"
+      ],
+      "simbolos_observados": [
+        {
+          "id": "S1",
+          "nome": "x",
+          "tipo": "int",
+          "escopo": "E1",
+          "linha": 1,
+          "coluna": 7,
+          "fim": {
+            "linha": 1,
+            "coluna": 8
+          },
+          "noAst": "/comandos/0/comandos/0",
+          "inicializado": true,
+          "sombreia": null,
+          "referencias": []
+        }
+      ],
+      "diagnosticos_observados": [
+        {
+          "tipo": "ERRO_SEMANTICO",
+          "regra": "IDENTIFICADOR_NAO_DECLARADO",
+          "lexema": "x",
+          "linha": 1,
+          "coluna": 14,
+          "fim": {
+            "linha": 1,
+            "coluna": 15
+          },
+          "noAst": "/comandos/1/alvo",
+          "simboloId": null,
+          "mensagem": "O identificador 'x' não foi declarado antes deste uso no escopo atual nem nos escopos externos.",
+          "sugestao": "Declare a variável antes de usá-la e confira se ela está visível neste bloco."
+        }
+      ],
+      "resultado": "aprovado",
+      "falha": ""
+    },
+    {
+      "id": "A08",
+      "codigo": "int x; { x=1; } int y=x;",
+      "regras_esperadas": [],
+      "sucesso_esperado": true,
+      "http_observado": 200,
+      "estado_observado": "sucesso",
+      "regras_observadas": [],
+      "simbolos_observados": [
+        {
+          "id": "S1",
+          "nome": "x",
+          "tipo": "int",
+          "escopo": "E0",
+          "linha": 1,
+          "coluna": 5,
+          "fim": {
+            "linha": 1,
+            "coluna": 6
+          },
+          "noAst": "/comandos/0",
+          "inicializado": true,
+          "sombreia": null,
+          "referencias": [
+            {
+              "linha": 1,
+              "coluna": 10,
+              "fim": {
+                "linha": 1,
+                "coluna": 11
+              },
+              "noAst": "/comandos/1/comandos/0/alvo",
+              "contexto": "atribuicao"
+            },
+            {
+              "linha": 1,
+              "coluna": 23,
+              "fim": {
+                "linha": 1,
+                "coluna": 24
+              },
+              "noAst": "/comandos/2/inicializador",
+              "contexto": "leitura"
+            }
+          ]
+        },
+        {
+          "id": "S2",
+          "nome": "y",
+          "tipo": "int",
+          "escopo": "E0",
+          "linha": 1,
+          "coluna": 21,
+          "fim": {
+            "linha": 1,
+            "coluna": 22
+          },
+          "noAst": "/comandos/2",
+          "inicializado": true,
+          "sombreia": null,
+          "referencias": []
+        }
+      ],
+      "diagnosticos_observados": [],
+      "resultado": "aprovado",
+      "falha": ""
+    },
+    {
+      "id": "A09",
+      "codigo": "int x; if(1<2){x=1;}else{x=2;} int y=x;",
+      "regras_esperadas": [],
+      "sucesso_esperado": true,
+      "http_observado": 200,
+      "estado_observado": "sucesso",
+      "regras_observadas": [],
+      "simbolos_observados": [
+        {
+          "id": "S1",
+          "nome": "x",
+          "tipo": "int",
+          "escopo": "E0",
+          "linha": 1,
+          "coluna": 5,
+          "fim": {
+            "linha": 1,
+            "coluna": 6
+          },
+          "noAst": "/comandos/0",
+          "inicializado": true,
+          "sombreia": null,
+          "referencias": [
+            {
+              "linha": 1,
+              "coluna": 16,
+              "fim": {
+                "linha": 1,
+                "coluna": 17
+              },
+              "noAst": "/comandos/1/entao/comandos/0/alvo",
+              "contexto": "atribuicao"
+            },
+            {
+              "linha": 1,
+              "coluna": 26,
+              "fim": {
+                "linha": 1,
+                "coluna": 27
+              },
+              "noAst": "/comandos/1/senao/comandos/0/alvo",
+              "contexto": "atribuicao"
+            },
+            {
+              "linha": 1,
+              "coluna": 38,
+              "fim": {
+                "linha": 1,
+                "coluna": 39
+              },
+              "noAst": "/comandos/2/inicializador",
+              "contexto": "leitura"
+            }
+          ]
+        },
+        {
+          "id": "S2",
+          "nome": "y",
+          "tipo": "int",
+          "escopo": "E0",
+          "linha": 1,
+          "coluna": 36,
+          "fim": {
+            "linha": 1,
+            "coluna": 37
+          },
+          "noAst": "/comandos/2",
+          "inicializado": true,
+          "sombreia": null,
+          "referencias": []
+        }
+      ],
+      "diagnosticos_observados": [],
+      "resultado": "aprovado",
+      "falha": ""
+    },
+    {
+      "id": "A10",
+      "codigo": "int x; if(1<2){x=1;} int y=x;",
+      "regras_esperadas": [
+        "VARIAVEL_NAO_INICIALIZADA"
+      ],
+      "sucesso_esperado": false,
+      "http_observado": 200,
+      "estado_observado": "erro",
+      "regras_observadas": [
+        "VARIAVEL_NAO_INICIALIZADA"
+      ],
+      "simbolos_observados": [
+        {
+          "id": "S1",
+          "nome": "x",
+          "tipo": "int",
+          "escopo": "E0",
+          "linha": 1,
+          "coluna": 5,
+          "fim": {
+            "linha": 1,
+            "coluna": 6
+          },
+          "noAst": "/comandos/0",
+          "inicializado": false,
+          "sombreia": null,
+          "referencias": [
+            {
+              "linha": 1,
+              "coluna": 16,
+              "fim": {
+                "linha": 1,
+                "coluna": 17
+              },
+              "noAst": "/comandos/1/entao/comandos/0/alvo",
+              "contexto": "atribuicao"
+            },
+            {
+              "linha": 1,
+              "coluna": 28,
+              "fim": {
+                "linha": 1,
+                "coluna": 29
+              },
+              "noAst": "/comandos/2/inicializador",
+              "contexto": "leitura"
+            }
+          ]
+        },
+        {
+          "id": "S2",
+          "nome": "y",
+          "tipo": "int",
+          "escopo": "E0",
+          "linha": 1,
+          "coluna": 26,
+          "fim": {
+            "linha": 1,
+            "coluna": 27
+          },
+          "noAst": "/comandos/2",
+          "inicializado": false,
+          "sombreia": null,
+          "referencias": []
+        }
+      ],
+      "diagnosticos_observados": [
+        {
+          "tipo": "ERRO_SEMANTICO",
+          "regra": "VARIAVEL_NAO_INICIALIZADA",
+          "lexema": "x",
+          "linha": 1,
+          "coluna": 28,
+          "fim": {
+            "linha": 1,
+            "coluna": 29
+          },
+          "noAst": "/comandos/2/inicializador",
+          "simboloId": "S1",
+          "mensagem": "A leitura de 'x' ocorre sem uma inicialização garantida neste ponto. A declaração, sozinha, não fornece um valor.",
+          "sugestao": "Inicialize a variável antes da leitura. Se a atribuição estiver em um if, garanta-a nos dois caminhos."
+        }
+      ],
+      "resultado": "aprovado",
+      "falha": ""
+    },
+    {
+      "id": "A11",
+      "codigo": "int x; if(1<2){}else{x=2;} int y=x;",
+      "regras_esperadas": [
+        "VARIAVEL_NAO_INICIALIZADA"
+      ],
+      "sucesso_esperado": false,
+      "http_observado": 200,
+      "estado_observado": "erro",
+      "regras_observadas": [
+        "VARIAVEL_NAO_INICIALIZADA"
+      ],
+      "simbolos_observados": [
+        {
+          "id": "S1",
+          "nome": "x",
+          "tipo": "int",
+          "escopo": "E0",
+          "linha": 1,
+          "coluna": 5,
+          "fim": {
+            "linha": 1,
+            "coluna": 6
+          },
+          "noAst": "/comandos/0",
+          "inicializado": false,
+          "sombreia": null,
+          "referencias": [
+            {
+              "linha": 1,
+              "coluna": 22,
+              "fim": {
+                "linha": 1,
+                "coluna": 23
+              },
+              "noAst": "/comandos/1/senao/comandos/0/alvo",
+              "contexto": "atribuicao"
+            },
+            {
+              "linha": 1,
+              "coluna": 34,
+              "fim": {
+                "linha": 1,
+                "coluna": 35
+              },
+              "noAst": "/comandos/2/inicializador",
+              "contexto": "leitura"
+            }
+          ]
+        },
+        {
+          "id": "S2",
+          "nome": "y",
+          "tipo": "int",
+          "escopo": "E0",
+          "linha": 1,
+          "coluna": 32,
+          "fim": {
+            "linha": 1,
+            "coluna": 33
+          },
+          "noAst": "/comandos/2",
+          "inicializado": false,
+          "sombreia": null,
+          "referencias": []
+        }
+      ],
+      "diagnosticos_observados": [
+        {
+          "tipo": "ERRO_SEMANTICO",
+          "regra": "VARIAVEL_NAO_INICIALIZADA",
+          "lexema": "x",
+          "linha": 1,
+          "coluna": 34,
+          "fim": {
+            "linha": 1,
+            "coluna": 35
+          },
+          "noAst": "/comandos/2/inicializador",
+          "simboloId": "S1",
+          "mensagem": "A leitura de 'x' ocorre sem uma inicialização garantida neste ponto. A declaração, sozinha, não fornece um valor.",
+          "sugestao": "Inicialize a variável antes da leitura. Se a atribuição estiver em um if, garanta-a nos dois caminhos."
+        }
+      ],
+      "resultado": "aprovado",
+      "falha": ""
+    },
+    {
+      "id": "A12",
+      "codigo": "int x=1; if(x){x=2;}",
+      "regras_esperadas": [
+        "CONDICAO_NAO_BOOLEANA"
+      ],
+      "sucesso_esperado": false,
+      "http_observado": 200,
+      "estado_observado": "erro",
+      "regras_observadas": [
+        "CONDICAO_NAO_BOOLEANA"
+      ],
+      "simbolos_observados": [
+        {
+          "id": "S1",
+          "nome": "x",
+          "tipo": "int",
+          "escopo": "E0",
+          "linha": 1,
+          "coluna": 5,
+          "fim": {
+            "linha": 1,
+            "coluna": 6
+          },
+          "noAst": "/comandos/0",
+          "inicializado": true,
+          "sombreia": null,
+          "referencias": [
+            {
+              "linha": 1,
+              "coluna": 13,
+              "fim": {
+                "linha": 1,
+                "coluna": 14
+              },
+              "noAst": "/comandos/1/condicao",
+              "contexto": "leitura"
+            },
+            {
+              "linha": 1,
+              "coluna": 16,
+              "fim": {
+                "linha": 1,
+                "coluna": 17
+              },
+              "noAst": "/comandos/1/entao/comandos/0/alvo",
+              "contexto": "atribuicao"
+            }
+          ]
+        }
+      ],
+      "diagnosticos_observados": [
+        {
+          "tipo": "ERRO_SEMANTICO",
+          "regra": "CONDICAO_NAO_BOOLEANA",
+          "lexema": "x",
+          "linha": 1,
+          "coluna": 13,
+          "fim": {
+            "linha": 1,
+            "coluna": 14
+          },
+          "noAst": "/comandos/1/condicao",
+          "simboloId": null,
+          "mensagem": "A condição do if tem tipo 'int', mas este Mini-C exige uma comparação de resultado bool.",
+          "sugestao": "Use uma comparação, por exemplo x != 0, para expressar a condição."
+        }
+      ],
+      "resultado": "aprovado",
+      "falha": ""
+    },
+    {
+      "id": "A13",
+      "codigo": "if(7.5){}",
+      "regras_esperadas": [
+        "CONDICAO_NAO_BOOLEANA"
+      ],
+      "sucesso_esperado": false,
+      "http_observado": 200,
+      "estado_observado": "erro",
+      "regras_observadas": [
+        "CONDICAO_NAO_BOOLEANA"
+      ],
+      "simbolos_observados": [],
+      "diagnosticos_observados": [
+        {
+          "tipo": "ERRO_SEMANTICO",
+          "regra": "CONDICAO_NAO_BOOLEANA",
+          "lexema": "7.5",
+          "linha": 1,
+          "coluna": 4,
+          "fim": {
+            "linha": 1,
+            "coluna": 7
+          },
+          "noAst": "/comandos/0/condicao",
+          "simboloId": null,
+          "mensagem": "A condição do if tem tipo 'float', mas este Mini-C exige uma comparação de resultado bool.",
+          "sugestao": "Use uma comparação, por exemplo x != 0, para expressar a condição."
+        }
+      ],
+      "resultado": "aprovado",
+      "falha": ""
+    },
+    {
+      "id": "A14",
+      "codigo": "int x=1<2;",
+      "regras_esperadas": [
+        "TIPOS_INCOMPATIVEIS"
+      ],
+      "sucesso_esperado": false,
+      "http_observado": 200,
+      "estado_observado": "erro",
+      "regras_observadas": [
+        "TIPOS_INCOMPATIVEIS"
+      ],
+      "simbolos_observados": [
+        {
+          "id": "S1",
+          "nome": "x",
+          "tipo": "int",
+          "escopo": "E0",
+          "linha": 1,
+          "coluna": 5,
+          "fim": {
+            "linha": 1,
+            "coluna": 6
+          },
+          "noAst": "/comandos/0",
+          "inicializado": false,
+          "sombreia": null,
+          "referencias": []
+        }
+      ],
+      "diagnosticos_observados": [
+        {
+          "tipo": "ERRO_SEMANTICO",
+          "regra": "TIPOS_INCOMPATIVEIS",
+          "lexema": "x",
+          "linha": 1,
+          "coluna": 5,
+          "fim": {
+            "linha": 1,
+            "coluna": 6
+          },
+          "noAst": "/comandos/0",
+          "simboloId": "S1",
+          "mensagem": "A variável 'x' tem tipo 'int', mas recebeu uma expressão do tipo 'bool'. O Mini-C permite promoção de int para float, sem conversão inversa nem conversão de bool para número.",
+          "sugestao": "Ajuste o tipo da declaração ou a expressão para produzir um tipo compatível. Conversões explícitas não fazem parte deste recorte."
+        }
+      ],
+      "resultado": "aprovado",
+      "falha": ""
+    },
+    {
+      "id": "A15",
+      "codigo": "int x=(1<2)+3;",
+      "regras_esperadas": [
+        "OPERANDOS_NAO_NUMERICOS"
+      ],
+      "sucesso_esperado": false,
+      "http_observado": 200,
+      "estado_observado": "erro",
+      "regras_observadas": [
+        "OPERANDOS_NAO_NUMERICOS"
+      ],
+      "simbolos_observados": [
+        {
+          "id": "S1",
+          "nome": "x",
+          "tipo": "int",
+          "escopo": "E0",
+          "linha": 1,
+          "coluna": 5,
+          "fim": {
+            "linha": 1,
+            "coluna": 6
+          },
+          "noAst": "/comandos/0",
+          "inicializado": false,
+          "sombreia": null,
+          "referencias": []
+        }
+      ],
+      "diagnosticos_observados": [
+        {
+          "tipo": "ERRO_SEMANTICO",
+          "regra": "OPERANDOS_NAO_NUMERICOS",
+          "lexema": "+",
+          "linha": 1,
+          "coluna": 7,
+          "fim": {
+            "linha": 1,
+            "coluna": 14
+          },
+          "noAst": "/comandos/0/inicializador",
+          "simboloId": null,
+          "mensagem": "A operação '+' exige dois números, mas recebeu 'bool' e 'int'.",
+          "sugestao": "Use operandos int ou float; resultados de comparações têm tipo bool."
+        }
+      ],
+      "resultado": "aprovado",
+      "falha": ""
+    },
+    {
+      "id": "A16",
+      "codigo": "int x=-(1<2);",
+      "regras_esperadas": [
+        "OPERANDOS_NAO_NUMERICOS"
+      ],
+      "sucesso_esperado": false,
+      "http_observado": 200,
+      "estado_observado": "erro",
+      "regras_observadas": [
+        "OPERANDOS_NAO_NUMERICOS"
+      ],
+      "simbolos_observados": [
+        {
+          "id": "S1",
+          "nome": "x",
+          "tipo": "int",
+          "escopo": "E0",
+          "linha": 1,
+          "coluna": 5,
+          "fim": {
+            "linha": 1,
+            "coluna": 6
+          },
+          "noAst": "/comandos/0",
+          "inicializado": false,
+          "sombreia": null,
+          "referencias": []
+        }
+      ],
+      "diagnosticos_observados": [
+        {
+          "tipo": "ERRO_SEMANTICO",
+          "regra": "OPERANDOS_NAO_NUMERICOS",
+          "lexema": "-",
+          "linha": 1,
+          "coluna": 7,
+          "fim": {
+            "linha": 1,
+            "coluna": 13
+          },
+          "noAst": "/comandos/0/inicializador",
+          "simboloId": null,
+          "mensagem": "O sinal unário '-' exige um número int ou float, mas recebeu 'bool'.",
+          "sugestao": "Aplique o sinal a uma expressão numérica, sem usar uma comparação como número."
+        }
+      ],
+      "resultado": "aprovado",
+      "falha": ""
+    },
+    {
+      "id": "A17",
+      "codigo": "if((1<2)==(3<4)){}",
+      "regras_esperadas": [],
+      "sucesso_esperado": true,
+      "http_observado": 200,
+      "estado_observado": "sucesso",
+      "regras_observadas": [],
+      "simbolos_observados": [],
+      "diagnosticos_observados": [],
+      "resultado": "aprovado",
+      "falha": ""
+    },
+    {
+      "id": "A18",
+      "codigo": "int x=1==(2<3);",
+      "regras_esperadas": [
+        "TIPOS_NAO_COMPARAVEIS"
+      ],
+      "sucesso_esperado": false,
+      "http_observado": 200,
+      "estado_observado": "erro",
+      "regras_observadas": [
+        "TIPOS_NAO_COMPARAVEIS"
+      ],
+      "simbolos_observados": [
+        {
+          "id": "S1",
+          "nome": "x",
+          "tipo": "int",
+          "escopo": "E0",
+          "linha": 1,
+          "coluna": 5,
+          "fim": {
+            "linha": 1,
+            "coluna": 6
+          },
+          "noAst": "/comandos/0",
+          "inicializado": false,
+          "sombreia": null,
+          "referencias": []
+        }
+      ],
+      "diagnosticos_observados": [
+        {
+          "tipo": "ERRO_SEMANTICO",
+          "regra": "TIPOS_NAO_COMPARAVEIS",
+          "lexema": "==",
+          "linha": 1,
+          "coluna": 7,
+          "fim": {
+            "linha": 1,
+            "coluna": 15
+          },
+          "noAst": "/comandos/0/inicializador",
+          "simboloId": null,
+          "mensagem": "A comparação '==' não aceita os tipos 'int' e 'bool' juntos. Relações ordenadas exigem números; igualdade também aceita dois bool.",
+          "sugestao": "Compare dois valores numéricos ou, na igualdade, dois resultados booleanos."
+        }
+      ],
+      "resultado": "aprovado",
+      "falha": ""
+    },
+    {
+      "id": "A19",
+      "codigo": "int x=y+1;",
+      "regras_esperadas": [
+        "IDENTIFICADOR_NAO_DECLARADO"
+      ],
+      "sucesso_esperado": false,
+      "http_observado": 200,
+      "estado_observado": "erro",
+      "regras_observadas": [
+        "IDENTIFICADOR_NAO_DECLARADO"
+      ],
+      "simbolos_observados": [
+        {
+          "id": "S1",
+          "nome": "x",
+          "tipo": "int",
+          "escopo": "E0",
+          "linha": 1,
+          "coluna": 5,
+          "fim": {
+            "linha": 1,
+            "coluna": 6
+          },
+          "noAst": "/comandos/0",
+          "inicializado": false,
+          "sombreia": null,
+          "referencias": []
+        }
+      ],
+      "diagnosticos_observados": [
+        {
+          "tipo": "ERRO_SEMANTICO",
+          "regra": "IDENTIFICADOR_NAO_DECLARADO",
+          "lexema": "y",
+          "linha": 1,
+          "coluna": 7,
+          "fim": {
+            "linha": 1,
+            "coluna": 8
+          },
+          "noAst": "/comandos/0/inicializador/esquerda",
+          "simboloId": null,
+          "mensagem": "O identificador 'y' não foi declarado antes deste uso no escopo atual nem nos escopos externos.",
+          "sugestao": "Declare a variável antes de usá-la e confira os limites de seu bloco."
+        }
+      ],
+      "resultado": "aprovado",
+      "falha": ""
+    },
+    {
+      "id": "A20",
+      "codigo": "z=y+1;",
+      "regras_esperadas": [
+        "IDENTIFICADOR_NAO_DECLARADO",
+        "IDENTIFICADOR_NAO_DECLARADO"
+      ],
+      "sucesso_esperado": false,
+      "http_observado": 200,
+      "estado_observado": "erro",
+      "regras_observadas": [
+        "IDENTIFICADOR_NAO_DECLARADO",
+        "IDENTIFICADOR_NAO_DECLARADO"
+      ],
+      "simbolos_observados": [],
+      "diagnosticos_observados": [
+        {
+          "tipo": "ERRO_SEMANTICO",
+          "regra": "IDENTIFICADOR_NAO_DECLARADO",
+          "lexema": "z",
+          "linha": 1,
+          "coluna": 1,
+          "fim": {
+            "linha": 1,
+            "coluna": 2
+          },
+          "noAst": "/comandos/0/alvo",
+          "simboloId": null,
+          "mensagem": "O identificador 'z' não foi declarado antes deste uso no escopo atual nem nos escopos externos.",
+          "sugestao": "Declare a variável antes de usá-la e confira se ela está visível neste bloco."
+        },
+        {
+          "tipo": "ERRO_SEMANTICO",
+          "regra": "IDENTIFICADOR_NAO_DECLARADO",
+          "lexema": "y",
+          "linha": 1,
+          "coluna": 3,
+          "fim": {
+            "linha": 1,
+            "coluna": 4
+          },
+          "noAst": "/comandos/0/valor/esquerda",
+          "simboloId": null,
+          "mensagem": "O identificador 'y' não foi declarado antes deste uso no escopo atual nem nos escopos externos.",
+          "sugestao": "Declare a variável antes de usá-la e confira os limites de seu bloco."
+        }
+      ],
+      "resultado": "aprovado",
+      "falha": ""
+    },
+    {
+      "id": "A21",
+      "codigo": "int x=1; int x=y; int z=x;",
+      "regras_esperadas": [
+        "REDECLARACAO_NO_ESCOPO",
+        "IDENTIFICADOR_NAO_DECLARADO"
+      ],
+      "sucesso_esperado": false,
+      "http_observado": 200,
+      "estado_observado": "erro",
+      "regras_observadas": [
+        "REDECLARACAO_NO_ESCOPO",
+        "IDENTIFICADOR_NAO_DECLARADO"
+      ],
+      "simbolos_observados": [
+        {
+          "id": "S1",
+          "nome": "x",
+          "tipo": "int",
+          "escopo": "E0",
+          "linha": 1,
+          "coluna": 5,
+          "fim": {
+            "linha": 1,
+            "coluna": 6
+          },
+          "noAst": "/comandos/0",
+          "inicializado": true,
+          "sombreia": null,
+          "referencias": [
+            {
+              "linha": 1,
+              "coluna": 25,
+              "fim": {
+                "linha": 1,
+                "coluna": 26
+              },
+              "noAst": "/comandos/2/inicializador",
+              "contexto": "leitura"
+            }
+          ]
+        },
+        {
+          "id": "S2",
+          "nome": "z",
+          "tipo": "int",
+          "escopo": "E0",
+          "linha": 1,
+          "coluna": 23,
+          "fim": {
+            "linha": 1,
+            "coluna": 24
+          },
+          "noAst": "/comandos/2",
+          "inicializado": true,
+          "sombreia": null,
+          "referencias": []
+        }
+      ],
+      "diagnosticos_observados": [
+        {
+          "tipo": "ERRO_SEMANTICO",
+          "regra": "REDECLARACAO_NO_ESCOPO",
+          "lexema": "x",
+          "linha": 1,
+          "coluna": 14,
+          "fim": {
+            "linha": 1,
+            "coluna": 15
+          },
+          "noAst": "/comandos/1",
+          "simboloId": "S1",
+          "mensagem": "A variável 'x' já foi declarada neste escopo na linha 1, coluna 5.",
+          "sugestao": "Use outro nome ou aproveite a variável já declarada. Um bloco interno pode declarar um nome que sombreia o externo."
+        },
+        {
+          "tipo": "ERRO_SEMANTICO",
+          "regra": "IDENTIFICADOR_NAO_DECLARADO",
+          "lexema": "y",
+          "linha": 1,
+          "coluna": 16,
+          "fim": {
+            "linha": 1,
+            "coluna": 17
+          },
+          "noAst": "/comandos/1/inicializador",
+          "simboloId": null,
+          "mensagem": "O identificador 'y' não foi declarado antes deste uso no escopo atual nem nos escopos externos.",
+          "sugestao": "Declare a variável antes de usá-la e confira os limites de seu bloco."
+        }
+      ],
+      "resultado": "aprovado",
+      "falha": ""
+    },
+    {
+      "id": "A22",
+      "codigo": "float x=1; x=2; int y=6/2;",
+      "regras_esperadas": [],
+      "sucesso_esperado": true,
+      "http_observado": 200,
+      "estado_observado": "sucesso",
+      "regras_observadas": [],
+      "simbolos_observados": [
+        {
+          "id": "S1",
+          "nome": "x",
+          "tipo": "float",
+          "escopo": "E0",
+          "linha": 1,
+          "coluna": 7,
+          "fim": {
+            "linha": 1,
+            "coluna": 8
+          },
+          "noAst": "/comandos/0",
+          "inicializado": true,
+          "sombreia": null,
+          "referencias": [
+            {
+              "linha": 1,
+              "coluna": 12,
+              "fim": {
+                "linha": 1,
+                "coluna": 13
+              },
+              "noAst": "/comandos/1/alvo",
+              "contexto": "atribuicao"
+            }
+          ]
+        },
+        {
+          "id": "S2",
+          "nome": "y",
+          "tipo": "int",
+          "escopo": "E0",
+          "linha": 1,
+          "coluna": 21,
+          "fim": {
+            "linha": 1,
+            "coluna": 22
+          },
+          "noAst": "/comandos/2",
+          "inicializado": true,
+          "sombreia": null,
+          "referencias": []
+        }
+      ],
+      "diagnosticos_observados": [],
+      "resultado": "aprovado",
+      "falha": ""
+    },
+    {
+      "id": "A23",
+      "codigo": "{}",
+      "regras_esperadas": [],
+      "sucesso_esperado": true,
+      "http_observado": 200,
+      "estado_observado": "sucesso",
+      "regras_observadas": [],
+      "simbolos_observados": [],
+      "diagnosticos_observados": [],
+      "resultado": "aprovado",
+      "falha": ""
+    },
+    {
+      "id": "A24",
+      "codigo": "if(1<2){int x=1;} else {int x=2;}",
+      "regras_esperadas": [],
+      "sucesso_esperado": true,
+      "http_observado": 200,
+      "estado_observado": "sucesso",
+      "regras_observadas": [],
+      "simbolos_observados": [
+        {
+          "id": "S1",
+          "nome": "x",
+          "tipo": "int",
+          "escopo": "E1",
+          "linha": 1,
+          "coluna": 13,
+          "fim": {
+            "linha": 1,
+            "coluna": 14
+          },
+          "noAst": "/comandos/0/entao/comandos/0",
+          "inicializado": true,
+          "sombreia": null,
+          "referencias": []
+        },
+        {
+          "id": "S2",
+          "nome": "x",
+          "tipo": "int",
+          "escopo": "E2",
+          "linha": 1,
+          "coluna": 29,
+          "fim": {
+            "linha": 1,
+            "coluna": 30
+          },
+          "noAst": "/comandos/0/senao/comandos/0",
+          "inicializado": true,
+          "sombreia": null,
+          "referencias": []
+        }
+      ],
+      "diagnosticos_observados": [],
+      "resultado": "aprovado",
+      "falha": ""
+    },
+    {
+      "id": "A25",
+      "codigo": "int x; if(y){x=1;} int z=x;",
+      "regras_esperadas": [
+        "IDENTIFICADOR_NAO_DECLARADO",
+        "VARIAVEL_NAO_INICIALIZADA"
+      ],
+      "sucesso_esperado": false,
+      "http_observado": 200,
+      "estado_observado": "erro",
+      "regras_observadas": [
+        "IDENTIFICADOR_NAO_DECLARADO",
+        "VARIAVEL_NAO_INICIALIZADA"
+      ],
+      "simbolos_observados": [
+        {
+          "id": "S1",
+          "nome": "x",
+          "tipo": "int",
+          "escopo": "E0",
+          "linha": 1,
+          "coluna": 5,
+          "fim": {
+            "linha": 1,
+            "coluna": 6
+          },
+          "noAst": "/comandos/0",
+          "inicializado": false,
+          "sombreia": null,
+          "referencias": [
+            {
+              "linha": 1,
+              "coluna": 14,
+              "fim": {
+                "linha": 1,
+                "coluna": 15
+              },
+              "noAst": "/comandos/1/entao/comandos/0/alvo",
+              "contexto": "atribuicao"
+            },
+            {
+              "linha": 1,
+              "coluna": 26,
+              "fim": {
+                "linha": 1,
+                "coluna": 27
+              },
+              "noAst": "/comandos/2/inicializador",
+              "contexto": "leitura"
+            }
+          ]
+        },
+        {
+          "id": "S2",
+          "nome": "z",
+          "tipo": "int",
+          "escopo": "E0",
+          "linha": 1,
+          "coluna": 24,
+          "fim": {
+            "linha": 1,
+            "coluna": 25
+          },
+          "noAst": "/comandos/2",
+          "inicializado": false,
+          "sombreia": null,
+          "referencias": []
+        }
+      ],
+      "diagnosticos_observados": [
+        {
+          "tipo": "ERRO_SEMANTICO",
+          "regra": "IDENTIFICADOR_NAO_DECLARADO",
+          "lexema": "y",
+          "linha": 1,
+          "coluna": 11,
+          "fim": {
+            "linha": 1,
+            "coluna": 12
+          },
+          "noAst": "/comandos/1/condicao",
+          "simboloId": null,
+          "mensagem": "O identificador 'y' não foi declarado antes deste uso no escopo atual nem nos escopos externos.",
+          "sugestao": "Declare a variável antes de usá-la e confira os limites de seu bloco."
+        },
+        {
+          "tipo": "ERRO_SEMANTICO",
+          "regra": "VARIAVEL_NAO_INICIALIZADA",
+          "lexema": "x",
+          "linha": 1,
+          "coluna": 26,
+          "fim": {
+            "linha": 1,
+            "coluna": 27
+          },
+          "noAst": "/comandos/2/inicializador",
+          "simboloId": "S1",
+          "mensagem": "A leitura de 'x' ocorre sem uma inicialização garantida neste ponto. A declaração, sozinha, não fornece um valor.",
+          "sugestao": "Inicialize a variável antes da leitura. Se a atribuição estiver em um if, garanta-a nos dois caminhos."
+        }
+      ],
+      "resultado": "aprovado",
+      "falha": ""
+    },
+    {
+      "id": "A26",
+      "codigo": "int x=1; { int x=x; }",
+      "regras_esperadas": [
+        "VARIAVEL_NAO_INICIALIZADA"
+      ],
+      "sucesso_esperado": false,
+      "http_observado": 200,
+      "estado_observado": "erro",
+      "regras_observadas": [
+        "VARIAVEL_NAO_INICIALIZADA"
+      ],
+      "simbolos_observados": [
+        {
+          "id": "S1",
+          "nome": "x",
+          "tipo": "int",
+          "escopo": "E0",
+          "linha": 1,
+          "coluna": 5,
+          "fim": {
+            "linha": 1,
+            "coluna": 6
+          },
+          "noAst": "/comandos/0",
+          "inicializado": true,
+          "sombreia": null,
+          "referencias": []
+        },
+        {
+          "id": "S2",
+          "nome": "x",
+          "tipo": "int",
+          "escopo": "E1",
+          "linha": 1,
+          "coluna": 16,
+          "fim": {
+            "linha": 1,
+            "coluna": 17
+          },
+          "noAst": "/comandos/1/comandos/0",
+          "inicializado": false,
+          "sombreia": "S1",
+          "referencias": [
+            {
+              "linha": 1,
+              "coluna": 18,
+              "fim": {
+                "linha": 1,
+                "coluna": 19
+              },
+              "noAst": "/comandos/1/comandos/0/inicializador",
+              "contexto": "leitura"
+            }
+          ]
+        }
+      ],
+      "diagnosticos_observados": [
+        {
+          "tipo": "ERRO_SEMANTICO",
+          "regra": "VARIAVEL_NAO_INICIALIZADA",
+          "lexema": "x",
+          "linha": 1,
+          "coluna": 18,
+          "fim": {
+            "linha": 1,
+            "coluna": 19
+          },
+          "noAst": "/comandos/1/comandos/0/inicializador",
+          "simboloId": "S2",
+          "mensagem": "A leitura de 'x' ocorre sem uma inicialização garantida neste ponto. A declaração, sozinha, não fornece um valor.",
+          "sugestao": "Inicialize a variável antes da leitura. Se a atribuição estiver em um if, garanta-a nos dois caminhos."
+        }
+      ],
+      "resultado": "aprovado",
+      "falha": ""
+    },
+    {
+      "id": "A27",
+      "codigo": "int x; if(1<2){ if(2<3){x=1;}else{x=2;} }else{x=3;} int z=x;",
+      "regras_esperadas": [],
+      "sucesso_esperado": true,
+      "http_observado": 200,
+      "estado_observado": "sucesso",
+      "regras_observadas": [],
+      "simbolos_observados": [
+        {
+          "id": "S1",
+          "nome": "x",
+          "tipo": "int",
+          "escopo": "E0",
+          "linha": 1,
+          "coluna": 5,
+          "fim": {
+            "linha": 1,
+            "coluna": 6
+          },
+          "noAst": "/comandos/0",
+          "inicializado": true,
+          "sombreia": null,
+          "referencias": [
+            {
+              "linha": 1,
+              "coluna": 25,
+              "fim": {
+                "linha": 1,
+                "coluna": 26
+              },
+              "noAst": "/comandos/1/entao/comandos/0/entao/comandos/0/alvo",
+              "contexto": "atribuicao"
+            },
+            {
+              "linha": 1,
+              "coluna": 35,
+              "fim": {
+                "linha": 1,
+                "coluna": 36
+              },
+              "noAst": "/comandos/1/entao/comandos/0/senao/comandos/0/alvo",
+              "contexto": "atribuicao"
+            },
+            {
+              "linha": 1,
+              "coluna": 47,
+              "fim": {
+                "linha": 1,
+                "coluna": 48
+              },
+              "noAst": "/comandos/1/senao/comandos/0/alvo",
+              "contexto": "atribuicao"
+            },
+            {
+              "linha": 1,
+              "coluna": 59,
+              "fim": {
+                "linha": 1,
+                "coluna": 60
+              },
+              "noAst": "/comandos/2/inicializador",
+              "contexto": "leitura"
+            }
+          ]
+        },
+        {
+          "id": "S2",
+          "nome": "z",
+          "tipo": "int",
+          "escopo": "E0",
+          "linha": 1,
+          "coluna": 57,
+          "fim": {
+            "linha": 1,
+            "coluna": 58
+          },
+          "noAst": "/comandos/2",
+          "inicializado": true,
+          "sombreia": null,
+          "referencias": []
+        }
+      ],
+      "diagnosticos_observados": [],
+      "resultado": "aprovado",
+      "falha": ""
+    }
+  ]
+}

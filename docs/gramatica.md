@@ -98,4 +98,4 @@ O modo pânico descarta tokens até `;` (consumido) ou `}`. Dentro de bloco, a c
 
 ## Fronteira semântica
 
-`x = 1;`, `int x; int x;` e `int x; x = 2.5;` são sintaticamente válidos. Declaração prévia, redeclaração, escopo, compatibilidade de tipos e conversões serão definidos na Etapa 5. O parser não executa expressões nem tenta provar correção semântica.
+`x = 1;`, `int x; int x;` e `int x; x = 2.5;` continuam sintaticamente válidos. A [semântica da Etapa 5](semantica.md) agora identifica, respectivamente, nome não declarado, redeclaração e tipos incompatíveis. O parser permanece responsável somente pela estrutura; sua AST não é alterada pelo analisador semântico. Condições numéricas podem ser reconhecidas sintaticamente e rejeitadas pela política semântica, que exige resultado `bool`.

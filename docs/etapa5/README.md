@@ -1,5 +1,7 @@
 # Tarefa 5 — estratégia de implementação e avaliação
 
+**Registro da preparação teórica anterior ao Trabalho 5.** O código foi ampliado posteriormente com [semântica e modos visuais](../trabalho5/README.md). Conforme a sequência combinada, o artigo/matriz e o formulário desta pasta aguardam revisão posterior e simplificação; os resultados abaixo permanecem vinculados à base `7fcb5ca`, sem respostas humanas inventadas.
+
 Preparação em 26/11/2026. **Estado: versão para coleta; avaliação com colegas ainda não aplicada.** A Tarefa 5 só estará concluída depois de incorporar respostas e observações reais. Código funcional examinado: `7fcb5ca`; o Trabalho 5 prático não foi implementado nesta alteração.
 
 ## Materiais

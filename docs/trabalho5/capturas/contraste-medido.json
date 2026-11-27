@@ -1,0 +1,242 @@
+{
+  "criterio_texto_regular": 4.5,
+  "criterio_foco": 3,
+  "metodo": "Luminância relativa sRGB; cores computadas dos elementos e fundos/gradientes renderizados. Controles desabilitados excluídos.",
+  "medicoes": [
+    {
+      "viewport": "desktop",
+      "modo": "padrao",
+      "estado": "sucesso",
+      "elementos_medidos": 161,
+      "menor_razao_texto": 6.749,
+      "elemento_menor_razao": "msg sucesso"
+    },
+    {
+      "viewport": "desktop",
+      "modo": "padrao",
+      "estado": "lexico",
+      "elementos_medidos": 59,
+      "menor_razao_texto": 7.455,
+      "elemento_menor_razao": "linguagem"
+    },
+    {
+      "viewport": "desktop",
+      "modo": "padrao",
+      "estado": "sintatico",
+      "elementos_medidos": 64,
+      "menor_razao_texto": 7.396,
+      "elemento_menor_razao": "token token-operador"
+    },
+    {
+      "viewport": "desktop",
+      "modo": "padrao",
+      "estado": "semantico",
+      "elementos_medidos": 139,
+      "menor_razao_texto": 6.947,
+      "elemento_menor_razao": "nota"
+    },
+    {
+      "viewport": "desktop",
+      "modo": "padrao",
+      "estado": "foco_e_selecao",
+      "razao_foco": 6.345,
+      "razao_selecao": 6.082
+    },
+    {
+      "viewport": "desktop",
+      "modo": "sem-cores",
+      "estado": "sucesso",
+      "elementos_medidos": 161,
+      "menor_razao_texto": 8.934,
+      "elemento_menor_razao": "nota"
+    },
+    {
+      "viewport": "desktop",
+      "modo": "sem-cores",
+      "estado": "lexico",
+      "elementos_medidos": 59,
+      "menor_razao_texto": 9.74,
+      "elemento_menor_razao": "linguagem"
+    },
+    {
+      "viewport": "desktop",
+      "modo": "sem-cores",
+      "estado": "sintatico",
+      "elementos_medidos": 64,
+      "menor_razao_texto": 9.74,
+      "elemento_menor_razao": "linguagem"
+    },
+    {
+      "viewport": "desktop",
+      "modo": "sem-cores",
+      "estado": "semantico",
+      "elementos_medidos": 139,
+      "menor_razao_texto": 8.934,
+      "elemento_menor_razao": "nota"
+    },
+    {
+      "viewport": "desktop",
+      "modo": "sem-cores",
+      "estado": "foco_e_selecao",
+      "razao_foco": 16.57,
+      "razao_selecao": 11.589
+    },
+    {
+      "viewport": "desktop",
+      "modo": "contraste",
+      "estado": "sucesso",
+      "elementos_medidos": 161,
+      "menor_razao_texto": 16.275,
+      "elemento_menor_razao": "linguagem"
+    },
+    {
+      "viewport": "desktop",
+      "modo": "contraste",
+      "estado": "lexico",
+      "elementos_medidos": 59,
+      "menor_razao_texto": 16.275,
+      "elemento_menor_razao": "linguagem"
+    },
+    {
+      "viewport": "desktop",
+      "modo": "contraste",
+      "estado": "sintatico",
+      "elementos_medidos": 64,
+      "menor_razao_texto": 16.275,
+      "elemento_menor_razao": "linguagem"
+    },
+    {
+      "viewport": "desktop",
+      "modo": "contraste",
+      "estado": "semantico",
+      "elementos_medidos": 139,
+      "menor_razao_texto": 16.275,
+      "elemento_menor_razao": "linguagem"
+    },
+    {
+      "viewport": "desktop",
+      "modo": "contraste",
+      "estado": "foco_e_selecao",
+      "razao_foco": 13.584,
+      "razao_selecao": 4.217
+    },
+    {
+      "viewport": "celular",
+      "modo": "padrao",
+      "estado": "sucesso",
+      "elementos_medidos": 161,
+      "menor_razao_texto": 6.749,
+      "elemento_menor_razao": "msg sucesso"
+    },
+    {
+      "viewport": "celular",
+      "modo": "padrao",
+      "estado": "lexico",
+      "elementos_medidos": 59,
+      "menor_razao_texto": 7.455,
+      "elemento_menor_razao": "linguagem"
+    },
+    {
+      "viewport": "celular",
+      "modo": "padrao",
+      "estado": "sintatico",
+      "elementos_medidos": 64,
+      "menor_razao_texto": 7.396,
+      "elemento_menor_razao": "token token-operador"
+    },
+    {
+      "viewport": "celular",
+      "modo": "padrao",
+      "estado": "semantico",
+      "elementos_medidos": 139,
+      "menor_razao_texto": 6.947,
+      "elemento_menor_razao": "nota"
+    },
+    {
+      "viewport": "celular",
+      "modo": "padrao",
+      "estado": "foco_e_selecao",
+      "razao_foco": 6.345,
+      "razao_selecao": 6.082
+    },
+    {
+      "viewport": "celular",
+      "modo": "sem-cores",
+      "estado": "sucesso",
+      "elementos_medidos": 161,
+      "menor_razao_texto": 8.934,
+      "elemento_menor_razao": "nota"
+    },
+    {
+      "viewport": "celular",
+      "modo": "sem-cores",
+      "estado": "lexico",
+      "elementos_medidos": 59,
+      "menor_razao_texto": 9.74,
+      "elemento_menor_razao": "linguagem"
+    },
+    {
+      "viewport": "celular",
+      "modo": "sem-cores",
+      "estado": "sintatico",
+      "elementos_medidos": 64,
+      "menor_razao_texto": 9.74,
+      "elemento_menor_razao": "linguagem"
+    },
+    {
+      "viewport": "celular",
+      "modo": "sem-cores",
+      "estado": "semantico",
+      "elementos_medidos": 139,
+      "menor_razao_texto": 8.934,
+      "elemento_menor_razao": "nota"
+    },
+    {
+      "viewport": "celular",
+      "modo": "sem-cores",
+      "estado": "foco_e_selecao",
+      "razao_foco": 16.57,
+      "razao_selecao": 11.589
+    },
+    {
+      "viewport": "celular",
+      "modo": "contraste",
+      "estado": "sucesso",
+      "elementos_medidos": 161,
+      "menor_razao_texto": 16.275,
+      "elemento_menor_razao": "linguagem"
+    },
+    {
+      "viewport": "celular",
+      "modo": "contraste",
+      "estado": "lexico",
+      "elementos_medidos": 59,
+      "menor_razao_texto": 16.275,
+      "elemento_menor_razao": "linguagem"
+    },
+    {
+      "viewport": "celular",
+      "modo": "contraste",
+      "estado": "sintatico",
+      "elementos_medidos": 64,
+      "menor_razao_texto": 16.275,
+      "elemento_menor_razao": "linguagem"
+    },
+    {
+      "viewport": "celular",
+      "modo": "contraste",
+      "estado": "semantico",
+      "elementos_medidos": 139,
+      "menor_razao_texto": 16.275,
+      "elemento_menor_razao": "linguagem"
+    },
+    {
+      "viewport": "celular",
+      "modo": "contraste",
+      "estado": "foco_e_selecao",
+      "razao_foco": 13.584,
+      "razao_selecao": 4.217
+    }
+  ],
+  "limites": "Inspeção técnica, sem participantes com daltonismo, sem certificação WCAG integral; simulação móvel não é aparelho físico."
+}

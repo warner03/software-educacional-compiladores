@@ -1,5 +1,7 @@
 # Trabalho 4 — implementação prática
 
+**Registro histórico do Trabalho 4.** A versão atual acrescenta [semântica e acessibilidade no Trabalho 5](../trabalho5/README.md). As descrições de recursos futuros abaixo se referem à base anterior.
+
 Parser e AST integrados ao projeto existente, a partir da versão `0424376`. A análise semântica permanece para a Etapa 5.
 
 - [Gramática e estratégia do parser](../gramatica.md)

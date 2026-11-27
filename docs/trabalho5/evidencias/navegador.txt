@@ -1,0 +1,5 @@
+INFO: desktop, 2.000 nós e 3.998 tokens: resposta + renderização em 1.37s nesta máquina.
+OK: desktop, 1366px, tokens/AST, semântica, escopos, inicialização, seleções, modos visuais, contraste, simulações, teclado e regressão.
+INFO: celular, 2.000 nós e 3.998 tokens: resposta + renderização em 1.60s nesta máquina.
+OK: celular, 390px, tokens/AST, semântica, escopos, inicialização, seleções, modos visuais, contraste, simulações, teclado e regressão.
+OK: 134 cenários E2E, sem mocks ou erros JavaScript. Não constitui auditoria completa WCAG nem estudo com pessoas daltônicas ou aparelho físico.

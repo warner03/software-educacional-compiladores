@@ -1,0 +1,34 @@
+digraph fluxo {
+ graph [rankdir=TB,bgcolor="white",nodesep=".35",ranksep=".35",pad=".2",label="Fluxo implementado — Trabalho 5",labelloc=t,fontname="DejaVu Sans",fontsize=18];
+ node [fontname="DejaVu Sans",fontsize=11,shape=box,style="rounded,filled",color="#334d66",fillcolor="#f3f6f9",margin=".15,.10"];
+ edge [fontname="DejaVu Sans",fontsize=10,color="#4c5968",arrowsize=.65];
+ entrada [label="Escolher modo visual / editar Mini-C\nPadrão, Sem cores ou Alto contraste"];
+ validacao [shape=diamond,label="Entrada válida?\nAté 10.000 caracteres"];
+ erroentrada [label="HTTP 400\nInformar problema de entrada"];
+ scanner [label="Scanner preservado\nTokens e erros com posições"];
+ lexico [shape=diamond,label="Erros léxicos?"];
+ errolexico [label="Tokens recuperados + erros léxicos\nParser e semântica não executados"];
+ parser [label="Parser preservado\nGramática, precedência, AST e diagnósticos"];
+ sintaxe [shape=diamond,label="Erro sintático\nou limite estrutural?"];
+ errosintatico [label="Tokens + erros sintáticos\nAST nula; semântica não executada"];
+ semantica [label="Percorrer AST sem alterá-la\nEscopos, símbolos, tipos e inicialização"];
+ regras [shape=diamond,label="Regra semântica\nviolada?"];
+ errosem [label="Preservar tokens e AST\nTabela reconhecida + regra/posição/sugestão"];
+ sucesso [label="Três fases sem erros\nTabela de símbolos e escopos"];
+ apresentacao [label="Apresentação integrada com rótulos e padrões\nSelecionar símbolo/referência/erro → fonte e AST\nFiltrar escopo; navegar tokens; exportar AST"];
+ futura [label="Representação semântica ampliada\nFUTURO — Etapa 6",style="rounded,dashed,filled",color="#777777"];
+ entrada->validacao;
+ validacao->erroentrada[label="não"];
+ validacao->scanner[label="sim"];
+ scanner->lexico;
+ lexico->errolexico[label="sim"];
+ lexico->parser[label="não"];
+ parser->sintaxe;
+ sintaxe->errosintatico[label="sim"];
+ sintaxe->semantica[label="não"];
+ semantica->regras;
+ regras->errosem[label="sim"];
+ regras->sucesso[label="não"];
+ errosem->apresentacao;sucesso->apresentacao;
+ apresentacao->futura[style=dashed,label="extensão futura"];
+}

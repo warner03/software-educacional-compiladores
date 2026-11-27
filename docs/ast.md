@@ -1,5 +1,7 @@
 # AST — formato e visualização
 
+A Etapa 5 preserva este esquema. Símbolos, referências e diagnósticos semânticos apontam para os nós pelos caminhos `noAst`, sem inserir atributos na árvore. Ver [semântica e tabela de símbolos](semantica.md).
+
 A sequência de tokens registra unidades em ordem de leitura. Uma árvore de derivação registraria terminais e não terminais das produções. A **árvore sintática abstrata (AST)** desta aplicação guarda construções e relações essenciais: não tem nós de pontuação, comentários ou parênteses, nem nós intermediários `aditiva`/`multiplicativa`.
 
 ## Esquema JSON

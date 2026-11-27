@@ -1,98 +1,99 @@
 # Visualizador Educacional de Compiladores — Mini-C
 
-Software web educacional para estudar as fases de um compilador. **Trabalho 4: análise sintática e AST implementadas**, integradas ao scanner, à API e à interface das etapas anteriores.
-
-**Tarefa 5 teórica:** [estratégia de implementação e avaliação](docs/etapa5/README.md), com o próprio projeto na matriz, duas novas fontes metodológicas, testes funcionais reexecutados e instrumento por pares. A coleta com colegas ainda será aplicada; resultados humanos permanecem pendentes. O Trabalho 5 prático ainda aguarda suas instruções, e a aplicação continua no escopo da Etapa 4.
+Software web educacional para estudar as fases de um compilador. **Trabalho 5: análise semântica e tabela de símbolos implementadas**, preservando tokens e AST das etapas anteriores. A interface também oferece modos **Sem cores**, com padrões/rótulos, e **Alto contraste**, como apoio ao daltonismo.
 
 ## O que funciona
 
-- Editor e oito exemplos, incluindo precedência e erros propositais.
-- Scanner da Etapa 3 preservado: tokens, posições, contagens, mensagens e recuperação.
-- Parser manual por descida recursiva: declarações `int`/`float`, atribuições, expressões aritméticas/relacionais, sinais unários, blocos e `if/else` com chaves obrigatórias.
-- AST hierárquica com nós expansíveis, regras explicadas, localização do nó no código e download em JSON.
-- Diagnósticos sintáticos com encontrado, esperado, linha/coluna e recuperação em `;` ou `}`.
-- Estados léxico e sintático separados; parser não é executado diante de erro léxico.
-- Testes de parser, API, interface, regressão, integração Docker e navegador real.
+- Editor e 14 exemplos editáveis, incluindo casos válidos e erros intencionais das três fases.
+- Scanner e parser preservados: tipos/lexemas/posições, precedência, AST navegável, seleção no fonte e exportação JSON.
+- Verificação de declaração antes do uso, redeclaração, escopos, sombreamento, tipos, condições e inicialização definida.
+- Tabela de símbolos filtrável por escopo, declaração e referências selecionáveis, com destaque no código e ligação à AST.
+- Diagnósticos separados por fase, com localização, regra semântica e sugestão de correção.
+- Modos visuais com rótulos, padrões, contornos e foco visível; preferência mantida ao recarregar quando o navegador permite.
+- Testes técnicos, integração Docker, navegador real, contraste e inspeções sob simulação de visão de cores.
 
-A análise semântica ficará para a **Etapa 5**. `x = 1;` ainda é sintaticamente válido, sem verificar declaração ou tipos. A aplicação não executa programas. A navegação explora tokens e a AST prontos; não simula passo a passo a construção da árvore.
+Os recursos de acessibilidade estão implementados e tecnicamente verificados; ainda não houve avaliação com pessoas daltônicas. A [Tarefa 5 teórica](docs/etapa5/README.md) permanece como registro da preparação anterior à implementação e aguarda revisão do artigo/matriz e simplificação do formulário após esta entrega prática.
 
-## Executar no seu computador
+## Abrir no seu computador
 
-Requisitos: Docker Engine/Desktop com Compose v2. Sem banco de dados, contas ou segredos obrigatórios.
+Requisitos: Docker Engine/Desktop com Compose v2. Na pasta onde está `docker-compose.yml`, abra o terminal (em alguns Linux, **Abrir no Console**) e execute:
 
 ```bash
 docker compose up --build -d --wait
 ```
 
-Abra **http://localhost:8501**. Documentação da API: **http://localhost:8000/docs**. Para encerrar:
+Abra **http://localhost:8501**. A documentação direta da API fica em **http://localhost:8000/docs**. Para encerrar:
 
 ```bash
 docker compose down
 ```
 
-Se 8000 já estiver ocupada, configure a porta externa da API, por exemplo no Bash:
+Após atualizar arquivos, reconstrua as imagens: o código é copiado no build, sem bind mounts. Se estiver usando uma pasta nova e a versão antiga ainda estiver ativa, encerre os serviços na pasta antiga antes de iniciar a nova.
+
+Se 8000 estiver ocupada, no Bash:
 
 ```bash
 COMPILADORES_API_PORT=18000 docker compose up --build -d --wait
 ```
 
-Nesse caso, a documentação direta da API fica em `http://localhost:18000/docs`; a interface continua em 8501. O nginx encaminha `/api/analisar` ao backend interno na porta 8000. Em rede com proxy TLS próprio, veja [execução na nuvem](docs/execucao-nuvem.md), sem desativar TLS.
+Nesse caso, API em `http://localhost:18000/docs`; interface continua em 8501. O proxy interno permanece em 8000. Ambientes com CA própria: [execução na nuvem](docs/execucao-nuvem.md), com TLS verificado. Não há banco, conta ou segredo obrigatório para o aplicativo.
 
-As imagens copiam o código durante o build. **Após editar arquivos, reconstrua as imagens**, inclusive a de testes. Os serviços não usam bind mounts do checkout.
+## Explorar e demonstrar
 
-## Usar e demonstrar
+1. Escolha um exemplo e clique em **Analisar código**. Confira separadamente Léxica, Sintática e Semântica.
+2. Compare os tokens com o fonte e use a navegação de tokens.
+3. Expanda a AST e selecione **Localizar**. Use **Ver trecho destacado no código** para ir ao resultado.
+4. Na tabela de símbolos, filtre escopos e localize declarações/referências. A construção relacionada também recebe contorno na AST.
+5. No seletor inicial, escolha **Sem cores** ou **Alto contraste**. A análise e a seleção permanecem; a legenda explica os padrões.
+6. Corrija uma entrada com erro e analise novamente. **Destacar token atual** retoma a navegação léxica.
 
-1. Escolha um exemplo ou escreva Mini-C e clique em **Analisar código**.
-2. Confira separadamente os resultados léxico e sintático.
-3. Use **Token anterior** e **Próximo token** para localizar lexemas e compare a tabela de tokens.
-4. Na AST, abra os nós; **Expandir tudo** e **Recolher tudo** controlam a árvore. Enter/Espaço também abre um resumo focado.
-5. Use **Localizar** em um nó para destacar sua construção no código. **Destacar token atual** retoma o destaque individual.
-6. Use **Baixar AST em JSON** para guardar a estrutura. Corrija os erros e analise novamente quando necessário.
+Exemplo 9: `int x=10; total=x+5;` produz erro semântico por `total` não declarado. Tokens e AST continuam disponíveis. Exemplo 10 mostra duas variáveis `x` em escopos diferentes. Exemplo 11 rejeita `float` em variável `int`; o 12 mostra leitura não inicializada; o 13 garante inicialização nos dois ramos; o 14 exige comparação na condição.
 
-Em `int resultado = 10 + 5 * 2;`, a AST contém a adição com a multiplicação no ramo direito. Em `20 - 5 - 3`, organiza `(20 - 5) - 3`. Parênteses alteram a estrutura: `(10 + 5) * 2` tem multiplicação na raiz da expressão.
+[Roteiro do Trabalho 5](docs/demonstracao-etapa5.md) · [Recursos e evidências](docs/trabalho5/README.md)
 
-Em `int x = ;`, os tokens continuam disponíveis, mas há erro sintático e AST nula. Em `@ int x;`, há erro léxico e o parser não é executado. Veja o [roteiro de demonstração](docs/demonstracao-etapa4.md).
+## Linguagem e política semântica
 
-## Linguagem, parser e AST
+[Gramática](docs/gramatica.md) · [Scanner](docs/escopo-lexico.md) · [AST](docs/ast.md) · [Semântica e símbolos](docs/semantica.md) · [Acessibilidade](docs/acessibilidade.md)
 
-[Gramática formal e estratégia](docs/gramatica.md) · [Esquema da AST](docs/ast.md) · [Especificação léxica](docs/escopo-lexico.md)
-
-| Aspecto | Recorte efetivo |
+| Aspecto | Recorte |
 |---|---|
-| Reservadas | `int`, `float`, `if`, `else`, sensíveis a maiúsculas |
-| Identificadores | `[A-Za-z_][A-Za-z0-9_]*` |
-| Números | Inteiros `[0-9]+` e reais `[0-9]+\.[0-9]+`; lexemas preservados |
-| Operadores | `+ - * / = == != < > <= >=`; `=` somente em declaração/atribuição |
-| Declarações | Uma variável por instrução, inicialização opcional, `;` obrigatório |
-| Controle | Blocos, `if` e `else` opcional, sempre com chaves |
-| Comentários | `//` e `/* ... */`, sem aninhamento; ignorados na AST |
-| Fora do escopo | Funções, laços, vetores, strings, operadores lógicos, incremento, atribuição composta, declarações múltiplas |
+| Reservadas e tipos declarados | `int`, `float`, `if`, `else`; tipos `int`/`float` |
+| Identificadores/números | ASCII `[A-Za-z_][A-Za-z0-9_]*`; inteiros e reais decimais, lexemas preservados |
+| Construções | Uma variável por declaração, inicialização opcional, atribuição, expressões, blocos, `if/else` com chaves |
+| Tipos de expressão | Aritmética numérica; promoção `int` → `float`; comparações produzem `bool` interno |
+| Condições | `if` exige `bool`, por exemplo `x != 0`; `if(x)` numérico é rejeitado semanticamente |
+| Visibilidade | Declaração antes do uso, sem redeclaração no mesmo escopo, sombreamento permitido em bloco interno |
+| Inicialização | Exigida na leitura; após condicional, somente o que é garantido em ambos os caminhos |
+| Fora do escopo | Funções, laços, arrays, strings, operadores lógicos, casts, execução e geração de código |
 
-A vírgula é reconhecida pelo scanner, mas rejeitada pelo parser. Programa precisa de ao menos um item; comentários sozinhos geram diagnóstico de programa vazio; `{}` é válido. Tokens e nós usam linha/coluna a partir de 1; tab conta uma coluna, CRLF/CR são normalizados para LF e Unicode conta por ponto de código. O fim de um nó é exclusivo.
+`bool` não é novo tipo de variável na gramática. Um `int` não recebe `float` nem `bool` implicitamente. Divisão de dois inteiros tem tipo inteiro; valores não são calculados. Uma declaração sem leitura pode ser válida sem inicialização. O campo da tabela é a garantia ao fim do escopo, não valor em execução.
 
-O [parser Python](backend/app/parser.py) recebe os tokens originais do [scanner](backend/app/scanner.py), sem reimplementá-lo e sem nova dependência. Funções reconhecem construções; níveis de expressão controlam precedência e associação. A AST simplifica as construções e omite pontuação e regras intermediárias. Uma árvore de derivação conteria esses detalhes e não é exibida.
+Comentários `//` e `/* ... */` são ignorados. A vírgula é tokenizada mas não aceita em declaração múltipla. Programa contém ao menos um item: `{}` é válido, comentários sozinhos não. Posições começam em 1, fim de intervalo é exclusivo, CRLF/CR viram LF, tab conta uma coluna e Unicode por ponto de código.
 
-Limites: **10.000 caracteres, 64 níveis estruturais simultâneos, 2.000 nós construídos e altura 128 da AST**. Excesso de caracteres gera HTTP 400; excesso estrutural gera diagnóstico controlado, com tokens preservados e AST nula. A recuperação pode descartar comandos e não garante encontrar todos os erros.
+Limites herdados: **10.000 caracteres, 64 níveis estruturais, 2.000 nós construídos e altura 128 da AST**. Excesso de caracteres retorna 400; limite estrutural, diagnóstico sintático controlado. A recuperação sintática pode descartar construções e não garante encontrar todos os erros.
 
 ## Comunicação
 
-`POST /api/analisar` pelo nginx, ou `POST /analisar` diretamente na API:
+`POST /api/analisar` no nginx ou `POST /analisar` no FastAPI recebe:
 
 ```json
-{"codigo": "int numero = 10;"}
+{"codigo":"int numero = 10;"}
 ```
 
-A resposta preserva **todos os campos da Etapa 3**: `recebido`, `mensagem`, `total_caracteres`, `total_linhas`, `sucesso`, `tokens` e `erros`. Acrescenta `sintatica`:
+Campos existentes preservados: `recebido`, `mensagem`, `total_caracteres`, `total_linhas`, `sucesso`, `tokens`, `erros` e `sintatica`. **O `sucesso` superior continua exclusivamente léxico.** O novo objeto `semantica` inclui:
 
-| `sintatica.estado` | `sintatica.sucesso` | AST e diagnósticos |
-|---|---|---|
-| `sucesso` | `true` | AST completa e `erros: []` |
-| `erro` | `false` | `ast: null` e erros sintáticos |
-| `nao_executada` | `null` | `motivo: "erros_lexicos"`, AST nula, lista sintática vazia |
+| Campo de `semantica` | Conteúdo |
+|---|---|
+| `estado`, `sucesso` | Estado da fase e resultado booleano ou `null` |
+| `tabelaSimbolos` | Declarações reconhecidas, com tipos, escopos, posições e referências |
+| `escopos` | Global e blocos, com pai e intervalo |
+| `erros` | Diagnósticos com regra, posição, ligação à AST e sugestão |
 
-**O campo superior `sucesso` continua indicando somente o resultado léxico**, por compatibilidade. Confira `sintatica.sucesso` para a sintaxe. Erros no programa retornam HTTP 200 porque a análise foi processada; entrada inválida retorna 400; falha interna, 500 com mensagem genérica. Saúde: `GET /saude`. Veja o [contrato completo com exemplos](docs/contrato-api.md).
+Erros semânticos têm estado `erro`, sucesso `false`, diagnósticos e tabela das declarações reconhecidas. A AST sintática permanece disponível. Erro léxico ou sintático bloqueia a semântica: estado `nao_executada`, sucesso `null`, causa explícita e listas vazias.
 
-## Testes reproduzíveis
+Análises processadas, inclusive com violações da linguagem, retornam HTTP 200. Entrada inválida retorna 400; falha inesperada, 500 com mensagem genérica. Saúde: `GET /saude`. [Contrato com exemplos reais](docs/contrato-api.md).
+
+## Testar e registrar
 
 ```bash
 docker compose build backend frontend testes-frontend
@@ -101,50 +102,36 @@ docker compose run --rm testes-frontend
 bash scripts/smoke_test.sh
 ```
 
-O smoke sobe os serviços, valida HTML e o caminho real nginx → API → scanner → parser e encerra os serviços. Para mantê-los: `KEEP_RUNNING=1 bash scripts/smoke_test.sh`.
-
-Registro automático das suítes e integração:
+O smoke inicia os serviços, verifica o fluxo real e os encerra. Para mantê-los: `KEEP_RUNNING=1 bash scripts/smoke_test.sh`. Para executar os 30 casos semânticos com esperados congelados via API real, com serviços ativos:
 
 ```bash
-python3 scripts/registrar_testes.py --integracao
+python3 scripts/avaliar_semantica.py --saida /tmp/mini-c-casos-semanticos
 ```
 
-Navegador real é uma dependência opcional de avaliação, separada da aplicação:
+Navegador é dependência opcional de avaliação:
 
 ```bash
 python3 -m venv .venv
 .venv/bin/pip install -r scripts/requirements-e2e.txt
 .venv/bin/python -m playwright install chromium
-# Em Linux, instalar também as bibliotecas do navegador quando necessário:
+# Em Linux, instalar bibliotecas do navegador quando necessário:
 # .venv/bin/python -m playwright install --with-deps chromium
 docker compose up -d --wait
-.venv/bin/python scripts/teste_navegador.py --capturas /tmp/demonstracao-etapa4
-# Ou navegador existente: --chromium /caminho/do/chromium
+.venv/bin/python scripts/teste_navegador.py --capturas /tmp/demonstracao-etapa5
 ```
 
-Para executar e registrar tudo:
+Ou informe `--chromium /caminho/do/chromium`. Para executar e registrar tudo:
 
 ```bash
-.venv/bin/python scripts/registrar_testes.py --integracao --navegador
+.venv/bin/python scripts/registrar_testes.py --integracao --casos --navegador
 ```
 
-O navegador testa os oito exemplos, edição, tokens, precedência, seleção de nós, expansão/recolhimento, download, erros, recuperação, limites, teclado e largura em desktop e viewport móvel de 390px. Usa backend real, sem mocks. Não substitui um aparelho físico ou auditoria de acessibilidade.
+O navegador usa o backend real em desktop e viewport móvel. Verifica símbolos, seleções, diagnósticos, modos, contraste, persistência e teclado. As simulações de visão de cores não são estudo com pessoas ou certificação WCAG. O [registro](docs/registro-de-testes.md) contém resultados efetivos, comandos e limitações. Históricos: [Etapa 2](docs/registro-de-testes-etapa2.md), [Etapa 3](docs/registro-de-testes-etapa3.md), [Etapa 4](docs/registro-de-testes-etapa4.md).
 
-Os [resultados e comandos executados](docs/registro-de-testes.md) distinguem aprovações, falhas e pendências. Históricos: [Etapa 2](docs/registro-de-testes-etapa2.md) e [Etapa 3](docs/registro-de-testes-etapa3.md).
+## Depuração e continuidade
 
-## Relação com o artigo
+`docker compose logs --tail=80 backend frontend` exibe os serviços. O backend registra resumo das fases e contagens; a resposta/console do navegador mostra o contrato. Ao relatar erro, informe entrada mínima, ação, mensagem e versão; evite compartilhar informações pessoais. Nenhuma IA/Ollama é necessária para o aplicativo.
 
-A [Tarefa 4 teórica](docs/etapa4/README.md) é um **registro histórico do plano de 18/11/2026**: mantém sua matriz de literatura e resultados então pendentes. A implementação atual está descrita em [Trabalho 4](docs/trabalho4/README.md), com [decisões e mudanças](docs/trabalho4/decisoes.md), [fluxograma atualizado](docs/trabalho4/fluxograma.png) e [rastreabilidade dos requisitos](docs/trabalho4/entrega.md).
+A [Tarefa 4](docs/etapa4/README.md) e a [preparação da Tarefa 5](docs/etapa5/README.md) ficam preservadas como registros anteriores. A documentação atual do [Trabalho 5](docs/trabalho5/README.md) registra decisões, fluxograma, casos e demonstração. A revisão do artigo/matriz e a simplificação do formulário vêm depois desta etapa prática. Não há respostas humanas inventadas ou ganho de aprendizagem comprovado.
 
-Os 33 casos aplicáveis e os três oráculos definidos antes do parser foram reutilizados sem reescrever os esperados. Os três casos semânticos só confirmam aceitação sintática nesta etapa. Não houve estudo com participantes ou medição de aprendizagem; os recursos implementados não demonstram por si só superioridade ou novidade na literatura.
-
-## Estrutura
-
-- `backend/app/`: API, validação, scanner e parser.
-- `backend/tests/`: testes e cópias congeladas dos oráculos para execução no Docker.
-- `frontend/`: HTML/CSS/JavaScript, nginx e testes Node/jsdom.
-- `tests/planejamento/`: plano acadêmico original, sem resultados reescritos.
-- `scripts/`: smoke, registro de testes e E2E Playwright opcional.
-- `docs/`: gramática, AST, contrato, demonstração e registros.
-
-Semântica, tabela de símbolos, checagem de tipos, execução do programa e geração de código permanecem como etapas futuras.
+A Etapa 6 ampliará a representação semântica e a experiência didática. A navegação atual percorre artefatos prontos; não simula os passos internos dos algoritmos. Acessibilidade é uma contribuição implementada a avaliar, com exclusividade perante a literatura ainda não demonstrada.

@@ -12,18 +12,12 @@ import re
 from statistics import median
 import unicodedata
 
-IDS_Q = ('Q01', 'Q02', 'Q03', 'Q04')
-IDS_L = ('L01', 'L02', 'L03', 'L04', 'L05', 'L06')
-IDS_A = ('A01', 'A02')
-OBRIGATORIOS = ('C01', 'M01', 'P01') + IDS_Q + IDS_L
-GABARITO = {'Q01': 'A', 'Q02': 'B', 'Q03': 'B', 'Q04': 'B'}
-OPCOES = {'Q01': 'ABCD', 'Q02': 'ABCD', 'Q03': 'ABCDE', 'Q04': 'ABCD'}
-PERFIS = (
-    'Estudante cursando Compiladores',
-    'Estudante que já cursou Compiladores',
-    'Docente ou monitor',
-    'Outro perfil ou prefiro não informar',
-)
+IDS_Q = ('Q01', 'Q02')
+IDS_L = ('L01', 'L02', 'L03')
+IDS_A = ('A01',)
+OBRIGATORIOS = ('C01', 'M01') + IDS_Q + IDS_L
+GABARITO = {'Q01': 'C', 'Q02': 'B'}
+OPCOES = {'Q01': 'ABCD', 'Q02': 'ABCD'}
 MODOS = ('Em dupla', 'Individual', 'Modo não informado')
 
 
@@ -58,6 +52,8 @@ def ler_csv(caminho):
                     raise ValueError(f'Prefixo duplicado no cabeçalho: {id}.')
                 colunas[nome] = id
         faltam = [id for id in OBRIGATORIOS if id not in colunas.values()]
+        if set(colunas.values()) - set(OBRIGATORIOS) - set(IDS_A):
+            raise ValueError('O CSV pertence a outra versão do instrumento. Use o analisador da versão correspondente; não misture as coletas.')
         if faltam:
             raise ValueError('Cabeçalhos obrigatórios ausentes: ' + ', '.join(faltam))
         linhas = []
@@ -82,15 +78,6 @@ def modo(linha):
     if valor == 'individual':
         return 'Individual'
     return 'Modo não informado'
-
-
-def perfil(linha):
-    valor = normalizar(linha.get('P01'))
-    for p in PERFIS:
-        if valor == normalizar(p):
-            return p
-    # Não ecoar uma categoria livre que possa conter nome ou outro identificador.
-    return PERFIS[-1]
 
 
 def resposta_objetiva(valor, item):
@@ -143,19 +130,9 @@ def resumir(linhas, modalidade):
     for item in IDS_L:
         valores = []
         freq = {str(n): 0 for n in range(1, 6)}
-        na = ausentes = invalidas = inconsistencias_modo = 0
-        excluidas_modo = aplicabilidade_indeterminada = 0
+        na = ausentes = invalidas = 0
         for linha in linhas:
             estado, valor = resposta_likert(linha.get(item))
-            if item == 'L05' and modalidade != 'Em dupla':
-                excluidas_modo += 1
-                if modalidade == 'Individual':
-                    na += 1
-                else:
-                    aplicabilidade_indeterminada += 1
-                if estado == 'valida':
-                    inconsistencias_modo += 1
-                continue
             if estado == 'valida':
                 valores.append(valor)
                 freq[str(valor)] += 1
@@ -169,9 +146,6 @@ def resumir(linhas, modalidade):
             'n_respostas_numericas': len(valores), 'frequencias': freq,
             'mediana': median(valores) if valores else None,
             'n_na': na, 'n_sem_resposta': ausentes, 'n_invalidas': invalidas,
-            'n_inconsistencias_modo': inconsistencias_modo,
-            'n_excluidas_aplicabilidade_modo': excluidas_modo,
-            'n_aplicabilidade_indeterminada_modo': aplicabilidade_indeterminada,
         }
     return {
         'n_respostas_individuais': len(linhas), 'objetivas': objetivas, 'likert': likert,
@@ -184,6 +158,7 @@ def resumir(linhas, modalidade):
 def analisar_linhas(linhas, origem='Respostas fornecidas; origem humana não verificada pelo programa'):
     elegiveis = [linha for linha in linhas if consentiu(linha)]
     resultado = {
+        'versao_instrumento': '3.0',
         'origem': origem,
         'estado': 'com_respostas_elegiveis' if elegiveis else 'sem_respostas_elegiveis' if linhas else 'sem_respostas',
         'n_linhas_lidas': len(linhas), 'n_respostas_elegiveis': len(elegiveis),
@@ -193,7 +168,8 @@ def analisar_linhas(linhas, origem='Respostas fornecidas; origem humana não ver
             'Análise descritiva: não estima ganho de aprendizagem ou efeito causal.',
             'Não há escore global, SUS ou soma dos itens Likert.',
             'Modalidade individual é separada da atividade em duplas.',
-            'L05 somente é aplicável a Em dupla; modo ausente/inválido fica em estrato separado, sem estatística desse item.',
+            'Seis perguntas: duas objetivas, três itens de percepção e uma aberta opcional.',
+            'L02 mede identificação sem depender de cores percebida pelos respondentes, sem comprovar eficácia com pessoas daltônicas.',
             'A unidade do formulário é a resposta individual; não é número de duplas nem de observações independentes.',
             'N/A, ausências e valores inválidos ficam fora dos denominadores indicados.',
             'Texto livre, identificadores e data/hora não são expostos nesta saída.',
@@ -208,11 +184,6 @@ def analisar_linhas(linhas, origem='Respostas fornecidas; origem humana não ver
         if not grupo:
             continue
         resumo = resumir(grupo, m)
-        resumo['por_perfil'] = {}
-        for p in PERFIS:
-            subgrupo = [linha for linha in grupo if perfil(linha) == p]
-            if subgrupo:
-                resumo['por_perfil'][p] = resumir(subgrupo, m)
         modos[m] = resumo
     resultado['estatisticas_por_modo'] = modos
     return resultado

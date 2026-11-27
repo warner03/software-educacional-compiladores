@@ -1,16 +1,25 @@
-# Gabarito reservado ao facilitador
+# Gabarito — uso exclusivo do facilitador
 
-**Não entregar aos participantes antes da atividade.** O formulário não deve ser configurado como quiz nem exibir correção. Este documento é referência de análise, não resultado de pessoas.
+Não entregue aos colegas antes das tarefas. Instrumento v3.0; entradas/gabaritos mudaram em relação à versão 2.
 
-| Item | Resposta correta | Justificativa |
-|---|---|---|
-| Q01 | A) Soma (+). | Em `10 + 5 * 2`, `+` organiza a expressão, com `10` à esquerda e `5 * 2` à direita. |
-| Q02 | B) Multiplicação (*). | Em `(10 + 5) * 2`, `*` organiza a expressão, com a soma agrupada à esquerda e `2` à direita. |
-| Q03 | B) Erro sintático: falta uma expressão após o sinal de igual. | `int x = ;` contém tokens reconhecíveis, mas não há operando/inicializador válido. |
-| Q04 | B) Há erro léxico e o parser não é executado. | `@` está fora do recorte; a versão bloqueia o parser quando há erro léxico. |
+## A1 — símbolos e fonte
 
-Nas questões Q01–Q02, “raiz” significa raiz da **expressão inicializadora**, não o nó Programa ou Declaracao. “Não sei” é uma resposta válida e não correta. Ausência de resposta e valor não reconhecido ficam identificados separadamente, sem entrar silenciosamente no denominador.
+Em `int x = 1; float y = x + 2.5;`, as três fases têm sucesso. Há dois símbolos no escopo global E0: x do tipo int e y do tipo float; ambos terminam inicializados. A declaração de x e sua leitura no inicializador de y podem ser localizadas pela tabela, com destaque no fonte e nó correspondente da AST. No guia a entrada tem duas linhas; as linhas/colunas mudam em relação à versão em uma linha, sem mudar os símbolos ou a regra.
 
-T01 pode ser concluída sem ajuda quando a dupla identifica o agrupamento `10 + (5 * 2)` e usa a interface para relacionar uma construção ao fonte. T02 requer explicar a mudança para `(10 + 5) * 2`. T03 requer distinguir fase léxica sem erro e fase sintática com erro por operando ausente. T04 requer identificar erro léxico e bloqueio da sintática. Registrar ajuda quando fornecida; não atribuir individualmente a conclusão de uma dupla.
+**Conclusão:** localizar a declaração e a leitura de x e distinguir verbalmente onde foi declarada/usada. Somente dizer o nome do símbolo não basta. Registrar ajuda, se houve.
 
-L01–L06 não têm gabarito. Apresentar frequências e medianas por item/modalidade/perfil, excluindo N/A. L02 é percepção do apoio da ligação AST–fonte para explicar agrupamento. L05 é não aplicável ao piloto individual. Não calcular uma nota de aprendizagem, SUS ou soma das seis respostas.
+## A2 — significado
+
+Em `int x = 1; total = x + 2;`, o léxico e a sintática têm sucesso. Há erro **semântico**, regra IDENTIFICADOR_NAO_DECLARADO para total. A AST continua disponível. A tabela reconhece x; total não vira declaração. A sugestão orienta declarar antes de usar. No guia, total começa na segunda linha; na versão em uma linha, está na coluna 12.
+
+**Conclusão:** indicar a fase semântica e localizar total; explicar que falta declaração visível anterior. Q01: **C) Semântico.**
+
+## A3 — apresentação sem dependência de cores
+
+Em `int x = ;`, o léxico não tem erro, a sintática acusa falta de expressão e a semântica não é executada. Em `@ int x;`, há erro léxico para @ e sintática/semântica não executadas. Os rótulos identificam fases/estados em Sem cores e Alto contraste. A legenda informa os padrões, sem depender de distinguir matizes.
+
+**Conclusão:** selecionar Sem cores, identificar o erro sintático e comparar o bloqueio com a entrada léxica inválida; experimentar Alto contraste. Anotar se a pessoa efetivamente usou rótulos/padrões e qualquer ajuda. Q02: **B) Sintática.** A tarefa examina apenas parte da interface, sem comprovar eficácia geral de acessibilidade.
+
+## Formulário
+
+L01–L03 não têm resposta correta; N/A deve ser aceito sem pressão. A01 é opcional. Não corrigir ou induzir a opinião durante o preenchimento. Os acertos objetivos são realização apoiada pela interface, sem prova de ganho de aprendizagem.

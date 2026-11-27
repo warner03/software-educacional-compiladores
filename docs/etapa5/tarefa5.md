@@ -1,6 +1,6 @@
 ---
-title: 'Mini-C: estratégia de implementação e avaliação formativa da exploração de tokens e AST'
-subtitle: 'Tarefa 5 — fundamentação, validação funcional e protocolo de avaliação por pares'
+title: 'Mini-C: exploração das fases de compilação com apoio ao daltonismo'
+subtitle: 'Tarefa 5 — estratégia de implementação e avaliação'
 author: 'Warner Pereira Cardoso Júnior'
 date: '26 de novembro de 2026'
 lang: pt-BR
@@ -14,39 +14,42 @@ urlcolor: blue
 
 **Disciplina:** Compiladores  
 **Professor:** Bruno Rocha  
-**Estado desta versão:** resultados funcionais observados; avaliação com colegas ainda não aplicada. Documento preparado para a coleta, com lacunas de resultados humanos explicitadas. A conclusão da Tarefa 5 requer aplicar o instrumento e incorporar os dados reais.
+**Versão:** atualizada após o Trabalho 5. Validação técnica concluída; avaliação com colegas ainda não aplicada.
 
 # Resumo
 
-Este trabalho apresenta a estratégia de implementação e o protocolo de avaliação de um software educacional para explorar análises léxica e sintática de Mini-C. A versão examinada integra tokens com posições, árvore sintática abstrata (AST) navegável, seleção de trechos do fonte e diagnósticos separados por fase. A comparação conserva nove estudos e inclui o próprio projeto, com classificação baseada em evidências e sem inferir ausências a partir de informações não encontradas. Dois novos artigos de avaliação fundamentam a combinação de tarefas padronizadas, questões objetivas específicas, itens de percepção e comentários abertos. A validação técnica reexecuta casos funcionais previamente definidos; o estudo com colegas está planejado, sem respostas humanas disponíveis nesta versão. Propõe-se uma atividade de explicação em duplas, com alternância de papéis, para investigar a exploração compartilhada das representações. A implementação permanece de uso individual; colaboração multiusuário, melhora de aprendizagem e exclusividade técnica não são resultados demonstrados. O documento distingue funcionamento observado, percepções a coletar e interpretações futuras, descrevendo limitações e condições de adaptação ao SBSC 2027.
+Este trabalho apresenta a implementação e a estratégia de avaliação de um software educacional web para explorar as análises léxica, sintática e semântica de Mini-C. A ferramenta relaciona código-fonte, tokens, árvore sintática abstrata e tabela de símbolos, apresentando diagnósticos em português com localização, regra violada e sugestão de correção. Sua contribuição de projeto é integrar essa exploração a modos Sem cores, com padrões e rótulos, e Alto contraste, para reduzir a dependência de distinções cromáticas. A comparação inclui nove estudos anteriores e o próprio projeto, com evidências por classificação e dois critérios de acessibilidade visual. Dois artigos científicos fundamentam uma avaliação formativa com tarefas padronizadas e um formulário curto. Na validação técnica, passaram 322 testes de backend, 55 de interface, 134 cenários de navegador e 30 casos semânticos pela API real. As medidas de contraste dos elementos examinados atenderam aos limiares adotados. Não houve coleta com colegas ou pessoas daltônicas; a utilidade percebida e a contribuição educacional permanecem questões a investigar. Os resultados técnicos e o protocolo humano são apresentados separadamente, com limitações e considerações sobre o SBSC 2027.
 
-**Palavras-chave:** ensino de compiladores; Mini-C; AST; avaliação formativa; avaliação por pares.
+**Palavras-chave:** ensino de compiladores; Mini-C; análise semântica; acessibilidade visual; avaliação formativa.
 
-# 1. Introdução e contribuição investigada
+# Abstract
 
-O estudo de compiladores exige relacionar linguagem-fonte, reconhecimento de unidades e estruturas sintáticas. O projeto Mini-C organiza exemplos editáveis, tokens localizados, uma AST simplificada e diagnósticos em português para apoiar essa relação. A versão implementada até o Trabalho 4 utiliza um recorte explícito da linguagem, permitindo observar alterações no agrupamento de expressões e localizar construções no código.
+This paper presents a web-based educational tool for exploring lexical, syntactic and semantic analysis in Mini-C. Source code, tokens, an abstract syntax tree and a symbol table are connected through localized explanations and diagnostics. The design contribution combines this exploration with a color-independent mode using patterns and labels, and a high-contrast mode. Nine previous studies and the proposed tool are compared using evidence-based classifications. Two evaluation studies inform a formative protocol with standardized tasks and a short questionnaire. Technical validation passed 322 backend tests, 55 interface tests, 134 browser scenarios and 30 semantic API cases. Measured contrast ratios met the adopted thresholds. Peer evaluation and participation of colorblind users have not taken place; therefore, accessibility effectiveness and educational benefit are not claimed as demonstrated outcomes.
 
-A contribuição proposta é **organizar e avaliar uma experiência de exploração integrada de fonte, tokens, AST e diagnósticos para tarefas de interpretação de expressões e classificação de erros**. Para investigar seu uso em um contexto de Sistemas Colaborativos, planeja-se uma atividade de explicação em duplas. A prática colaborativa é um desenho de uso a aplicar, e não um recurso multiusuário já implementado no software.
+# 1. Introdução e objetivos
 
-Não se atribui ineditismo isolado à interface web, às explicações ou ao realce do fonte. Borela et al. (2025) já relacionam tokens/nós ao código, e Graciano Junior et al. (2022) apresentam visualizações, explicações e controles. A combinação pretendida precisa ser avaliada no contexto do projeto; os dados disponíveis não comprovam exclusividade nem superioridade sobre essas ferramentas.
+Aprender compiladores envolve relacionar unidades léxicas, organização sintática e regras de significado. Quando essas representações são apresentadas de forma isolada, o estudante precisa reconstruir mentalmente suas correspondências. O projeto organiza essa exploração em uma interface: selecionar um token, símbolo, referência ou diagnóstico permite localizar a construção no fonte, enquanto a AST apresenta a estrutura reconhecida.
 
-A pergunta principal de avaliação é: **ao explorar a AST vinculada ao fonte, os participantes conseguem interpretar o agrupamento de expressões e distinguir erros das fases léxica e sintática, e como percebem o apoio dessa interação?** No uso em dupla, examina-se adicionalmente como a representação é utilizada na explicação entre colegas. Opinião favorável e acerto em uma tarefa serão tratados como evidências de naturezas distintas.
+A linguagem Mini-C foi escolhida por conservar construções familiares de C — declarações, expressões, blocos e condicionais — em um recorte que permite explicar integralmente as regras implementadas. Ela reduz a quantidade de recursos necessários à observação das fases iniciais. Não é uma implementação de C completo: as diferenças de tipos e condições são documentadas, sem atribuir ao estudante regras implícitas que a ferramenta não verifica.
 
-# 2. Trabalhos relacionados e comparação com o projeto
+O objetivo geral é apoiar a interpretação das fases de compilação sem exigir que a informação visual seja distinguida somente por cor. Os objetivos específicos são integrar as três análises, relacionar símbolos e diagnósticos ao fonte/AST, oferecer alternativas visuais e avaliar funcionamento, realização de tarefas e percepções de colegas.
 
-## 2.1. Base de comparação e critérios
+O **diferencial implementado** é a combinação de **modos Sem cores e Alto contraste com a exploração interativa de tokens, AST, tabela de símbolos e erros explicados**. No modo Sem cores, padrões de sublinhado, textos e contornos permitem acompanhar categorias e seleção. A proposta responde à demanda de apoio a usuários daltônicos, mas sua eficácia com esse público ainda requer avaliação. A existência do recurso é verificável; sua exclusividade frente a todas as ferramentas não foi demonstrada.
 
-Mantêm-se os nove estudos examinados na Tarefa 4. LISA e VCOCO apoiam a especificação e a visualização de compiladores (Mernik; Žumer, 2003; Resler; Deaver, 1998). Graciano Junior et al. (2022) apresentam uma ferramenta web com análise léxica e sintática e controles de exploração. Borela et al. (2025) descrevem interface web, artefatos de diferentes fases e árvore denominada de derivação. VERTO enfatiza organização modular e síntese para a máquina César (Schneider et al., 2005), enquanto Jabri (2013) investiga construção genérica de analisadores por gramáticas e autômatos.
+A pergunta de avaliação é: **os participantes conseguem identificar os resultados das análises e localizar as construções sem depender das cores, e como percebem o apoio do modo Sem cores e da tabela de símbolos?** Essa pergunta combina uma tarefa verificável com percepção específica, sem transformar opinião em prova de aprendizagem.
 
-JFLAP aborda modelos formais e parsing, com investigação educacional (Rodger et al., 2009). Jeliot 3 concentra-se na visualização da execução Java (Moreno et al., 2004). Santini et al. (2022) são mantidos como estudo secundário de jogos, cujas funcionalidades não são somadas como se pertencessem a um software único.
+# 2. Trabalhos relacionados e matriz comparativa
 
-A matriz acrescenta **Este trabalho — Mini-C**, auditado na base `7fcb5ca`. As 135 células dos nove estudos anteriores são preservadas, acrescidas de 15 próprias. A fonte e a localização de cada classificação constam da matriz de evidências CSV/JSON que acompanha esta entrega. As versões e os limites de leitura dos estudos anteriores permanecem os da Tarefa 4; não houve nova inspeção de versões posteriores de todas as ferramentas.
+Os nove estudos das etapas anteriores foram mantidos. Graciano Junior et al. (2022) e Borela et al. (2025) apresentam ferramentas educacionais web; LISA e VCOCO apoiam construção e visualização de compiladores (Mernik; Žumer, 2003; Resler; Deaver, 1998). VERTO reúne etapas de compilação e síntese para a máquina César (Schneider et al., 2005), e Jabri (2013) descreve construção genérica de analisadores. Rodger et al. (2009) investigam JFLAP no ensino de autômatos, enquanto Moreno et al. (2004) apresentam visualização de execução com Jeliot 3. Santini et al. (2022) são um mapeamento de jogos, não uma ferramenta única.
 
-**Legenda:** ✓ = presença confirmada; ✗ = ausência documentada na versão analisada; NI = informação insuficiente, sem inferir ausência; N/A = não aplicável. Não há colunas extras de ano ou nome de software: a identificação é feita pela referência. Os dois artigos novos sobre avaliação serão sintetizados na seção metodológica, pois suas contribuições não devem ser forçadas a competir como ferramentas de compiladores.
+A revisão preserva as 135 classificações dos nove estudos nos quinze critérios anteriores. A linha do Mini-C foi atualizada para o código do Trabalho 5, e dois critérios foram acrescentados a todas as linhas: modo Sem cores e modo Alto contraste. A matriz passa a conter dez linhas e dezessete critérios, totalizando 170 células com evidências em CSV/JSON. As versões de leitura dos estudos anteriores permanecem delimitadas na documentação; não se inspecionaram todas as versões atuais dos softwares.
 
-### 2.1.1. Interface, entrada e estruturas
+**Legenda:** ✓ presença confirmada; ✗ ausência documentada na versão examinada; NI informação insuficiente; N/A não aplicável. A identificação é feita pela referência, sem colunas separadas de ano ou nome do software, conforme a orientação do professor. Os dois novos artigos de método são sintetizados na seção 4, pois não descrevem ferramentas concorrentes de compiladores.
 
-| Referência | Web | Fonte | Exemp. | Léx. | Sint. | AST | Deriv. |
+## 2.1. Interface, entrada e estruturas
+
+<!-- MATRIZ_1_INICIO -->
+| Referência | Web | Entrada | Exemplos | Léxica | Sintática | AST | Derivação |
 |---|---|---|---|---|---|---|---|
 | Graciano Junior et al. (2022) | ✓ | ✓ | NI | ✓ | ✓ | NI | ✓ |
 | Borela et al. (2025) | ✓ | ✓ | ✓ | ✓ | ✓ | NI | ✓ |
@@ -57,10 +60,14 @@ A matriz acrescenta **Este trabalho — Mini-C**, auditado na base `7fcb5ca`. As
 | Moreno et al. (2004) | NI | ✓ | NI | NI | NI | NI | NI |
 | Schneider et al. (2005) | NI | ✓ | NI | ✓ | ✓ | NI | NI |
 | Jabri (2013) | NI | N/A | NI | ✓ | ✓ | NI | NI |
-| **Este trabalho — Mini-C (estado implementado)** | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✗ |
+| **Este trabalho — Mini-C** | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✗ |
+<!-- MATRIZ_1_FIM -->
 
-### 2.1.2. Processamento e apoio didático
+“Fonte” corresponde ao critério Entrada, edição de programa-alvo; “Exemp.” representa exemplos experimentáveis na ferramenta. AST simplificada e árvore de derivação são representações distintas: a menção a uma não confirma a outra.
 
+## 2.2. Processamento e apoio didático
+
+<!-- MATRIZ_2_INICIO -->
 | Referência | Semânt. | Símb. | Geração | Passos | Diag. | Explic. |
 |---|---|---|---|---|---|---|
 | Graciano Junior et al. (2022) | ✗ | NI | ✗ | ✓ | ✓ | ✓ |
@@ -72,229 +79,227 @@ A matriz acrescenta **Este trabalho — Mini-C**, auditado na base `7fcb5ca`. As
 | Moreno et al. (2004) | NI | NI | NI | ✓ | ✓ | ✓ |
 | Schneider et al. (2005) | ✓ | ✓ | ✓ | NI | NI | ✓ |
 | Jabri (2013) | NI | NI | NI | NI | ✓ | NI |
-| **Este trabalho — Mini-C (estado implementado)** | ✗ | ✗ | ✗ | ✗ | ✓ | ✓ |
+| **Este trabalho — Mini-C** | ✓ | ✓ | ✗ | ✗ | ✓ | ✓ |
+<!-- MATRIZ_2_FIM -->
 
-### 2.1.3. Evidências de avaliação
+“Símb.” identifica tabela com nomes e atributos. “Passos” exige acompanhamento controlado ou animado das transformações do algoritmo. Navegar por tokens e uma árvore já produzidos não preenche esse critério. “Diag.” e “Explic.” representam diagnósticos e explicações didáticas documentados.
 
-| Referência | Estudantes | Aprendizagem |
-|---|---|---|
-| Graciano Junior et al. (2022) | ✓ | NI |
-| Borela et al. (2025) | ✓ | NI |
-| Santini et al. (2022) | N/A | N/A |
-| Mernik e Žumer (2003) | ✓ | ✓ |
-| Resler e Deaver (1998) | NI | NI |
-| Rodger et al. (2009) | ✓ | ✓ |
-| Moreno et al. (2004) | ✗ | ✗ |
-| Schneider et al. (2005) | NI | NI |
-| Jabri (2013) | ✓ | ✓ |
-| **Este trabalho — Mini-C (estado implementado)** | ✗ | ✗ |
+## 2.3. Acessibilidade visual e avaliação
 
-## 2.2. Interpretação da matriz e diferencial
+<!-- MATRIZ_3_INICIO -->
+| Referência | Sem cores | Alto contraste | Estudantes | Aprendizagem |
+|---|---|---|---|---|
+| Graciano Junior et al. (2022) | NI | NI | ✓ | NI |
+| Borela et al. (2025) | NI | NI | ✓ | NI |
+| Santini et al. (2022) | N/A | N/A | N/A | N/A |
+| Mernik e Žumer (2003) | NI | NI | ✓ | ✓ |
+| Resler e Deaver (1998) | NI | NI | NI | NI |
+| Rodger et al. (2009) | NI | NI | ✓ | ✓ |
+| Moreno et al. (2004) | NI | NI | ✗ | ✗ |
+| Schneider et al. (2005) | NI | NI | NI | NI |
+| Jabri (2013) | NI | NI | ✓ | ✓ |
+| **Este trabalho — Mini-C** | ✓ | ✓ | ✗ | ✗ |
+<!-- MATRIZ_3_FIM -->
 
-“Fonte” na primeira tabela corresponde ao critério Entrada: edição de programa-alvo; “Exemplos”, materiais experimentáveis na ferramenta; “Passos”, acompanhamento controlado ou animado das transformações do algoritmo, e não somente navegação por resultados prontos. “Símb.” designa tabela de símbolos com identificadores e atributos. Árvore de derivação e AST são representações distintas e não recebem automaticamente a mesma marcação.
+“Sem cores” exige modo selecionável que diferencie os resultados por padrões/rótulos; “Alto contraste” exige modo visual alternativo explicitamente documentado. Esses critérios foram introduzidos a partir do requisito de acessibilidade, apoiado pelas orientações W3C sobre uso da cor e contraste (W3C, s.d.). Uma figura em preto e branco, realce colorido ou interface textual não comprova a existência dos modos.
 
-A coluna “Estudantes” exige aplicação real com participantes; “Aprendizagem” considera evidências pertinentes de conhecimento/desempenho, cujos desenhos e limites devem ser examinados. No estado atual do Mini-C, essas duas colunas são negativas porque a coleta humana ainda não ocorreu. Os testes automatizados não substituem essa avaliação. Uma apresentação ao professor também não constitui o estudo planejado.
+A revisão dos textos integrais e dos registros de funcionalidades não confirmou esses dois modos nos oito estudos primários; por isso, as células são NI. O mapeamento de Santini et al. permanece N/A, sem reunir recursos de jogos distintos em um sistema imaginário. A auditoria complementar registra os documentos examinados e seus limites. NI não foi convertido em ausência para produzir um diferencial artificial.
 
-A linha própria confirma web, editor, exemplos, scanner, parser, AST, diagnósticos e explicações. Estão ausentes árvore de derivação, semântica, tabela de símbolos, geração de código e animação dos passos do algoritmo. Algumas ausências são escolhas de escopo; não indicam que adicionar todas as funcionalidades seja necessário ao objetivo de estudo. A matriz não será convertida em um ranking por quantidade de marcas.
+“Estudantes” exige aplicação real com participantes; “Aprendizagem” exige evidência pertinente de conhecimento/desempenho, examinada conforme o desenho do estudo. O Mini-C ainda não tem esses resultados. Uma linha com vários ✓ não constitui ranking de qualidade, e não é necessário reproduzir todas as fases de um compilador para justificar o recorte educacional.
 
-A ausência de AST confirmada em alguns textos (NI) não prova que as ferramentas não a ofereçam. Para afirmar exclusividade de uma combinação seria necessário delimitar versões, verificar recursos equivalentes e confirmar as ausências relevantes. Por isso, o diferencial defendido aqui é a proposta didática e sua investigação operacional. O estudo planejado examina tarefas concretas: interpretar precedência, relacionar nó e fonte e distinguir fases de diagnóstico.
+# 3. Materiais, implementação e acessibilidade
 
-# 3. Estratégia de implementação
+## 3.1. Arquitetura e recorte Mini-C
 
-A implementação é incremental e preserva a base anterior. O nginx fornece a interface HTML/CSS/JavaScript e encaminha requisições ao backend Python/FastAPI. A entrada é validada antes do scanner manual. Os tokens produzidos na Etapa 3 alimentam o parser descendente recursivo, sem reimplementação do reconhecimento léxico. Os módulos, a gramática EBNF, o contrato da API e os testes estão versionados no repositório.
+O frontend utiliza HTML, CSS e JavaScript, servido por nginx, e o backend utiliza Python/FastAPI. Docker Compose organiza a execução reproduzível. O scanner manual produz tokens com lexema e posição; o parser descendente recursivo aplica a gramática e constrói a AST; a análise semântica percorre essa árvore sem modificá-la. Scanner, parser, formato da AST e testes anteriores foram preservados.
 
-O recorte sintático compreende declaração de uma variável `int` ou `float`, inicialização opcional, atribuição, expressões aritméticas/relacionais, sinais unários, blocos e `if/else` com chaves obrigatórias. Funções, laços, vetores, strings e operadores lógicos ficam fora desta versão. Relações, igualdade, soma, multiplicação e unários têm níveis de precedência definidos; operadores binários associam à esquerda. Um programa exige ao menos um item; `{}` é válido e comentários sozinhos não constituem programa.
+O recorte aceita uma variável por declaração, tipos `int` e `float`, inicialização opcional, atribuição, aritmética, comparações, sinais unários, blocos e `if/else` com chaves. As posições começam em 1 e os intervalos têm fim exclusivo. A AST contém nove tipos de nó, omite pontuação e produções intermediárias e pode ser expandida, localizada no fonte e exportada em JSON.
 
-O parser constrói nove tipos de nó: Programa, Declaracao, Atribuicao, Bloco, Se, Binario, Unario, Identificador e Literal. Todos têm início inclusivo e fim exclusivo, com linha e coluna a partir de 1. CRLF/CR são normalizados para LF, tab conta uma coluna e Unicode por ponto de código. Literais preservam seus lexemas. A AST omite pontuação e produções intermediárias; não é uma árvore de derivação.
+![Fluxo implementado após o Trabalho 5. A extensão da representação semântica está indicada como futura. Elaboração própria.](figuras/fluxograma.png){height=19cm}
 
-A interface apresenta os nós com controles nativos de expansão/recolhimento, explicações por tipo de construção, seleção do trecho correspondente e exportação JSON. Os recursos percorrem uma AST pronta. O estado sintático é acrescentado à API sem mudar o significado dos campos léxicos existentes. Erros léxicos impedem chamar o parser. Em erro sintático, retorna-se AST nula e diagnósticos com esperado, encontrado e posição. A recuperação sincroniza em `;` ou `}`, podendo descartar construções e não garantindo a enumeração de todos os erros.
+Erro léxico bloqueia parser e semântica; erro sintático bloqueia a semântica e retorna AST nula. Um erro semântico preserva tokens, AST e as declarações reconhecidas, com o resultado explicitamente marcado como erro. A API acrescenta `semantica` sem mudar o significado léxico do campo superior `sucesso`, preservando compatibilidade. A interface apresenta o estado de cada fase por texto.
 
-Os limites operacionais são 10.000 caracteres, 64 níveis estruturais ativos, 2.000 nós construídos e altura 128 da AST. Esses valores são decisões de engenharia, não resultados de experimento educacional. A reprodução usa Docker Compose, com backend e frontend separados. Na nuvem, a porta externa 18000 evita portas reservadas da plataforma; o padrão local é 8000 e a interface permanece em 8501.
+## 3.2. Estratégia semântica e tabela de símbolos
 
-![Fluxo implementado até o Trabalho 4; a análise semântica está explicitamente indicada como futura. Elaboração própria.](figuras/fluxograma.png){width=90%}
+A estratégia é um percurso único da AST, coerente com a exigência de declaração antes do uso. Uma pilha de dicionários representa escopos ativos; a busca vai do mais interno ao global. Listas de símbolos e escopos preservam os resultados para apresentação após o fechamento dos blocos. Permite-se sombreamento em bloco interno, sem redeclaração no mesmo escopo.
 
-As próximas verificações semânticas deverão ter políticas de declaração, escopo e tipos definidas antes de sua implementação e avaliação. A presente tarefa teórica não apresenta o Trabalho 5 prático como concluído nem incorpora requisitos ainda não recebidos desse trabalho.
+A análise verifica declaração, visibilidade, redeclaração, compatibilidade de atribuição, operandos numéricos, comparações, condição e inicialização definida. Aceita tipos iguais ou promoção de `int` para `float`; rejeita a conversão inversa e a conversão de `bool` em número. Comparações produzem um tipo interno `bool`, sem acrescentar um tipo de variável à gramática. O `if` exige esse resultado; por exemplo, `if(x != 0)` é permitido e `if(x)` numérico é rejeitado. Essa política explícita difere de C completo.
 
+Uma variável deve estar inicializada antes da leitura. Depois de `if/else`, só permanecem garantidas as inicializações presentes nos dois caminhos. Sem `else`, considera-se o caminho que não executa o bloco. Não há execução de condições constantes ou cálculo de valores. O atributo “inicializado” da tabela informa a garantia no fim do escopo que declarou o símbolo, não um valor de execução.
+
+Cada símbolo possui identificador, nome, tipo, escopo, posição de declaração, garantia de inicialização, eventual símbolo sombreado e referências de leitura/atribuição. A interface filtra escopos e permite selecionar declarações, referências e erros. Os intervalos e caminhos de nós ligam essas ações ao código e à AST. Diagnósticos apresentam regra, mensagem acessível e sugestão; a propagação de tipo desconhecido reduz erros artificiais em cascata.
+
+Funções, laços, arrays, ponteiros, conversões explícitas, divisão por zero, overflow, execução e geração de código estão fora do recorte. Os limites herdados são 10.000 caracteres, 64 níveis estruturais, 2.000 nós construídos e altura 128 da AST. São limites de engenharia, sem significado de eficácia educacional.
+
+## 3.3. Recursos para reduzir a dependência de cores
+
+A orientação W3C para uso da cor estabelece que ela não deve ser o único meio visual de comunicar informação. Os documentos de contraste orientam contraste mínimo de texto e elementos não textuais (W3C, s.d.). Esses princípios fundamentam os recursos escolhidos; a presença de um seletor visual, isoladamente, não demonstra conformidade integral.
+
+| Recurso | Implementação verificável |
+|---|---|
+| Sem cores | Paleta acromática, padrões por categoria, legenda e rótulos textuais |
+| Alto contraste | Paleta alternativa clara sobre fundo escuro, mantendo padrões e textos |
+| Categorias de tokens | Sublinhados duplo, contínuo, pontilhado, tracejado e ondulado; delimitadores em negrito |
+| Seleção e navegação | Contorno, indicação textual de posição e ligação do símbolo/erro ao fonte e à AST |
+| Operação | Controles nativos, foco visível, navegação por teclado e preferência visual persistida quando permitida |
+
+Trocar o modo não executa novamente a análise nem altera a entrada ou o resultado. Os estados de sucesso, erro e fase não executada permanecem escritos. A proposta não aplica filtro como suposta correção da visão: oferece informação redundante para que diferenças de matiz não sejam indispensáveis.
 
 # 4. Fundamentação e escolha do método de avaliação
 
-## 4.1. Pontes et al. (2019): avaliação comparativa e alinhamento de medidas
+## 4.1. Pontes et al. (2019)
 
-O artigo **Avaliação de Ferramentas para Ensino de Programação para Crianças e Adolescentes**, de Pontes et al. (2019), compara Scratch e Stencyl em um estudo de caso com 50 alunos do 8º e 9º anos, distribuídos em duas turmas de 25. A seção 2 (p. 746–747) organiza o estudo em objetivos, unidades de análise, unidades instrucionais, operação, análise/interpretação e documentação. As instruções e o tempo são planejados para reduzir diferenças entre as condições.
+Em **Avaliação de Ferramentas para Ensino de Programação para Crianças e Adolescentes**, os autores comparam Scratch e Stencyl em um estudo de caso com 50 alunos do 8º e 9º anos, em duas turmas de 25. O método organiza objetivos, unidades de análise, unidades instrucionais, operação, análise/interpretação e documentação (p. 746–747). As quatro medições ao longo de quatro meses utilizam questões selecionadas do Bebras e nivelamento com Code.org (p. 747–750).
 
-As medições ocorrem em quatro momentos, ao longo de quatro meses, com questões selecionadas do Bebras e nivelamento inicial pelo Code.org (p. 747–750). Os autores relatam evolução das turmas e indícios de que objetivos foram alcançados mais rapidamente com Scratch. O contexto, a diferença inicial entre os grupos e o detalhamento limitado da alocação impedem transportar essa conclusão para Mini-C. A seção 4 (p. 749) discute validade de construção, interna e externa, incluindo escolhas das questões e influência de instrutores/unidades de ensino.
+O estudo relata evolução das turmas e indícios de alcance mais rápido de objetivos com Scratch. A diferença inicial entre grupos e o detalhamento limitado da alocação impedem transportar esse resultado para Mini-C. A discussão de validade de construção, interna e externa explicita riscos na seleção das questões e na influência das condições de ensino (p. 749).
 
-Para este projeto, aproveita-se o encadeamento **objetivo → tarefa → resposta de referência → análise**, com instruções iguais e registro de ajuda. A adaptação consiste em perguntas sobre agrupamento da AST e diagnóstico, específicas da gramática examinada. Não se transfere o Bebras infantil para Compiladores nem se afirma replicar o estudo longitudinal. O artigo fundamenta planejamento e cautela interpretativa; não valida automaticamente o instrumento próprio desta tarefa.
+Adota-se desse artigo o alinhamento **objetivo → tarefa → resposta de referência → análise**, com entradas iguais e registro de ajuda. Não se aplica o Bebras como instrumento validado de Compiladores nem se apresenta a avaliação curta como réplica do estudo longitudinal. O texto integral é o Anexo A da versão acadêmica com artigos.
 
-**Referência e acesso:** Pontes et al. (2019), p. 744–752, DOI [10.5753/cbie.wie.2019.744](https://doi.org/10.5753/cbie.wie.2019.744). Texto integral no Anexo A da versão acadêmica com artigos.
+## 4.2. Veras et al. (2020)
 
-## 4.2. Veras et al. (2020): usabilidade percebida e retorno para melhorias
+Em **Desenvolvimento e Avaliação da Usabilidade em Aplicativo Desktop para o Ensino da Programação Orientada a Objetos**, os autores avaliam o JAvatar com 20 estudantes de Sistemas de Informação. Combinam perfil, itens Likert de design e aspectos pedagógicos, SUS e comentários, utilizando o retorno para revisar a interface. A descrição dos itens está na página interna 5 do PDF (p. 182 da faixa publicada); SUS nas páginas internas 6–7; sugestões e alterações nas páginas 7–8.
 
-O artigo **Desenvolvimento e Avaliação da Usabilidade em Aplicativo Desktop para o Ensino da Programação Orientada a Objetos**, de Veras et al. (2020), examina o JAvatar, um jogo desktop de perguntas sobre POO. Os autores relatam 20 estudantes de Sistemas de Informação. O método combina perfil, itens Likert de design/pedagogia, SUS e comentários/sugestões, relacionando problemas a revisões da interface.
+Os autores relatam SUS médio 78,25 na página interna 9 (p. 186). O valor pertence ao JAvatar e não constitui resultado nem nota de aprovação do Mini-C. Percepções positivas de usabilidade também não são, por si, medida de aprendizagem.
 
-As questões específicas são descritas na página interna 5 (correspondente à p. 182 da faixa publicada); SUS nas páginas internas 6–7 (183–184); sugestões e mudanças nas páginas 7–8 (184–185). A seção de resultados informa SUS médio 78,25 (página interna 9/186). Esse número pertence ao JAvatar e não é resultado ou parâmetro de aprovação do Mini-C. O artigo amplia suas conclusões para aprendizagem a partir de respostas de usabilidade e análise estatística; essa extrapolação não será adotada aqui, pois satisfação e percepção não substituem medida de conhecimento.
+Adota-se a separação entre facilidade de interação, utilidade didática percebida e dificuldades/sugestões. Não são copiados itens de jogos, nem calculado SUS com questionário abreviado. O texto integral é o Anexo B. As referências completas e DOIs dos dois estudos constam ao fim deste artigo.
 
-A contribuição metodológica aproveitada é distinguir **interação**, **utilidade didática percebida** e **dificuldades/sugestões**, acrescentando perguntas específicas da experiência investigada. Itens sobre diversão ou hábitos de jogo não serão copiados para uma ferramenta de compiladores. O questionário Mini-C não se apresentará como SUS adaptada ou escala validada. As localizações acima indicam página interna e sua correspondência na faixa 178–187, pois nem todas as páginas do PDF mostram numeração impressa.
+## 4.3. Método escolhido
 
-**Referência e acesso:** Veras et al. (2020), p. 178–187, DOI [10.5753/ctrle.2020.11395](https://doi.org/10.5753/ctrle.2020.11395). Texto integral no Anexo B da versão acadêmica com artigos.
+O método é uma **avaliação formativa por tarefas padronizadas**, combinando testes funcionais, observação breve e seis perguntas próprias. A padronização é fundamentada em Pontes et al.; a coleta de percepções e sugestões, em Veras et al. Os objetivos do projeto determinam perguntas específicas sobre erros, acessibilidade visual e símbolos, evitando um formulário genérico.
 
+O instrumento foi reduzido para duas questões objetivas, três afirmações em escala de concordância e uma questão aberta opcional. Esse formato atende ao pedido de simplicidade e mantém evidências de naturezas distintas. Não é SUS, avaliação heurística formal ou escala psicometricamente validada. Sem pré/pós-teste e grupo de comparação, não permite atribuir causalmente aprendizagem ou superioridade a qualquer modo visual.
 
-## 4.3. Método escolhido e justificativa
+# 5. Protocolo curto de avaliação com colegas
 
-Seleciona-se uma **avaliação formativa por tarefas padronizadas**, combinando (a) verificação funcional por oráculos prévios; (b) observação de uso; (c) quatro questões objetivas de interpretação/classificação; (d) seis itens Likert específicos; e (e) dois campos abertos. A fonte sobre comparação de ferramentas orienta a padronização das condições e a separação entre desempenho e satisfação; o estudo de usabilidade orienta a coleta de percepções e dificuldades, com limites na transferência dos resultados para aprendizagem.
+## 5.1. Participação e procedimento
 
-Não será aplicada uma versão abreviada ou adaptada da SUS sob o nome de escala validada. Os seis itens deste projeto formam um instrumento próprio, sem escore SUS e sem alegação de validação psicométrica. A opção permite perguntar diretamente sobre a interação investigada e manter baixo o esforço de um estudo inicial. Uma futura adoção da SUS exigiria sua aplicação integral e o procedimento correto de pontuação, separados dos itens específicos.
+O protocolo versão 3.0 foi definido após o Trabalho 5 e antes de qualquer coleta humana informada. A versão anterior foi preservada no histórico; seus itens e gabaritos não serão misturados aos atuais. A amostra será de conveniência, entre colegas adultos cursando ou que já cursaram Compiladores. Pretende-se convidar de 4 a 6 duplas, se viável; será informado o número efetivo, sem tratar a meta como resultado.
 
-Também não se aplicará o teste Bebras utilizado por Pontes et al. como medida de domínio de Compiladores. As quatro perguntas próprias são alinhadas a tarefas e saídas verificáveis da gramática Mini-C. Elas indicam realização de tarefas apoiada pela ferramenta, sem equivaler a instrumento validado de conhecimento ou a ganho de aprendizagem.
+Cada sessão utilizará a mesma versão do software, entradas e instruções, com cerca de 10–15 minutos de atividade e aproximadamente três minutos para o formulário. Em dupla, as pessoas alternam entre operar a interface e explicar o resultado. Um piloto individual poderá verificar o roteiro e será analisado separadamente.
 
-O protocolo não contém grupo de controle ou pré/pós-teste. Portanto, permitirá descrever funcionamento, respostas às tarefas, percepções e dificuldades no contexto observado. Não permitirá atribuir causalmente aprendizagem ao software, à AST ou ao trabalho em dupla.
+Antes das tarefas, o facilitador explica o objetivo, a participação voluntária e as condições de uso dos dados, conforme orientações do professor e da instituição. O formulário solicita aceite, modo de uso e as seis perguntas, sem nome, e-mail, matrícula ou condição de saúde. Não haverá áudio/vídeo. A observação presencial é conhecida pelos envolvidos; as anotações serão por sessão, sem ligação individual ao formulário.
 
-# 5. Protocolo da avaliação por pares
-
-## 5.1. Versão, participantes e aplicação
-
-O protocolo desta tarefa é definido em 26/11/2026, após a implementação da Etapa 4 e antes da coleta com colegas. Não é apresentado como pré-registro independente do desenvolvimento. Os casos funcionais e três oráculos estruturais foram fixados em 18/11/2026 e conservados sem alteração dos esperados. O histórico do projeto e os arquivos desta entrega permitem distinguir esse planejamento da reexecução atual.
-
-A amostragem será por conveniência, com meta de viabilidade de 4 a 6 duplas (8 a 12 estudantes adultos cursando ou que já cursaram Compiladores). A meta não é cálculo de poder nem requisito que autorize fabricar participantes. A quantidade efetiva e as perdas deverão ser informadas. Professores e outros perfis serão mantidos em estratos separados. Um piloto individual poderá identificar problemas do roteiro, mas seus dados não serão agregados como evidência de colaboração.
-
-Antes da aplicação, o autor combinará com o professor as regras institucionais de participação e uso/publicação dos dados. A chamada do SBSC não constitui dispensa geral de procedimentos institucionais. A participação será autorizada antes de iniciar as tarefas; o campo C01 registra novamente a decisão no formulário. A coleta será voluntária, com informação sobre objetivo, duração aproximada (20–30 minutos no total), ausência de avaliação acadêmica individual e possibilidade de sair antes do envio. O formulário não solicitará nome, e-mail ou matrícula; o registro do facilitador será por sessão, sem identificação direta, áudio ou vídeo. Comentários serão revisados para remover identificadores antes de qualquer divulgação.
-
-A versão do software e do instrumento será congelada para a rodada. Corrigir um problema relevante exige registrar data, motivo e quais sessões foram afetadas; resultados de versões diferentes não serão silenciosamente combinados. O facilitador fará uma introdução igual para todos, explicando controles com um exemplo neutro, sem revelar os gabaritos das tarefas.
-
-## 5.2. Atividade e componente colaborativo proposto
-
-O modo principal prevê duas pessoas no mesmo computador, alternando os papéis de quem opera a interface e de quem explica a estrutura. Na primeira expressão, uma pessoa seleciona nós e a outra explica o agrupamento; na expressão com parênteses, os papéis se invertem. O objetivo comum é produzir uma explicação coerente e localizar o trecho correspondente. A discussão ocorre presencialmente, não por funcionalidades de chat, edição compartilhada ou coordenação automática do software.
-
-Gerosa et al. (2006, seção 3, p. 132–133) descrevem o Modelo 3C: comunicação, coordenação e cooperação como dimensões interdependentes da colaboração. Aqui, a adaptação operacional será observar explicações/negociação sobre o agrupamento (comunicação), alternância dos papéis por roteiro (coordenação) e construção de uma justificativa ou correção comum sobre o código/AST (cooperação). A fonte fundamenta essa decomposição, não uma escala educacional validada nem um efeito de aprendizagem. O objeto visual é fornecido pelo Mini-C; comunicação e gestão dos turnos serão externas à aplicação. A observação presencial não se torna anônima para o facilitador apenas porque o Forms não solicita nomes; seu registro será minimizado e apresentado somente de forma agregada.
-
-O facilitador observará se houve alternância, referência conjunta a nós/trechos, pedido de justificativa e correção ou negociação de uma explicação. Registrará comportamento ocorrido, ajuda fornecida e dificuldades; não inferirá colaboração apenas porque duas pessoas estavam presentes. O formulário será respondido individualmente após a atividade, com a interface disponível e sem consulta ao gabarito. As respostas podem ser dependentes pela discussão em dupla; não serão tratadas como observações independentes em testes inferenciais.
-
-| Tarefa | Ação solicitada | Evidência a observar |
-|---|---|---|
-| A1 | Analisar `int resultado = 10 + 5 * 2;`, identificar agrupamento e localizar o operando direito da expressão | Operador que organiza a expressão, explicação e correspondência nó–fonte; necessidade de ajuda |
-| A2 | Alterar para `int resultado = (10 + 5) * 2;`, inverter papéis e explicar a mudança | Uso dos parênteses na justificativa e mudança da estrutura; referência conjunta à representação |
-| A3 | Analisar `int x = ;` e explicar fase, localização e conteúdo esperado | Distinção entre token reconhecido e expressão incompleta; leitura do diagnóstico |
-| A4 | Analisar `@ int x;` e comparar os estados das fases com A3 | Identificação do erro léxico e explicação do parser não executado |
-
-As respostas de referência e a rubrica do facilitador são fornecidas em arquivo separado. Uma resposta correta sem justificativa não será automaticamente interpretada como compreensão conceitual aprofundada. Quando houver ajuda, ela será registrada, permitindo distinguir realização autônoma, realização com ajuda e tarefa não concluída.
-
-## 5.3. Instrumento e pergunta específica da contribuição
-
-O formulário contém consentimento, perfil amplo, modo de aplicação, quatro questões objetivas (Q01–Q04), seis itens de percepção (L01–L06) e campos abertos para dificuldade e sugestão. A escala será: 1 discordo totalmente; 2 discordo; 3 nem concordo nem discordo; 4 concordo; 5 concordo totalmente; e **Não utilizei/não consigo avaliar**, fora da escala.
-
-A pergunta diretamente associada à contribuição proposta é **L02: “A ligação entre AST interativa e trecho do código ajudou-me a explicar por que os parênteses mudam o agrupamento da expressão.”** A resposta verifica apoio percebido; Q01 e Q02, e a observação de A1/A2, verificam respostas e ações relacionadas. Essa triangulação evita usar somente uma opinião para afirmar que a interação cumpriu seu papel.
-
-| Item | Aspecto investigado |
+| Atividade | Ação e registro |
 |---|---|
-| L01 | Localizar no fonte a construção selecionada na AST |
-| L02 | Apoio percebido para explicar o efeito dos parênteses no agrupamento |
-| L03 | Distinção das fases de erro léxico e sintático |
-| L04 | Clareza de rótulos/regras associados às construções |
-| L05 | Apoio percebido da discussão com o colega à explicação; não aplicável no piloto individual |
-| L06 | Facilidade geral de realização das tarefas |
+| A1 — símbolos e fonte | Analisar `int x = 1; float y = x + 2.5;`. Localizar a declaração e a referência de `x`, observando fonte e AST. Registrar conclusão e ajuda. |
+| A2 — significado | Analisar `int x = 1; total = x + 2;`. Identificar fase, regra e trecho do erro; alternar quem opera e quem explica. |
+| A3 — informação sem cor | Escolher Sem cores e analisar `int x = ;`; identificar a fase pelos rótulos. Depois testar `@ int x;`, comparar os estados e experimentar Alto contraste. |
 
-O pacote inclui o texto exato para Google Forms e um Apps Script para criar um formulário **fechado para respostas até revisão** na conta do autor. O script não foi executado em uma conta Google nesta sessão; não existe link de formulário publicado nesta entrega. A criação/revisão e a aplicação são etapas do autor. O roteiro orienta conferir ausência de coleta de e-mails, restrição institucional e identificação nas perguntas antes de disponibilizar o link aos colegas.
+O facilitador usa um exemplo neutro para explicar os controles, sem revelar respostas. O gabarito fica separado do guia dos colegas. Para cada atividade, anota conclusão sem ajuda, com ajuda ou não conclusão. O formulário é respondido individualmente, com a interface disponível e sem acesso ao gabarito.
 
-## 5.4. Plano de análise
+## 5.2. Seis perguntas e questão do diferencial
 
-**Fatos observados:** número de casos funcionais executados/aprovados, respostas de Q01–Q04 conforme gabarito, tarefas concluídas e registros de ajuda/comportamento. **Percepções relatadas:** frequências e medianas dos itens Likert e comentários. **Interpretações:** relação cautelosa entre esses dados e os objetivos do projeto, sem generalização causal.
+As duas questões objetivas oferecem alternativas léxico, sintático, semântico e “não sei”, ajustadas ao enunciado. Para as afirmações, a escala é 1 discordo totalmente, 2 discordo, 3 nem concordo nem discordo, 4 concordo e 5 concordo totalmente, com **N/A — não usei ou não consigo avaliar** fora da escala.
 
-Para cada questão objetiva, relatar-se-ão número de respostas válidas e taxa de acerto, por modo e perfil. O total de formulários não será automaticamente chamado de número de participantes únicos: o anonimato impede verificar plenamente duplicações. Respostas sem consentimento serão excluídas; casos incompletos terão denominadores informados. No Forms, perguntas obrigatórias e alternativas explícitas reduzem ambiguidades, sem substituir a descrição de perdas.
-
-Para cada item Likert, apresentar-se-ão frequências em 1–5, mediana, número de respostas válidas e não aplicáveis. Não aplicáveis serão informados e excluídos somente do denominador daquele item. Não haverá soma arbitrária de itens em um escore de aprendizagem ou de usabilidade validada. O item de dupla será analisado apenas nas sessões em dupla.
-
-Campos abertos serão lidos e agrupados por tema, distinguindo relato de problema, sugestão e opinião. Não se fabricarão citações ilustrativas. A ferramenta de análise entregue ignora o conteúdo textual na saída agregada, reduzindo exposição acidental; o exame qualitativo e a remoção de identificadores exigem leitura humana. Os achados da observação por sessão serão apresentados separadamente dos formulários individuais, pois não há identificação pessoal para ligar as bases.
-
-O analisador de CSV recebe a exportação do Forms, valida os campos e produz contagens por item, modo e perfil. Uma planilha vazia gera estado **sem respostas elegíveis**, sem médias, medianas ou porcentagens fictícias. Os testes do analisador usam apenas entradas sintéticas explicitamente identificadas como testes de código; elas não integram os resultados do estudo.
-
-
-# 6. Resultados técnicos observados e dados humanos pendentes
-
-## 6.1. Testes funcionais estruturados
-
-A revalidação foi executada em 26/11/2026 sobre o commit `7fcb5ca` (hash completo nos metadados), em Linux/Docker. As imagens já existentes foram conferidas por hashes dos módulos e arquivos relevantes. Houve reuso do build; não se apresenta a execução como um novo build sem cache. O registro da Etapa 4, de outra data, permanece preservado.
-
-| Verificação | Resultado nesta rodada | Interpretação |
+| Código | Pergunta exata | Tipo |
 |---|---|---|
-| Backend: scanner, parser, API e validação | 229 aprovados; 0 falhas | Suíte técnica e regressão |
-| Interface: lógica e DOM em Node/jsdom | 41 aprovados; 0 falhas | Comportamento e apresentação em ambiente de teste |
-| Integração nginx → API → analisadores | Fluxo aprovado | Comunicação real entre serviços |
-| Chromium real, desktop e viewport móvel | 60 cenários aprovados; 0 falhas | Navegação e consistência, sem participantes humanos |
-| Casos congelados via API real nginx | 33 aprovados em 33 | Aprovação no conjunto previamente especificado |
+| Q01 | Em `int x = 1; total = x + 2;`, qual erro o software indicou? | Múltipla escolha |
+| Q02 | No modo Sem cores, em `int x = ;`, qual fase indicou o erro? | Múltipla escolha |
+| L01 | Foi fácil usar o software. | Concordância 1–5 ou N/A |
+| L02 | No modo Sem cores, consegui identificar os resultados sem depender das cores. | Concordância 1–5 ou N/A |
+| L03 | A tabela de símbolos ajudou a entender onde as variáveis foram declaradas. | Concordância 1–5 ou N/A |
+| A01 | O que você melhoraria no software? | Aberta, opcional |
 
-Os 33 casos já integram a suíte de backend. Sua repetição pela API real é evidência adicional do mesmo conjunto; não se somam 33 novos cenários independentes para inflar uma contagem. Os cenários de navegador e os testes unitários também têm unidades de análise diferentes e são relatados separadamente.
+**L02 é a pergunta diretamente relacionada ao diferencial.** Ela mede percepção de identificação sem dependência de cores. Q02 e a observação de A3 verificam uma tarefa realizada nesse modo; L03 e A1 examinam o apoio dos símbolos. A combinação permite comparar relatos com ações, sem concluir que um acerto demonstra aprendizagem ou que respondentes em geral representam pessoas daltônicas.
 
-O protocolo de casos contém 12 programas válidos, 3 casos léxicos inválidos, 10 sintáticos inválidos e 8 de borda. Todos os 33 foram executados. Cobertura de execução dos casos aplicáveis = 33/33 = 100%; aprovação = 33/33 executados = 100%; prontidão no conjunto aplicável = 33/33 planejados = 100%. **Cobertura de linhas/ramos de código não foi medida**; os percentuais não provam correção para todo programa possível.
+O conteúdo completo está pronto para copiar no Google Forms. Há também um gerador opcional de rascunho, fechado para respostas até revisão. Ele não foi executado em conta Google nesta entrega: nenhum link de formulário foi criado, publicado ou enviado a colegas.
 
-Na distribuição observada, 14 entradas produziram sucesso sintático, 12 produziram erro sintático esperado, 4 bloquearam o parser por erro léxico e 3 foram rejeitadas por validação com HTTP 400. Rejeitar corretamente uma entrada inválida é aprovação do caso de teste. Os resultados individuais, diagnósticos, fontes e esperados estão em CSV/JSON no pacote; uma seleção é mostrada a seguir.
+## 5.3. Análise e contexto colaborativo
 
-| Caso | Entrada/construção | Observado | Resultado |
+Serão apresentados, por modo individual/dupla, os números de respostas elegíveis, perdas e não respostas. Para Q01/Q02, serão informados acertos e denominadores; “não sei” é resposta válida não correta. Para cada afirmação, serão apresentadas frequências em 1–5, mediana e quantidade de N/A, excluída somente do denominador daquele item. Não haverá soma em uma nota global de aprendizagem ou escore SUS.
+
+As sugestões serão agrupadas por tema após leitura e retirada de identificadores. A análise automática não reproduz os textos livres. Sem respostas, as estatísticas permanecem nulas. Dados sintéticos usados para testar o analisador são rotulados e não entram nos resultados acadêmicos.
+
+Para aproximar o projeto do contexto do SBSC, a atividade em dupla prevê comunicação por explicação/negociação, coordenação por alternância de papéis e cooperação na interpretação do mesmo código. Essa organização é inspirada no Modelo 3C (Gerosa et al., 2006, p. 132–133). O facilitador registra se os comportamentos ocorreram, sem inferir colaboração apenas pela presença de duas pessoas. Comunicação e turnos ocorrem presencialmente; o software não implementa chat ou edição multiusuário. As respostas de membros da mesma dupla podem ser dependentes e não serão tratadas como observações independentes em inferências estatísticas.
+
+# 6. Resultados técnicos e situação da avaliação humana
+
+## 6.1. Validação funcional da versão implementada
+
+A rodada final ocorreu em 26/11/2026, entre 21h22 e 21h23, horário de São Paulo. Os arquivos testados ainda eram alterações locais sobre a base `0637b7d`; seus hashes foram registrados e posteriormente conferidos contra o commit de código `2b535d1`. A entrega prática foi integrada à `main` em `1de2b61`. Essa descrição preserva os metadados originais e não apresenta o commit posterior como existente no início dos testes.
+
+| Verificação | Resultado observado | Evidência |
+|---|---|---|
+| Backend: scanner, parser, semântica e API | 322 aprovados; 0 falhas | Log pytest e testes versionados |
+| Interface: lógica e DOM | 55 aprovados; 0 falhas | Log Node/jsdom |
+| Integração nginx/API | Fluxo aprovado | Smoke test dos três resultados e bloqueios |
+| Chromium real | 134 cenários aprovados; 0 falhas | Desktop e viewport de 390 pixels |
+| Casos semânticos pela API | 30/30 aprovados | CSV/JSON com esperados e observados |
+| Reconstrução Docker sem cache | Concluída | Log do build preservado |
+
+Os trinta casos semânticos foram fixados antes do analisador, com onze programas válidos e dezenove com violações esperadas. Os esperados não foram gerados pelo código avaliado. Eles já pertencem à suíte de backend: sua execução HTTP é evidência adicional de integração, sem somá-los como trinta testes independentes. Testes, cenários e casos têm unidades diferentes e permanecem em linhas separadas.
+
+No conjunto externo, cobertura de execução = 30/30 = 100% dos casos planejados; aprovação = 30/30 = 100% dos executados. Esses valores não representam cobertura de linhas/ramos, que não foi medida, nem correção para toda entrada Mini-C. Rejeitar corretamente um programa inválido é aprovação do teste.
+
+| Caso | Entrada/construção | Esperado e observado |
+|---|---|---|
+| M01 | `x = 1;` | Identificador não declarado |
+| M02 | `int x; int x;` | Redeclaração no mesmo escopo |
+| M03 | `int x; x = 2.5;` | Incompatibilidade de tipos |
+| A01 | `int x = 1; float y = x + 2.5;` | Sucesso, com promoção numérica |
+| A06 | `x` global e `x` float em bloco interno | Sucesso; sombreamento e referências separados |
+| A09 | `x` atribuído nos dois ramos antes da leitura | Sucesso; inicialização garantida |
+| A10 | `x` atribuído só no ramo if antes da leitura | Variável não inicializada |
+| A12 | `int x=1; if(x){x=2;}` | Condição não booleana |
+| A20 | `z=y+1;` | Dois usos não declarados, sem erros artificiais de tipo |
+
+M01–M03, antes pendentes, agora foram efetivamente avaliados semanticamente. Não foram aprovados por mera aceitação sintática. As regressões também verificam erros léxicos/sintáticos, precedência, posições, limites, seleção e preservação da AST. Scanner, parser e os onze arquivos anteriores de testes permaneceram idênticos à base.
+
+## 6.2. Verificação técnica dos modos visuais
+
+Foram examinadas três preferências visuais e quatro estados de análise em dois tamanhos de tela, totalizando 24 combinações de medidas textuais, além de seis verificações de foco/seleção. O procedimento usa luminância relativa sRGB e cores/fundos computados, incluindo gradientes. Controles desabilitados são excluídos. Adotaram-se limiares de 4,5:1 para o texto regular examinado e 3:1 para foco/contorno de seleção, com referência nos documentos W3C.
+
+| Modo | Menor contraste de texto | Foco | Seleção |
 |---|---|---|---|
-| V01 | `int x;` | HTTP 200; sucesso | Aprovado |
-| V04 | `int x = 1 + 2 * 3;` | HTTP 200; sucesso | Aprovado |
-| V05 | `int x = (1 + 2) * 3;` | HTTP 200; sucesso | Aprovado |
-| V06 | `int x = 8 - 3 - 1;` | HTTP 200; sucesso | Aprovado |
-| V09 | `int x; if (x != 0) { x = 1; } else { x = 2; }` | HTTP 200; sucesso | Aprovado |
-| L01 | `@ int x;` | HTTP 200; não executada | Aprovado |
-| S01 | `int x` | HTTP 200; erro | Aprovado |
-| S02 | `if (x > 0 { x = 1; }` | HTTP 200; erro | Aprovado |
-| S04 | `int x = ;` | HTTP 200; erro | Aprovado |
-| S06 | `int x = 1 + * 2;` | HTTP 200; erro | Aprovado |
-| B01 | String vazia | HTTP 400;  | Aprovado |
-| B04 | 10.000 caracteres, declaração ao final | HTTP 200; sucesso | Aprovado |
-| B05 | 10.001 caracteres | HTTP 400;  | Aprovado |
-| B06 | 64 blocos aninhados | HTTP 200; sucesso | Aprovado |
-| B07 | 65 blocos aninhados | HTTP 200; erro | Aprovado |
-| B08 | `@ int x; x = 1;` | HTTP 200; não executada | Aprovado |
+| Padrão | 6,749:1 | 6,345:1 | 6,082:1 |
+| Sem cores | 8,934:1 | 16,570:1 | 11,589:1 |
+| Alto contraste | 16,275:1 | 13,584:1 | 4,217:1 |
 
-As referências independentes V04–V06 verificam, respectivamente, soma com multiplicação à direita, mudança pelo agrupamento e associação à esquerda. Foram fixadas antes do parser; posições são verificadas separadamente. As suítes também exercitam seleção, expansão, download JSON, recuperação, EOF, compatibilidade do scanner e limites estruturais. O teste de viewport móvel simula 390 pixels; não constitui experiência com aparelho físico nem avaliação de acessibilidade completa.
+Os valores são mínimos observados nos elementos medidos, não mínimos garantidos de qualquer conteúdo futuro da página. Os cenários também verificaram teclado, persistência, padrões, rótulos, seleção e troca de modo sem perder resultados. Foram produzidas capturas sob simulações de protanopia, deuteranopia, tritanopia e acromatopsia no Chromium. Tais inspeções não equivalem à experiência de pessoas daltônicas nem a auditoria WCAG integral.
 
-M01–M03 (`x = 1;`, `int x; int x;`, `int x; x = 2.5;`) foram aceitos somente como controles de estrutura sintática. Sua avaliação semântica permanece **0/3 executada e 3 pendentes**, pois declaração, redeclaração e política de tipos ainda não foram implementadas. Esses casos não entram no denominador de 33 aplicáveis à versão atual. O plano completo continua explicitando 36 casos, sem esconder os três futuros.
+## 6.3. Fatos, percepções e interpretação
 
-## 6.2. Avaliação por pares: situação desta versão
+**Fatos observados:** os testes descritos passaram; os modos visuais estão implementados; as medidas atenderam aos limiares nos elementos examinados. Os registros completos, hashes e capturas estão em `docs/trabalho5/`. O aviso de depreciação Starlette/AnyIO do pytest não correspondeu a falha funcional.
 
-**A avaliação com colegas ainda será aplicada**, conforme informação do autor. Não há formulários respondidos, observações de duplas, medianas Likert, taxas de acerto de pessoas ou comentários humanos a analisar. A ausência de coleta não é resultado negativo sobre usabilidade e não autoriza inventar opiniões, participantes ou escores.
+**Percepções relatadas:** ainda não existem respostas reais de colegas ou observações de sessões. Não há medianas de participantes, opiniões, taxas humanas de acerto ou resultados de colaboração a apresentar. O arquivo de coleta possui apenas cabeçalho e estado sem respostas.
 
-O formulário, os roteiros, o consentimento, os gabaritos e o analisador estão preparados para a coleta. A conclusão da Tarefa 5 exige disponibilizar o formulário revisado, realizar as sessões e exportar as respostas. Após isso, esta seção deverá informar convites (quando conhecidos), sessões, respostas elegíveis, exclusões, resultados por item, ajuda observada e temas dos comentários. Os campos pendentes serão preenchidos somente com observações reais; nenhuma avaliação foi feita em nome de colegas.
+**Interpretação fundamentada:** há evidência de funcionamento e viabilidade técnica para aplicar o protocolo. O benefício educacional, a facilidade percebida, o apoio da conversa em dupla e a eficácia para pessoas daltônicas não foram demonstrados. Para cumprir a exigência de resultados do formulário da Tarefa 5, ainda é necessário criar/revisar o Forms, aplicar as atividades e incorporar os dados reais.
 
-## 6.3. Fatos, percepções e interpretação nesta rodada
+# 7. Discussão e relação com o SBSC 2027
 
-**Fato observado:** a versão passou nos testes e casos descritos, com diagnósticos e AST compatíveis com os esperados do conjunto verificado. O pytest apresentou um aviso de depreciação da integração Starlette/AnyIO, sem reprovação. O funcionamento técnico está documentado em logs, metadados e capturas.
+O avanço em relação à versão anterior é concreto: a semântica verifica regras antes inexistentes; a tabela mostra escopos e referências; e a apresentação mantém informação por rótulos/padrões nos modos alternativos. O diferencial pode ser defendido como uma decisão de acessibilidade integrada à exploração das fases, com verificação técnica e uma pergunta específica de avaliação.
 
-**Percepção relatada:** nenhuma, porque a coleta humana ainda não ocorreu. Os itens de compreensão, facilidade e discussão continuam como medidas planejadas.
+Os estudos relacionados já oferecem visualização, explicação e, em alguns casos, associação entre artefatos e fonte. Assim, nem a interface web nem o simples realce constituem novidade isolada. A matriz registra quais modos foram confirmados nos documentos consultados; não demonstra que o Mini-C seja o único software com essa combinação. Também não é necessário acrescentar geração de código ou animação só para preencher todas as células.
 
-**Interpretação fundamentada:** há evidência de viabilidade funcional para realizar as atividades propostas. A clareza para estudantes, o papel da discussão em dupla e a utilidade didática percebida ainda são questões abertas. A validação técnica não comprova aprendizagem nem exclusividade do projeto.
+A chamada oficial do SBSC 2027, reconferida em 26/11/2026, contempla sistemas colaborativos na educação e práticas pedagógicas inclusivas. A atividade em dupla é um contexto possível para investigar uso compartilhado das representações. Ter colegas avaliando o software não constitui, por si, um sistema colaborativo; a pertinência ao evento dependerá da questão de colaboração, de sua fundamentação e das evidências efetivas.
 
-# 7. Limitações e ameaças à validade
+Como a coleta está planejada, **Desenho de Pesquisa** é um enquadramento provisório coerente: artigo resumido de até quatro páginas e Ficha de Pesquisa de até três, conforme as exclusões da chamada. IIRE exige resultados preliminares e admite quatro a oito páginas; Artigos de Pesquisa requer resultados científicos e admite até doze. A decisão será tomada com o professor. As trilhas citadas informam prazo de 15/12/2026, modelo SBC, avaliação duplamente anônima e declaração de uso de IA generativa.
 
-**Construção:** os itens objetivos e Likert são próprios e ainda não validados psicometricamente. Identificar o operador correto com a árvore disponível é realização apoiada, não domínio independente de Compiladores. A pergunta sobre a contribuição mede apoio percebido. Pontes et al. (2019) ajudam a explicitar o alinhamento e os riscos da seleção de questões; Veras et al. (2020) mostram a utilidade e o limite de respostas de percepção.
+Este documento é a versão identificada e ampliada da disciplina, com anexos acadêmicos. Não é uma submissão pronta ao evento: a adaptação deverá observar trilha, tamanho, anonimato, autoria, artefatos e resultados. Não houve submissão ou contato com organizadores. A exigência de anexar dois artigos é do professor e não deve ser transferida automaticamente ao PDF do SBSC.
 
-**Interna:** experiência prévia, ordem das tarefas, ajuda do facilitador, efeito da explicação do colega e familiaridade com exemplos podem influenciar as respostas. O facilitador é envolvido no projeto, o que pode gerar viés e desejabilidade social. A ausência de pré/pós-teste ou condição de comparação impede inferência causal. A alternância de papéis será padronizada e a ajuda registrada, sem prometer eliminar esses fatores.
+# 8. Limitações e ameaças à validade
 
-**Externa:** amostra pequena e por conveniência, uma disciplina, um recorte da linguagem e poucos dispositivos limitam transferência. Resultados de um computador Linux/Docker ou viewport estreito não representam todas as máquinas ou aparelhos. O perfil amplo e o modo serão informados, sem misturar silenciosamente professores, estudantes e piloto individual.
+**Construção:** o questionário é próprio e breve, sem validação psicométrica. Q02 verifica classificação de uma entrada no modo Sem cores, não todas as categorias da interface. L02 informa percepção, sem demonstrar eficácia para usuários com deficiência da visão de cores. Não se coletará diagnóstico de saúde para sustentar indevidamente essa generalização.
 
-**Conclusão:** poucos casos/pessoas, dependência entre membros da dupla, não respostas e impossibilidade de identificar duplicações no formulário anônimo limitam análises. Serão usados resumos descritivos com denominadores, sem testes inferenciais inadequados ou um escore global inventado. Categorizar comentários exige julgamento e revisão humana.
+**Validade interna:** conhecimento prévio, ordem fixa dos modos, familiaridade com exemplos, auxílio do facilitador e discussão em dupla podem influenciar os resultados. Não há comparação contrabalançada entre modos, grupo de controle ou pré/pós-teste. O autor participa da facilitação, podendo ocorrer desejabilidade social.
 
-**Comparação bibliográfica:** NI não é ausência; as ferramentas têm escopos e versões diferentes. Uma linha própria com mais marcações não constitui prova de novidade ou ganho educacional. As classificações são rastreáveis, mas o levantamento não é uma revisão sistemática exaustiva nem inspeção de todas as versões recentes.
+**Validade externa e de conclusão:** a amostra será pequena e de conveniência, em uma disciplina. Duas pessoas da mesma dupla podem produzir respostas dependentes. Formulário sem identificadores não permite garantir unicidade de respondentes. Serão informados denominadores, versões, perdas e quantidade real, sem inferências causais ou generalização estatística.
 
-# 8. Relação com o SBSC 2027
+**Validação técnica:** o conjunto de programas é finito e não cobre C completo. A execução foi em Linux/Docker e Chromium; viewport móvel não equivale a aparelho físico. Contraste medido e simulações não constituem certificação WCAG ou estudo de acessibilidade com pessoas. Aprovação dos testes não substitui usabilidade ou aprendizagem.
 
-A chamada oficial consultada em 26/11/2026 inclui o eixo “Sistemas Colaborativos na Educação e em Ambientes Virtuais”, com ênfase no fator humano e nas interações sociais. A atividade de explicação em duplas é um contexto proposto para investigar o uso das representações. O código atual é de uso individual; avaliação por colegas, isoladamente, não demonstra colaboração educacional, e nenhuma interação social foi observada nesta rodada.
+**Comparação bibliográfica:** as publicações apresentam escopos e versões diferentes. A leitura não constitui revisão sistemática exaustiva; informação ausente no artigo não confirma ausência no software. As células NI e N/A preservam essas diferenças, sem contabilizá-las como vantagens comprovadas do projeto.
 
-A trilha **Desenho de Pesquisa** aceita propostas/andamento, com artigo resumido de até quatro páginas e Ficha de Pesquisa de até três. **Ideias Inovadoras e Resultados Emergentes** requer resultados preliminares e tem quatro a oito páginas; a própria chamada orienta trabalhos apenas planejados para Desenho. **Artigos de Pesquisa** requer resultados científicos e admite até doze páginas de texto, conforme as exclusões definidas na chamada. A escolha deverá ser discutida com o professor após concretizar a atividade e verificar quais evidências estarão disponíveis.
+# 9. Conclusão e continuidade
 
-Nas trilhas citadas, o prazo informado é 15/12/2026; as páginas consultadas não informam fuso ou horário final. Há modelo SBC, avaliação duplamente anônima e declaração explícita de uso de IAG. A nota de enquadramento no pacote registra URLs, trechos e diferenças das trilhas; datas e regras devem ser reconferidas antes de uma submissão.
+O Mini-C passou a integrar três fases de análise, tabela de símbolos e navegação entre artefatos, acrescentando modos que reduzem a dependência de cores. Os testes funcionais, as regressões, a integração e as medidas examinadas sustentam seu funcionamento na versão registrada. O diferencial está implementado e tem critérios explícitos de verificação.
 
-Esta versão identificada é uma **entrega da disciplina para coleta**, com anexos solicitados pelo professor. Não é apresentada como artigo pronto para submissão ao SBSC: serão necessários adequação da extensão, escolha de trilha, consolidação das evidências, anonimização do texto/artefatos e revisão de autoria/afiliação. Os PDFs dos artigos de fundamentação são anexos acadêmicos, não anexos automáticos de uma submissão ao evento. Não houve submissão nem promessa de publicação.
+A avaliação formativa foi fundamentada em dois estudos e simplificada para tarefas curtas e seis perguntas. A conclusão empírica sobre percepção, uso colaborativo e apoio educacional permanece dependente da aplicação real. A próxima ação é coletar as respostas, analisar dificuldades e atualizar a seção 6.3 com os números e relatos efetivamente obtidos. A Etapa 6 ampliará a representação semântica e a experiência didática segundo as instruções da disciplina.
 
-# 9. Continuidade e declaração de apoio de IA
+## Declaração de uso de IA e artefatos
 
-A próxima ação é revisar o formulário na conta Google do autor, aplicá-lo a colegas voluntários conforme o protocolo e analisar os dados reais. O artigo será então atualizado com resultados humanos, problemas encontrados, eventuais correções e limites da interpretação. A matriz própria só poderá receber avaliação com estudantes como presença depois da aplicação; aprendizagem só será marcada mediante evidência pertinente ao critério, sem converter opinião em ganho cognitivo.
+Foi utilizado **ChatGPT/Codex, da OpenAI**, no apoio à organização das fontes, redação, instrumentos, código e verificações técnicas. A responsabilidade pelas decisões acadêmicas, conferência final e coleta com pessoas é dos autores humanos; a ferramenta não é autora. Nenhuma resposta de participante foi fabricada.
 
-Foi utilizado **ChatGPT/Codex, da OpenAI**, como apoio na pesquisa/organização de fontes, preparação do texto e dos instrumentos, programação e execução de verificações técnicas. O uso não constitui autoria da ferramenta. As afirmações são vinculadas a fontes e artefatos auditáveis; a conferência final, decisões acadêmicas, coleta com pessoas e responsabilidade pelo trabalho cabem ao autor e ao professor/orientador. Não foram produzidos dados fictícios de participantes como resultados de pesquisa.
-
-Repositório do projeto: <https://github.com/warner03/software-educacional-compiladores>. A base funcional auditada é `7fcb5ca`; os materiais desta etapa serão organizados em `docs/etapa5/`. O histórico anterior é preservado e o Trabalho 5 prático ainda aguarda seus requisitos específicos.
-
+Repositório: <https://github.com/warner03/software-educacional-compiladores>. Código auditado: `2b535d1`; metadados e conferência de hashes em `docs/trabalho5/evidencias/`. O artigo, a matriz de 170 células, os protocolos atual/anterior e os instrumentos estão em `docs/etapa5/`. As fontes e evidências anteriores foram preservadas.
 
 # Referências
 
@@ -323,3 +328,5 @@ SCHNEIDER, Carlos Sérgio; PASSERINO, Liliana Maria; OLIVEIRA, Ricardo Ferreira 
 SOCIEDADE BRASILEIRA DE COMPUTAÇÃO. *SBSC 2027: chamadas, Artigos de Pesquisa, Desenho de Pesquisa e Ideias Inovadoras e Resultados Emergentes*. Disponível em: <https://sbsc.sbc.org.br/2027/index.php/chamadas/> e páginas vinculadas. Acesso em: 26 nov. 2026.
 
 VERAS, Williany Thalita A.; NOGUEIRA, José Elvis S. S.; SILVA, João Emerson N.; D’EMERY, Richarlyson A. Desenvolvimento e Avaliação da Usabilidade em Aplicativo Desktop para o Ensino da Programação Orientada a Objetos. In: *Anais do V Congresso sobre Tecnologias na Educação*. Porto Alegre: SBC, 2020. p. 178–187. DOI: [10.5753/ctrle.2020.11395](https://doi.org/10.5753/ctrle.2020.11395). Texto integral: Anexo B desta tarefa.
+
+WORLD WIDE WEB CONSORTIUM (W3C). *Understanding WCAG 2.2: Use of Color (1.4.1), Contrast (Minimum) (1.4.3) e Non-text Contrast (1.4.11)*. WAI, s.d. Disponível em: <https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html>, <https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html> e <https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html>. Acesso em: 26 nov. 2026.

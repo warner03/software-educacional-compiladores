@@ -1,61 +1,41 @@
-# Guia para quem vai participar
+# Experimentando o Mini-C
 
-Você está convidado a experimentar o Visualizador Educacional Mini-C. A participação é voluntária, para maiores de 18 anos, e não tem relação com notas. Pode encerrar a qualquer momento antes do envio do formulário.
+Você vai testar um software educacional de compiladores. A atividade é voluntária e não vale nota. Não informe nome ou matrícula no formulário. Você pode parar quando quiser. A atividade leva aproximadamente 10–15 minutos; o formulário tem seis perguntas rápidas.
 
-A atividade dura aproximadamente 15–20 minutos, mais 5–8 minutos para responder. Não serão solicitados nome, e-mail ou matrícula, nem gravados áudio/vídeo. Em uma atividade presencial, o colega e o facilitador veem sua participação; isso não é observação anônima. As anotações serão mínimas e sem identidades, e o relatório terá somente resultados agregados. O formulário não solicita identificadores diretos. Não escreva dados pessoais nos comentários. Sem identificadores, pode não ser possível localizar uma resposta específica depois de enviada.
+Se estiver em dupla, alternem quem usa o mouse/teclado e quem explica. Depois, cada pessoa responde ao formulário individualmente. Peça ajuda se precisar; o facilitador anotará a dificuldade sem seu nome.
 
-Caso não concorde ou seja menor de 18 anos, não realize a atividade. O formulário também oferece a opção Não no consentimento, que encerra a participação sem as demais perguntas.
+## 1. Variáveis e código
 
-## Como será a atividade
-
-Em duplas, uma pessoa opera a interface e a outra explica o que está entendendo. Troquem esses papéis a cada tarefa. Explorem livremente editor, tabela de tokens, árvore AST e botão Localizar. Podem discutir suas interpretações durante as tarefas e solicitar ajuda ao facilitador.
-
-Se estiver participando de um piloto individual, você mesmo opera e explica o que entendeu. Essa modalidade será registrada separadamente.
-
-## Tarefa 1
-
-Analise:
+Digite ou cole:
 
 ```c
-int resultado = 10 + 5 * 2;
+int x = 1;
+float y = x + 2.5;
 ```
 
-Identifiquem o operador que organiza a expressão após o igual e seus dois operandos. Usem a árvore e Localizar para relacionar uma construção ao trecho do código. Expliquem o agrupamento que observaram.
+Clique em **Analisar código**. Na tabela de símbolos, localize a declaração de x e sua referência. Observe os trechos destacados no código e na árvore. Explique ao colega onde a variável foi declarada e onde foi usada.
 
-## Tarefa 2
+## 2. Identificando um erro
 
-Troquem os papéis. Analise:
+Troquem quem opera e analisem:
 
 ```c
-int resultado = (10 + 5) * 2;
+int x = 1;
+total = x + 2;
 ```
 
-Comparem a estrutura com a tarefa anterior e expliquem o que mudou. Usem Localizar para observar a relação entre um nó e seu trecho.
+Leiam os estados das três fases. Digam qual fase encontrou o erro e localizem o trecho indicado. Leiam a regra e a sugestão. Não é necessário decorar nomes técnicos.
 
-## Tarefa 3
+## 3. Experimentando os modos visuais
 
-Troquem os papéis. Analise:
+No seletor inicial, escolha **Sem cores — padrões e rótulos**. Analise:
 
 ```c
 int x = ;
 ```
 
-Observem os resultados das duas fases. Expliquem o problema, onde ele aparece e o que seria necessário corrigir. Observem a tabela de tokens e a apresentação da árvore.
+Identifique qual fase apontou o problema usando os textos e contornos. Abra a legenda para conferir os padrões. Depois analise `@ int x;` e compare os estados das fases. Experimente **Alto contraste** e observe a apresentação.
 
-## Tarefa 4
+## Agora responda
 
-Troquem os papéis. Analise:
-
-```c
-@ int x;
-```
-
-Comparem os estados das análises com a tarefa anterior. Expliquem o que ocorreu e como as fases se relacionam.
-
-## Depois das tarefas
-
-Cada pessoa responde ao formulário individualmente, sem combinar respostas com o colega. Você pode consultar o aplicativo durante o preenchimento. Em computador compartilhado, responda um por vez, sem mostrar suas respostas ao outro participante.
-
-Escolha Em dupla ou Individual conforme a atividade que realmente fez. Os itens de percepção não têm respostas certas: indique o que você percebeu. Escolha N/A quando não usou ou não consegue avaliar o recurso; no modo individual, a questão sobre discussão com o colega é N/A. Campos abertos são opcionais. Não inclua informações pessoais.
-
-O facilitador fornecerá o link quando o formulário tiver sido criado e revisado. Este documento não contém gabarito, pontuação ou resultados de participantes.
+Abra o link de formulário fornecido pelo facilitador. São duas perguntas sobre os resultados, três afirmações e uma sugestão opcional. Pode consultar o software; não consulte gabarito. Nas afirmações, use N/A se não utilizou ou não consegue avaliar o recurso. Responda de acordo com sua experiência, inclusive se encontrou dificuldades.

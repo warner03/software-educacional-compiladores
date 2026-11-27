@@ -1,0 +1,13 @@
+test_01_consentimento_estratos_mediana_e_privacidade (test_analise_instrumento.TesteSomenteDadosSinteticos.test_01_consentimento_estratos_mediana_e_privacidade)
+APENAS DADOS SINTÉTICOS: Não excluído; estratos preservados; PII não ecoada. ... ok
+test_02_na_ausencias_invalidos_e_item_individual (test_analise_instrumento.TesteSomenteDadosSinteticos.test_02_na_ausencias_invalidos_e_item_individual)
+APENAS DADOS SINTÉTICOS: denominadores e incerteza não viram nota. ... ok
+test_03_cabecalho_vazio_e_todos_sem_consentimento_nao_geram_estatisticas (test_analise_instrumento.TesteSomenteDadosSinteticos.test_03_cabecalho_vazio_e_todos_sem_consentimento_nao_geram_estatisticas)
+APENAS DADOS SINTÉTICOS: nenhuma base elegível => nenhuma estatística. ... ok
+test_04_l05_nao_e_calculado_quando_modo_e_ausente_ou_invalido (test_analise_instrumento.TesteSomenteDadosSinteticos.test_04_l05_nao_e_calculado_quando_modo_e_ausente_ou_invalido)
+APENAS DADOS SINTÉTICOS: aplicabilidade exige modo Em dupla confirmado. ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.005s
+
+OK

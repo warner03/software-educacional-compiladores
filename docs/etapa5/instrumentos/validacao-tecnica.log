@@ -1,13 +1,15 @@
-test_01_consentimento_estratos_mediana_e_privacidade (test_analise_instrumento.TesteSomenteDadosSinteticos.test_01_consentimento_estratos_mediana_e_privacidade)
-APENAS DADOS SINTÉTICOS: Não excluído; estratos preservados; PII não ecoada. ... ok
-test_02_na_ausencias_invalidos_e_item_individual (test_analise_instrumento.TesteSomenteDadosSinteticos.test_02_na_ausencias_invalidos_e_item_individual)
-APENAS DADOS SINTÉTICOS: denominadores e incerteza não viram nota. ... ok
-test_03_cabecalho_vazio_e_todos_sem_consentimento_nao_geram_estatisticas (test_analise_instrumento.TesteSomenteDadosSinteticos.test_03_cabecalho_vazio_e_todos_sem_consentimento_nao_geram_estatisticas)
-APENAS DADOS SINTÉTICOS: nenhuma base elegível => nenhuma estatística. ... ok
-test_04_l05_nao_e_calculado_quando_modo_e_ausente_ou_invalido (test_analise_instrumento.TesteSomenteDadosSinteticos.test_04_l05_nao_e_calculado_quando_modo_e_ausente_ou_invalido)
-APENAS DADOS SINTÉTICOS: aplicabilidade exige modo Em dupla confirmado. ... ok
+Instrumento v3.0 — testes locais somente com dados sintéticos, sem participantes.
+Analisador de denominadores/mediana, exclusões, privacidade e versão do CSV.
+
+test_ausencias_invalidos_e_modo_desconhecido (test_analise_instrumento.AnaliseV3.test_ausencias_invalidos_e_modo_desconhecido) ... ok
+test_csv_privacidade_e_rejeicao_de_versao_anterior (test_analise_instrumento.AnaliseV3.test_csv_privacidade_e_rejeicao_de_versao_anterior) ... ok
+test_denominadores_mediana_e_estratos (test_analise_instrumento.AnaliseV3.test_denominadores_mediana_e_estratos) ... ok
+test_sem_respostas_ou_sem_aceite_nao_produz_estatisticas (test_analise_instrumento.AnaliseV3.test_sem_respostas_ou_sem_aceite_nao_produz_estatisticas) ... ok
 
 ----------------------------------------------------------------------
-Ran 4 tests in 0.005s
+Ran 4 tests in 0.004s
 
 OK
+
+Gerador Google Apps Script: sintaxe validada localmente com node --check; não executado no serviço Google.
+CSV de coleta: somente cabeçalho, zero registros e estatísticas nulas.

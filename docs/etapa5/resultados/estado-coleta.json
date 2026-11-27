@@ -1,18 +1,16 @@
 {
-  "origem": "Respostas fornecidas; origem humana não verificada pelo programa",
-  "estado": "sem_respostas",
-  "n_linhas_lidas": 0,
-  "n_respostas_elegiveis": 0,
-  "n_excluidas_consentimento_ou_elegibilidade": 0,
-  "estatisticas_por_modo": null,
-  "avisos": [
-    "Análise descritiva: não estima ganho de aprendizagem ou efeito causal.",
-    "Não há escore global, SUS ou soma dos itens Likert.",
-    "Modalidade individual é separada da atividade em duplas.",
-    "L05 somente é aplicável a Em dupla; modo ausente/inválido fica em estrato separado, sem estatística desse item.",
-    "A unidade do formulário é a resposta individual; não é número de duplas nem de observações independentes.",
-    "N/A, ausências e valores inválidos ficam fora dos denominadores indicados.",
-    "Texto livre, identificadores e data/hora não são expostos nesta saída.",
-    "Revisar risco de identificação antes de publicar estratos pequenos."
-  ]
+  "instrumento": "3.0",
+  "codigo": "2b535d1cf5bc1f5e3149bcf6f4ff4f7c26c324be",
+  "estado": "nao_aplicado",
+  "avaliacao_humana_executada": false,
+  "sessoes_reais": 0,
+  "respostas_reais": 0,
+  "estatisticas_humanas": null,
+  "link_google_forms": null,
+  "pendencias": [
+    "Criar e revisar o Forms na conta do autor",
+    "Aplicar o protocolo com colegas",
+    "Incorporar respostas e observações reais ao artigo"
+  ],
+  "observacao": "Zero registros significa coleta não realizada; não é uma medição de desempenho dos participantes."
 }

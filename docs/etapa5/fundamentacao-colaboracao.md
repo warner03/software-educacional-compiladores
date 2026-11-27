@@ -25,16 +25,16 @@ Na continuação, p. 133: “communication, coordination and cooperation should 
 
 O artigo propõe componentes de groupware organizados segundo 3C e investiga a abordagem no redesenvolvimento do AulaNet. É uma fonte conceitual de análise/projeto da colaboração, **não uma validação de aprendizagem em duplas com Mini-C**, nem uma escala pronta para medir esse efeito.
 
-## Adaptação proposta ao piloto Mini-C
+## Adaptação proposta ao protocolo v3
 
-| Dimensão | Procedimento proposto | Evidência a coletar |
+A versão atual usa três atividades curtas: localizar declaração/referência, interpretar erro semântico e identificar estados no modo Sem cores. As pessoas alternam quem opera e quem explica. A adaptação conserva as três dimensões sem adicionar perguntas ao formulário curto:
+
+| Dimensão | Procedimento | Evidência a registrar por sessão |
 |---|---|---|
-| Comunicação | Cada integrante explica ao colega o agrupamento da expressão usando a AST e o trecho destacado; ambos discutem divergências. | Justificativa escrita curta da dupla e nota estruturada de observação sobre discussão/explicação. |
-| Coordenação | Um integrante opera a interface e outro interpreta/confere a estrutura; papéis são alternados no segundo caso. | Registro de que houve dois turnos e troca de papéis, sem nomes. |
-| Cooperação | Ambos produzem uma resposta comum: expressão agrupada, nó correspondente e explicação acordada, ou código corrigido. | Resposta conjunta com rubrica de correção e indicação de divergência não resolvida, se houver. |
+| Comunicação | Explicar ao colega onde a variável foi declarada/usada e por que o erro ocorre | Nota de explicação conjunta ou divergência |
+| Coordenação | Alternar quem opera a interface entre A1 e A2 | Sim/não para alternância; N/A no piloto individual |
+| Cooperação | Conferir conjuntamente o mesmo código, referência e diagnóstico | Nota breve de interpretação comum ou dificuldade não resolvida |
 
-Código, AST e justificativa são os objetos de referência comuns. A atividade pode ocorrer em dupla no mesmo computador; comunicação oral e organização por roteiro são externas ao software. A implementação atual não oferece chat, edição concorrente ou contas. A interface atua como suporte à referência visual durante a explicação e revisão entre pares; não se deve atribuir ao software controle automático de turnos, coordenação ou histórico de discussão.
+Código, AST e símbolos são os objetos de referência comuns. A comunicação oral e a gestão de turnos ocorrem fora da aplicação; não há chat, edição compartilhada ou coordenação automática. O formulário possui somente seis perguntas e não contém item adicional sobre colaboração; esse componente será examinado pelas observações de sessão.
 
-Possível pergunta específica de percepção, sem pretensão de escala validada: **“Relacionar um nó da AST ao trecho do código ajudou a dupla a explicar e conferir o agrupamento da expressão?”** Respostas 1–5 e “Não utilizei esse recurso”. Complementar com tarefa de interpretação e rubrica; opinião favorável não prova aprendizagem nem efeito causal da colaboração.
-
-A adaptação 3C explicita os aspectos do uso colaborativo a observar. Ela permanece proposta até coleta real. Sem comparação, pré/pós-teste e amostra adequada, relatar conclusão de tarefas, dificuldades e percepções do piloto, sem afirmar superioridade ou ganho de aprendizagem. Conformidade institucional/consentimento deve ser acertada com o professor antes de aplicar o estudo; observação identificável não deve ser descrita como coleta totalmente anônima só porque o formulário não pede nome.
+O arranjo permanece proposto até aplicação real. Sem comparação, pré/pós-teste e amostra adequada, relatar realização, ajuda, dificuldade e percepções sem efeito causal ou ganho de aprendizagem. Não descrever observação presencial como anônima para o facilitador; os registros minimizados serão apresentados em conjunto.

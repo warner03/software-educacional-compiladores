@@ -1,6 +1,6 @@
 # Conferência da chamada SBSC 2027
 
-Consulta em 26/11/2026. Páginas oficiais obtidas via HTTPS com verificação TLS, HTTP 200. Não houve submissão nem contato com organizadores. HTML/TXT e modelo oficial preservados nesta pasta.
+Consulta em 26/11/2026. Páginas oficiais obtidas via HTTPS com verificação TLS, HTTP 200. Não houve submissão nem contato com organizadores. As referências e os trechos abaixo foram reconferidos após o Trabalho 5; os downloads de conferência acompanham o pacote local de revisão.
 
 ## Fontes oficiais
 
@@ -47,7 +47,7 @@ O eixo educacional é potencialmente pertinente, mas a implementação atual é 
 
 As páginas consultadas não exigem editor compartilhado, colaboração síncrona, contas ou chat. Não ampliar o software artificialmente para afirmar esse requisito. Uma atividade real de interpretação/revisão em duplas, com objetivo comum, turnos e discussão registrada, pode constituir um contexto colaborativo a investigar; continua sendo proposta até ser aplicada, e precisa fundamentação e medidas coerentes. Evitar atribuir comunicação/coordenação ao software se realizadas por canais externos.
 
-Sem coleta real com colegas e com aderência colaborativa ainda por concretizar, Desenho de Pesquisa é uma modalidade provisoriamente mais coerente para o plano. IIRE requer resultados preliminares relacionados à contribuição em SC; testes do parser, sozinhos, não demonstram aprendizagem colaborativa. Artigos de Pesquisa requerem resultados de pesquisa mais substanciados. A escolha final de trilha pertence ao autor/orientador, após a conclusão da coleta e a verificação do texto efetivo.
+Mesmo com a semântica e os modos visuais implementados, a coleta com colegas e a aderência colaborativa permanecem por concretizar. Nessas condições, Desenho de Pesquisa é uma modalidade provisoriamente mais coerente para o plano. IIRE requer resultados preliminares relacionados à contribuição em SC; testes do parser, sozinhos, não demonstram aprendizagem colaborativa. Artigos de Pesquisa requerem resultados de pesquisa mais substanciados. A escolha final de trilha pertence ao autor/orientador, após a conclusão da coleta e a verificação do texto efetivo.
 
 A versão da tarefa acadêmica pode ser identificada e incluir anexos exigidos pelo professor. Ela não deve ser chamada de pronta para submissão ao SBSC sem adaptação do tamanho, anonimato, trilha e resultados. Não anexar os dois artigos de fundamentação ao PDF submetido ao evento como se a exigência didática fosse regra do SBSC.
 

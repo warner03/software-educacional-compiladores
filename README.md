@@ -12,7 +12,7 @@ Software web educacional para estudar as fases de um compilador. **Trabalho 5: a
 - Modos visuais com rótulos, padrões, contornos e foco visível; preferência mantida ao recarregar quando o navegador permite.
 - Testes técnicos, integração Docker, navegador real, contraste e inspeções sob simulação de visão de cores.
 
-Os recursos de acessibilidade estão implementados e tecnicamente verificados; ainda não houve avaliação com pessoas daltônicas. A [Tarefa 5 teórica](docs/etapa5/README.md) permanece como registro da preparação anterior à implementação e aguarda revisão do artigo/matriz e simplificação do formulário após esta entrega prática.
+Os recursos de acessibilidade estão implementados e tecnicamente verificados; ainda não houve avaliação com pessoas daltônicas. A [Tarefa 5 teórica](docs/etapa5/README.md) foi revisada com a implementação atual, a matriz comparativa e o formulário curto; a avaliação real com colegas ainda será aplicada.
 
 ## Abrir no seu computador
 
@@ -132,6 +132,6 @@ O navegador usa o backend real em desktop e viewport móvel. Verifica símbolos,
 
 `docker compose logs --tail=80 backend frontend` exibe os serviços. O backend registra resumo das fases e contagens; a resposta/console do navegador mostra o contrato. Ao relatar erro, informe entrada mínima, ação, mensagem e versão; evite compartilhar informações pessoais. Nenhuma IA/Ollama é necessária para o aplicativo.
 
-A [Tarefa 4](docs/etapa4/README.md) e a [preparação da Tarefa 5](docs/etapa5/README.md) ficam preservadas como registros anteriores. A documentação atual do [Trabalho 5](docs/trabalho5/README.md) registra decisões, fluxograma, casos e demonstração. A revisão do artigo/matriz e a simplificação do formulário vêm depois desta etapa prática. Não há respostas humanas inventadas ou ganho de aprendizagem comprovado.
+A [Tarefa 4](docs/etapa4/README.md) e a [preparação anterior da Tarefa 5](docs/etapa5/historico/versao2/LEIA-ME.md) ficam preservadas como registros históricos. A documentação atual do [Trabalho 5](docs/trabalho5/README.md) registra decisões, fluxograma, casos e demonstração. O artigo/matriz e o formulário curto foram revisados na [Tarefa 5](docs/etapa5/README.md); a coleta com colegas continua pendente. Não há respostas humanas inventadas ou ganho de aprendizagem comprovado.
 
 A Etapa 6 ampliará a representação semântica e a experiência didática. A navegação atual percorre artefatos prontos; não simula os passos internos dos algoritmos. Acessibilidade é uma contribuição implementada a avaliar, com exclusividade perante a literatura ainda não demonstrada.

@@ -1,0 +1,20 @@
+{
+  "versao_instrumento": "3.0",
+  "origem": "Respostas fornecidas; origem humana não verificada pelo programa",
+  "estado": "sem_respostas",
+  "n_linhas_lidas": 0,
+  "n_respostas_elegiveis": 0,
+  "n_excluidas_consentimento_ou_elegibilidade": 0,
+  "estatisticas_por_modo": null,
+  "avisos": [
+    "Análise descritiva: não estima ganho de aprendizagem ou efeito causal.",
+    "Não há escore global, SUS ou soma dos itens Likert.",
+    "Modalidade individual é separada da atividade em duplas.",
+    "Seis perguntas: duas objetivas, três itens de percepção e uma aberta opcional.",
+    "L02 mede identificação sem depender de cores percebida pelos respondentes, sem comprovar eficácia com pessoas daltônicas.",
+    "A unidade do formulário é a resposta individual; não é número de duplas nem de observações independentes.",
+    "N/A, ausências e valores inválidos ficam fora dos denominadores indicados.",
+    "Texto livre, identificadores e data/hora não são expostos nesta saída.",
+    "Revisar risco de identificação antes de publicar estratos pequenos."
+  ]
+}

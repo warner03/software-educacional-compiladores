@@ -1,6 +1,6 @@
 # Duas novas fontes metodológicas — Tarefa 5
 
-Consulta e leitura integral em 26/11/2026. Os PDFs foram obtidos diretamente do Portal de Publicações da Sociedade Brasileira de Computação (SBC OpenLib), não de respostas de IA. As sínteses abaixo registram também limites dos estudos. Novas fontes de método; não substituir ou excluir os nove estudos anteriores.
+Consulta e leitura integral em 26/11/2026. A revisão após o Trabalho 5 mantém as duas fontes, aplicando os princípios metodológicos a tarefas de símbolos, erros e apresentação sem dependência de cores. O instrumento atual foi reduzido a seis perguntas; os estudos não validam sua eficácia para pessoas daltônicas. Os PDFs foram obtidos diretamente do Portal de Publicações da Sociedade Brasileira de Computação (SBC OpenLib), não de respostas de IA. As sínteses abaixo registram também limites dos estudos. Novas fontes de método; não substituir ou excluir os nove estudos anteriores.
 
 ## 1. Pontes et al. (2019)
 
@@ -51,10 +51,10 @@ Consulta e leitura integral em 26/11/2026. Os PDFs foram obtidos diretamente do 
 Avaliação **formativa, exploratória e por tarefas**, com três fontes separadas:
 
 1. Correção funcional: entradas válidas/ inválidas, oráculos estruturais da AST e mensagens esperadas, registrada automaticamente.
-2. Desempenho observado durante uso: localizar um identificador/nó, explicar a precedência, distinguir erro léxico/sintático e corrigir uma entrada, segundo gabarito fixado antes da coleta. Registrar conclusão independente/com ajuda/não conclusão, acerto e dificuldade. Perguntas objetivas verificam a interpretação efetuada durante a tarefa; não medem ganho de aprendizagem sem comparação temporal.
+2. Desempenho observado durante uso: localizar declaração/referência, distinguir erro semântico de sintático/léxico e identificar resultados no modo Sem cores, segundo gabarito fixado antes da coleta. Registrar conclusão independente/com ajuda/não conclusão, acerto e dificuldade. Perguntas objetivas verificam a interpretação efetuada durante a tarefa; não medem ganho de aprendizagem sem comparação temporal.
 3. Percepções: itens Likert específicos, opção não se aplica/não consegui avaliar, e comentários abertos. Relatar n válido, distribuição, mediana e, se útil, média como resumo descritivo, sem tratar uma amostra pequena/conveniência como representativa ou causal.
 
-A pergunta central pode investigar se participantes conseguem relacionar o nó selecionado e a explicação da regra ao trecho-fonte e à precedência da expressão. Um item de percepção pode perguntar se essa ligação **ajudou na tarefa**, complementado pelo acerto da resposta objetiva. O auto-relato não substitui o gabarito.
+Na revisão após o Trabalho 5, L02 pergunta se o participante identificou resultados no modo Sem cores sem depender das cores; Q02 e A3 examinam uma classificação nesse modo. L03 e A1 verificam o apoio da tabela de símbolos e sua ligação ao fonte/AST. O autorrelato não substitui o gabarito e os dois estudos não validam a eficácia desses modos para pessoas daltônicas.
 
 Se houver uma atividade em duplas com alternância de quem opera e quem explica, isso é uma **organização da atividade**, não recurso multiusuário do software. Os dois artigos não validam esse modo de colaboração no Mini-C; não atribuir a eles uma teoria específica de aprendizagem colaborativa nem efeito demonstrado desse arranjo. Registrar respostas individuais separadamente, sem expor nomes da dupla, e discutir influência do colega e dependência entre observações como limitações. O protocolo poderá ser proposto para discussão no SBSC, cuja aderência depende da chamada/trilha e de evidências genuínas de colaboração.
 

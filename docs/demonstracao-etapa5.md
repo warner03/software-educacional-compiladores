@@ -35,7 +35,7 @@ Uma declaração sem leitura, como `int x;`, é válida mesmo com inicializaçã
 
 No seletor inicial, escolha **Sem cores — padrões e rótulos**. Abra a legenda e observe os sublinhados distintos. Navegue pelos tokens: nomes/tipos e contorno permitem acompanhar os resultados sem depender da cor. Alterne para **Alto contraste**. A análise e a seleção permanecem. Recarregue a página para conferir a preferência visual; o código do editor não é salvo nessa preferência.
 
-Explique a contribuição como recurso de acessibilidade implementado e tecnicamente testado. As emulações do navegador não são avaliação com pessoas daltônicas ou certificação WCAG integral. O artigo/formulário será revisado depois, para avaliar a experiência com dados reais.
+Explique a contribuição como recurso de acessibilidade implementado e tecnicamente testado. As emulações do navegador não são avaliação com pessoas daltônicas ou certificação WCAG integral. O artigo e o formulário curto estão revisados na Tarefa 5; a experiência com colegas ainda será avaliada com dados reais.
 
 ## Evidências
 

@@ -16,7 +16,7 @@
 | Docker reproduzível | Build sem cache e smoke aprovados; logs em `evidencias/` |
 | Logs para depuração | Resumo de fases/contagens no backend; `docker compose logs --tail=80 backend frontend` |
 | Documentação e fluxograma | README, contrato, semântica, acessibilidade, demonstração e figura editável |
-| Artigo e pergunta da contribuição | Registros técnicos preparados; artigo/matriz e formulário serão revisados/simplificados posteriormente, como combinado |
+| Artigo e pergunta da contribuição | Registros técnicos preparados; artigo/matriz e formulário curto revisados posteriormente na Tarefa 5, com aplicação ainda pendente |
 | Demonstração | Roteiro atual, capturas padrão/sem cores/alto contraste, erros e medidas de contraste |
 
 As contagens/resultados são os do registro, sem tratar casos repetidos pela API como novos cenários independentes. Validação com pessoas e ganho de aprendizagem permanecem pendentes; não foram produzidos dados humanos nesta entrega.

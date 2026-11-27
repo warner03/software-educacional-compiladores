@@ -1,60 +1,45 @@
-# Protocolo de avaliação — versão 2.0
+# Protocolo de avaliação — versão 3.0
 
-26/11/2026. Definido após conhecer os resultados da Etapa 4, antes de coletar respostas de colegas. Base funcional 7fcb5ca.
+Definido em 26/11/2026 após o Trabalho 5 e antes da coleta humana. Código `2b535d1`; seis perguntas de avaliação. A versão 2 está preservada em `historico/versao2/`.
 
 
-## 5.1. Versão, participantes e aplicação
+## 5.1. Participação e procedimento
 
-O protocolo desta tarefa é definido em 26/11/2026, após a implementação da Etapa 4 e antes da coleta com colegas. Não é apresentado como pré-registro independente do desenvolvimento. Os casos funcionais e três oráculos estruturais foram fixados em 18/11/2026 e conservados sem alteração dos esperados. O histórico do projeto e os arquivos desta entrega permitem distinguir esse planejamento da reexecução atual.
+O protocolo versão 3.0 foi definido após o Trabalho 5 e antes de qualquer coleta humana informada. A versão anterior foi preservada no histórico; seus itens e gabaritos não serão misturados aos atuais. A amostra será de conveniência, entre colegas adultos cursando ou que já cursaram Compiladores. Pretende-se convidar de 4 a 6 duplas, se viável; será informado o número efetivo, sem tratar a meta como resultado.
 
-A amostragem será por conveniência, com meta de viabilidade de 4 a 6 duplas (8 a 12 estudantes adultos cursando ou que já cursaram Compiladores). A meta não é cálculo de poder nem requisito que autorize fabricar participantes. A quantidade efetiva e as perdas deverão ser informadas. Professores e outros perfis serão mantidos em estratos separados. Um piloto individual poderá identificar problemas do roteiro, mas seus dados não serão agregados como evidência de colaboração.
+Cada sessão utilizará a mesma versão do software, entradas e instruções, com cerca de 10–15 minutos de atividade e aproximadamente três minutos para o formulário. Em dupla, as pessoas alternam entre operar a interface e explicar o resultado. Um piloto individual poderá verificar o roteiro e será analisado separadamente.
 
-Antes da aplicação, o autor combinará com o professor as regras institucionais de participação e uso/publicação dos dados. A chamada do SBSC não constitui dispensa geral de procedimentos institucionais. A participação será autorizada antes de iniciar as tarefas; o campo C01 registra novamente a decisão no formulário. A coleta será voluntária, com informação sobre objetivo, duração aproximada (20–30 minutos no total), ausência de avaliação acadêmica individual e possibilidade de sair antes do envio. O formulário não solicitará nome, e-mail ou matrícula; o registro do facilitador será por sessão, sem identificação direta, áudio ou vídeo. Comentários serão revisados para remover identificadores antes de qualquer divulgação.
+Antes das tarefas, o facilitador explica o objetivo, a participação voluntária e as condições de uso dos dados, conforme orientações do professor e da instituição. O formulário solicita aceite, modo de uso e as seis perguntas, sem nome, e-mail, matrícula ou condição de saúde. Não haverá áudio/vídeo. A observação presencial é conhecida pelos envolvidos; as anotações serão por sessão, sem ligação individual ao formulário.
 
-A versão do software e do instrumento será congelada para a rodada. Corrigir um problema relevante exige registrar data, motivo e quais sessões foram afetadas; resultados de versões diferentes não serão silenciosamente combinados. O facilitador fará uma introdução igual para todos, explicando controles com um exemplo neutro, sem revelar os gabaritos das tarefas.
-
-## 5.2. Atividade e componente colaborativo proposto
-
-O modo principal prevê duas pessoas no mesmo computador, alternando os papéis de quem opera a interface e de quem explica a estrutura. Na primeira expressão, uma pessoa seleciona nós e a outra explica o agrupamento; na expressão com parênteses, os papéis se invertem. O objetivo comum é produzir uma explicação coerente e localizar o trecho correspondente. A discussão ocorre presencialmente, não por funcionalidades de chat, edição compartilhada ou coordenação automática do software.
-
-Gerosa et al. (2006, seção 3, p. 132–133) descrevem o Modelo 3C: comunicação, coordenação e cooperação como dimensões interdependentes da colaboração. Aqui, a adaptação operacional será observar explicações/negociação sobre o agrupamento (comunicação), alternância dos papéis por roteiro (coordenação) e construção de uma justificativa ou correção comum sobre o código/AST (cooperação). A fonte fundamenta essa decomposição, não uma escala educacional validada nem um efeito de aprendizagem. O objeto visual é fornecido pelo Mini-C; comunicação e gestão dos turnos serão externas à aplicação. A observação presencial não se torna anônima para o facilitador apenas porque o Forms não solicita nomes; seu registro será minimizado e apresentado somente de forma agregada.
-
-O facilitador observará se houve alternância, referência conjunta a nós/trechos, pedido de justificativa e correção ou negociação de uma explicação. Registrará comportamento ocorrido, ajuda fornecida e dificuldades; não inferirá colaboração apenas porque duas pessoas estavam presentes. O formulário será respondido individualmente após a atividade, com a interface disponível e sem consulta ao gabarito. As respostas podem ser dependentes pela discussão em dupla; não serão tratadas como observações independentes em testes inferenciais.
-
-| Tarefa | Ação solicitada | Evidência a observar |
-|---|---|---|
-| A1 | Analisar `int resultado = 10 + 5 * 2;`, identificar agrupamento e localizar o operando direito da expressão | Operador que organiza a expressão, explicação e correspondência nó–fonte; necessidade de ajuda |
-| A2 | Alterar para `int resultado = (10 + 5) * 2;`, inverter papéis e explicar a mudança | Uso dos parênteses na justificativa e mudança da estrutura; referência conjunta à representação |
-| A3 | Analisar `int x = ;` e explicar fase, localização e conteúdo esperado | Distinção entre token reconhecido e expressão incompleta; leitura do diagnóstico |
-| A4 | Analisar `@ int x;` e comparar os estados das fases com A3 | Identificação do erro léxico e explicação do parser não executado |
-
-As respostas de referência e a rubrica do facilitador são fornecidas em arquivo separado. Uma resposta correta sem justificativa não será automaticamente interpretada como compreensão conceitual aprofundada. Quando houver ajuda, ela será registrada, permitindo distinguir realização autônoma, realização com ajuda e tarefa não concluída.
-
-## 5.3. Instrumento e pergunta específica da contribuição
-
-O formulário contém consentimento, perfil amplo, modo de aplicação, quatro questões objetivas (Q01–Q04), seis itens de percepção (L01–L06) e campos abertos para dificuldade e sugestão. A escala será: 1 discordo totalmente; 2 discordo; 3 nem concordo nem discordo; 4 concordo; 5 concordo totalmente; e **Não utilizei/não consigo avaliar**, fora da escala.
-
-A pergunta diretamente associada à contribuição proposta é **L02: “A ligação entre AST interativa e trecho do código ajudou-me a explicar por que os parênteses mudam o agrupamento da expressão.”** A resposta verifica apoio percebido; Q01 e Q02, e a observação de A1/A2, verificam respostas e ações relacionadas. Essa triangulação evita usar somente uma opinião para afirmar que a interação cumpriu seu papel.
-
-| Item | Aspecto investigado |
+| Atividade | Ação e registro |
 |---|---|
-| L01 | Localizar no fonte a construção selecionada na AST |
-| L02 | Apoio percebido para explicar o efeito dos parênteses no agrupamento |
-| L03 | Distinção das fases de erro léxico e sintático |
-| L04 | Clareza de rótulos/regras associados às construções |
-| L05 | Apoio percebido da discussão com o colega à explicação; não aplicável no piloto individual |
-| L06 | Facilidade geral de realização das tarefas |
+| A1 — símbolos e fonte | Analisar `int x = 1; float y = x + 2.5;`. Localizar a declaração e a referência de `x`, observando fonte e AST. Registrar conclusão e ajuda. |
+| A2 — significado | Analisar `int x = 1; total = x + 2;`. Identificar fase, regra e trecho do erro; alternar quem opera e quem explica. |
+| A3 — informação sem cor | Escolher Sem cores e analisar `int x = ;`; identificar a fase pelos rótulos. Depois testar `@ int x;`, comparar os estados e experimentar Alto contraste. |
 
-O pacote inclui o texto exato para Google Forms e um Apps Script para criar um formulário **fechado para respostas até revisão** na conta do autor. O script não foi executado em uma conta Google nesta sessão; não existe link de formulário publicado nesta entrega. A criação/revisão e a aplicação são etapas do autor. O roteiro orienta conferir ausência de coleta de e-mails, restrição institucional e identificação nas perguntas antes de disponibilizar o link aos colegas.
+O facilitador usa um exemplo neutro para explicar os controles, sem revelar respostas. O gabarito fica separado do guia dos colegas. Para cada atividade, anota conclusão sem ajuda, com ajuda ou não conclusão. O formulário é respondido individualmente, com a interface disponível e sem acesso ao gabarito.
 
-## 5.4. Plano de análise
+## 5.2. Seis perguntas e questão do diferencial
 
-**Fatos observados:** número de casos funcionais executados/aprovados, respostas de Q01–Q04 conforme gabarito, tarefas concluídas e registros de ajuda/comportamento. **Percepções relatadas:** frequências e medianas dos itens Likert e comentários. **Interpretações:** relação cautelosa entre esses dados e os objetivos do projeto, sem generalização causal.
+As duas questões objetivas oferecem alternativas léxico, sintático, semântico e “não sei”, ajustadas ao enunciado. Para as afirmações, a escala é 1 discordo totalmente, 2 discordo, 3 nem concordo nem discordo, 4 concordo e 5 concordo totalmente, com **N/A — não usei ou não consigo avaliar** fora da escala.
 
-Para cada questão objetiva, relatar-se-ão número de respostas válidas e taxa de acerto, por modo e perfil. O total de formulários não será automaticamente chamado de número de participantes únicos: o anonimato impede verificar plenamente duplicações. Respostas sem consentimento serão excluídas; casos incompletos terão denominadores informados. No Forms, perguntas obrigatórias e alternativas explícitas reduzem ambiguidades, sem substituir a descrição de perdas.
+| Código | Pergunta exata | Tipo |
+|---|---|---|
+| Q01 | Em `int x = 1; total = x + 2;`, qual erro o software indicou? | Múltipla escolha |
+| Q02 | No modo Sem cores, em `int x = ;`, qual fase indicou o erro? | Múltipla escolha |
+| L01 | Foi fácil usar o software. | Concordância 1–5 ou N/A |
+| L02 | No modo Sem cores, consegui identificar os resultados sem depender das cores. | Concordância 1–5 ou N/A |
+| L03 | A tabela de símbolos ajudou a entender onde as variáveis foram declaradas. | Concordância 1–5 ou N/A |
+| A01 | O que você melhoraria no software? | Aberta, opcional |
 
-Para cada item Likert, apresentar-se-ão frequências em 1–5, mediana, número de respostas válidas e não aplicáveis. Não aplicáveis serão informados e excluídos somente do denominador daquele item. Não haverá soma arbitrária de itens em um escore de aprendizagem ou de usabilidade validada. O item de dupla será analisado apenas nas sessões em dupla.
+**L02 é a pergunta diretamente relacionada ao diferencial.** Ela mede percepção de identificação sem dependência de cores. Q02 e a observação de A3 verificam uma tarefa realizada nesse modo; L03 e A1 examinam o apoio dos símbolos. A combinação permite comparar relatos com ações, sem concluir que um acerto demonstra aprendizagem ou que respondentes em geral representam pessoas daltônicas.
 
-Campos abertos serão lidos e agrupados por tema, distinguindo relato de problema, sugestão e opinião. Não se fabricarão citações ilustrativas. A ferramenta de análise entregue ignora o conteúdo textual na saída agregada, reduzindo exposição acidental; o exame qualitativo e a remoção de identificadores exigem leitura humana. Os achados da observação por sessão serão apresentados separadamente dos formulários individuais, pois não há identificação pessoal para ligar as bases.
+O conteúdo completo está pronto para copiar no Google Forms. Há também um gerador opcional de rascunho, fechado para respostas até revisão. Ele não foi executado em conta Google nesta entrega: nenhum link de formulário foi criado, publicado ou enviado a colegas.
 
-O analisador de CSV recebe a exportação do Forms, valida os campos e produz contagens por item, modo e perfil. Uma planilha vazia gera estado **sem respostas elegíveis**, sem médias, medianas ou porcentagens fictícias. Os testes do analisador usam apenas entradas sintéticas explicitamente identificadas como testes de código; elas não integram os resultados do estudo.
+## 5.3. Análise e contexto colaborativo
+
+Serão apresentados, por modo individual/dupla, os números de respostas elegíveis, perdas e não respostas. Para Q01/Q02, serão informados acertos e denominadores; “não sei” é resposta válida não correta. Para cada afirmação, serão apresentadas frequências em 1–5, mediana e quantidade de N/A, excluída somente do denominador daquele item. Não haverá soma em uma nota global de aprendizagem ou escore SUS.
+
+As sugestões serão agrupadas por tema após leitura e retirada de identificadores. A análise automática não reproduz os textos livres. Sem respostas, as estatísticas permanecem nulas. Dados sintéticos usados para testar o analisador são rotulados e não entram nos resultados acadêmicos.
+
+Para aproximar o projeto do contexto do SBSC, a atividade em dupla prevê comunicação por explicação/negociação, coordenação por alternância de papéis e cooperação na interpretação do mesmo código. Essa organização é inspirada no Modelo 3C (Gerosa et al., 2006, p. 132–133). O facilitador registra se os comportamentos ocorreram, sem inferir colaboração apenas pela presença de duas pessoas. Comunicação e turnos ocorrem presencialmente; o software não implementa chat ou edição multiusuário. As respostas de membros da mesma dupla podem ser dependentes e não serão tratadas como observações independentes em inferências estatísticas.

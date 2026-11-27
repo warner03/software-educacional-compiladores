@@ -1,72 +1,51 @@
 ---
-title: 'Tarefa 5 — próximos passos para Warner'
-subtitle: 'Guia de aplicação e conclusão da avaliação'
+title: 'Tarefa 5 — o que fazer agora'
+author: 'Warner Pereira Cardoso Júnior'
 lang: pt-BR
 geometry: margin=2.2cm
 fontsize: 11pt
 ---
 
-# O que está pronto
+# O que já está pronto
 
-O artigo foi atualizado com seu projeto na matriz, dois novos artigos de avaliação, método fundamentado, pergunta específica da contribuição, resultados funcionais reais e limitações. O software continua na versão prática da Etapa 4; o Trabalho 5 prático será tratado depois de receber suas instruções.
+O artigo está atualizado com o Trabalho 5. Seu software aparece nas tabelas, agora com semântica, símbolos e dois critérios de acessibilidade. Os testes reais e as medidas de contraste estão descritos. Os dois artigos novos sobre avaliação continuam anexados à versão acadêmica com artigos.
 
-**O que falta para concluir a Tarefa 5:** criar/revisar o Google Forms na sua conta, aplicar a avaliação com colegas e incorporar as respostas reais. O arquivo do artigo está identificado como **versão para coleta**, porque não há dados humanos ainda. A versão identificada da disciplina também não é o PDF de uma submissão ao SBSC.
+**O professor também exige aplicar o formulário e analisar as respostas. Como você ainda vai fazer isso, essa é a única parte empírica que falta.** Não inventamos resultados de colegas.
 
-# 1. Confira o protocolo com o professor
+# Como explicar o diferencial
 
-O método proposto é uma avaliação formativa: tarefas com respostas de referência, observação, perguntas objetivas, seis itens de percepção e comentários. Não foi escolhida uma SUS adaptada. A pergunta L02 trata diretamente do apoio da AST para explicar o efeito dos parênteses; Q01 e Q02 conferem respostas sobre a estrutura.
+“O meu software permite explorar as fases do compilador sem depender só das cores. Ele oferece um modo Sem cores com padrões e rótulos e outro de Alto contraste. Esses modos funcionam junto com os tokens, a árvore sintática e a tabela de símbolos: ao selecionar uma variável ou erro, o trecho aparece no código e na árvore. Os recursos já foram testados tecnicamente; agora vou avaliar com colegas se ajudam na interpretação.”
 
-O modo principal é atividade em duplas no mesmo computador, com alternância entre quem opera e quem explica. Meta inicial: 4–6 duplas, caso viável, sem inventar uma amostra mínima. Se houver menos colegas, registrar a quantidade real. Um piloto individual é possível e ficará separado. Combine as condições de participação e uso dos dados com o professor antes de aplicar.
+Você não precisa afirmar que é o único software com esses recursos. Nas publicações em que eles não foram confirmados, a tabela mostra NI, que significa informação insuficiente.
 
-# 2. Crie o formulário na sua conta Google
+# 1. Crie o formulário curto
 
-**Opção manual:** abra https://forms.google.com, crie um formulário em branco e copie as perguntas de `instrumentos/formulario-texto.md` ou do PDF do formulário. Preserve os códigos C01, M01, P01, Q01–Q04, L01–L06 e A01–A02 nos títulos. O texto também informa a configuração das seções e da saída por consentimento.
+Abra https://forms.google.com na sua conta e crie um formulário em branco. Copie o título, a descrição e as perguntas de **formulario_avaliacao_simples.pdf**. São seis perguntas de avaliação, mais aceite e indicação se a pessoa usou sozinha ou em dupla.
 
-**Opção automatizada, se preferir:**
+Não ative coleta de e-mail, login obrigatório ou modo teste. Não peça nome ou matrícula. Configure o aceite em uma primeira seção: Sim segue para as perguntas; Não encerra. As perguntas fechadas são obrigatórias, com Não sei/N/A; a sugestão é opcional. Faça um teste da navegação e mantenha os testes técnicos separados das respostas dos colegas.
 
-1. Acesse https://script.google.com com sua conta Google e escolha Novo projeto.
-2. Abra `instrumentos/criar_formulario.gs` em um editor de texto e copie todo o conteúdo para o editor do Apps Script, substituindo o exemplo que estiver lá.
-3. Salve. Selecione a função `criarFormularioMiniCTarefa5` e clique em Executar.
-4. Revise as permissões de criação do formulário solicitadas na sua conta. Esse código não foi executado no serviço Google nesta entrega.
-5. O registro de execução mostrará um endereço de **edição** do formulário. Abra esse endereço. Ele é criado fechado para respostas.
-6. Revise as questões e configurações. Faça testes técnicos da navegação Sim/Não separados da coleta e remova apenas as respostas desses testes identificados antes da aplicação.
-7. Depois da revisão, libere o formulário para os respondentes pelos controles do próprio Google Forms e copie o link de **responder**, que é o link destinado aos colegas.
+Há um gerador opcional criar_formulario.gs para Apps Script, caso prefira. Ele não foi executado na sua conta e nenhum link de Forms foi criado nesta entrega. A opção manual é suficiente.
 
-O formulário deve ficar sem coleta de e-mail, nome ou matrícula, sem resumo público e sem modo quiz. Não configure restrição de login ou domínio para identificar quem respondeu. A saída Não no consentimento encerra o formulário. As perguntas abertas são opcionais. Se sua organização impedir alguma configuração, confira a alternativa com o professor.
+# 2. Convide os colegas e faça as atividades
 
-**Nenhum link de Google Forms foi criado ou publicado nesta sessão.** Os arquivos são o conteúdo e o gerador para você usar na sua conta.
-
-# 3. Aplique a atividade
-
-No computador da atividade, inicie o software na pasta do projeto:
+Combine com o professor as condições de participação e uso dos dados. No computador com o projeto atualizado, abra **Abrir no Console/Terminal** na pasta e execute:
 
 ```bash
-docker compose up -d --wait
+docker compose up --build -d --wait
 ```
 
-Abra `http://localhost:8501`. Esse endereço funciona no computador onde os serviços estão rodando. Para a atividade presencial em dupla, os dois colegas usam essa mesma tela. O link do formulário Google é separado do endereço local do software.
+Abra **http://localhost:8501**. Esse endereço funciona no computador que executa o Docker. O link do Google Forms é separado.
 
-Use `instrumentos/roteiro-aplicacao.md` como facilitador. Entregue aos colegas somente `instrumentos/guia-para-colegas.md` e o link do formulário. O gabarito e o artigo completo ficam com você durante a coleta para evitar apresentar as respostas de referência antes das tarefas.
+Entregue aos colegas o **guia_para_colegas.pdf** e o link de responder ao formulário. Fique com o gabarito. A atividade tem três partes, leva aproximadamente 10–15 minutos e pode ser feita em dupla, alternando quem opera. Depois, cada pessoa responde ao formulário em cerca de três minutos. Registre somente sessão, ajuda e dificuldades, sem nomes.
 
-A duração total estimada é 20–30 minutos. Explique os controles, obtenha concordância voluntária antes das tarefas e siga as quatro atividades. As pessoas alternam quem opera e quem explica, depois respondem ao formulário individualmente. Use `observacoes-cabecalho.csv` para anotar somente sessões, conclusão, ajuda e dificuldades, sem nomes ou ligação individual com o Forms.
+Não é necessário um estudo longo ou perguntas complexas. A meta de duplas no protocolo é uma previsão: registre a quantidade real que conseguir, inclusive dificuldades e não conclusões.
 
-A observação presencial é conhecida pelo facilitador e pela dupla; o compromisso é minimizar os registros e apresentar resultados agregados. O formulário não solicita identificadores diretos. Preserve os dados de forma restrita e combine o prazo de guarda com o professor.
+# 3. Incorpore as respostas ao artigo
 
-# 4. Exporte as respostas e conclua o artigo
+No Forms, abra **Respostas** e baixe o CSV. Se vier um ZIP, extraia o CSV. Confira que não há nomes, e-mails ou outros identificadores antes de compartilhar. Traga o CSV e o registro das sessões sem nomes; informe também o número de sessões, se foram individuais/em dupla e qualquer mudança de versão.
 
-No Google Forms, abra Respostas e baixe as respostas em CSV. Se o download vier em ZIP, extraia o CSV. Confira que não há nomes, e-mails, matrícula ou outros identificadores antes de compartilhar o arquivo; mantenha os prefixos das perguntas. Os metadados de data/hora não são necessários para a análise agregada.
+Esses dados permitem completar a seção 6.3 com resultados reais e discutir as dificuldades. Até lá, use o PDF como **versão revisada com validação técnica e coleta pendente**, sem dizer que o requisito de resultados de colegas já foi cumprido.
 
-Envie aqui o CSV das respostas reais e o registro das sessões sem identificadores. Informe também quantas sessões ocorreram, se houve aplicação individual ou em dupla e se houve mudanças de versão ou ajuda fora do roteiro. Com esses dados será possível completar a seção de resultados, discutir limitações e atualizar a matriz de avaliação com estudantes.
+# Sobre o SBSC
 
-O arquivo `respostas-cabecalho.csv` está vazio de propósito: é um modelo de estrutura, não resultado. O analisador mantém as estatísticas nulas enquanto não há respostas elegíveis.
-
-# 5. Artigos escolhidos e SBSC
-
-Os dois artigos novos de método são:
-
-- Pontes et al. (2019): *Avaliação de Ferramentas para Ensino de Programação para Crianças e Adolescentes*.
-- Veras et al. (2020): *Desenvolvimento e Avaliação da Usabilidade em Aplicativo Desktop para o Ensino da Programação Orientada a Objetos*.
-
-Os PDFs oficiais acompanham a entrega acadêmica. Uma fonte complementar sobre o Modelo 3C fundamenta o desenho da atividade em dupla. Nenhuma fonte comprova antecipadamente aprendizagem no Mini-C.
-
-A chamada SBSC 2027 informa prazo de 15/12/2026 para Pesquisa, Desenho de Pesquisa e IIRE. O enquadramento provisório mais próximo de um estudo ainda em planejamento é Desenho de Pesquisa; a escolha final depende do professor, da atividade colaborativa concretizada e dos resultados disponíveis. A nota no pacote explica páginas, anonimato e declaração de IA. Não houve submissão ao evento.
+O texto entregue é a versão ampliada da disciplina. Para o evento, o professor ainda precisa definir a trilha; será necessário ajustar tamanho, anonimato e evidências. A chamada consultada informa 15/12/2026 para Pesquisa, Desenho e IIRE. Nenhuma submissão foi feita.

@@ -23,9 +23,9 @@ Três modos e quatro estados de análise foram examinados em desktop e viewport 
 
 ## Relação com o artigo
 
-A [preparação da Tarefa 5](../etapa5/README.md) permanece como fotografia da base anterior. A revisão do artigo/matriz e a simplificação do formulário ocorrerão depois desta entrega prática, usando as evidências atuais. Esta atualização não altera retroativamente os resultados anteriores nem transforma recursos antes planejados em recursos já implementados naquela data.
+A [Tarefa 5](../etapa5/README.md) foi revisada após esta entrega prática, usando as evidências atuais. A preparação anterior está no histórico `docs/etapa5/historico/versao2/`. Os registros originais permanecem vinculados às respectivas versões; a coleta com colegas ainda será aplicada.
 
-A contribuição implementada é a exploração com padrões/rótulos e preferências visuais, associada à tabela de símbolos interativa, diagnósticos de regras e ligações ao fonte/AST. A exclusividade frente às ferramentas estudadas não foi demonstrada. A pergunta de avaliação sobre identificar os resultados sem depender de cores está proposta em `docs/acessibilidade.md`, aguardando revisão/aplicação do instrumento.
+A contribuição implementada é a exploração com padrões/rótulos e preferências visuais, associada à tabela de símbolos interativa, diagnósticos de regras e ligações ao fonte/AST. A exclusividade frente às ferramentas estudadas não foi demonstrada. A pergunta L02 do instrumento curto da Tarefa 5 trata de identificar os resultados sem depender de cores; sua aplicação ainda está pendente.
 
 ## Figura
 

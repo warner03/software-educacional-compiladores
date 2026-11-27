@@ -1,8 +1,27 @@
 {
   "data_auditoria": "2026-11-26",
-  "base_codigo": "7fcb5ca26e314e4374f2a48a04e7f28dbaffa946",
-  "escopo": "Versão implementada até Trabalho 4; Trabalho 5 prático ainda não implementado; respostas de pares não fornecidas",
-  "origem_historica": "docs/etapa4/matriz-evidencias.csv — 135 células preservadas sem alteração",
+  "base_codigo": "2b535d1cf5bc1f5e3149bcf6f4ff4f7c26c324be",
+  "escopo": "Trabalho 5 implementado: semântica, símbolos, Sem cores e Alto contraste. Avaliação humana ainda não aplicada.",
+  "origem_historica": "135 células da Tarefa 4 preservadas; 18 células novas de acessibilidade para os nove estudos; 17 próprias atualizadas. Total: 170.",
+  "criterios": [
+    "Web",
+    "Entrada",
+    "Exemplos",
+    "Léxica",
+    "Sintática",
+    "AST",
+    "Derivação",
+    "Semânt.",
+    "Símb.",
+    "Geração",
+    "Passos",
+    "Diag.",
+    "Explic.",
+    "Sem cores",
+    "Alto contraste",
+    "Estudantes",
+    "Aprendizagem"
+  ],
   "evidencias": [
     {
       "referencia": "Graciano Junior et al. (2022)",
@@ -950,109 +969,249 @@
       "observacoes": "Ferramenta genérica de gramáticas e autômatos; Entrada de programa-alvo é N/A nesse recorte. O autor reporta +30% na conclusão de trabalhos, sem denominadores detalhados; trata-se de indicador acadêmico indireto, não de teste de conhecimento. Descreve esquemas de tradução, mas a validação enfatiza parsing e deixa novos experimentos de geração de código para o futuro; não se marca geração completa como confirmada."
     },
     {
+      "referencia": "Graciano Junior et al. (2022)",
+      "criterio": "Sem cores",
+      "classificacao": "NI",
+      "evidencia": "O texto integral consultado e a documentação registrada não confirmam este modo selecionável. Ver auditoria-acessibilidade.md.",
+      "observacoes": "Critério acrescentado nesta revisão, motivado pelo requisito de acessibilidade visual e pelas orientações W3C. Informação insuficiente não significa ausência; versões atuais dos softwares não foram auditadas."
+    },
+    {
+      "referencia": "Graciano Junior et al. (2022)",
+      "criterio": "Alto contraste",
+      "classificacao": "NI",
+      "evidencia": "O texto integral consultado e a documentação registrada não confirmam este modo selecionável. Ver auditoria-acessibilidade.md.",
+      "observacoes": "Critério acrescentado nesta revisão, motivado pelo requisito de acessibilidade visual e pelas orientações W3C. Informação insuficiente não significa ausência; versões atuais dos softwares não foram auditadas."
+    },
+    {
+      "referencia": "Borela et al. (2025)",
+      "criterio": "Sem cores",
+      "classificacao": "NI",
+      "evidencia": "O texto integral consultado e a documentação registrada não confirmam este modo selecionável. Ver auditoria-acessibilidade.md.",
+      "observacoes": "Critério acrescentado nesta revisão, motivado pelo requisito de acessibilidade visual e pelas orientações W3C. Informação insuficiente não significa ausência; versões atuais dos softwares não foram auditadas."
+    },
+    {
+      "referencia": "Borela et al. (2025)",
+      "criterio": "Alto contraste",
+      "classificacao": "NI",
+      "evidencia": "O texto integral consultado e a documentação registrada não confirmam este modo selecionável. Ver auditoria-acessibilidade.md.",
+      "observacoes": "Critério acrescentado nesta revisão, motivado pelo requisito de acessibilidade visual e pelas orientações W3C. Informação insuficiente não significa ausência; versões atuais dos softwares não foram auditadas."
+    },
+    {
+      "referencia": "Santini et al. (2022)",
+      "criterio": "Sem cores",
+      "classificacao": "N/A",
+      "evidencia": "Estudo secundário; não representa uma ferramenta única.",
+      "observacoes": "Critério acrescentado nesta revisão, motivado pelo requisito de acessibilidade visual e pelas orientações W3C. Informação insuficiente não significa ausência; versões atuais dos softwares não foram auditadas."
+    },
+    {
+      "referencia": "Santini et al. (2022)",
+      "criterio": "Alto contraste",
+      "classificacao": "N/A",
+      "evidencia": "Estudo secundário; não representa uma ferramenta única.",
+      "observacoes": "Critério acrescentado nesta revisão, motivado pelo requisito de acessibilidade visual e pelas orientações W3C. Informação insuficiente não significa ausência; versões atuais dos softwares não foram auditadas."
+    },
+    {
+      "referencia": "Mernik e Žumer (2003)",
+      "criterio": "Sem cores",
+      "classificacao": "NI",
+      "evidencia": "O texto integral consultado e a documentação registrada não confirmam este modo selecionável. Ver auditoria-acessibilidade.md.",
+      "observacoes": "Critério acrescentado nesta revisão, motivado pelo requisito de acessibilidade visual e pelas orientações W3C. Informação insuficiente não significa ausência; versões atuais dos softwares não foram auditadas."
+    },
+    {
+      "referencia": "Mernik e Žumer (2003)",
+      "criterio": "Alto contraste",
+      "classificacao": "NI",
+      "evidencia": "O texto integral consultado e a documentação registrada não confirmam este modo selecionável. Ver auditoria-acessibilidade.md.",
+      "observacoes": "Critério acrescentado nesta revisão, motivado pelo requisito de acessibilidade visual e pelas orientações W3C. Informação insuficiente não significa ausência; versões atuais dos softwares não foram auditadas."
+    },
+    {
+      "referencia": "Resler e Deaver (1998)",
+      "criterio": "Sem cores",
+      "classificacao": "NI",
+      "evidencia": "O texto integral consultado e a documentação registrada não confirmam este modo selecionável. Ver auditoria-acessibilidade.md.",
+      "observacoes": "Critério acrescentado nesta revisão, motivado pelo requisito de acessibilidade visual e pelas orientações W3C. Informação insuficiente não significa ausência; versões atuais dos softwares não foram auditadas."
+    },
+    {
+      "referencia": "Resler e Deaver (1998)",
+      "criterio": "Alto contraste",
+      "classificacao": "NI",
+      "evidencia": "O texto integral consultado e a documentação registrada não confirmam este modo selecionável. Ver auditoria-acessibilidade.md.",
+      "observacoes": "Critério acrescentado nesta revisão, motivado pelo requisito de acessibilidade visual e pelas orientações W3C. Informação insuficiente não significa ausência; versões atuais dos softwares não foram auditadas."
+    },
+    {
+      "referencia": "Rodger et al. (2009)",
+      "criterio": "Sem cores",
+      "classificacao": "NI",
+      "evidencia": "O texto integral consultado e a documentação registrada não confirmam este modo selecionável. Ver auditoria-acessibilidade.md.",
+      "observacoes": "Critério acrescentado nesta revisão, motivado pelo requisito de acessibilidade visual e pelas orientações W3C. Informação insuficiente não significa ausência; versões atuais dos softwares não foram auditadas."
+    },
+    {
+      "referencia": "Rodger et al. (2009)",
+      "criterio": "Alto contraste",
+      "classificacao": "NI",
+      "evidencia": "O texto integral consultado e a documentação registrada não confirmam este modo selecionável. Ver auditoria-acessibilidade.md.",
+      "observacoes": "Critério acrescentado nesta revisão, motivado pelo requisito de acessibilidade visual e pelas orientações W3C. Informação insuficiente não significa ausência; versões atuais dos softwares não foram auditadas."
+    },
+    {
+      "referencia": "Moreno et al. (2004)",
+      "criterio": "Sem cores",
+      "classificacao": "NI",
+      "evidencia": "O texto integral consultado e a documentação registrada não confirmam este modo selecionável. Ver auditoria-acessibilidade.md.",
+      "observacoes": "Critério acrescentado nesta revisão, motivado pelo requisito de acessibilidade visual e pelas orientações W3C. Informação insuficiente não significa ausência; versões atuais dos softwares não foram auditadas."
+    },
+    {
+      "referencia": "Moreno et al. (2004)",
+      "criterio": "Alto contraste",
+      "classificacao": "NI",
+      "evidencia": "O texto integral consultado e a documentação registrada não confirmam este modo selecionável. Ver auditoria-acessibilidade.md.",
+      "observacoes": "Critério acrescentado nesta revisão, motivado pelo requisito de acessibilidade visual e pelas orientações W3C. Informação insuficiente não significa ausência; versões atuais dos softwares não foram auditadas."
+    },
+    {
+      "referencia": "Schneider et al. (2005)",
+      "criterio": "Sem cores",
+      "classificacao": "NI",
+      "evidencia": "O texto integral consultado e a documentação registrada não confirmam este modo selecionável. Ver auditoria-acessibilidade.md.",
+      "observacoes": "Critério acrescentado nesta revisão, motivado pelo requisito de acessibilidade visual e pelas orientações W3C. Informação insuficiente não significa ausência; versões atuais dos softwares não foram auditadas."
+    },
+    {
+      "referencia": "Schneider et al. (2005)",
+      "criterio": "Alto contraste",
+      "classificacao": "NI",
+      "evidencia": "O texto integral consultado e a documentação registrada não confirmam este modo selecionável. Ver auditoria-acessibilidade.md.",
+      "observacoes": "Critério acrescentado nesta revisão, motivado pelo requisito de acessibilidade visual e pelas orientações W3C. Informação insuficiente não significa ausência; versões atuais dos softwares não foram auditadas."
+    },
+    {
+      "referencia": "Jabri (2013)",
+      "criterio": "Sem cores",
+      "classificacao": "NI",
+      "evidencia": "O texto integral consultado e a documentação registrada não confirmam este modo selecionável. Ver auditoria-acessibilidade.md.",
+      "observacoes": "Critério acrescentado nesta revisão, motivado pelo requisito de acessibilidade visual e pelas orientações W3C. Informação insuficiente não significa ausência; versões atuais dos softwares não foram auditadas."
+    },
+    {
+      "referencia": "Jabri (2013)",
+      "criterio": "Alto contraste",
+      "classificacao": "NI",
+      "evidencia": "O texto integral consultado e a documentação registrada não confirmam este modo selecionável. Ver auditoria-acessibilidade.md.",
+      "observacoes": "Critério acrescentado nesta revisão, motivado pelo requisito de acessibilidade visual e pelas orientações W3C. Informação insuficiente não significa ausência; versões atuais dos softwares não foram auditadas."
+    },
+    {
       "referencia": "Este trabalho — Mini-C (estado implementado)",
       "criterio": "Web",
       "classificacao": "✓",
-      "evidencia": "frontend/index.html:1–16; frontend/nginx.conf; docker-compose.yml: frontend/backend. Interface HTML/CSS/JavaScript executada em navegador.",
-      "observacoes": "Confirma uso web; não implica implantação pública ou serviço colaborativo multiusuário."
+      "evidencia": "frontend/index.html; frontend/nginx.conf; docker-compose.yml.",
+      "observacoes": "Interface web executada em navegador; não implica serviço público nem colaboração multiusuário."
     },
     {
       "referencia": "Este trabalho — Mini-C (estado implementado)",
       "criterio": "Entrada",
       "classificacao": "✓",
-      "evidencia": "frontend/index.html:31–35; frontend/app.js: envio do conteúdo do editor a /api/analisar.",
-      "observacoes": "Editor de programa-fonte Mini-C."
+      "evidencia": "frontend/index.html: editor codigo; frontend/app.js: envio para /api/analisar.",
+      "observacoes": "Edição de programa Mini-C."
     },
     {
       "referencia": "Este trabalho — Mini-C (estado implementado)",
       "criterio": "Exemplos",
       "classificacao": "✓",
-      "evidencia": "frontend/index.html:23–30: oito opções com data-codigo, incluindo programas válidos e erros intencionais.",
-      "observacoes": "Exemplos integram a interface e podem ser editados; não são apenas listagens impressas no artigo."
+      "evidencia": "frontend/index.html: seletor com 14 opções data-codigo.",
+      "observacoes": "Exemplos editáveis válidos e com erros intencionais das três fases."
     },
     {
       "referencia": "Este trabalho — Mini-C (estado implementado)",
       "criterio": "Léxica",
       "classificacao": "✓",
-      "evidencia": "backend/app/scanner.py; backend/app/main.py:47; backend/tests/test_scanner.py.",
-      "observacoes": "Scanner original da Etapa 3, tokens e diagnósticos com posições."
+      "evidencia": "backend/app/scanner.py; backend/tests/test_scanner.py.",
+      "observacoes": "Scanner preservado da versão anterior; tokens/lexemas/posições."
     },
     {
       "referencia": "Este trabalho — Mini-C (estado implementado)",
       "criterio": "Sintática",
       "classificacao": "✓",
-      "evidencia": "backend/app/parser.py; backend/app/main.py:48; backend/tests/test_parser.py e test_api_sintatica.py.",
-      "observacoes": "Descida recursiva manual, EBNF explícita, precedência e recuperação em ; ou }."
+      "evidencia": "backend/app/parser.py; backend/tests/test_parser.py.",
+      "observacoes": "Parser descendente recursivo preservado, com precedência e recuperação."
     },
     {
       "referencia": "Este trabalho — Mini-C (estado implementado)",
       "criterio": "AST",
       "classificacao": "✓",
-      "evidencia": "backend/app/parser.py:23–28 e construção dos nós; docs/ast.md:5–61; frontend/app.js:154–232.",
-      "observacoes": "AST simplificada com nove tipos de nó, posições, seleção, destaque no fonte e exportação JSON."
+      "evidencia": "backend/app/parser.py; docs/ast.md; frontend/app.js: mostrarSintatica e filhosAST.",
+      "observacoes": "AST simplificada, navegação, intervalos, ligação ao fonte e exportação JSON."
     },
     {
       "referencia": "Este trabalho — Mini-C (estado implementado)",
       "criterio": "Derivação",
       "classificacao": "✗",
-      "evidencia": "docs/ast.md:3,71; docs/gramatica.md:81; frontend/app.js:179.",
-      "observacoes": "A interface não exibe árvore de derivação. A AST não é reclassificada como derivação para preencher a coluna."
+      "evidencia": "docs/ast.md; docs/gramatica.md.",
+      "observacoes": "A representação implementada é AST, sem árvore de derivação."
     },
     {
       "referencia": "Este trabalho — Mini-C (estado implementado)",
       "criterio": "Semânt.",
-      "classificacao": "✗",
-      "evidencia": "backend/app/parser.py:4; docs/gramatica.md:99–101; frontend/index.html:53.",
-      "observacoes": "Análise semântica permanece futura para Trabalho 5; protocolo teórico não comprova implementação."
+      "classificacao": "✓",
+      "evidencia": "backend/app/semantica.py; backend/app/main.py; backend/tests/test_semantica.py; docs/semantica.md.",
+      "observacoes": "Declaração, redeclaração, escopos, tipos, condição bool e inicialização definida; não C completo."
     },
     {
       "referencia": "Este trabalho — Mini-C (estado implementado)",
       "criterio": "Símb.",
-      "classificacao": "✗",
-      "evidencia": "README.md: última seção; docs/registro-de-testes.md: limitações; contrato docs/contrato-api.md e resposta backend/app/main.py:51–58.",
-      "observacoes": "Sem tabela de símbolos ou verificações de declaração/tipos na versão examinada."
+      "classificacao": "✓",
+      "evidencia": "backend/app/semantica.py: simbolos/escopos; frontend/app.js: tabela-simbolos; frontend/tests/semantica.test.js.",
+      "observacoes": "Tabela filtrável por escopo, nome/tipo/posição/inicialização, sombreamento e referências; seleção liga fonte e AST."
     },
     {
       "referencia": "Este trabalho — Mini-C (estado implementado)",
       "criterio": "Geração",
       "classificacao": "✗",
-      "evidencia": "README.md: limitações; backend/app/parser.py:4; docs/registro-de-testes.md: limitações.",
-      "observacoes": "Nenhuma execução do programa, código intermediário didático ou código-alvo é produzido."
+      "evidencia": "docs/semantica.md: fora do recorte; README.md.",
+      "observacoes": "Sem execução, código intermediário ou código-alvo."
     },
     {
       "referencia": "Este trabalho — Mini-C (estado implementado)",
       "criterio": "Passos",
       "classificacao": "✗",
-      "evidencia": "docs/ast.md:71; frontend/index.html:44; frontend/app.js:179.",
-      "observacoes": "Há navegação sobre tokens e AST prontos. O critério herdado exige acompanhamento controlado/animado das transformações do algoritmo; não foi implementado."
+      "evidencia": "docs/ast.md; README.md: continuidade.",
+      "observacoes": "Navegação por artefatos prontos não é animação das transformações do algoritmo."
     },
     {
       "referencia": "Este trabalho — Mini-C (estado implementado)",
       "criterio": "Diag.",
       "classificacao": "✓",
-      "evidencia": "backend/app/parser.py:61–69; backend/app/scanner.py; backend/app/main.py:47–50; frontend/app.js:161–176.",
-      "observacoes": "Diagnósticos separados por fase; linha/coluna, esperado/encontrado; não executar parser após erro léxico; AST nula em erro."
+      "evidencia": "backend/app/main.py; backend/app/semantica.py; frontend/app.js: mostrarSemantica.",
+      "observacoes": "Três fases, localização, regra e sugestão; fase anterior inválida bloqueia as posteriores."
     },
     {
       "referencia": "Este trabalho — Mini-C (estado implementado)",
       "criterio": "Explic.",
       "classificacao": "✓",
-      "evidencia": "frontend/index.html:38–55: guia inicial; frontend/app.js:17–26 e visualização de regras; docs/gramatica.md e docs/ast.md.",
-      "observacoes": "Guia e explicações por tipo de construção já presentes; não se trata de rastro completo de derivação."
+      "evidencia": "frontend/app.js: REGRAS_SEMANTICAS e explicações da AST; frontend/index.html: guia/legenda.",
+      "observacoes": "Explicações em português e sugestões determinísticas, sem IA em tempo de uso."
+    },
+    {
+      "referencia": "Este trabalho — Mini-C (estado implementado)",
+      "criterio": "Sem cores",
+      "classificacao": "✓",
+      "evidencia": "frontend/index.html: modo-visual; frontend/style.css: data-visual=sem-cores e padrões por categoria; frontend/app.js: aplicarVisual; docs/trabalho5/capturas/tokens-sem-cores-desktop.png.",
+      "observacoes": "Modo selecionável com padrões/rótulos, contornos e legenda. Confirma implementação; não comprova eficácia com pessoas daltônicas."
+    },
+    {
+      "referencia": "Este trabalho — Mini-C (estado implementado)",
+      "criterio": "Alto contraste",
+      "classificacao": "✓",
+      "evidencia": "frontend/style.css: data-visual=contraste; docs/trabalho5/capturas/contraste-medido.json; scripts/teste_navegador.py.",
+      "observacoes": "Modo selecionável. Menores razões observadas: texto 16,275:1, foco 13,584:1, seleção 4,217:1, somente nos elementos medidos."
     },
     {
       "referencia": "Este trabalho — Mini-C (estado implementado)",
       "criterio": "Estudantes",
       "classificacao": "✗",
-      "evidencia": "docs/trabalho4/README.md: seção Relação com Materiais e Métodos; docs/registro-de-testes.md: limitações.",
-      "observacoes": "Nenhuma aplicação formal com colegas e respostas reais foi localizada na base auditada. Testes automatizados e apresentação ao professor não constituem estudo com participantes."
+      "evidencia": "docs/etapa5/resultados/estado-coleta.json; informação do autor: avaliação ainda será aplicada.",
+      "observacoes": "Não existem respostas reais de colegas. Testes técnicos não substituem aplicação com pessoas."
     },
     {
       "referencia": "Este trabalho — Mini-C (estado implementado)",
       "criterio": "Aprendizagem",
       "classificacao": "✗",
-      "evidencia": "docs/registro-de-testes.md: limitações; docs/trabalho4/README.md: Relação com Materiais e Métodos.",
-      "observacoes": "Sem pré/pós-teste, medida de conhecimento ou avaliação humana concluída. Não converter aprovação de testes em ganho de aprendizagem."
+      "evidencia": "docs/etapa5/protocolo.md; docs/etapa5/resultados/estado-coleta.json.",
+      "observacoes": "Sem medida humana concluída. Nem percepção futura nem testes de software demonstram ganho de aprendizagem."
     }
   ]
 }

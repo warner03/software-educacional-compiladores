@@ -1,0 +1,27 @@
+digraph compilacao {
+  graph [rankdir=TB, bgcolor="white", pad=".15", nodesep=".3", ranksep=".28", fontname="DejaVu Sans"];
+  node [shape=box, style="rounded", fontname="DejaVu Sans", fontsize=12, color="#242424", margin=".13,.10"];
+  edge [fontname="DejaVu Sans", fontsize=10, color="#242424", arrowsize=.7];
+  fonte [label="Editar Mini-C e escolher modo visual\nPadrão / Sem cores / Alto contraste"];
+  entrada [label="Validar entrada\nAté 10.000 caracteres"];
+  scanner [label="Análise léxica\nTokens, lexemas e posições"];
+  parser [label="Análise sintática\nGramática e construção da AST"];
+  semantica [label="Análise semântica sobre a AST\nEscopos, símbolos, tipos e inicialização"];
+  resultado [label="Apresentação integrada\nTokens + AST + símbolos + diagnósticos\nSeleção → trecho do fonte e nó relacionado", penwidth=2];
+  invalida [label="HTTP 400\nProblema de entrada", style="rounded,dashed"];
+  errolex [label="Erro léxico\nParser e semântica não executados", style="rounded,dashed"];
+  errosint [label="Erro sintático\nAST nula; semântica não executada", style="rounded,dashed"];
+  futuro [label="Etapa 6: representação ampliada\nExtensão futura", style="rounded,dashed"];
+  fonte -> entrada;
+  entrada -> invalida [label="inválida"];
+  entrada -> scanner [label="válida"];
+  scanner -> errolex [label="com erro"];
+  scanner -> parser [label="sem erro"];
+  parser -> errosint [label="com erro"];
+  parser -> semantica [label="sem erro"];
+  semantica -> resultado [label="sucesso ou erro semântico; preservar AST"];
+  resultado -> futuro [style=dashed];
+  {rank=same; entrada; invalida;}
+  {rank=same; scanner; errolex;}
+  {rank=same; parser; errosint;}
+}

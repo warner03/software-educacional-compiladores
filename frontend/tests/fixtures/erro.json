@@ -1,0 +1,275 @@
+{
+  "codigo": "int x; int y=x; z=2;",
+  "dados": {
+    "recebido": true,
+    "mensagem": "Análise léxica concluída sem erros.",
+    "total_caracteres": 20,
+    "total_linhas": 1,
+    "sucesso": true,
+    "tokens": [
+      {
+        "tipo": "PALAVRA_RESERVADA",
+        "lexema": "int",
+        "linha": 1,
+        "coluna": 1
+      },
+      {
+        "tipo": "IDENTIFICADOR",
+        "lexema": "x",
+        "linha": 1,
+        "coluna": 5
+      },
+      {
+        "tipo": "DELIMITADOR",
+        "lexema": ";",
+        "linha": 1,
+        "coluna": 6
+      },
+      {
+        "tipo": "PALAVRA_RESERVADA",
+        "lexema": "int",
+        "linha": 1,
+        "coluna": 8
+      },
+      {
+        "tipo": "IDENTIFICADOR",
+        "lexema": "y",
+        "linha": 1,
+        "coluna": 12
+      },
+      {
+        "tipo": "OPERADOR",
+        "lexema": "=",
+        "linha": 1,
+        "coluna": 13
+      },
+      {
+        "tipo": "IDENTIFICADOR",
+        "lexema": "x",
+        "linha": 1,
+        "coluna": 14
+      },
+      {
+        "tipo": "DELIMITADOR",
+        "lexema": ";",
+        "linha": 1,
+        "coluna": 15
+      },
+      {
+        "tipo": "IDENTIFICADOR",
+        "lexema": "z",
+        "linha": 1,
+        "coluna": 17
+      },
+      {
+        "tipo": "OPERADOR",
+        "lexema": "=",
+        "linha": 1,
+        "coluna": 18
+      },
+      {
+        "tipo": "LITERAL_INTEIRO",
+        "lexema": "2",
+        "linha": 1,
+        "coluna": 19
+      },
+      {
+        "tipo": "DELIMITADOR",
+        "lexema": ";",
+        "linha": 1,
+        "coluna": 20
+      }
+    ],
+    "erros": [],
+    "sintatica": {
+      "estado": "sucesso",
+      "sucesso": true,
+      "ast": {
+        "tipo": "Programa",
+        "inicio": {
+          "linha": 1,
+          "coluna": 1
+        },
+        "fim": {
+          "linha": 1,
+          "coluna": 21
+        },
+        "comandos": [
+          {
+            "tipo": "Declaracao",
+            "inicio": {
+              "linha": 1,
+              "coluna": 1
+            },
+            "fim": {
+              "linha": 1,
+              "coluna": 7
+            },
+            "tipoDado": "int",
+            "nome": "x",
+            "inicializador": null
+          },
+          {
+            "tipo": "Declaracao",
+            "inicio": {
+              "linha": 1,
+              "coluna": 8
+            },
+            "fim": {
+              "linha": 1,
+              "coluna": 16
+            },
+            "tipoDado": "int",
+            "nome": "y",
+            "inicializador": {
+              "tipo": "Identificador",
+              "inicio": {
+                "linha": 1,
+                "coluna": 14
+              },
+              "fim": {
+                "linha": 1,
+                "coluna": 15
+              },
+              "nome": "x"
+            }
+          },
+          {
+            "tipo": "Atribuicao",
+            "inicio": {
+              "linha": 1,
+              "coluna": 17
+            },
+            "fim": {
+              "linha": 1,
+              "coluna": 21
+            },
+            "alvo": {
+              "tipo": "Identificador",
+              "inicio": {
+                "linha": 1,
+                "coluna": 17
+              },
+              "fim": {
+                "linha": 1,
+                "coluna": 18
+              },
+              "nome": "z"
+            },
+            "valor": {
+              "tipo": "Literal",
+              "inicio": {
+                "linha": 1,
+                "coluna": 19
+              },
+              "fim": {
+                "linha": 1,
+                "coluna": 20
+              },
+              "categoria": "inteiro",
+              "lexema": "2"
+            }
+          }
+        ]
+      },
+      "erros": []
+    },
+    "semantica": {
+      "estado": "erro",
+      "sucesso": false,
+      "tabelaSimbolos": [
+        {
+          "id": "S1",
+          "nome": "x",
+          "tipo": "int",
+          "escopo": "E0",
+          "linha": 1,
+          "coluna": 5,
+          "fim": {
+            "linha": 1,
+            "coluna": 6
+          },
+          "noAst": "/comandos/0",
+          "inicializado": false,
+          "sombreia": null,
+          "referencias": [
+            {
+              "linha": 1,
+              "coluna": 14,
+              "fim": {
+                "linha": 1,
+                "coluna": 15
+              },
+              "noAst": "/comandos/1/inicializador",
+              "contexto": "leitura"
+            }
+          ]
+        },
+        {
+          "id": "S2",
+          "nome": "y",
+          "tipo": "int",
+          "escopo": "E0",
+          "linha": 1,
+          "coluna": 12,
+          "fim": {
+            "linha": 1,
+            "coluna": 13
+          },
+          "noAst": "/comandos/1",
+          "inicializado": false,
+          "sombreia": null,
+          "referencias": []
+        }
+      ],
+      "escopos": [
+        {
+          "id": "E0",
+          "nome": "Global",
+          "pai": null,
+          "inicio": {
+            "linha": 1,
+            "coluna": 1
+          },
+          "fim": {
+            "linha": 1,
+            "coluna": 21
+          },
+          "noAst": ""
+        }
+      ],
+      "erros": [
+        {
+          "tipo": "ERRO_SEMANTICO",
+          "regra": "VARIAVEL_NAO_INICIALIZADA",
+          "lexema": "x",
+          "linha": 1,
+          "coluna": 14,
+          "fim": {
+            "linha": 1,
+            "coluna": 15
+          },
+          "noAst": "/comandos/1/inicializador",
+          "simboloId": "S1",
+          "mensagem": "A leitura de 'x' ocorre sem uma inicialização garantida neste ponto. A declaração, sozinha, não fornece um valor.",
+          "sugestao": "Inicialize a variável antes da leitura. Se a atribuição estiver em um if, garanta-a nos dois caminhos."
+        },
+        {
+          "tipo": "ERRO_SEMANTICO",
+          "regra": "IDENTIFICADOR_NAO_DECLARADO",
+          "lexema": "z",
+          "linha": 1,
+          "coluna": 17,
+          "fim": {
+            "linha": 1,
+            "coluna": 18
+          },
+          "noAst": "/comandos/2/alvo",
+          "simboloId": null,
+          "mensagem": "O identificador 'z' não foi declarado antes deste uso no escopo atual nem nos escopos externos.",
+          "sugestao": "Declare a variável antes de usá-la e confira se ela está visível neste bloco."
+        }
+      ]
+    }
+  }
+}

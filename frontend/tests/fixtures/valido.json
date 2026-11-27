@@ -1,0 +1,243 @@
+{
+  "codigo": "int x = 1; x = x + 2;",
+  "dados": {
+    "recebido": true,
+    "mensagem": "Análise léxica concluída sem erros.",
+    "total_caracteres": 21,
+    "total_linhas": 1,
+    "sucesso": true,
+    "tokens": [
+      {
+        "tipo": "PALAVRA_RESERVADA",
+        "lexema": "int",
+        "linha": 1,
+        "coluna": 1
+      },
+      {
+        "tipo": "IDENTIFICADOR",
+        "lexema": "x",
+        "linha": 1,
+        "coluna": 5
+      },
+      {
+        "tipo": "OPERADOR",
+        "lexema": "=",
+        "linha": 1,
+        "coluna": 7
+      },
+      {
+        "tipo": "LITERAL_INTEIRO",
+        "lexema": "1",
+        "linha": 1,
+        "coluna": 9
+      },
+      {
+        "tipo": "DELIMITADOR",
+        "lexema": ";",
+        "linha": 1,
+        "coluna": 10
+      },
+      {
+        "tipo": "IDENTIFICADOR",
+        "lexema": "x",
+        "linha": 1,
+        "coluna": 12
+      },
+      {
+        "tipo": "OPERADOR",
+        "lexema": "=",
+        "linha": 1,
+        "coluna": 14
+      },
+      {
+        "tipo": "IDENTIFICADOR",
+        "lexema": "x",
+        "linha": 1,
+        "coluna": 16
+      },
+      {
+        "tipo": "OPERADOR",
+        "lexema": "+",
+        "linha": 1,
+        "coluna": 18
+      },
+      {
+        "tipo": "LITERAL_INTEIRO",
+        "lexema": "2",
+        "linha": 1,
+        "coluna": 20
+      },
+      {
+        "tipo": "DELIMITADOR",
+        "lexema": ";",
+        "linha": 1,
+        "coluna": 21
+      }
+    ],
+    "erros": [],
+    "sintatica": {
+      "estado": "sucesso",
+      "sucesso": true,
+      "ast": {
+        "tipo": "Programa",
+        "inicio": {
+          "linha": 1,
+          "coluna": 1
+        },
+        "fim": {
+          "linha": 1,
+          "coluna": 22
+        },
+        "comandos": [
+          {
+            "tipo": "Declaracao",
+            "inicio": {
+              "linha": 1,
+              "coluna": 1
+            },
+            "fim": {
+              "linha": 1,
+              "coluna": 11
+            },
+            "tipoDado": "int",
+            "nome": "x",
+            "inicializador": {
+              "tipo": "Literal",
+              "inicio": {
+                "linha": 1,
+                "coluna": 9
+              },
+              "fim": {
+                "linha": 1,
+                "coluna": 10
+              },
+              "categoria": "inteiro",
+              "lexema": "1"
+            }
+          },
+          {
+            "tipo": "Atribuicao",
+            "inicio": {
+              "linha": 1,
+              "coluna": 12
+            },
+            "fim": {
+              "linha": 1,
+              "coluna": 22
+            },
+            "alvo": {
+              "tipo": "Identificador",
+              "inicio": {
+                "linha": 1,
+                "coluna": 12
+              },
+              "fim": {
+                "linha": 1,
+                "coluna": 13
+              },
+              "nome": "x"
+            },
+            "valor": {
+              "tipo": "Binario",
+              "inicio": {
+                "linha": 1,
+                "coluna": 16
+              },
+              "fim": {
+                "linha": 1,
+                "coluna": 21
+              },
+              "operador": "+",
+              "esquerda": {
+                "tipo": "Identificador",
+                "inicio": {
+                  "linha": 1,
+                  "coluna": 16
+                },
+                "fim": {
+                  "linha": 1,
+                  "coluna": 17
+                },
+                "nome": "x"
+              },
+              "direita": {
+                "tipo": "Literal",
+                "inicio": {
+                  "linha": 1,
+                  "coluna": 20
+                },
+                "fim": {
+                  "linha": 1,
+                  "coluna": 21
+                },
+                "categoria": "inteiro",
+                "lexema": "2"
+              }
+            }
+          }
+        ]
+      },
+      "erros": []
+    },
+    "semantica": {
+      "estado": "sucesso",
+      "sucesso": true,
+      "tabelaSimbolos": [
+        {
+          "id": "S1",
+          "nome": "x",
+          "tipo": "int",
+          "escopo": "E0",
+          "linha": 1,
+          "coluna": 5,
+          "fim": {
+            "linha": 1,
+            "coluna": 6
+          },
+          "noAst": "/comandos/0",
+          "inicializado": true,
+          "sombreia": null,
+          "referencias": [
+            {
+              "linha": 1,
+              "coluna": 12,
+              "fim": {
+                "linha": 1,
+                "coluna": 13
+              },
+              "noAst": "/comandos/1/alvo",
+              "contexto": "atribuicao"
+            },
+            {
+              "linha": 1,
+              "coluna": 16,
+              "fim": {
+                "linha": 1,
+                "coluna": 17
+              },
+              "noAst": "/comandos/1/valor/esquerda",
+              "contexto": "leitura"
+            }
+          ]
+        }
+      ],
+      "escopos": [
+        {
+          "id": "E0",
+          "nome": "Global",
+          "pai": null,
+          "inicio": {
+            "linha": 1,
+            "coluna": 1
+          },
+          "fim": {
+            "linha": 1,
+            "coluna": 22
+          },
+          "noAst": ""
+        }
+      ],
+      "erros": []
+    }
+  }
+}

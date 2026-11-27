@@ -1,4 +1,4 @@
-/* Mini-C — Etapa 4: tokens, diagnósticos e AST navegável. Sem dependências. */
+/* Mini-C — Etapa 5: tokens, AST, semântica e modos visuais. Sem dependências. */
 (function (global) {
   "use strict";
   var URL_API = "/api/analisar";
@@ -25,10 +25,79 @@
     Identificador: "primaria = IDENTIFICADOR (ou alvo de atribuição)",
     Literal: "primaria = LITERAL_INTEIRO | LITERAL_REAL"
   };
+  var REGRAS_SEMANTICAS = {
+    IDENTIFICADOR_NAO_DECLARADO: "Declaração antes do uso",
+    REDECLARACAO_NO_ESCOPO: "Uma declaração por nome no mesmo escopo",
+    TIPOS_INCOMPATIVEIS: "Compatibilidade de tipos na atribuição",
+    OPERANDOS_NAO_NUMERICOS: "Operandos aritméticos numéricos",
+    TIPOS_NAO_COMPARAVEIS: "Tipos comparáveis",
+    CONDICAO_NAO_BOOLEANA: "Condição booleana no if",
+    VARIAVEL_NAO_INICIALIZADA: "Inicialização antes da leitura"
+  };
+
+  function resolverNo(ast, caminho) {
+    if (typeof caminho !== "string" || (caminho !== "" && !caminho.startsWith("/"))) return null;
+    var partes = caminho === "" ? [] : caminho.slice(1).split("/");
+    var no = ast;
+    for (var i = 0; i < partes.length; i++) {
+      if (!no || !Object.hasOwn(no, partes[i]) || ["__proto__", "constructor", "prototype"].includes(partes[i])) return null;
+      no = no[partes[i]];
+    }
+    return no && Object.hasOwn(REGRAS, no.tipo) ? no : null;
+  }
+
+  function semanticaValida(dados, codigo) {
+    if (!Object.hasOwn(dados, "semantica")) return true; // respostas antigas continuam legíveis
+    var s = dados.semantica, sintatica = dados.sintatica;
+    if (!s || !sintatica || !Array.isArray(s.tabelaSimbolos) || !Array.isArray(s.escopos) || !Array.isArray(s.erros)) return false;
+    if (sintatica.sucesso !== true) return s.estado === "nao_executada" && s.sucesso === null &&
+      s.motivo === (dados.sucesso ? "erros_sintaticos" : "erros_lexicos") &&
+      s.tabelaSimbolos.length === 0 && s.escopos.length === 0 && s.erros.length === 0;
+    if (!["sucesso", "erro"].includes(s.estado) || s.sucesso !== (s.estado === "sucesso") || s.sucesso !== (s.erros.length === 0) ||
+      s.tabelaSimbolos.length > 2000 || !s.escopos.length || s.escopos.length > 2000 || s.erros.length > 2000) return false;
+    var linhas = codigo.replace(/\r\n?/g, "\n").split("\n").map(function (l) { return Array.from(l).length; });
+    function pos(p) {
+      return p && Number.isInteger(p.linha) && p.linha > 0 && p.linha <= linhas.length &&
+        Number.isInteger(p.coluna) && p.coluna > 0 && p.coluna <= linhas[p.linha - 1] + 1;
+    }
+    function ordem(a, b) { return a.linha < b.linha || (a.linha === b.linha && a.coluna <= b.coluna); }
+    function intervalo(inicio, fim, no) {
+      return no && pos(inicio) && pos(fim) && ordem(inicio, fim) &&
+        !(inicio.linha === fim.linha && inicio.coluna === fim.coluna) && ordem(no.inicio, inicio) && ordem(fim, no.fim);
+    }
+    var escopos = new Set(), ids = new Set(), ast = sintatica.ast;
+    for (var e of s.escopos) {
+      if (!e || typeof e.id !== "string" || escopos.has(e.id) || typeof e.nome !== "string") return false;
+      var noEscopo = resolverNo(ast, e.noAst);
+      if (!noEscopo || !intervalo(e.inicio, e.fim, noEscopo)) return false;
+      if (escopos.size === 0 ? e.pai !== null || e.id !== "E0" || e.noAst !== "" : !escopos.has(e.pai) || noEscopo.tipo !== "Bloco") return false;
+      escopos.add(e.id);
+    }
+    var totalReferencias = 0;
+    for (var simbolo of s.tabelaSimbolos) {
+      if (!simbolo || typeof simbolo.id !== "string" || ids.has(simbolo.id) || !escopos.has(simbolo.escopo) ||
+        typeof simbolo.nome !== "string" || !["int", "float"].includes(simbolo.tipo) || typeof simbolo.inicializado !== "boolean" ||
+        (simbolo.sombreia !== null && !ids.has(simbolo.sombreia)) || !Array.isArray(simbolo.referencias)) return false;
+      var decl = resolverNo(ast, simbolo.noAst);
+      if (!decl || decl.tipo !== "Declaracao" || decl.nome !== simbolo.nome || decl.tipoDado !== simbolo.tipo || !intervalo(simbolo, simbolo.fim, decl)) return false;
+      ids.add(simbolo.id);
+      for (var ref of simbolo.referencias) {
+        var noRef = ref && resolverNo(ast, ref.noAst);
+        if (++totalReferencias > 2000 || !noRef || noRef.tipo !== "Identificador" || noRef.nome !== simbolo.nome ||
+          !["leitura", "atribuicao"].includes(ref.contexto) || !intervalo(ref, ref.fim, noRef)) return false;
+      }
+    }
+    return s.erros.every(function (erro) {
+      var no = erro && resolverNo(ast, erro.noAst);
+      return erro && erro.tipo === "ERRO_SEMANTICO" && Object.hasOwn(REGRAS_SEMANTICAS, erro.regra) &&
+        typeof erro.lexema === "string" && typeof erro.mensagem === "string" && typeof erro.sugestao === "string" &&
+        (erro.simboloId === null || ids.has(erro.simboloId)) && intervalo(erro, erro.fim, no);
+    });
+  }
 
   function filhosAST(no) {
     if (no.tipo === "Programa" || no.tipo === "Bloco") {
-      return no.comandos.map(function (n, i) { return ["Comando " + (i + 1), n]; });
+      return no.comandos.map(function (n, i) { return ["Comando " + (i + 1), n, "comandos/" + i]; });
     }
     var campos = {
       Declaracao: [["Inicializador", "inicializador"]],
@@ -38,7 +107,7 @@
       Unario: [["Operando", "operando"]]
     };
     return (campos[no.tipo] || []).filter(function (c) { return no[c[1]] !== null; })
-      .map(function (c) { return [c[0], no[c[1]]]; });
+      .map(function (c) { return [c[0], no[c[1]], c[1]]; });
   }
 
   function astValida(ast, codigo) {
@@ -116,7 +185,7 @@
       var dados;
       try { dados = await resp.json(); }
       catch (e) { return { tipo: "servidor", mensagem: MSG.inesperado, dados: null }; }
-      if (resp.status === 200 && respostaLexicaValida(dados) && sintaticaValida(dados, codigo)) {
+      if (resp.status === 200 && respostaLexicaValida(dados) && sintaticaValida(dados, codigo) && semanticaValida(dados, codigo)) {
         var tipo = dados.sucesso ? "sucesso" : "lexico";
         var mensagem = dados.mensagem || (dados.sucesso ? MSG.sucesso : "Análise léxica concluída com erros.");
         if (dados.sintatica && dados.sintatica.estado === "erro") {
@@ -124,6 +193,12 @@
           mensagem = "Análise léxica concluída sem erros. A análise sintática encontrou erros.";
         } else if (dados.sintatica && dados.sintatica.estado === "sucesso") {
           mensagem = "Análises léxica e sintática concluídas sem erros.";
+        }
+        if (dados.semantica && dados.semantica.estado === "erro") {
+          tipo = "semantico";
+          mensagem = "Análises léxica e sintática sem erros. A análise semântica encontrou regras violadas.";
+        } else if (dados.semantica && dados.semantica.estado === "sucesso") {
+          mensagem = "Análises léxica, sintática e semântica concluídas sem erros.";
         }
         return { tipo: tipo, mensagem: mensagem, dados: dados };
       }
@@ -142,6 +217,20 @@
     var campo = doc.getElementById("codigo"), seletor = doc.getElementById("exemplos");
     var botao = doc.getElementById("btn-analisar"), saida = doc.getElementById("resultado");
     var revisao = 0;
+    var visual = doc.getElementById("modo-visual");
+    var modos = { padrao: "Padrão", "sem-cores": "Sem cores: padrões e rótulos ativos", contraste: "Alto contraste ativo" };
+    function aplicarVisual(modo, salvar) {
+      if (!Object.hasOwn(modos, modo)) modo = "padrao";
+      doc.documentElement.dataset.visual = modo;
+      if (visual) visual.value = modo;
+      var avisoVisual = doc.getElementById("estado-visual");
+      if (avisoVisual) avisoVisual.textContent = modos[modo] + ". Estados e categorias também são identificados por texto.";
+      if (salvar) { try { win.localStorage.setItem("mini-c.visual", modo); } catch (e) { /* modo continua funcional sem persistência */ } }
+    }
+    var salvo = "padrao";
+    try { salvo = win.localStorage.getItem("mini-c.visual") || "padrao"; } catch (e) { /* armazenamento indisponível */ }
+    aplicarVisual(salvo, false);
+    if (visual) visual.addEventListener("change", function () { aplicarVisual(visual.value, true); });
     function el(tag, texto, classe) {
       var n = doc.createElement(tag);
       if (texto !== undefined) n.textContent = texto;
@@ -184,6 +273,7 @@
       painel.appendChild(controles);
       var posicao = el("p", "Abra um nó e use Localizar para destacar seu trecho no código acima. Fim é exclusivo: a posição seguinte ao último caractere.", "nota");
       posicao.id = "posicao-ast"; posicao.setAttribute("aria-live", "polite"); painel.appendChild(posicao);
+      var verFonte = el("a", "Ver trecho destacado no código"); verFonte.href = "#codigo-analisado"; painel.appendChild(verFonte);
       var arvore = el("div", undefined, "arvore-ast"); arvore.id = "arvore-ast";
       arvore.tabIndex = 0; arvore.setAttribute("role", "region"); arvore.setAttribute("aria-label", "AST navegável; abra nós com Enter ou Espaço e role dentro da árvore");
       function rotulo(no) {
@@ -195,9 +285,9 @@
         if (no.operador) texto += " · " + no.operador;
         return texto;
       }
-      function desenhar(no, relacao, nivel) {
+      function desenhar(no, relacao, nivel, caminho) {
         var detalhe = el("details", undefined, "ast-no ast-" + no.tipo.toLowerCase());
-        detalhe.dataset.tipo = no.tipo; detalhe.open = nivel < 2;
+        detalhe.dataset.tipo = no.tipo; detalhe.dataset.noAst = caminho; detalhe.open = nivel < 2;
         var nome = rotulo(no);
         detalhe.appendChild(el("summary", (relacao ? relacao + ": " : "") + nome));
         var informacoes = el("div", undefined, "ast-informacoes");
@@ -207,19 +297,19 @@
         var localizar = el("button", "Localizar " + nome, "ast-localizar");
         localizar.type = "button"; localizar.setAttribute("aria-pressed", "false");
         localizar.addEventListener("click", function () {
-          selecionar(no, localizar);
+          selecionar(no, localizar, "AST", caminho);
           posicao.textContent = nome + " selecionado: " + intervalo + ". Use Destacar token atual para voltar aos tokens.";
         });
         informacoes.appendChild(localizar); detalhe.appendChild(informacoes);
         var filhos = filhosAST(no);
         if (filhos.length) {
           var lista = el("ul", undefined, "ast-filhos");
-          filhos.forEach(function (f) { var item = el("li"); item.appendChild(desenhar(f[1], f[0], nivel + 1)); lista.appendChild(item); });
+          filhos.forEach(function (f) { var item = el("li"); item.appendChild(desenhar(f[1], f[0], nivel + 1, caminho + "/" + f[2])); lista.appendChild(item); });
           detalhe.appendChild(lista);
         }
         return detalhe;
       }
-      arvore.appendChild(desenhar(s.ast, "", 0)); painel.appendChild(arvore);
+      arvore.appendChild(desenhar(s.ast, "", 0, "")); painel.appendChild(arvore);
       expandir.addEventListener("click", function () { arvore.querySelectorAll("details").forEach(function (n) { n.open = true; }); });
       recolher.addEventListener("click", function () { arvore.querySelectorAll("details").forEach(function (n) { n.open = false; }); });
       exportar.addEventListener("click", function () {
@@ -235,6 +325,94 @@
         }
       });
     }
+    function mostrarSemantica(s, selecionar) {
+      var painel = el("section", undefined, "painel-semantica");
+      painel.setAttribute("aria-labelledby", "titulo-semantica");
+      var titulo = el("h3", "Análise semântica e tabela de símbolos"); titulo.id = "titulo-semantica";
+      var estado = el("p", undefined, "estado-analise"); estado.id = "estado-semantica";
+      painel.append(titulo, estado); saida.appendChild(painel);
+      if (!s) { estado.textContent = "[—] Semântica: indisponível nesta resposta. Atualize o servidor para a Etapa 5."; return; }
+      if (s.estado === "nao_executada") {
+        estado.textContent = "[—] Semântica: não executada. Corrija os erros " + (s.motivo === "erros_lexicos" ? "léxicos" : "sintáticos") + " para analisar as regras semânticas.";
+        return;
+      }
+      estado.textContent = s.sucesso ? "[OK] Semântica: sem erros nas regras do subconjunto." : "[!] Semântica: com erros. A AST reconhecida continua disponível.";
+      var posicao = el("p", "Selecione um símbolo, referência ou erro para destacar seu trecho no código e a construção na AST.", "nota");
+      posicao.id = "selecao-semantica"; posicao.setAttribute("aria-live", "polite"); painel.appendChild(posicao);
+      var verFonte = el("a", "Ver trecho destacado no código"); verFonte.href = "#codigo-analisado"; painel.appendChild(verFonte);
+      function localizar(item, botaoNo, rotulo) {
+        selecionar({ inicio: { linha: item.linha, coluna: item.coluna }, fim: item.fim }, botaoNo, rotulo, item.noAst);
+        posicao.textContent = rotulo + ": linha " + item.linha + ", coluna " + item.coluna + " até linha " + item.fim.linha + ", coluna " + item.fim.coluna + " (fim exclusivo). O nó relacionado está marcado na AST.";
+      }
+      if (s.erros.length) {
+        var erros = el("ul", undefined, "erros-semanticos"); erros.id = "erros-semanticos";
+        s.erros.forEach(function (erro) {
+          var item = el("li"); item.dataset.regra = erro.regra;
+          item.append(el("strong", "Erro semântico — linha " + erro.linha + ", coluna " + erro.coluna + ": "),
+            el("span", erro.mensagem), el("p", "Regra: " + REGRAS_SEMANTICAS[erro.regra] + " (" + erro.regra + ").", "regra-semantica"),
+            el("p", "Sugestão: " + erro.sugestao));
+          var botaoErro = el("button", "Localizar erro na linha " + erro.linha + ", coluna " + erro.coluna, "localizar-semantica");
+          botaoErro.type = "button"; botaoErro.setAttribute("aria-pressed", "false");
+          botaoErro.addEventListener("click", function () { localizar(erro, botaoErro, "Erro semântico"); });
+          item.appendChild(botaoErro); erros.appendChild(item);
+        });
+        painel.appendChild(erros);
+        painel.appendChild(el("p", "A tabela mostra as declarações reconhecidas durante uma análise com erros. Corrija os diagnósticos antes de considerar o programa semanticamente válido.", "nota"));
+      }
+      painel.appendChild(el("p", "Inicialização garantida indica o estado ao final do escopo que declarou a variável. Uma declaração sem leitura pode ser válida mesmo sem inicialização; após if/else, a garantia exige os dois caminhos. A tabela representa a análise estática, sem calcular valores.", "nota"));
+      var label = el("label", "Filtrar tabela por escopo"); label.htmlFor = "filtro-escopo";
+      var filtro = el("select"); filtro.id = "filtro-escopo";
+      var todos = el("option", "Todos os escopos"); todos.value = ""; filtro.appendChild(todos);
+      var nomesEscopos = new Map();
+      s.escopos.forEach(function (e) {
+        var nome = e.id + " — " + e.nome + (e.pai ? " (externo: " + e.pai + ")" : "");
+        nomesEscopos.set(e.id, nome);
+        var opcao = el("option", nome); opcao.value = e.id; filtro.appendChild(opcao);
+      });
+      painel.append(label, filtro);
+      var contagem = el("p", undefined, "nota"); contagem.id = "contagem-simbolos";
+      contagem.setAttribute("aria-live", "polite"); painel.appendChild(contagem);
+      var regiao = el("div", undefined, "tabela-responsiva"); regiao.tabIndex = 0; regiao.setAttribute("role", "region");
+      regiao.setAttribute("aria-label", "Tabela de símbolos; role horizontalmente em telas pequenas");
+      var tabela = el("table"); tabela.id = "tabela-simbolos";
+      tabela.appendChild(el("caption", "Variáveis declaradas, escopos e referências"));
+      var cabecalho = el("thead"), linha = el("tr");
+      ["Nome", "Tipo", "Escopo", "Declaração", "Inicialização garantida", "Sombreia", "Localizar"].forEach(function (texto) {
+        var th = el("th", texto); th.scope = "col"; linha.appendChild(th);
+      });
+      cabecalho.appendChild(linha); tabela.appendChild(cabecalho);
+      var corpo = el("tbody"); tabela.appendChild(corpo); regiao.appendChild(tabela); painel.appendChild(regiao);
+      function desenharTabela() {
+        corpo.textContent = "";
+        var simbolos = s.tabelaSimbolos.filter(function (item) { return !filtro.value || item.escopo === filtro.value; });
+        contagem.textContent = simbolos.length + " de " + s.tabelaSimbolos.length + " declarações exibidas. " + (!s.tabelaSimbolos.length ? "Nenhuma variável declarada neste programa." : "Nomes iguais podem pertencer a escopos diferentes.");
+        simbolos.forEach(function (simbolo) {
+          var tr = el("tr"); tr.dataset.simboloId = simbolo.id;
+          tr.append(el("td", simbolo.nome), el("td", simbolo.tipo), el("td", nomesEscopos.get(simbolo.escopo)),
+            el("td", "Linha " + simbolo.linha + ", coluna " + simbolo.coluna),
+            el("td", simbolo.inicializado ? "Sim — garantida" : "Não garantida"), el("td", simbolo.sombreia || "Nenhum"));
+          var acoes = el("td");
+          var declaracao = el("button", "Localizar declaração de " + simbolo.nome + " (" + simbolo.escopo + ")", "localizar-simbolo");
+          declaracao.type = "button"; declaracao.setAttribute("aria-pressed", "false");
+          declaracao.addEventListener("click", function () { localizar(simbolo, declaracao, "Símbolo " + simbolo.nome + " em " + simbolo.escopo); });
+          acoes.appendChild(declaracao);
+          if (simbolo.referencias.length) {
+            var detalhes = el("details", undefined, "referencias-simbolo");
+            detalhes.appendChild(el("summary", "Referências (" + simbolo.referencias.length + ")"));
+            simbolo.referencias.forEach(function (ref) {
+              var texto = (ref.contexto === "leitura" ? "Leitura" : "Atribuição") + " de " + simbolo.nome + " — linha " + ref.linha + ", coluna " + ref.coluna;
+              var b = el("button", texto, "localizar-referencia"); b.type = "button"; b.setAttribute("aria-pressed", "false");
+              b.addEventListener("click", function () { localizar(ref, b, texto); });
+              detalhes.appendChild(b);
+            });
+            acoes.appendChild(detalhes);
+          }
+          tr.appendChild(acoes); corpo.appendChild(tr);
+        });
+      }
+      filtro.addEventListener("change", desenharTabela); desenharTabela();
+    }
+
     function mostrar(tipo, texto, dados, codigo) {
       saida.textContent = "";
       var aviso = el("p", texto, "msg " + tipo);
@@ -243,9 +421,9 @@
       if (!dados) return;
       saida.appendChild(el("p", "Caracteres: " + dados.total_caracteres + " · Linhas: " + dados.total_linhas +
         " · Tokens: " + dados.tokens.length + " · Erros léxicos: " + dados.erros.length, "detalhes"));
-      var estadoLexico = el("p", "Léxica: " + (dados.sucesso ? "sem erros." : "com erros."), "estado-analise");
+      var estadoLexico = el("p", (dados.sucesso ? "[OK] " : "[!] ") + "Léxica: " + (dados.sucesso ? "sem erros." : "com erros."), "estado-analise");
       estadoLexico.id = "estado-lexico"; saida.appendChild(estadoLexico);
-      saida.appendChild(el("p", "Reconhecer tokens não comprova que o programa esteja correto. O parser verifica a organização gramatical; a análise semântica (declarações e tipos) ficará para a Etapa 5.", "nota"));
+      saida.appendChild(el("p", "Reconhecer tokens não comprova que o programa esteja correto. O parser verifica a organização gramatical; a semântica da Etapa 5 verifica declarações, tipos e inicialização. A execução do programa e a representação semântica ampliada ficam para etapas seguintes.", "nota"));
       if (dados.erros.length) {
         saida.appendChild(el("h3", "Erros léxicos"));
         var lista = el("ul", undefined, "erros-lexicos");
@@ -301,7 +479,7 @@
           pre.append(doc.createTextNode(caracteres.slice(0, inicioNo).join("")),
             el("mark", caracteres.slice(inicioNo, fimNo).join(""), "trecho-ast"),
             doc.createTextNode(caracteres.slice(fimNo).join("")));
-          posicao.textContent = "Destaque da AST ativo. Use Destacar token atual ou navegue para voltar à sequência de tokens.";
+          posicao.textContent = "Destaque de " + (selecaoAST.origem || "AST") + " ativo. Use Destacar token atual ou navegue para voltar à sequência de tokens.";
           linhas.forEach(function (l) { l.classList.remove("token-atual"); });
           return;
         }
@@ -329,16 +507,27 @@
         if (botaoSelecionado) { botaoSelecionado.setAttribute("aria-pressed", "false"); botaoSelecionado = null; }
         var status = doc.getElementById("posicao-ast");
         if (status) status.textContent = "Destaque por token ativo. Selecione Localizar em um nó para destacar sua construção.";
+        saida.querySelectorAll(".ast-relacionado").forEach(function (n) { n.classList.remove("ast-relacionado"); });
       }
       anterior.addEventListener("click", function () { if (passo > 0) { voltarAosTokens(); passo--; atualizarPasso(); } });
       proximo.addEventListener("click", function () { if (passo + 1 < dados.tokens.length) { voltarAosTokens(); passo++; atualizarPasso(); } });
       voltarToken.addEventListener("click", function () { voltarAosTokens(); atualizarPasso(); });
 
-      mostrarSintatica(dados.sintatica, function (no, botaoNo) {
+      function selecionarFonte(no, botaoNo, origem, caminho) {
         if (botaoSelecionado) botaoSelecionado.setAttribute("aria-pressed", "false");
         botaoSelecionado = botaoNo; botaoNo.setAttribute("aria-pressed", "true");
-        selecaoAST = no; atualizarPasso();
-      });
+        selecaoAST = { inicio: no.inicio, fim: no.fim, origem: origem }; atualizarPasso();
+        saida.querySelectorAll(".ast-relacionado").forEach(function (n) { n.classList.remove("ast-relacionado"); });
+        var relacionado = Array.from(saida.querySelectorAll(".ast-no")).find(function (n) { return n.dataset.noAst === caminho; });
+        if (relacionado) {
+          relacionado.classList.add("ast-relacionado");
+          for (var pai = relacionado; pai && pai.id !== "arvore-ast"; pai = pai.parentElement) {
+            if (pai.tagName === "DETAILS") pai.open = true;
+          }
+        }
+      }
+      mostrarSintatica(dados.sintatica, selecionarFonte);
+      mostrarSemantica(dados.semantica, selecionarFonte);
 
       var regiao = el("div", undefined, "tabela-responsiva");
       regiao.tabIndex = 0; regiao.setAttribute("role", "region");

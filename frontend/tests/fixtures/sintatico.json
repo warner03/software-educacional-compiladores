@@ -1,0 +1,69 @@
+{
+  "codigo": "int x=;",
+  "dados": {
+    "recebido": true,
+    "mensagem": "Análise léxica concluída sem erros.",
+    "total_caracteres": 7,
+    "total_linhas": 1,
+    "sucesso": true,
+    "tokens": [
+      {
+        "tipo": "PALAVRA_RESERVADA",
+        "lexema": "int",
+        "linha": 1,
+        "coluna": 1
+      },
+      {
+        "tipo": "IDENTIFICADOR",
+        "lexema": "x",
+        "linha": 1,
+        "coluna": 5
+      },
+      {
+        "tipo": "OPERADOR",
+        "lexema": "=",
+        "linha": 1,
+        "coluna": 6
+      },
+      {
+        "tipo": "DELIMITADOR",
+        "lexema": ";",
+        "linha": 1,
+        "coluna": 7
+      }
+    ],
+    "erros": [],
+    "sintatica": {
+      "estado": "erro",
+      "sucesso": false,
+      "ast": null,
+      "erros": [
+        {
+          "tipo": "ERRO_SINTATICO",
+          "codigo": "gramatica",
+          "lexema": ";",
+          "linha": 1,
+          "coluna": 7,
+          "esperado": [
+            "IDENTIFICADOR",
+            "LITERAL_INTEIRO",
+            "LITERAL_REAL",
+            "(",
+            "+",
+            "-"
+          ],
+          "encontrado": "DELIMITADOR",
+          "mensagem": "Era esperado um operando: identificador, número ou expressão entre parênteses, com sinal opcional. Encontrado: ';'."
+        }
+      ]
+    },
+    "semantica": {
+      "estado": "nao_executada",
+      "sucesso": null,
+      "motivo": "erros_sintaticos",
+      "tabelaSimbolos": [],
+      "escopos": [],
+      "erros": []
+    }
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "codigo": "@ int x;",
+  "dados": {
+    "recebido": true,
+    "mensagem": "Análise léxica concluída com erros.",
+    "total_caracteres": 8,
+    "total_linhas": 1,
+    "sucesso": false,
+    "tokens": [
+      {
+        "tipo": "PALAVRA_RESERVADA",
+        "lexema": "int",
+        "linha": 1,
+        "coluna": 3
+      },
+      {
+        "tipo": "IDENTIFICADOR",
+        "lexema": "x",
+        "linha": 1,
+        "coluna": 7
+      },
+      {
+        "tipo": "DELIMITADOR",
+        "lexema": ";",
+        "linha": 1,
+        "coluna": 8
+      }
+    ],
+    "erros": [
+      {
+        "tipo": "ERRO_LEXICO",
+        "lexema": "@",
+        "linha": 1,
+        "coluna": 1,
+        "mensagem": "Caractere não reconhecido: '@'. Verifique o subconjunto Mini-C suportado."
+      }
+    ],
+    "sintatica": {
+      "estado": "nao_executada",
+      "sucesso": null,
+      "motivo": "erros_lexicos",
+      "ast": null,
+      "erros": []
+    },
+    "semantica": {
+      "estado": "nao_executada",
+      "sucesso": null,
+      "motivo": "erros_lexicos",
+      "tabelaSimbolos": [],
+      "escopos": [],
+      "erros": []
+    }
+  }
+}

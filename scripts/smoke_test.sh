@@ -52,6 +52,8 @@ r = json.loads(corpo)
 assert status == 200 and r['sucesso'] is True and r['erros'] == []
 assert r['sintatica']['sucesso'] is True
 assert r['sintatica']['ast']['comandos'][0]['nome'] == 'numero'
+assert r['semantica']['sucesso'] is True
+assert [(s['nome'], s['tipo'], s['linha'], s['coluna'], s['inicializado']) for s in r['semantica']['tabelaSimbolos']] == [('numero', 'int', 1, 5, True)]
 assert r['tokens'] == [
     {'tipo': 'PALAVRA_RESERVADA', 'lexema': 'int', 'linha': 1, 'coluna': 1},
     {'tipo': 'IDENTIFICADOR', 'lexema': 'numero', 'linha': 1, 'coluna': 5},
@@ -65,12 +67,14 @@ assert status == 200 and r['sucesso'] is False
 assert [(e['lexema'], e['linha'], e['coluna']) for e in r['erros']] == [('12abc', 1, 7), ('@', 2, 1)]
 assert any(t['lexema'] == '7.5' for t in r['tokens']), 'Recuperação após erro'
 assert r['sintatica'] == {'estado': 'nao_executada', 'sucesso': None, 'motivo': 'erros_lexicos', 'ast': None, 'erros': []}
+assert r['semantica']['estado'] == 'nao_executada' and r['semantica']['motivo'] == 'erros_lexicos'
 assert requisitar('/api/analisar', '   ')[0] == 400
 status, corpo = requisitar('/api/analisar', 'int = ;')
 r = json.loads(corpo)
 assert status == 200 and r['sucesso'] is True, 'Scanner preservado'
 assert r['sintatica']['estado'] == 'erro' and r['sintatica']['ast'] is None
 assert r['sintatica']['erros'][0]['esperado'] == ['IDENTIFICADOR']
+assert r['semantica']['estado'] == 'nao_executada' and r['semantica']['motivo'] == 'erros_sintaticos'
 status, corpo = requisitar('/api/analisar', '/* apenas comentário */')
 r = json.loads(corpo)
 assert status == 200 and r['tokens'] == [] and r['sintatica']['estado'] == 'erro'
@@ -80,5 +84,13 @@ assert expr['operador'] == '+' and expr['direita']['operador'] == '*'
 status, corpo = requisitar('/api/analisar', 'int a = ;\nint b;\nb = ;')
 erros = json.loads(corpo)['sintatica']['erros']
 assert [(e['linha'], e['coluna']) for e in erros] == [(1, 9), (3, 5)]
-print('OK: saúde, HTML, exemplos, tokens/posições, scanner preservado, AST/precedência, erros léxicos/sintáticos, recuperação e validação passaram.')
+status, corpo = requisitar('/api/analisar', 'int x=10; total=x+5;')
+r = json.loads(corpo)
+assert status == 200 and r['sintatica']['sucesso'] is True
+assert r['semantica']['erros'][0]['regra'] == 'IDENTIFICADOR_NAO_DECLARADO'
+status, corpo = requisitar('/api/analisar', 'int x; if(1<2){x=1;}else{x=2;} int y=x;')
+r = json.loads(corpo)
+assert status == 200 and r['semantica']['sucesso'] is True
+assert all(s['inicializado'] for s in r['semantica']['tabelaSimbolos'])
+print('OK: saúde, HTML, exemplos, tokens/posições, AST, símbolos/escopos, tipos/inicialização, três fases e validação passaram.')
 PY

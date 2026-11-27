@@ -1,0 +1,229 @@
+{
+  "versao": "1.0",
+  "data_definicao": "2026-11-26",
+  "base_codigo": "0637b7d",
+  "origem": "Elaboração própria a partir da política semântica em docs/trabalho5/decisoes.md, antes do analisador",
+  "casos": [
+    {
+      "id": "M01",
+      "codigo": "x = 1;",
+      "regras_esperadas": [
+        "IDENTIFICADOR_NAO_DECLARADO"
+      ],
+      "sucesso_esperado": false
+    },
+    {
+      "id": "M02",
+      "codigo": "int x; int x;",
+      "regras_esperadas": [
+        "REDECLARACAO_NO_ESCOPO"
+      ],
+      "sucesso_esperado": false
+    },
+    {
+      "id": "M03",
+      "codigo": "int x; x = 2.5;",
+      "regras_esperadas": [
+        "TIPOS_INCOMPATIVEIS"
+      ],
+      "sucesso_esperado": false
+    },
+    {
+      "id": "A01",
+      "codigo": "int x = 1; float y = x + 2.5;",
+      "regras_esperadas": [],
+      "sucesso_esperado": true
+    },
+    {
+      "id": "A02",
+      "codigo": "int x;",
+      "regras_esperadas": [],
+      "sucesso_esperado": true
+    },
+    {
+      "id": "A03",
+      "codigo": "int x; x = 1; int y = x;",
+      "regras_esperadas": [],
+      "sucesso_esperado": true
+    },
+    {
+      "id": "A04",
+      "codigo": "int x; int y = x;",
+      "regras_esperadas": [
+        "VARIAVEL_NAO_INICIALIZADA"
+      ],
+      "sucesso_esperado": false
+    },
+    {
+      "id": "A05",
+      "codigo": "int x = x;",
+      "regras_esperadas": [
+        "VARIAVEL_NAO_INICIALIZADA"
+      ],
+      "sucesso_esperado": false
+    },
+    {
+      "id": "A06",
+      "codigo": "int x=1; { float x=2.0; x=x+1.0; } x=x+1;",
+      "regras_esperadas": [],
+      "sucesso_esperado": true
+    },
+    {
+      "id": "A07",
+      "codigo": "{ int x=1; } x=2;",
+      "regras_esperadas": [
+        "IDENTIFICADOR_NAO_DECLARADO"
+      ],
+      "sucesso_esperado": false
+    },
+    {
+      "id": "A08",
+      "codigo": "int x; { x=1; } int y=x;",
+      "regras_esperadas": [],
+      "sucesso_esperado": true
+    },
+    {
+      "id": "A09",
+      "codigo": "int x; if(1<2){x=1;}else{x=2;} int y=x;",
+      "regras_esperadas": [],
+      "sucesso_esperado": true
+    },
+    {
+      "id": "A10",
+      "codigo": "int x; if(1<2){x=1;} int y=x;",
+      "regras_esperadas": [
+        "VARIAVEL_NAO_INICIALIZADA"
+      ],
+      "sucesso_esperado": false
+    },
+    {
+      "id": "A11",
+      "codigo": "int x; if(1<2){}else{x=2;} int y=x;",
+      "regras_esperadas": [
+        "VARIAVEL_NAO_INICIALIZADA"
+      ],
+      "sucesso_esperado": false
+    },
+    {
+      "id": "A12",
+      "codigo": "int x=1; if(x){x=2;}",
+      "regras_esperadas": [
+        "CONDICAO_NAO_BOOLEANA"
+      ],
+      "sucesso_esperado": false
+    },
+    {
+      "id": "A13",
+      "codigo": "if(7.5){}",
+      "regras_esperadas": [
+        "CONDICAO_NAO_BOOLEANA"
+      ],
+      "sucesso_esperado": false
+    },
+    {
+      "id": "A14",
+      "codigo": "int x=1<2;",
+      "regras_esperadas": [
+        "TIPOS_INCOMPATIVEIS"
+      ],
+      "sucesso_esperado": false
+    },
+    {
+      "id": "A15",
+      "codigo": "int x=(1<2)+3;",
+      "regras_esperadas": [
+        "OPERANDOS_NAO_NUMERICOS"
+      ],
+      "sucesso_esperado": false
+    },
+    {
+      "id": "A16",
+      "codigo": "int x=-(1<2);",
+      "regras_esperadas": [
+        "OPERANDOS_NAO_NUMERICOS"
+      ],
+      "sucesso_esperado": false
+    },
+    {
+      "id": "A17",
+      "codigo": "if((1<2)==(3<4)){}",
+      "regras_esperadas": [],
+      "sucesso_esperado": true
+    },
+    {
+      "id": "A18",
+      "codigo": "int x=1==(2<3);",
+      "regras_esperadas": [
+        "TIPOS_NAO_COMPARAVEIS"
+      ],
+      "sucesso_esperado": false
+    },
+    {
+      "id": "A19",
+      "codigo": "int x=y+1;",
+      "regras_esperadas": [
+        "IDENTIFICADOR_NAO_DECLARADO"
+      ],
+      "sucesso_esperado": false
+    },
+    {
+      "id": "A20",
+      "codigo": "z=y+1;",
+      "regras_esperadas": [
+        "IDENTIFICADOR_NAO_DECLARADO",
+        "IDENTIFICADOR_NAO_DECLARADO"
+      ],
+      "sucesso_esperado": false
+    },
+    {
+      "id": "A21",
+      "codigo": "int x=1; int x=y; int z=x;",
+      "regras_esperadas": [
+        "REDECLARACAO_NO_ESCOPO",
+        "IDENTIFICADOR_NAO_DECLARADO"
+      ],
+      "sucesso_esperado": false
+    },
+    {
+      "id": "A22",
+      "codigo": "float x=1; x=2; int y=6/2;",
+      "regras_esperadas": [],
+      "sucesso_esperado": true
+    },
+    {
+      "id": "A23",
+      "codigo": "{}",
+      "regras_esperadas": [],
+      "sucesso_esperado": true
+    },
+    {
+      "id": "A24",
+      "codigo": "if(1<2){int x=1;} else {int x=2;}",
+      "regras_esperadas": [],
+      "sucesso_esperado": true
+    },
+    {
+      "id": "A25",
+      "codigo": "int x; if(y){x=1;} int z=x;",
+      "regras_esperadas": [
+        "IDENTIFICADOR_NAO_DECLARADO",
+        "VARIAVEL_NAO_INICIALIZADA"
+      ],
+      "sucesso_esperado": false
+    },
+    {
+      "id": "A26",
+      "codigo": "int x=1; { int x=x; }",
+      "regras_esperadas": [
+        "VARIAVEL_NAO_INICIALIZADA"
+      ],
+      "sucesso_esperado": false
+    },
+    {
+      "id": "A27",
+      "codigo": "int x; if(1<2){ if(2<3){x=1;}else{x=2;} }else{x=3;} int z=x;",
+      "regras_esperadas": [],
+      "sucesso_esperado": true
+    }
+  ]
+}
